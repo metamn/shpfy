@@ -13,10 +13,6 @@ Grid basics: http://www.alistapart.com/articles/fluidgrids/
   width: 90%;
   max-width: 80em;  /* 1. 80x16=1280px */
   margin: 0 auto;
-  
-  height: auto;
-  position: static;
-  overflow: hidden;
 }
 
 /* 2. Golden ratio 
@@ -31,10 +27,6 @@ Grid basics: http://www.alistapart.com/articles/fluidgrids/
 .container .content {
   width: 61.804%;   /* 791.100 / 1280 */
   float: right;
-  
-  position: relative;
-  right: 0;
-  bottom: 0;
 }
 
 /* 3.1. Margins
@@ -44,10 +36,6 @@ Grid basics: http://www.alistapart.com/articles/fluidgrids/
 .container .sidebar {
   margin-right: 2.5%;
   width: 35.695%;
-  
-  position: static;
-  bottom: 0;
-  left: 0;
 }
 
 
@@ -71,9 +59,26 @@ Grid basics: http://www.alistapart.com/articles/fluidgrids/
 
 
 
+/* Go mobile
+*/
 
+/* Better than iPhone */
+@media (max-width: 800px) {
+  .container .sidebar, .container .content {
+    float: none;
+    width: auto;
+  }
 
+}
 
+/* iPhone and less */
+@media (max-width: 480px) {
+  .container .sidebar, .container .content, .container .content .date, .container .content .tags  {
+    float: none;
+    width: auto;
+  }
+
+}
 
 
 

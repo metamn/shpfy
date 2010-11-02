@@ -1,0 +1,6 @@
+
+
+.container .sidebar, .container .content, .container .content .tags, .container .content .date {
+  float: none;
+  width: auto;
+}
