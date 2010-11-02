@@ -10,8 +10,8 @@
 */
 
 .col-1 {
-  margin-right: 2.5%;
-  width: 35.695%;
+  margin-right: 5%;
+  width: 33.195%;
 }
 .col-2 {
   width: 61.804%;
@@ -25,5 +25,8 @@
 }
 .block {
   width: 100%;
+  clear: both;
+}
+.clear {
   clear: both;
 }

@@ -1,28 +1,69 @@
-<div id="index-left">
-	<div id="excerpt">
-	  {% assign article = pages.frontpage %}
-    {% if article.content != "" %}
-  		<h3>{{ pages.frontpage.title }}</h3>
-  		{{ pages.frontpage.content }}
-  	{% else %}
-  	  In <em>Admin &gt; Blogs &amp; Pages</em>, create a page with the handle <strong><code>frontpage</code></strong> and it will show up here.<br />
-  	  {{ "Learn more about handles" | link_to "http://wiki.shopify.com/Handle" }}
-  	{% endif %}
-  	
-
-		<h3>{{ pages.about-us.title }}</h3>
-		{{ pages.about-us.content }}
-		
-	</div>
+<div id="info" class="left col-1">
+  <h3>{{ pages.about-us.title }}</h3>
+	{{ pages.about-us.content }}
+	
 	<div id="featured">
-		<h3>{{ collections.frontpage.title }}</h3>
-		<ul>{% for product in collections.frontpage.products limit: 5 %}
-			<li><span class="category">{{ product.type | upcase }}</span> <a href="{{ product.url | within: collections.all }}">{{ product.title }} for <span class="price">{{ product.price | money }}</span></a></li>{% endfor %}
-		</ul>
-		<p><a href="/collections/all">Browse all Products</a></p>
+	  <ul>
+	    {% for product in collections.all.products limit:3 offset:3 %}
+		  <li>
+		    <table>
+		      <tr>
+		        <td class="image">
+		          <a href="{{ product.url | within: collections.all }}">
+		            <img class="thumb" src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" /></a>
+		        </td>
+		        <td class="info">
+		          <span class="category">{{ product.type | upcase }}</span> 
+		          <br/>
+		          {{ product.title }} for <span class="price">{{ product.price | money }}</span>
+		        </td>
+		      </tr>
+		    </table>
+		  </li>
+		  {% endfor %}
+	</ul>
 	</div>
+	
+	<p><a href="/collections/all">More Recent Products</a></p>
+
 </div>
-<div id="index-right">{% for product in collections.frontpage.products limit: 1 %}
-	<h5>{{ product.title }} by {{ product.vendor }}</h5>{% for image in product.images limit: 1 %}
-	<a href="{{ product.url | within: collections.all }}" title=""><img src="{{ image | product_img_url: 'grande' }}" alt="{{ product.title | escape }}" /></a>{% endfor %}{% endfor %}
+
+<div id="featured" class="right col-2">
+  {% for product in collections.frontpage.products limit: 5 %}
+    <div id="item">
+	    <h5>{{ product.title }} by {{ product.vendor }}</h5>
+	    {% for image in product.images limit: 1 %}
+	      <a href="{{ product.url | within: collections.all }}" title="">	    
+	        <img src="{{ image | product_img_url: 'grande' }}" alt="{{ product.title | escape }}" /></a>
+	    {% endfor %}
+	  </div>
+  {% endfor %}  
+  
+  
+  <div id="sale" class="block">
+  <ul class="inline-list">
+    <li class="percent"><h1>%</h1></li>
+    {% for product in collections.paginated-sale.products %}  
+    <li>
+      <table>
+		      <tr>
+		        <td class="image">
+		          <a href="{{ product.url | within: collections.all }}">
+		            <img class="thumb" src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" /></a>
+		        </td>
+		        <td class="info">		          
+		          {{ product.title }} for <span class="price">{{ product.price | money }}</span>
+		          <br/>
+		          <span class="price-old">{{ product.price_max | money }}</span>
+		        </td>
+		      </tr>
+		    </table>
+		</li>  
+    {% endfor %}
+  </ul> 
+  </div>
 </div>
+
+
+
+

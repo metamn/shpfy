@@ -9,11 +9,12 @@
 	{{ 'layout.css' | asset_url | stylesheet_tag }}	
 	{{ 'basic.css' | asset_url | stylesheet_tag }}
 	
-	{% if template == "product" %}
-	  {{ 'mootools.js' | global_asset_url | script_tag }}
-	  {{ 'slimbox.js'  | global_asset_url | script_tag }}
-	{% endif %}
-  {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+	<!--
+	{{ 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js' | script_tag }}  
+	{{ 'jquery.init.js' | asset_url | script_tag }}
+	-->
+	
+	{{ 'option_selection.js' | shopify_asset_url | script_tag }}
 
 	{{ content_for_header }}
 	
@@ -45,11 +46,28 @@
 		
 	<div id="footer" class="block">
 	  <div class="container">
-			<p id="left-foot">{% for link in linklists.footer.links %}
-				<a href="{{ link.url }}">{{ link.title }}</a>{% endfor %}
-			</p>
-			<p id="right-foot">&copy; {{ "now" | date: "%Y" }} <a href="/">{{ shop.name }}</a>. Powered by <a href="http://www.shopify.com">Shopify</a>. </p>
+			<div class="left">
+			  &copy; {{ "now" | date: "%Y" }} <a href="/">{{ shop.name }}</a>. Powered by <a href="http://www.shopify.com">Shopify</a>. 			  
+			</div>
+			<div class="right">
+			  <ul class="inline-list">
+			  {% for link in linklists.footer.links %}
+				  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+				{% endfor %}
+				</ul>
+			</div>
 		</div>
-	</div>	
+	</div>
+	
+	
+	<div id="debug" class="block">
+	  Collections
+	  <ul>
+    {% for collection in collections %}
+    <li>{{collection.handle}}</li>
+    {% endfor %}
+  </ul>
+	</div>
+		
 </body>
 </html>

@@ -2,8 +2,7 @@
 /* Header
 */
 
-#header #logo h1 {
-  text-align: center;
+#header #logo h1 {  
   font-size: 1.5em;
 }
 #header #logo a, #header #logo a:link, #header #logo a:active, #header #logo a:visited {
@@ -11,7 +10,7 @@
   text-decoration: none;
 }  
 #header #navigation {
-  margin-top: 4em;
+  margin-top: 5em;
 }
 #header #navigation a, #header #navigation a:link, #header #navigation a:active, #header #navigation a:visited {
   color: black;
@@ -31,13 +30,65 @@
 }
 
 
+/* Startpage
+*/
+
+#index #info #featured {
+  margin: 2em 0;
+}
+#index #info #featured ul {
+  margin: 0;
+}
+#index #info #featured ul li {
+  margin-bottom: 1em;
+}
+#index #info #featured table td {
+  vertical-align: top;
+}
+#index #info #featured table td.image {
+  width: 120px;
+  text-align: center;
+}
+#index #info #featured table td.info {
+  padding: 1em 0 0 1em;
+}
+
+#index #featured #item {
+  width: 15em;
+  height: 20em;
+  margin-right: 2em;
+  float: left;
+  margin-bottom: 2em;
+}
+#index #featured #item img {
+  max-width: 13em;
+  height: auto;
+}
+#index #sale ul li {
+  margin-right: 2em;
+}
+#index #sale ul li.percent {
+  background: black;
+}
+#index #sale ul li.percent h1 {
+  font-size: 2em;
+  margin: .7em;
+}
+
 
 
 /* Common
 */
 
+img.thumb {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+
 ul.inline-list {
   display: block;
+  margin: 0;
 }
 ul.inline-list li {
   display: inline;
