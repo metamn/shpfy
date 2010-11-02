@@ -1,6 +1,15 @@
 vision-4.1.0/
 vision-4.1.0/**/*
 
+*.ttf
+*.svg
+*.eot
+*.woff
+*.xcf
+*.jpg
+*.png
+*.gif
+
 
 # Compiled source #
 ###################
