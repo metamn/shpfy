@@ -1,0 +1,83 @@
+/*
+Grid basics: http://www.alistapart.com/articles/fluidgrids/
+
+1. Establish the screen width
+2. Detect golden ratios
+3. Build the elements upon it _always_ aligned to the top-left of the grid
+3.1. this means always the left aligned element must include a right margin
+
+*/
+
+
+.container {
+  width: 90%;
+  max-width: 80em;  /* 1. 80x16=1280px */
+  margin: 0 auto;
+  
+  height: auto;
+  position: static;
+  overflow: hidden;
+}
+
+/* 2. Golden ratio 
+1280 / 1.1618 = 791.100  > large area
+1280 - 791.100 = 488.9  > smaller area (sidebar) 
+*/
+
+.container .sidebar {
+  width: 38.195%;   /* 3. 488.9/1280 = 0.38195 */
+  float: left;
+}
+.container .content {
+  width: 61.804%;   /* 791.100 / 1280 */
+  float: right;
+  
+  position: relative;
+  right: 0;
+  bottom: 0;
+}
+
+/* 3.1. Margins
+- adding 1em right margin to sidebar it means reducing its size by 16px
+- 2em: 32px / 1280 = 0.025
+*/
+.container .sidebar {
+  margin-right: 2.5%;
+  width: 35.695%;
+  
+  position: static;
+  bottom: 0;
+  left: 0;
+}
+
+
+/* Now split content into two smaller blocks, again with the golden ratio 
+791.100 / 1.618 = 488.93
+791.100 - 488.93 = 302.16
+
+*/
+.container .content .date {
+  width: 38.194%; /* 302.16 / 791.100 */
+  float: left;
+}
+.container .content .tags {
+  width: 61.803%;
+  float: right;
+}
+.container .content .date {
+  margin-right: 2.5%;
+  width: 35.694%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
