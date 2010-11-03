@@ -13,24 +13,24 @@
 }
 
 #index #featured #item {
-  width: 45%;
+  width: 50%;
   height: 20em;
-  margin: 0 5% 5% 0;
+  margin: 0 0% 5% 0;
   float: left;
 }
 #index #featured #item .col-1 {
-  width: 50%;
-  margin-right: 5%;
+  width: 66%;
+  margin-right: 4%;
 }
 #index #featured #item .col-2 {
-  width: 45%;
+  width: 30%;
   margin-right: 0%;
 }
 
 #index #sale #item {
   width: 22.5%;
   height: 10em;
-  margin: 0 2.5% 2.5% 0;
+  margin: 0 2.5% 5% 0;
   float: left;
 }
 #index #sale #item .col-1 {
@@ -47,8 +47,23 @@
 /* Mobile
 */
 
-/* Better than iPhone */
+@media (max-width: 1024px) {
+  #index #sale #item {
+    width: 30% !important;
+    margin-right: 3% !important;    
+  }
+}
+
 @media (max-width: 800px) {
+  #index #featured #item {
+    width: 100% !important;
+    margin-right: 0% !important;    
+  }
+}
+
+
+/* Better than iPhone */
+@media (max-width: 600px) {
   .container, .col-1, .col-2 {
     float: none !important;
     width: auto !important;    
@@ -69,6 +84,9 @@
     width: 100% !important;
     margin-right: 0% !important;
   }   
+  #index #sale #item {
+    font-size: 1em !important;
+  }
   #index #sale #item .col-1 {
     width: 50% !important;
     margin-right: 0% !important;

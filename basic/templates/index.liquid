@@ -48,7 +48,7 @@
 	    <div class="left col-1">
 	      {% for image in product.images limit: 1 %}
 	        <a href="{{ product.url | within: collections.all }}" title="">	    
-	          <img src="{{ image | product_img_url: 'grande' }}" alt="{{ product.title | escape }}" /></a>
+	          <img src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" /></a>
 	      {% endfor %}
 	    </div>
 	    <div class="right col-2">

@@ -55,11 +55,13 @@ a, a:visited, a:active, :link {
 
 
 .title {
-  padding: .5em 1em;
+  padding: .5em;
 }
 #index #featured .title {  
   margin: 0;
-  opacity: .8;
+}
+#index #featured #item h6 {
+  font-size: 1em;
 }
 
 
@@ -128,7 +130,9 @@ a, a:visited, a:active, :link {
   text-align: center;
   font-family: Helvetica, sans-serif;
 }
-
+#index #sale #item {
+  font-size: smaller;
+}
 
 
 /* Footer
@@ -183,10 +187,7 @@ img {
   display: none;
 }
 
-img.thumb {
-  max-width: 100px;
-  max-height: 100px;
-}
+
 
 ul.inline-list {
   display: block;
