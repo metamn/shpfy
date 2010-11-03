@@ -194,6 +194,12 @@ textarea {
 }
 
 
+/* Common
+*/
+
+table {
+  width: 100%;
+}
 
 
 /* Hacks

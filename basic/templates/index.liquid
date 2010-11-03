@@ -2,7 +2,7 @@
   <h3>{{ pages.about-us.title }}</h3>
 	{{ pages.about-us.content }}
 	
-	<span class="more">&rarr;</span>
+	<span class="more link">&rarr;</span>
 	
 	<div id="excerpt" class="hidden">
 	  {% assign article = pages.frontpage %}
@@ -28,7 +28,9 @@
 		        <td class="info">
 		          <span class="category">{{ product.type | upcase }}</span> 
 		          <br/>
-		          {{ product.title }} for <span class="price">{{ product.price | money }}</span>
+		          <a href="{{ product.url | within: collections.all }}">{{ product.title }}</a>
+		          <br/>
+		          <a href="{{ product.url | within: collections.all }}"><span class="price">{{ product.price | money }}</span></a>
 		        </td>
 		      </tr>
 		    </table>
@@ -37,14 +39,18 @@
 	</ul>
 	</div>
 	
-	<p><a href="/collections/all">More Recent Products</a></p>
+	<p><a class="button rounded greenb" href="/collections/all">More Recent Products</a></p>
 
 </div>
 
 <div id="featured" class="right col-2">
   {% for product in collections.frontpage.products limit: 3 %}
     <div id="item">
-	    <h5>{{ product.title }} by {{ product.vendor }}</h5>
+	    <h6 class="title yellowb" >
+	      <a href="{{ product.url | within: collections.all }}" title="">
+	        {{ product.title }} by {{ product.vendor }}
+	      </a>
+	    </h6>
 	    {% for image in product.images limit: 1 %}
 	      <a href="{{ product.url | within: collections.all }}" title="">	    
 	        <img src="{{ image | product_img_url: 'grande' }}" alt="{{ product.title | escape }}" /></a>
@@ -57,7 +63,7 @@
   <div id="sale">
   <ul class="inline-list">
     <li class="percent"><h1>%</h1></li>
-    {% for product in collections.paginated-sale.products %}  
+    {% for product in collections.all.products %}  
     <li>
       <table>
 		      <tr>
@@ -66,9 +72,11 @@
 		            <img class="thumb" src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" /></a>
 		        </td>
 		        <td class="info">		          
-		          {{ product.title }} for <span class="price">{{ product.price | money }}</span>
+		          <a href="{{ product.url | within: collections.all }}">{{ product.title }}</a>
 		          <br/>
-		          <span class="price-old">{{ product.price_max | money }}</span>
+		          <a href="{{ product.url | within: collections.all }}"><span class="price">{{ product.price | money }}</span></a>
+		          <br/>
+		          <a href="{{ product.url | within: collections.all }}"><span class="price-old">{{ product.price_max | money }}</span></a>
 		        </td>
 		      </tr>
 		    </table>
