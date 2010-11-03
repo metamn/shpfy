@@ -9,6 +9,8 @@
 	{{ 'layout.css' | asset_url | stylesheet_tag }}	
 	{{ 'basic.css' | asset_url | stylesheet_tag }}
 	{{ 'esquire.css' | asset_url | stylesheet_tag }}
+	<!--[if lte IE 6]>{{ 'ie.css' | asset_url | stylesheet_tag }}<![endif]-->
+
 	
 	
 	{{ 'jquery-1.4.3.min.js' | asset_url | script_tag }}  
