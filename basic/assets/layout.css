@@ -44,6 +44,22 @@
 }
 
 
+#collection #items #item {
+  width: 100%; 
+  margin-bottom: 5%;
+  float: left;
+}
+#collection #items #item .col-1 {
+  width: 39%;
+  margin-right: 5%;
+}
+#collection #items #item .col-2 {
+  width: 56%;
+  margin-right: 0%;
+}
+
+
+
 /* Mobile
 */
 

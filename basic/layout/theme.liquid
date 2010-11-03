@@ -33,7 +33,12 @@
 			  {% capture active_url %}{% if template == "index" %}/{% elsif template == "collection" %}/collections/{{ collection.handle }}{% elsif template == "product" %}{% if collection %}/collections/{{ collection.handle }}{% endif %}/products/{{ product.handle }}{% elsif template == "page" %}/pages/{{ page.handle }}{% elsif template == "blog" %}/blogs/{{ blog.handle }}{% elsif template == "cart" %}/cart{% elsif template == "search" %}/search{% endif %}{% endcapture %}
 				<ul class="inline-list">{% for link in linklists.main-menu.links %}
 					<li{% if forloop.last %}{% if cart.item_count == 0 %} id="end"{% endif %}{% endif %}><a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title }}</a></li>{% endfor %}{% if cart.item_count > 0 %}
-					<li id="cart" class="last"><a href="/cart"{% if template == "cart" %} class="active"{% else %} id="end"{% endif %}>Cart ({{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }})</a></li>{% endif %}
+					<li id="cart" class="last">					  
+					  <a href="/cart"{% if template == "cart" %} class="active"{% else %} id="end"{% endif %}>
+					    {{ 'cart.png' | asset_url | img_tag }}
+					    {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}
+					  </a>
+				  </li>{% endif %}
 				</ul>
 			</div>			
 		</div>

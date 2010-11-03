@@ -67,6 +67,25 @@
 }
 
 
+
+/* Collections
+*/
+#collection #items #item {
+  height: 15em;
+  margin-bottom: 5em;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 3em;
+}
+#collection #items #item .title {
+  margin: 0;
+}
+#collection #items #item .col-1 {
+  text-align: center;
+}
+
+
+
+
 /* Footer
 */
 
