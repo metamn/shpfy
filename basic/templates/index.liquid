@@ -61,11 +61,11 @@
 	  </div>
   {% endfor %}  
   
-  <br class="clear" />
+  <div class="clear"></div>
   
   <div id="sale">  
     <div id="item" class="percent"><h1>%</h1></div>
-    {% for product in collections.all.products %}  
+    {% for product in collections.paginated-sale.products %}  
     <div id="item">
       <div class="left col-1">
         <a href="{{ product.url | within: collections.all }}">
