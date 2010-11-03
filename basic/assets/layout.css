@@ -4,11 +4,6 @@
   margin: 0 auto;
 }
 
-
-
-/* Common
-*/
-
 .col-1 {
   margin-right: 5%;
   width: 33.195%;
@@ -16,6 +11,81 @@
 .col-2 {
   width: 61.804%;
 }
+
+#index #featured #item {
+  width: 45%;
+  height: 20em;
+  margin: 0 5% 5% 0;
+  float: left;
+}
+#index #featured #item .col-1 {
+  width: 50%;
+  margin-right: 5%;
+}
+#index #featured #item .col-2 {
+  width: 45%;
+  margin-right: 0%;
+}
+
+#index #sale #item {
+  width: 22.5%;
+  height: 10em;
+  margin: 0 2.5% 2.5% 0;
+  float: left;
+}
+#index #sale #item .col-1 {
+  width: 50%;
+  margin-right: 0%;
+  text-align: center;
+}
+#index #sale #item .col-2 {
+  width: 40%;
+  margin-left: 10%;
+}
+
+
+/* Mobile
+*/
+
+/* Better than iPhone */
+@media (max-width: 800px) {
+  .container, .col-1, .col-2 {
+    float: none !important;
+    width: auto !important;    
+  }
+  .col-1 {
+    margin-right: 0 !important;
+  }
+  #index #featured #item {
+    width: 100% !important;
+    margin-right: 0 !important;
+    height: auto !important;
+  }
+  #index #featured #item .col-1 {
+    width: 80% !important;
+    margin-right: 20% !important;
+  }
+  #index #featured #item .col-2 {
+    width: 100% !important;
+    margin-right: 0% !important;
+  }   
+  #index #sale #item .col-1 {
+    width: 50% !important;
+    margin-right: 0% !important;
+    float: left !important;
+  }
+  #index #sale #item .col-2 {
+    width: 40% !important;
+    margin-left: 10% !important;
+    float: left !important;
+  }
+}
+
+
+
+
+/* Common
+*/
 
 .left {
   float: left;

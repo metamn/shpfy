@@ -43,10 +43,10 @@ a, a:visited, a:active, :link {
   color: white !important;
 } 
 
-#index #sale ul li.percent {
+#index #sale .percent {
   background: #A82823 !important;
 }
-#index #sale ul li.percent h1 {
+#index #sale .percent h1 {
   background: #A82823 !important;
 }
 #index #sale .price {
@@ -57,14 +57,12 @@ a, a:visited, a:active, :link {
 .title {
   padding: .5em 1em;
 }
-#index #featured .title {
-  position: relative;
-  top: 3em;
-  left: 12em;
+#index #featured .title {  
   margin: 0;
   opacity: .8;
-  width: 7em;
 }
+
+
 
 
 /* Header
@@ -121,32 +119,14 @@ a, a:visited, a:active, :link {
   padding: 2.5% 0 0 5%;
 }
 
-#index #featured #item {
-  width: 45%;
-  height: 20em;
-  margin: 0 5% 5% 0;
-  float: left;
-}
-#index #featured #item img {
-  max-width: 13em;
-  height: auto;
-}
-
 #index #sale {
   margin: 10% 0;
 }
-#index #sale ul li {
-  width: 22.5%;
-  margin: 0 2.5% 5% 0;
-}
-#index #sale ul li.percent h1 {
-  font-size: 4em;
+#index #sale .percent h1 {
+  font-size: 3em;
   margin: 0;
   text-align: center;
   font-family: Helvetica, sans-serif;
-}
-#index #sale table td.info {
-  padding-left: 2.5%;
 }
 
 
@@ -166,6 +146,11 @@ a, a:visited, a:active, :link {
 
 /* Common
 */
+
+img {
+  max-width: 100%;
+  height: auto;
+}
 
 .link {
   cursor: pointer;

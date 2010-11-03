@@ -40,49 +40,47 @@
 	</div>
 	
 	<p><a class="button rounded greenb" href="/collections/all">More Recent Products</a></p>
-
 </div>
 
 <div id="featured" class="right col-2">
   {% for product in collections.frontpage.products limit: 3 %}
-    <div id="item">
-	    <h6 class="title yellowb" >
+    <div id="item">	    
+	    <div class="left col-1">
+	      {% for image in product.images limit: 1 %}
+	        <a href="{{ product.url | within: collections.all }}" title="">	    
+	          <img src="{{ image | product_img_url: 'grande' }}" alt="{{ product.title | escape }}" /></a>
+	      {% endfor %}
+	    </div>
+	    <div class="right col-2">
+	      <h6 class="title yellowb" >
 	      <a href="{{ product.url | within: collections.all }}" title="">
 	        {{ product.title }} by {{ product.vendor }}
 	      </a>
-	    </h6>
-	    {% for image in product.images limit: 1 %}
-	      <a href="{{ product.url | within: collections.all }}" title="">	    
-	        <img src="{{ image | product_img_url: 'grande' }}" alt="{{ product.title | escape }}" /></a>
-	    {% endfor %}
+	      </h6>
+	    </div>
 	  </div>
   {% endfor %}  
   
   <br class="clear" />
   
-  <div id="sale">
-  <ul class="inline-list">
-    <li class="percent"><h1>%</h1></li>
+  <div id="sale">  
+    <div id="item" class="percent"><h1>%</h1></div>
     {% for product in collections.all.products %}  
-    <li>
-      <table>
-		      <tr>
-		        <td class="image">
-		          <a href="{{ product.url | within: collections.all }}">
-		            <img class="thumb" src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" /></a>
-		        </td>
-		        <td class="info">		          
-		          <a href="{{ product.url | within: collections.all }}">{{ product.title }}</a>
-		          <br/>
-		          <a href="{{ product.url | within: collections.all }}"><span class="price">{{ product.price | money }}</span></a>
-		          <br/>
-		          <a href="{{ product.url | within: collections.all }}"><span class="price-old">{{ product.price_max | money }}</span></a>
-		        </td>
-		      </tr>
-		    </table>
-		</li>  
+    <div id="item">
+      <div class="left col-1">
+        <a href="{{ product.url | within: collections.all }}">
+          <img class="thumb" src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" />
+        </a>
+      </div>
+      <div class="right col-2">		        
+        <a href="{{ product.url | within: collections.all }}">{{ product.title }}</a>
+        <br/>
+        <a href="{{ product.url | within: collections.all }}"><span class="price">{{ product.price | money }}</span></a>
+        <br/>
+        <a href="{{ product.url | within: collections.all }}"><span class="price-old">{{ product.price_max | money }}</span></a>
+		  </div>
+		</div>
     {% endfor %}
-  </ul> 
   </div>
 </div>
 
