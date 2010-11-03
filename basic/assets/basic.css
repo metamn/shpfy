@@ -34,13 +34,13 @@
 */
 
 #index #info #featured {
-  margin: 2em 0;
+  margin: 10% 0;
 }
 #index #info #featured ul {
   margin: 0;
 }
 #index #info #featured ul li {
-  margin-bottom: 1em;
+  margin-bottom: 5%;
 }
 #index #info #featured table td {
   vertical-align: top;
@@ -50,22 +50,26 @@
   text-align: center;
 }
 #index #info #featured table td.info {
-  padding: 1em 0 0 1em;
+  padding: 5% 0 0 5%;
 }
 
 #index #featured #item {
-  width: 15em;
+  width: 45%;
   height: 20em;
-  margin-right: 2em;
+  margin: 0 5% 5% 0;
   float: left;
-  margin-bottom: 2em;
 }
 #index #featured #item img {
   max-width: 13em;
   height: auto;
 }
+
+#index #sale {
+  margin: 10% 0;
+}
 #index #sale ul li {
-  margin-right: 2em;
+  width: 22.5%;
+  margin: 0 2.5% 5% 0;
 }
 #index #sale ul li.percent {
   background: black;
@@ -74,17 +78,36 @@
   font-size: 2em;
   margin: .7em;
 }
+#index #sale table td.info {
+  padding-left: 2.5%;
+}
+
+
+
+/* Footer
+*/
+
+#footer {
+  margin-bottom: 5%;
+}
+#footer .container {
+  border-top: 1px solid;
+  padding-top: .5em;
+}
 
 
 
 /* Common
 */
 
+.hidden {
+  display: none;
+}
+
 img.thumb {
   max-width: 100px;
   max-height: 100px;
 }
-
 
 ul.inline-list {
   display: block;
