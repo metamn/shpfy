@@ -75,7 +75,7 @@
   margin-bottom: 1em;
 }
 #collection #navigation ul.categories li a {
-  padding: .5em;
+  padding: .45em;
 }
 #collection #navigation ul.categories li a.active, #collection #navigation ul.categories li a:hover {
   color: white;
@@ -118,9 +118,9 @@
   margin-right: .5em;
 }
 
-
 #collection #paginate {
   text-align: right;
+  margin-bottom: 1em;
 }
 
 

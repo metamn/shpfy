@@ -54,7 +54,6 @@ a, a:visited, a:active, :link {
   color: #FF3300 !important;  
 }
 
-
 .title {
   padding: .5em;
 }
@@ -65,4 +64,12 @@ a, a:visited, a:active, :link {
   font-size: 1em;
 }
 
-
+#collection #paginate span {
+  padding: .3em;
+}
+#collection #paginate span.page, #collection #paginate span.next {
+  background: #3399FF;
+} 
+#collection #paginate span a{
+  color: white;
+}

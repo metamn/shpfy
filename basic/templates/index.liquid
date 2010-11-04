@@ -75,9 +75,11 @@
       <div class="right col-2">		        
         <a href="{{ product.url | within: collections.all }}">{{ product.title }}</a>
         <br/>
-        <a href="{{ product.url | within: collections.all }}"><span class="price">{{ product.price | money }}</span></a>
-        <br/>
-        <a href="{{ product.url | within: collections.all }}"><span class="price-old">{{ product.price_max | money }}</span></a>
+        <span class="price">{{ product.price | money }}</span>
+        {% if product.compare_at_price_max > product.price %} 
+          <br/>
+          <span class="price-old">{{ product.compare_at_price_max | money }}</span>
+        {% endif %}
 		  </div>
 		</div>
     {% endfor %}
