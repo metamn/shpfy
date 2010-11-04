@@ -45,6 +45,8 @@ jQuery(document).ready(function(){
   });
   
   
+  
+  
   // jQZoom
   // On Product 
   // after image change jqzoom is reloaded, see below
@@ -62,7 +64,7 @@ jQuery(document).ready(function(){
   // Click on Thumbnail at the Collections page
   jQuery("#collection #item img.link").click(function(){
     var newImage = jQuery(this).attr('rev');
-    var wrap = jQuery(this).parent().prev();    
+    var wrap = jQuery(this).parent().parent().prev().children();    
     var img = new Image();
     img.onload = function() {
       // change the image

@@ -55,22 +55,23 @@
 	          <a href="{{ product.images.last | product_img_url: 'grande' }}" title="{{ product.title | escape }}" class="product-zoom">	    
 	            <img src="{{ product.images.last | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
 	          </a>
-	        </div>	   
-	        {% if product.images.size > 1%}
-	          <div id="images">	          
-	            {% for image in product.images %}
-	              <img class="link" src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" rev="{{ image | product_img_url: 'grande' }}" />
-	            {% endfor %}
-	          </div>
-	         {% endif %}
+	        </div>	   	        
 	      </div>
 	      <div class="right col-2">
 	        <h6 class="title yellowb"><a href="{{ product.url | within: collections.all }}" title="">{{ product.title }} by {{ product.vendor }}</a></h6>
 	        
 	        <p class="desc-price">{{ product.price | money }}{% if product.compare_at_price_max > product.price %} <del>{{ product.compare_at_price_max | money }}</del>{% endif %}</p>
 	        
+	        {% if product.images.size > 1%}
+	          <div id="images">	          
+	            {% for image in product.images %}
+	              <img class="link" src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" rev="{{ image | product_img_url: 'grande' }}" />
+	            {% endfor %}
+	          </div>
+	        {% endif %}
+	        	        	        
 	        <div id="description">
-			      <p>{{ product.description | strip_html | truncate: 350 }}</p>
+			      <p>{{ product.description | strip_html | truncate: 250 }}</p>
 			      <span class="more link">&rarr;</span>
 			      
 			      <div id="full" class="hidden">
@@ -79,6 +80,7 @@
 			      			      
 		      </div>
 	      </div>
+	      
 	    </div>
 	  {% endfor %}
 	
