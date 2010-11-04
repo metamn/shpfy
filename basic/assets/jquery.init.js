@@ -20,28 +20,19 @@ jQuery(document).ready(function(){
   // 2. hide original excerpt
   // 3. insert full content
   // 4. change div width
-  jQuery("#collection #item #description span.more").click(function(){
-    var parentSize = jQuery(this).parents("#item").height();
-    var newSize = jQuery(this).next().height();
-    
+  jQuery("#collection #item #description span.more").click(function(){        
+    // hide
+    jQuery(this).prev().slideToggle(200);        
+    // insert
+    jQuery(this).next().slideToggle(200);
     // arrow
     var arrow = jQuery(this).html();     
     if (arrow == "→") {
-      arrow = "&larr;";            
-      var size = newSize + parentSize;
+      arrow = "&larr;";
     } else {
       arrow = "&rarr;";
-      var size = "22em";
     };
-    jQuery(this).html(arrow);  
-    
-    // hide
-    jQuery(this).prev().toggle(200);
-    // insert
-    jQuery(this).next().toggle(200);
-    
-    // change div size    
-    jQuery(this).parents("#item").height(size).delay(400);
+    jQuery(this).html(arrow);     
   });
   
   

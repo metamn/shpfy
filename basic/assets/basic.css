@@ -93,8 +93,7 @@
 }
 
 
-#collection #items #item {
-  height: 22em;
+#collection #items #item {  
   margin-bottom: 5em;
   border-bottom: 1px solid #ddd;
   padding-bottom: 3em;
@@ -113,6 +112,10 @@
 }
 #collection #items #item #description #full {
   margin: 1em 0;
+}
+#collection #items #item #images img {
+  margin-bottom: 1em;
+  margin-right: .5em;
 }
 
 
