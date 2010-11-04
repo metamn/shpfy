@@ -68,12 +68,19 @@
     width: 30% !important;
     margin-right: 3% !important;    
   }
+  #collection #items #item #images img {
+    max-width: 80px !important;
+    max-height: 80px !important;
+  }
 }
 
 @media (max-width: 800px) {
   #index #featured #item {
     width: 100% !important;
     margin-right: 0% !important;    
+  }
+  #collection #items #item .col-1, #collection #items #item .col-2 {
+    width: 100% !important;
   }
 }
 
@@ -82,7 +89,8 @@
 @media (max-width: 600px) {
   .container, .col-1, .col-2 {
     float: none !important;
-    width: auto !important;    
+    width: auto !important; 
+    margin: 2%;   
   }
   .col-1 {
     margin-right: 0 !important;
@@ -112,6 +120,10 @@
     width: 40% !important;
     margin-left: 10% !important;
     float: left !important;
+  }
+  
+  #collection #navigation #tags {
+    display: none;
   }
 }
 

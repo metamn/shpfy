@@ -42,11 +42,11 @@ jQuery(document).ready(function(){
   // On Product 
   // after image change jqzoom is reloaded, see below
   jQuery('.product-zoom').jqzoom({
-	    zoomWidth: 230,
-	    zoomHeight: 230,
+	    zoomWidth: 380,
+	    zoomHeight: 380,
       xOffset: 10,
       yOffset: 0,
-      position: "right",
+      position: "left",
       title: false,
       preload: 0,
       zoomType: 'reverse'
@@ -67,10 +67,10 @@ jQuery(document).ready(function(){
     // jQZoom
     jQuery('.product-zoom').jqzoom({
 	      zoomWidth: 380,
-	      zoomHeight: 330,
+	      zoomHeight: 380,
         xOffset: 10,
         yOffset: 0,
-        position: "right",
+        position: "left",
         title: false,
         preload: 0,
         zoomType: 'reverse'
