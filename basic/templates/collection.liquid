@@ -1,4 +1,4 @@
-<div id="categories" class="left col-1">
+<div id="navigation" class="left col-1">
   <div id="collection-desc">
 		<h3>{{ collection.title }}</h3>
 		{% if collection.description.size > 0 %}
@@ -7,7 +7,7 @@
 	</div>
 
 	{% if collections.size > 0 %}
-    <ul>
+    <ul class="categories">
   	  {% for c in collections %}
   	    {% if c.handle != "frontpage" %}
   		    <li><a href="{{ c.url }}"{% if collection.url == c.url %} class="active"{% endif %}>{{ c.title | upcase }}</a></li>
@@ -22,6 +22,25 @@
   		<li><a href="">EXAMPLE COLLECTION 3</a></li>
   	</ul>
   {% endif %}
+  
+  <div id="searchbox">
+    <h3>Search</h3>
+		<form action="/search" method="get">
+			<input class="text" type="text" name="q" /> 
+			<input class="link button greenb rounded" type="submit" value="Go"  />
+		</form>
+	</div>
+  
+  {% if tags %}
+  <div class="tags">
+    <h3>Tags</h3>
+    <ul>
+      {% for tag in collection.tags %}  
+        <li>{{ tag | link_to_tag: tag }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
 </div>
 
 <div id="items" class="right col-2">
@@ -32,19 +51,32 @@
 	  {% for product in collection.products %}
 	    <div id="item">
 	      <div class="left col-1">	        
-	        <a href="{{ product.url | within: collections.all }}" title="">	    
-	          <img src="{{ product.images.last | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
-	        </a>	   
+	        <div id="main-image">
+	          <a href="{{ product.images.last | product_img_url: 'grande' }}" title="{{ product.title | escape }}" class="product-zoom">	    
+	            <img src="{{ product.images.last | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
+	          </a>
+	        </div>	   
+	        {% if product.images.size > 1%}
+	          <div id="images">	          
+	            {% for image in product.images %}
+	              <img class="link" src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" rev="{{ image | product_img_url: 'grande' }}" />
+	            {% endfor %}
+	          </div>
+	         {% endif %}
 	      </div>
 	      <div class="right col-2">
 	        <h6 class="title yellowb"><a href="{{ product.url | within: collections.all }}" title="">{{ product.title }} by {{ product.vendor }}</a></h6>
 	        
 	        <p class="desc-price">{{ product.price | money }}{% if product.compare_at_price_max > product.price %} <del>{{ product.compare_at_price_max | money }}</del>{% endif %}</p>
 	        
-	        <div class="desc{% cycle 'description': ' left', '' %}">
-			      {{ product.description | strip_html | truncate: 120 }}
-			      <br/>
-			      <a href="{{ product.url | within: collection }}">&rarr;</a>			      
+	        <div id="description">
+			      <p>{{ product.description | strip_html | truncate: 350 }}</p>
+			      <span class="more link">&rarr;</span>
+			      
+			      <div id="full" class="hidden">
+			        {{ product.description | strip_html }}
+			      </div>
+			      			      
 		      </div>
 	      </div>
 	    </div>

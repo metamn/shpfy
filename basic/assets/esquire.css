@@ -38,6 +38,11 @@ a, a:visited, a:active, :link {
   text-decoration: none;
 }
 
+#index #info .more, #collection #items #item #description .more {
+  color: white;
+  padding: .3em;
+  background: #3399FF !important;
+}
 
 #index #sale .percent {
   background: #FF3300 !important;

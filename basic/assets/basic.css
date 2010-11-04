@@ -70,8 +70,31 @@
 
 /* Collections
 */
+
+#collection #navigation ul.categories li {
+  margin-bottom: 1em;
+}
+#collection #navigation ul.categories li a {
+  padding: .5em;
+}
+#collection #navigation ul.categories li a.active, #collection #navigation ul.categories li a:hover {
+  color: white;
+  background: black;
+}
+#collection #navigation input.text {
+  width: 63%;
+  margin-right: 3%;
+}
+#collection #navigation input.button {
+  width: 30%;
+  color: black;
+  border: none;
+  padding: .3em;
+}
+
+
 #collection #items #item {
-  height: 15em;
+  height: 22em;
   margin-bottom: 5em;
   border-bottom: 1px solid #ddd;
   padding-bottom: 3em;
@@ -79,10 +102,23 @@
 #collection #items #item .title {
   margin: 0;
 }
-#collection #items #item .col-1 {
+#collection #items #item .col-1 #main-image {
   text-align: center;
+  margin-bottom: 1em;  
+}
+#collection #items #item .col-1 #main-image img {
+  max-width: 240px;
+  height: auto;
+  max-height: 240px;
+}
+#collection #items #item #description #full {
+  margin: 1em 0;
 }
 
+
+#collection #paginate {
+  text-align: right;
+}
 
 
 
