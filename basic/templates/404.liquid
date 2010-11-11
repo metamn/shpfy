@@ -1,0 +1,73 @@
+<h2>Page Not Found</h2>
+<div id="contents" class="col-1 left">
+  <p>The page you are looking for is not found.</p>
+  <p>Either the page address was wrong, or, the page itself was moved / removed by the site administrator.</p>
+  <p>Please try the <strong>search</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p>
+</div>
+
+
+<div id="navigation" class="right col-2">  
+   
+  <div id="searchbox">
+    <form action="/search" method="get">
+      <table><tr>
+			<td><input class="text" type="text" name="q" /></td> 
+			<td><input class="button" type="submit" value="Search" /></td>
+			</tr></table>
+		</form>
+	</div>
+	
+	<div id="featured">  
+    <h6 class="link"><span class="more blueb">%</span> Featured products</h6>
+    <div id="items">
+      {% for product in collections.frontpage.products %}  
+      <div id="item">
+        <div class="left col-1">
+          <a href="{{ product.url | within: collections.all }}">
+            <img class="thumb" src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" />
+          </a>
+        </div>
+        <div class="right col-2">		        
+          <a href="{{ product.url | within: collections.all }}">{{ product.title }}</a>
+          <br/>
+          <span class="price">{{ product.price | money }}</span>
+          {% if product.compare_at_price_max > product.price %} 
+            <br/>
+            <span class="price-old">{{ product.compare_at_price_max | money }}</span>
+          {% endif %}
+		    </div>
+		  </div>
+    {% endfor %}
+    </div>
+  </div> 
+  
+  <div class="clear"></div>
+  
+  <div id="sale">  
+    <h6 class="link"><span class="more redb">%</span> Products on sale</h6>
+    <div id="items">
+      <div id="item" class="percent"><h1>%</h1></div>
+      {% for product in collections.paginated-sale.products %}  
+      <div id="item">
+        <div class="left col-1">
+          <a href="{{ product.url | within: collections.all }}">
+            <img class="thumb" src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" />
+          </a>
+        </div>
+        <div class="right col-2">		        
+          <a href="{{ product.url | within: collections.all }}">{{ product.title }}</a>
+          <br/>
+          <span class="price">{{ product.price | money }}</span>
+          {% if product.compare_at_price_max > product.price %} 
+            <br/>
+            <span class="price-old">{{ product.compare_at_price_max | money }}</span>
+          {% endif %}
+		    </div>
+		  </div>
+    {% endfor %}
+    </div>
+  </div> 
+  
+  <div class="clear"></div>
+  	  
+</div>

@@ -60,10 +60,10 @@
 
 
 
-#product .col-1, #cart .col-1, #page .col-1 {
+#product .col-1, #cart .col-1, #page .col-1, #not_found .col-1 {
   width: 61.804%;
 }
-#product .col-2, #cart .col-2, #page .col-2 {  
+#product .col-2, #cart .col-2, #page .col-2, #not_found .col-2 {  
   width: 33.195%;
 }
 #product #description .col-1, #cart #contents .col-1  {
