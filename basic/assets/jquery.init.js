@@ -5,11 +5,24 @@ jQuery(document).ready(function(){
 
 
 
-  // Accordion on Product page
-  jQuery("#product #navigation .link").next().hide();   
-  jQuery("#product #navigation .link").click(function(){
+  // Accordion on Product and Checkout page
+  jQuery("#navigation .link").next().hide();   
+  jQuery("#navigation .link").click(function(){
     jQuery(this).next().slideToggle(200);
   }); 
+  
+  // Click on Thumbnail at the Product page
+  jQuery("#product #thumbs img.link").click(function(){
+    var newImage = jQuery(this).attr('rev');  
+    var wrap = jQuery(this).parent().parent().prev().children();    
+    var img = new Image();
+    img.onload = function() {
+      // change the image
+      wrap.find("img").attr("src", newImage);
+      wrap.find("a").attr("href", newImage);
+    };
+    img.src = newImage;       
+  }).filter(":first").click();
   
   // Show excerpt on Collections
   // 1. change arrow

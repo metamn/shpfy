@@ -24,7 +24,7 @@ Hot Rocks!:
 }
 .greenb, .newb, successb {
   background: #99FF33 !important;
-  color: black !important;
+  color: #4C7F19 !important;
 }
 .yellow, .highlight, .notice {
   color: #FFFF66 !important;
@@ -62,11 +62,7 @@ a, a:visited, a:active, :link {
 
 .title {
   padding: .5em;
-}
-#index #featured .title {  
   margin: 0;
-}
-#index #featured #item h6 {
   font-size: 1em;
 }
 
@@ -88,10 +84,6 @@ a, a:visited, a:active, :link {
 
 
 
-/* Common
-*/
-.more {
-  padding: .3em;
-}
+
 
 

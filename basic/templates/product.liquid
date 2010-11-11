@@ -47,9 +47,9 @@
 </div>
 
 <div id="navigation" class="right col-2">  
-  <p class="more">
+  <div class="more">
     Browse more {{ product.type | link_to_type }} or additional {{ product.vendor | link_to_vendor }} products.
-  </p>
+  </div>
   
   {% if product.collections %}
   <div id="collections">
@@ -67,7 +67,7 @@
     <h6 class="link"><span class="more yellowb">&rarr;</span> Browse by tags</h6>
     <ul>
       {% for tag in product.tags %}  
-        <li>{{ tag | link_to_tag: tag | upcase }}</li>
+        <li>{{ tag | upcase | link_to_tag: tag }}</li>
       {% endfor %}
     </ul>
   </div>

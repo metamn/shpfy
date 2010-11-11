@@ -1,37 +1,90 @@
-{% if cart.item_count == 0 %}<h6>Your cart is empty</h6>
-<h1><a href="/">SHOP<span>MORE</span>...</a></h1>{% else %}
-<form action="/cart" method="post" id="cartform" name="cartform">{% for item in cart.items %}
-	<div class="cart-row">
-		<div class="cart-img">
-			<a href="{{ item.product.url | within: collections.all }}"><img src="{{ item.product.images.last | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" /></a>
-		</div>
-		<div class="cart-desc">
-			<h3><a href="{{ item.product.url | within: collections.all }}">{{ item.title }} <span>{{ item.price | money }}</span></a></h3>
-			<p>{{ item.product.description | strip_html | truncate: 450 }}</p>
-			<div class="updater">
-				<input type="text" class="field" name="updates[]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();" />
-				<input type="hidden" name="id" value="{{ item.variant.id }}" />
-				<input type="submit" name="update" value="Update" id="update-cart" /> <span>&#124;</span> 
-				<a href="/cart/change/{{ item.variant.id }}?quantity=0">Remove</a>
-			</div>
-			<h6>TOTAL: <span>{{ item.line_price | money }} excluding tax &amp; shipping</span></h6>
-		</div>
-	</div>{% endfor %}
-	<div class="cart-row">
-		<div class="cart-img">&nbsp;</div>
-		<div class="cart-desc">
-			<div id="checkout">
-				<h4>TOTAL: <span>{{ cart.total_price | money }} {{ shop.currency }}</span></h4>
-				<input type="submit" id="getout" name="checkout" value="PROCEED TO CHECKOUT" />
-			</div>
-			
-			{% if additional_checkout_buttons %}
-      <div class="additional-checkout-buttons">
-        <p>- or -</p>
-        {{ content_for_additional_checkout_buttons }}
-      </div>
-      {% endif %}  		
-			
-		</div>
+{% if cart.item_count == 0 %}
+  <h2>Your cart is empty</h2>
+  <p><a href="/">Please visit our shop.</a></p>
+  
+{% else %}
+<h2>Your Shopping Cart</h2>
+<div id="contents" class="col-1 left">    
+  <form action="/cart" method="post" id="cartform" name="cartform">
+  <table>
+  {% for item in cart.items %}
+	<tr class="first">
+	  <td class="image" rowspan=2>
+	    <a href="{{ item.product.url | within: collections.all }}">
+	      <img src="{{ item.product.images.last | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" />
+	    </a>
+	  </td>
+		<td class="info">
+		  <h6 class="title yellowb"><a href="{{ item.product.url | within: collections.all }}">
+		    {{ item.title }} by {{ item.vendor }} <span>{{ item.price | money }}
+		  </a></h6>		  
+		</td>
+		<td class="update">
+		  <input type="text" class="quantity name="updates[]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();" />
+			<input type="hidden" name="id" value="{{ item.variant.id }}" />
+			<input type="submit" class="update" name="update" value="Update" id="update-cart" />
+		</td>
+		<td class="price">
+			{{ item.line_price | money }}
+		</td>
+		<td class="remove">
+		  <a href="/cart/change/{{ item.variant.id }}?quantity=0">x</a>
+		</td>
+	</tr>
+	<tr class="second">
+	  <td class="description" colspan=4>
+	    {{ item.product.description | strip_html | truncate: 450 }}		  
+	  </td>
+	 </tr>
+	{% endfor %}
+	</table>
+	
+	<div id="checkout">
+		<h4>
+		  TOTAL: <span>{{ cart.total_price | money }} {{ shop.currency }}</span>
+		  <span class="right"><input class="link button greenb rounded" type="submit" id="getout" name="checkout" value="Proceed to checkout" /></span>
+		</h4>
+	</div>	
+</form>
+</div>
+
+<div id="navigation" class="right col-2">  
+   
+  <div id="searchbox">
+    <h6 class="link"><span class="more blackb">&rarr;</span> Search</h6>
+    <form action="/search" method="get">
+      <table><tr>
+			<td><input class="text" type="text" name="q" /></td> 
+			<td><input class="button" type="submit" value="Search" /></td>
+			</tr></table>
+		</form>
 	</div>
-</form>{% endif %}
+  
+  <div id="sale">  
+    <h6 class="link"><span class="more redb">%</span> Products on sale</h6>
+    <div id="items">
+      <div id="item" class="percent"><h1>%</h1></div>
+      {% for product in collections.paginated-sale.products %}  
+      <div id="item">
+        <div class="left col-1">
+          <a href="{{ product.url | within: collections.all }}">
+            <img class="thumb" src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" />
+          </a>
+        </div>
+        <div class="right col-2">		        
+          <a href="{{ product.url | within: collections.all }}">{{ product.title }}</a>
+          <br/>
+          <span class="price">{{ product.price | money }}</span>
+          {% if product.compare_at_price_max > product.price %} 
+            <br/>
+            <span class="price-old">{{ product.compare_at_price_max | money }}</span>
+          {% endif %}
+		    </div>
+		  </div>
+    {% endfor %}
+    </div>
+  </div> 
+  	  
+</div>
+
+{% endif %}
