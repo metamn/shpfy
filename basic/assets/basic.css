@@ -71,52 +71,53 @@
 /* Collections
 */
 
-#collection #navigation ul.categories li {
+#collection #navigation ul.categories li, #search #navigation ul.categories li {
   margin-bottom: 1em;
 }
-#collection #navigation ul.categories li a {
+#collection #navigation ul.categories li a, #search #navigation ul.categories li a {
   padding: .45em;
 }
-#collection #navigation ul.categories li a.active, #collection #navigation ul.categories li a:hover {
+#collection #navigation ul.categories li a.active, #collection #navigation ul.categories li a:hover,
+#search #navigation ul.categories li a.active, #search #navigation ul.categories li a:hover {
   color: white;
   background: black;
 }
-#collection #navigation #searchbox input.text {
+#collection #navigation #searchbox input.text, #search #navigation #searchbox input.text {
   width: 63%;
   margin-right: 3%;
 }
-#collection #navigation input.button {
+#collection #navigation input.button, #search #navigation input.button  {
   width: 30%;
   color: black;
   border: none;
   padding: .3em;
 }
-#collection #items #item {  
+#collection #items #item, #search #items #item {  
   margin-bottom: 5em;
   border-bottom: 1px solid #ddd;
   padding-bottom: 3em;
 }
-#collection #items #item .title {
+#collection #items #item .title, #search #items #item .title {
   margin: 0;
 }
-#collection #items #item .col-1 #main-image {
+#collection #items #item .col-1 #main-image, #search #items #item .col-1 #main-image {
   text-align: center;
   margin-bottom: 1em;  
 }
-#collection #items #item .col-1 #main-image img {
+#collection #items #item .col-1 #main-image img, #search #items #item .col-1 #main-image img {
   max-width: 240px;
   height: auto;
   max-height: 240px;
 }
-#collection #items #item #description #full {
+#collection #items #item #description #full, #search #items #item #description #full {
   margin: 1em 0;
 }
-#collection #items #item #images img {
+#collection #items #item #images img, #search #items #item #images img {
   margin-bottom: 1em;
   margin-right: .5em;
 }
 
-#collection #paginate {
+#collection #paginate, #search #paginate {
   text-align: right;
   margin-bottom: 1em;
 }

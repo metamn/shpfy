@@ -45,7 +45,7 @@ a, a:visited, a:active, :link {
   text-decoration: none;
 }
 
-#index #info .more, #collection #items #item #description .more {
+#index #info .more, #collection #items #item #description .more, #search #items #item #description .more {
   color: white;  
   background: #3399FF !important;
 }
@@ -66,13 +66,13 @@ a, a:visited, a:active, :link {
   font-size: 1em;
 }
 
-#collection #paginate span {
+#paginate span {
   padding: .3em;
 }
-#collection #paginate span.page, #collection #paginate span.next {
+#paginate span.page, #paginate span.next {
   background: #3399FF;
 } 
-#collection #paginate span a{
+#paginate span a{
   color: white;
 }
 
