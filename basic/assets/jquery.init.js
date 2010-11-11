@@ -2,18 +2,14 @@ jQuery.noConflict();
      
 // Use jQuery via jQuery(...)
 jQuery(document).ready(function(){
-  
-  // Show excerpt on Frontpage
-  jQuery("#index #info span.more").click(function(){
-    var arrow = jQuery(this).html();     
-    if (arrow == "→") {
-      arrow = "&larr;";
-    } else {
-      arrow = "&rarr;";
-    };
-    jQuery(this).html(arrow);  
-    jQuery("#index #info #excerpt").toggle();
-  });
+
+
+
+  // Accordion on Product page
+  jQuery("#product #navigation .link").next().hide();   
+  jQuery("#product #navigation .link").click(function(){
+    jQuery(this).next().slideToggle(200);
+  }); 
   
   // Show excerpt on Collections
   // 1. change arrow
@@ -35,15 +31,12 @@ jQuery(document).ready(function(){
     jQuery(this).html(arrow);     
   });
   
-  
-  
-  
   // jQZoom
   // On Product 
   // after image change jqzoom is reloaded, see below
   jQuery('.product-zoom').jqzoom({
-	    zoomWidth: 380,
-	    zoomHeight: 380,
+	    zoomWidth: 480,
+	    zoomHeight: 330,
       xOffset: 10,
       yOffset: 0,
       position: "left",
@@ -54,7 +47,7 @@ jQuery(document).ready(function(){
   
   // Click on Thumbnail at the Collections page
   jQuery("#collection #item img.link").click(function(){
-    var newImage = jQuery(this).attr('rev');
+    var newImage = jQuery(this).attr('rev');  
     var wrap = jQuery(this).parent().parent().prev().children();    
     var img = new Image();
     img.onload = function() {
@@ -66,8 +59,8 @@ jQuery(document).ready(function(){
     
     // jQZoom
     jQuery('.product-zoom').jqzoom({
-	      zoomWidth: 380,
-	      zoomHeight: 380,
+	      zoomWidth: 480,
+	      zoomHeight: 330,
         xOffset: 10,
         yOffset: 0,
         position: "left",
@@ -77,5 +70,21 @@ jQuery(document).ready(function(){
     });
     
   }).filter(":first").click();
+  
+  
+  
+  // Show excerpt on Frontpage
+  jQuery("#index #info span.more").click(function(){
+    var arrow = jQuery(this).html();     
+    if (arrow == "→") {
+      arrow = "&larr;";
+    } else {
+      arrow = "&rarr;";
+    };
+    jQuery(this).html(arrow);  
+    jQuery("#index #info #excerpt").toggle();
+  });
+  
+  
   
 });   

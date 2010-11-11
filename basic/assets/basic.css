@@ -56,13 +56,13 @@
 #index #sale {
   margin: 10% 0;
 }
-#index #sale .percent h1 {
+#sale .percent h1 {
   font-size: 3em;
   margin: 0;
   text-align: center;
   font-family: Helvetica, sans-serif;
 }
-#index #sale #item {
+#sale #item {
   font-size: smaller;
 }
 
@@ -91,8 +91,6 @@
   border: none;
   padding: .3em;
 }
-
-
 #collection #items #item {  
   margin-bottom: 5em;
   border-bottom: 1px solid #ddd;
@@ -124,6 +122,28 @@
 }
 
 
+/* Product
+*/
+
+#product #product-image{
+  margin: 10% 0;
+}
+#product #thumbs {
+  min-height: 100px;
+}
+#product #product-select {
+  position: relative;
+  top: 13em;
+}
+#product #navigation ul li {
+  margin-bottom: 1em;
+}
+#product #navigation p.more {
+  line-height: 2;
+}
+#product #navigation #searchbox input.text {
+  width: 90%;
+}
 
 /* Footer
 */

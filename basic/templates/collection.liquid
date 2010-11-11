@@ -52,8 +52,8 @@
 	    <div id="item">
 	      <div class="left col-1">	        
 	        <div id="main-image">
-	          <a href="{{ product.images.last | product_img_url: 'original' }}" title="{{ product.title | escape }}" class="product-zoom">	    
-	            <img src="{{ product.images.last | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
+	          <a href="{{ product.featured_image | product_img_url: 'original' }}" title="{{ product.title | escape }}" class="product-zoom">	    
+	            <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
 	          </a>
 	        </div>	   	        
 	      </div>

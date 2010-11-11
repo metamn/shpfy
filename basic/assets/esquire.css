@@ -8,17 +8,23 @@ Hot Rocks!:
   - lila: 2E0927
 */
 
+.blackb {
+  background: black !important;
+  color: white !important;
+}
 .red, .sale, .error {
   color: #FF3300 !important;
 }
 .redb, .saleb, .errorb {
   background: #FF3300 !important;
+  color: white !important;
 }
 .green, .new, .success {
   color: #99FF33 !important;
 }
 .greenb, .newb, successb {
   background: #99FF33 !important;
+  color: black !important;
 }
 .yellow, .highlight, .notice {
   color: #FFFF66 !important;
@@ -31,6 +37,7 @@ Hot Rocks!:
 }
 .blueb {
   background: #3399FF !important;
+  color: white !important;
 }
 
 a, a:visited, a:active, :link {
@@ -39,18 +46,17 @@ a, a:visited, a:active, :link {
 }
 
 #index #info .more, #collection #items #item #description .more {
-  color: white;
-  padding: .3em;
+  color: white;  
   background: #3399FF !important;
 }
 
-#index #sale .percent {
+#sale .percent {
   background: #FF3300 !important;
 }
-#index #sale .percent h1 {
+#sale .percent h1 {
   background: #FF3300 !important;
 }
-#index #sale .price {
+#sale .price {
   color: #FF3300 !important;  
 }
 
@@ -73,3 +79,19 @@ a, a:visited, a:active, :link {
 #collection #paginate span a{
   color: white;
 }
+
+#product #navigation .more a, #product #navigation ul li a:hover {
+  background: #3399FF;
+  color: white;  
+  padding: .3em;
+}
+
+
+
+/* Common
+*/
+.more {
+  padding: .3em;
+}
+
+
