@@ -132,8 +132,7 @@
   min-height: 100px;
 }
 #product #product-select {
-  position: relative;
-  top: 13em;
+  margin: 10% 0;
 }
 #product #navigation ul li {
   margin-bottom: 1em;

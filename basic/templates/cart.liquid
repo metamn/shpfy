@@ -51,7 +51,6 @@
 <div id="navigation" class="right col-2">  
    
   <div id="searchbox">
-    <h6 class="link"><span class="more blackb">&rarr;</span> Search</h6>
     <form action="/search" method="get">
       <table><tr>
 			<td><input class="text" type="text" name="q" /></td> 
@@ -59,6 +58,32 @@
 			</tr></table>
 		</form>
 	</div>
+  
+  <div id="featured">  
+    <h6 class="link"><span class="more blueb">%</span> Featured products</h6>
+    <div id="items">
+      {% for product in collections.frontpage.products %}  
+      <div id="item">
+        <div class="left col-1">
+          <a href="{{ product.url | within: collections.all }}">
+            <img class="thumb" src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" />
+          </a>
+        </div>
+        <div class="right col-2">		        
+          <a href="{{ product.url | within: collections.all }}">{{ product.title }}</a>
+          <br/>
+          <span class="price">{{ product.price | money }}</span>
+          {% if product.compare_at_price_max > product.price %} 
+            <br/>
+            <span class="price-old">{{ product.compare_at_price_max | money }}</span>
+          {% endif %}
+		    </div>
+		  </div>
+    {% endfor %}
+    </div>
+  </div> 
+  
+  <div class="clear"></div>
   
   <div id="sale">  
     <h6 class="link"><span class="more redb">%</span> Products on sale</h6>
@@ -84,6 +109,8 @@
     {% endfor %}
     </div>
   </div> 
+  
+  <div class="clear"></div>
   	  
 </div>
 

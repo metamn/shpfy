@@ -1,6 +1,6 @@
 <div id="navigation" class="left col-1">
   <div id="collection-desc">
-		<h3>{{ collection.title }}</h3>
+		<h6>{{ collection.title }}</h6>
 		{% if collection.description.size > 0 %}
 		  {{ collection.description }}
 		{% endif %}
@@ -24,7 +24,7 @@
   {% endif %}
   
   <div id="searchbox">
-    <h3>Search</h3>
+    <h6>Search</h6>
 		<form action="/search" method="get">
 			<input class="text" type="text" name="q" /> 
 			<input class="link button greenb rounded" type="submit" value="Go"  />
@@ -33,7 +33,7 @@
   
   {% if tags %}
   <div id="tags">
-    <h3>Tags</h3>
+    <h6>Tags</h6>
     <ul>
       {% for tag in collection.tags %}  
         <li>{{ tag | link_to_tag: tag }}</li>

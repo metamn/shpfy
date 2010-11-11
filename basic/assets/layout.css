@@ -60,10 +60,10 @@
 
 
 
-#product .col-1, #cart .col-1 {
+#product .col-1, #cart .col-1, #page .col-1 {
   width: 61.804%;
 }
-#product .col-2, #cart .col-2 {  
+#product .col-2, #cart .col-2, #page .col-2 {  
   width: 33.195%;
 }
 #product #description .col-1, #cart #contents .col-1  {
@@ -76,21 +76,21 @@
 #product #product-select select, #product #product-select input {
   width: 100%;
 }
-#navigation #sale #item .col {
+#navigation #item .col {
   margin-right: 5%;
 }
-#navigation #sale #item {
+#navigation #item {
   width: 45%;
   height: 10em;
   margin: 0 5% 5% 0;
   float: left;
 }
-#navigation #sale #item .col-1 {
+#navigation #item .col-1 {
   width: 50%;
   margin-right: 0%;
   text-align: center;
 }
-#navigation #sale #item .col-2 {
+#navigation #item .col-2 {
   width: 40%;
   margin-left: 10%;
 }
