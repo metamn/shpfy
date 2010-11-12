@@ -194,10 +194,13 @@
   text-align: left;
   margin-top: 10%;
 }
-
-.blog #content .title {
-  
+#article #comments li {
+  margin-bottom: 1em;
 }
+#article #comments .comment-meta {
+  font-size: smaller;
+  font-style: italic;
+} 
 
 
 

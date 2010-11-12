@@ -33,7 +33,7 @@
 		  By {{ article.author }} on {{ article.created_at | date: "%B %d, %Y" }}
 		  {% if blog.comments_enabled? %}
         &mdash; 
-        <a href="{{article.url}}#comments">{{ article.comments_count }} comments</a>
+        <a href="{{article.url}}#comments">{{ article.comments.size }} comments</a>
       {% endif %}
 		</p>
     
@@ -44,8 +44,7 @@
       <div id="full" class="hidden">
         {{ article.content | strip_html }}
       </div>      			      
-    </div>
-		
+    </div>		
 	</div>
 	{% endfor %}
 </div>
