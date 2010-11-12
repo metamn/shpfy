@@ -45,9 +45,15 @@
 		</div>
 	</div>
 	
-		
-		
-	<div id="{{ template }}" class="block">
+	
+	{% case template %}
+	  {% when 'collection' or 'search' or 'blog' or 'article' %}
+	    <div id="{{ template }}" class="{{ template }} collection block">
+	  {% when 'page' or 'product' or 'cart' or 'not_found' %}
+	    <div id="{{ template }}" class="{{ template }} page block">
+	  {% else %}
+	    <div id="{{ template }}" class="{{ template }} block">
+	{% endcase %}		
 	  <div class="container">
 		  {{ content_for_layout }}
 		</div>

@@ -1,24 +1,60 @@
-{% paginate blog.articles by 10 %}<div id="sidebar">
-	<ul id="blog-list">{% for article in blog.articles %}
-		<li><a href="{{ article.url }}">{{ article.title }}</a></li>{% endfor %}
-	</ul>{% if paginate.pages > 1 %}
+{% paginate blog.articles by 10 %}
+<div id="navigation" class="left col-1">
+  <h6>Articles</h6>
+	<ul class="articles">
+	{% for article in blog.articles %}
+		<li><a href="{{ article.url }}">{{ article.title }}</a></li>
+	{% endfor %}
+	</ul>
+	
+	<h6>Recent comments</h6>
+	<ul class="comments">
+	  {% for article in blog.articles %}
+		  {% for comment in article.comments %}
+		    <li><a href="{{ article.url }}">{{ comment.content | strip_html | truncate: 25 }}</a></li>
+		  {% endfor %}
+	  {% endfor %}
+	</ul>
+		
+	{% if paginate.pages > 1 %}
 	<div id="paginate">
 		{{ paginate | default_pagination }}
-	</div>{% endif %}
+	</div>
+	{% endif %}
 </div>
-<div id="content">{% for article in blog.articles limit: 1 %}
+
+
+<div id="content" class="right col-2">
+  {% for article in blog.articles limit: 1 %}
 	<a name="article-{{ article.id }}"></a>
 	<div class="article">
-		<h1>
-		  <a href="{{article.url}}">{{ article.title }}</a>
-	  </h1>
-    {{ article.content }}
-		<p class="details">
-		  Written by {{ article.author }} on {{ article.created_at | date: "%B %d, %Y" }}
+		<h6 class="title yellowb"><a href="{{article.url}}">{{ article.title }}</a></h6>
+    <p class="details afs-droid-serif bold">
+		  By {{ article.author }} on {{ article.created_at | date: "%B %d, %Y" }}
 		  {% if blog.comments_enabled? %}
         &mdash; 
         <a href="{{article.url}}#comments">{{ article.comments_count }} comments</a>
       {% endif %}
 		</p>
-	</div>{% endfor %}
-</div>{% endpaginate %}
+    
+    <div id="description">
+      <p>{{ article.content | strip_html | truncate: 250 }}</p>
+      <span class="more link blueb">&rarr;</span>
+      
+      <div id="full" class="hidden">
+        {{ article.content | strip_html }}
+      </div>      			      
+    </div>
+		
+	</div>
+	{% endfor %}
+</div>
+
+{% if paginate.pages > 1 %}
+<div id="paginate">
+	{{ paginate | default_pagination }}
+</div>
+{% endif %}
+
+
+{% endpaginate %}

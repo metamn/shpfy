@@ -26,12 +26,12 @@ jQuery(document).ready(function(){
   }).filter(":first").click();
   
   
-  // Show excerpt on Collections, Search
+  // Show excerpt on Collections, Search, Blog
   // 1. change arrow
   // 2. hide original excerpt
   // 3. insert full content
   // 4. change div width
-  jQuery("#collection #item #description span.more, #search #item #description span.more").click(function(){        
+  jQuery(".collection #item #description span.more, #blog #content #description span.more ").click(function(){        
     // hide
     jQuery(this).prev().slideToggle(200);        
     // insert
@@ -88,7 +88,7 @@ jQuery(document).ready(function(){
   
   
   
-  // Show excerpt on Frontpage
+  // Show excerpt on Frontpage, Blog
   jQuery("#index #info span.more").click(function(){
     var arrow = jQuery(this).html();     
     if (arrow == "→") {
