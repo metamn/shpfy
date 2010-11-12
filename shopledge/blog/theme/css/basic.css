@@ -39,7 +39,6 @@
 #index #info #news {
   margin: 10% 0;
 }
-
 #index #sale {
   margin: 10% 0;
 }
@@ -52,6 +51,18 @@
 #sale #item {
   font-size: smaller;
 }
+
+
+/* Comments
+*/
+
+#respond {
+  border: none !important;
+}
+#commentform {
+  width: 60% !important;
+}
+
 
 
 
