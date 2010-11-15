@@ -68,7 +68,7 @@
 		  <div id="logo" class="left col-1">
 			  <h1><a href="<?php bloginfo( 'home' ) ?>" title="<?php bloginfo( 'name' ) ?>"><?php bloginfo( 'name' ) ?></a></h1>
 			</div>
-			<div id="navigation" class="right col-2">
+			<div id="navigation" class="menu right col-2">
 			  <ul class="inline-list">
 	        <?php wp_list_pages('depth=1&exclude=4&title_li='); ?>				
 				</ul>

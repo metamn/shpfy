@@ -8,7 +8,7 @@
       <div id="item">
         <?php if ($thumb[0]) { ?>
           <div class="left col-1">
-            <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+            <a class="afs-droid-serif" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
               <img class="thumb" src="<?php echo $thumb[0] ?>" alt="<?php the_title(); ?>" />
             </a>
           </div>
