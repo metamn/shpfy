@@ -12,9 +12,11 @@
 	<!--[if lte IE 6]>{{ 'ie.css' | asset_url | stylesheet_tag }}<![endif]-->
 
 	{{ 'jqzoom.css' | asset_url | stylesheet_tag }}
+	{{ 'jquery-ui-1.8.6.custom.css' | asset_url | stylesheet_tag }}
 	
 	{{ 'jquery-1.4.3.min.js' | asset_url | script_tag }}  
 	{{ 'jqzoom.pack.1.0.1.js' | asset_url | script_tag }}  
+	{{ 'jquery-ui-1.8.6.custom.min.js' | asset_url | script_tag }}
 	{{ 'jquery.init.js' | asset_url | script_tag }}
 	
 	
@@ -30,16 +32,17 @@
 		  <div id="logo" class="left col-1">
 			  <h1><a href="/" title="{{ shop.name }}">{{ shop.name }}</a></h1>
 			</div>
-			<div id="navigation" class="right col-2">
+			<div id="navigation" class="menu right col-2">
 			  {% capture active_url %}{% if template == "index" %}/{% elsif template == "collection" %}/collections/{{ collection.handle }}{% elsif template == "product" %}{% if collection %}/collections/{{ collection.handle }}{% endif %}/products/{{ product.handle }}{% elsif template == "page" %}/pages/{{ page.handle }}{% elsif template == "blog" %}/blogs/{{ blog.handle }}{% elsif template == "cart" %}/cart{% elsif template == "search" %}/search{% endif %}{% endcapture %}
 				<ul class="inline-list">{% for link in linklists.main-menu.links %}
 					<li{% if forloop.last %}{% if cart.item_count == 0 %} id="end"{% endif %}{% endif %}><a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title }}</a></li>{% endfor %}{% if cart.item_count > 0 %}
 					<li id="cart" class="last">					  
 					  <a href="/cart"{% if template == "cart" %} class="active"{% else %} id="end"{% endif %}>
-					    {{ 'cart.png' | asset_url | img_tag }}
+					    <span class="ui-icon ui-icon-cart"></span>
 					    {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}
 					  </a>
-				  </li>{% endif %}
+				  </li>
+				  {% endif %}
 				</ul>
 			</div>			
 		</div>
@@ -62,9 +65,9 @@
 	<div id="footer" class="block">
 	  <div class="container">
 			<div class="left">
-			  &copy; {{ "now" | date: "%Y" }} <a href="/">{{ shop.name }}</a>. Powered by <a href="http://www.shopify.com">Shopify</a>. 			  
+			  &copy; {{ "now" | date: "%Y" }} <a href="/">{{ shop.name }}</a>. 			  
 			</div>
-			<div class="right">
+			<div class="right menu">
 			  <ul class="inline-list">
 			  {% for link in linklists.footer.links %}
 				  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
