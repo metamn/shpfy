@@ -58,13 +58,13 @@
 	        </div>	   	        
 	      </div>
 	      <div class="right col-2">
-	        <h6 class="title yellowb"><a href="{{ product.url | within: collections.all }}" title="">{{ product.title }} by {{ product.vendor }}</a></h6>
+	        <h6 class="title"><a href="{{ product.url | within: collections.all }}" title="">{{ product.title }} by {{ product.vendor }}</a></h6>
 	        
           <p>
             {% if product.compare_at_price_max > product.price %} 
-              <span class="price sale">{{ product.price | money }}</span>
+              <span class="price price-sale">{{ product.price | money }}</span>
               &nbsp;
-              <span class="price-old">{{ product.compare_at_price_max | money }}</span>
+              <span class="price price-old">{{ product.compare_at_price_max | money }}</span>
             {% else %}
               <span class="price">{{ product.price | money }}</span>
             {% endif %}

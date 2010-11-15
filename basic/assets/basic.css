@@ -56,7 +56,7 @@
 #index #sale {
   margin: 10% 0;
 }
-#sale .percent h1 {
+#sale h1 {
   font-size: 3em;
   margin: 0;
   text-align: center;
@@ -197,10 +197,7 @@
 #article #comments li {
   margin-bottom: 1em;
 }
-#article #comments .comment-meta {
-  font-size: smaller;
-  font-style: italic;
-} 
+
 
 
 
@@ -225,7 +222,11 @@
 .ui-icon {
   display: inline-block !important;  
 }
-
+.title {
+  padding: .5em;
+  margin: 0;
+  font-size: 1em;
+}
 img {
   max-width: 100%;
   height: auto;

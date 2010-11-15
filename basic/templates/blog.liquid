@@ -28,8 +28,8 @@
   {% for article in blog.articles limit: 1 %}
 	<a name="article-{{ article.id }}"></a>
 	<div class="article">
-		<h6 class="title yellowb"><a href="{{article.url}}">{{ article.title }}</a></h6>
-    <p class="details afs-droid-serif bold">
+		<h6 class="title"><a href="{{article.url}}">{{ article.title }}</a></h6>
+    <p class="post-meta">
 		  By {{ article.author }} on {{ article.created_at | date: "%B %d, %Y" }}
 		  {% if blog.comments_enabled? %}
         &mdash; 
@@ -39,7 +39,7 @@
     
     <div id="description">
       <p>{{ article.content | strip_html | truncate: 250 }}</p>
-      <span class="more link blueb">&rarr;</span>
+      <span class="more link">&rarr;</span>
       
       <div id="full" class="hidden">
         {{ article.content | strip_html }}

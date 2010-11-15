@@ -24,8 +24,8 @@
 
 <div id="content" class="right col-2">  
 	<div class="article">
-		<h6 class="title yellowb"><a href="{{article.url}}">{{ article.title }}</a></h6>
-    <p class="details afs-droid-serif bold">
+		<h6 class="title"><a href="{{article.url}}">{{ article.title }}</a></h6>
+    <p class="post-meta">
 		  By {{ article.author }} on {{ article.created_at | date: "%B %d, %Y" }}
 		  {% if blog.comments_enabled? %}
         &mdash; 

@@ -25,7 +25,7 @@
     <h6>Search again</h6>
 		<form action="/search" method="get">
 			<input class="text" type="text" name="q" /> 
-			<input class="link button greenb rounded" type="submit" value="Go"  />
+			<input class="link button rounded" type="submit" value="Go"  />
 		</form>
 	</div>  
   
@@ -46,11 +46,11 @@
 	        </div>	   	        
 	      </div>
 	      <div class="right col-2">
-	        <h6 class="title yellowb"><a href="{{ product.url | within: collections.all }}" title="">{{ product.title }} by {{ product.vendor }}</a></h6>
+	        <h6 class="title"><a href="{{ product.url | within: collections.all }}" title="">{{ product.title }} by {{ product.vendor }}</a></h6>
 	        
           <p>
             {% if product.compare_at_price_max > product.price %} 
-              <span class="price sale">{{ product.price | money }}</span>
+              <span class="price price-sale">{{ product.price | money }}</span>
               &nbsp;
               <span class="price-old">{{ product.compare_at_price_max | money }}</span>
             {% else %}

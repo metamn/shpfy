@@ -39,7 +39,7 @@
 	</ul>
 	</div>
 	
-	<p><a class="button rounded greenb" href="/collections/all">More Recent Products</a></p>
+	<p><a class="button rounded" href="/collections/all">More Recent Products</a></p>
 </div>
 
 <div id="featured" class="right col-2">
@@ -52,7 +52,7 @@
 	      {% endfor %}
 	    </div>
 	    <div class="right col-2">
-	      <h6 class="title yellowb">
+	      <h6 class="title">
 	      <a href="{{ product.url | within: collections.all }}" title="">
 	        {{ product.title }} by {{ product.vendor }}
 	      </a>
@@ -64,7 +64,7 @@
   <div class="clear"></div>
   
   <div id="sale">  
-    <div id="item" class="percent"><h1>%</h1></div>
+    <div id="item" class="sale"><h1>%</h1></div>
     {% for product in collections.paginated-sale.products %}  
     <div id="item">
       <div class="left col-1">
@@ -75,10 +75,12 @@
       <div class="right col-2">		        
         <a href="{{ product.url | within: collections.all }}">{{ product.title }}</a>
         <br/>
-        <span class="price">{{ product.price | money }}</span>
         {% if product.compare_at_price_max > product.price %} 
+          <span class="price price-sale">{{ product.price | money }}</span>
           <br/>
-          <span class="price-old">{{ product.compare_at_price_max | money }}</span>
+          <span class="price price-old">{{ product.compare_at_price_max | money }}</span>
+        {% else %}
+          <span class="price">{{ product.price | money }}</span>
         {% endif %}
 		  </div>
 		</div>
