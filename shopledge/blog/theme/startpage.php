@@ -24,10 +24,29 @@
   </div> 
   
   <div id="news">
-	  <?php 
-	     $to_display = $news; 
-	     include "thumbs.php";
-	   ?>	  
+	  <ul>
+	    <?php 
+	    if ($news) {
+        while ($news->have_posts()) : $news->the_post(); update_post_caches($news); 
+          $imgs = post_attachements($post->ID);
+          $img = $imgs[0];
+          $thumb = wp_get_attachment_image_src($img->ID, 'thumbnail');
+        ?>    
+	     <li>
+		    <table>
+		      <tr>
+		        <td class="image">
+		          <a href="<?php the_permalink(); ?>">
+		            <img class="thumb" src="<?php echo $thumb[0] ?>" alt="<?php the_title(); ?>" /></a>
+		        </td>
+		        <td class="info">		          
+		          <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>		          
+		        </td>
+		      </tr>
+		    </table>
+		  </li>
+		  <?php endwhile; } ?>
+	  </ul>  
 	</div>
 	
 	<div class="clear"></div>
@@ -41,12 +60,12 @@
     while ($featured->have_posts()) : $featured->the_post(); update_post_caches($posts); 
       $imgs = post_attachements($post->ID);
       $img = $imgs[0];
-      $medium = wp_get_attachment_image_src($img->ID, 'medium');
+      $large = wp_get_attachment_image_src($img->ID, 'large');
     ?>    
       <div id="item">	    
 	      <div class="left col-1">
 	        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">	    
-	         <img src="<?php echo $medium[0]; ?>" alt="<?php the_title(); ?>" />
+	         <img src="<?php echo $large[0]; ?>" alt="<?php the_title(); ?>" />
 	       </a>	        
 	      </div>
 	      <div class="right col-2">

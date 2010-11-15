@@ -49,9 +49,6 @@
 #index #info #news table td.info {
   padding: 2.5% 0 0 5%;
 }
-#index #info #news ul li {
-  margin-bottom: 5%;
-}
 #index #sale {
   margin: 10% 0;
 }

@@ -9,6 +9,7 @@ vision-4.1.0/**/*
 *.jpg
 *.png
 *.gif
+*php~
 
 
 # Compiled source #
