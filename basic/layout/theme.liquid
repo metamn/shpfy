@@ -33,9 +33,36 @@
 			  <h1><a href="/" title="{{ shop.name }}">{{ shop.name }}</a></h1>
 			</div>
 			<div id="navigation" class="menu right col-2">
-			  {% capture active_url %}{% if template == "index" %}/{% elsif template == "collection" %}/collections/{{ collection.handle }}{% elsif template == "product" %}{% if collection %}/collections/{{ collection.handle }}{% endif %}/products/{{ product.handle }}{% elsif template == "page" %}/pages/{{ page.handle }}{% elsif template == "blog" %}/blogs/{{ blog.handle }}{% elsif template == "cart" %}/cart{% elsif template == "search" %}/search{% endif %}{% endcapture %}
-				<ul class="inline-list">{% for link in linklists.main-menu.links %}
-					<li{% if forloop.last %}{% if cart.item_count == 0 %} id="end"{% endif %}{% endif %}><a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title }}</a></li>{% endfor %}{% if cart.item_count > 0 %}
+			  {% capture active_url %}
+			    {% if template == "index" %}
+			      /
+			    {% elsif template == "collection" %}
+			      /collections/{{ collection.handle }}
+			    {% elsif template == "product" %}
+			      {% if collection %}
+			        /collections/{{ collection.handle }}
+			      {% endif %}
+			      /products/{{ product.handle }}
+			    {% elsif template == "page" %}
+			      /pages/{{ page.handle }}
+			    {% elsif template == "blog" %}
+			      /blogs/{{ blog.handle }}
+			    {% elsif template == "cart" %}
+			      /cart
+			    {% elsif template == "search" %}
+			      /search
+			    {% endif %}
+			  {% endcapture %}
+				
+				<ul class="inline-list">
+				  {% if linklists.main-menu.links.size > 0 %}				
+				    {% for link in linklists.main-menu.links %}
+					  <li{% if forloop.last %}{% if cart.item_count == 0 %} id="end"{% endif %}{% endif %}>
+					    <a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title }}</a></li>
+					  {% endfor %}
+					{% endif %}
+					
+					{% if cart.item_count > 0 %}
 					<li id="cart" class="last">					  
 					  <a href="/cart"{% if template == "cart" %} class="active"{% else %} id="end"{% endif %}>
 					    <span class="ui-icon ui-icon-cart"></span>
@@ -68,11 +95,13 @@
 			  &copy; {{ "now" | date: "%Y" }} <a href="/">{{ shop.name }}</a>. 			  
 			</div>
 			<div class="right menu">
-			  <ul class="inline-list">
-			  {% for link in linklists.footer.links %}
-				  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-				{% endfor %}
-				</ul>
+			  {% if linklists.footer.links.size > 0 %}
+			    <ul class="inline-list">
+			    {% for link in linklists.footer.links %}
+				    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+				  {% endfor %}
+				  </ul>
+				{% endif %}
 			</div>
 		</div>
 	</div>

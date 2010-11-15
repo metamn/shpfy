@@ -1,19 +1,22 @@
 <div id="navigation" class="left col-1">
-  <h6>Articles</h6>
-	<ul class="articles">
-	{% for article in blog.articles %}
-		<li><a href="{{ article.url }}">{{ article.title }}</a></li>
-	{% endfor %}
-	</ul>
-	
-	<h6>Recent comments</h6>
-	<ul class="comments">
+  {% if blog.articles.size > 0 %}
+    <h6>Articles</h6>
+	  <ul class="articles">
 	  {% for article in blog.articles %}
-		  {% for comment in article.comments %}
-		    <li><a href="{{ article.url }}">{{ comment.content | strip_html | truncate: 25 }}</a></li>
-		  {% endfor %}
+		  <li><a href="{{ article.url }}">{{ article.title }}</a></li>
 	  {% endfor %}
-	</ul>
+	  </ul>
+	
+	  <h6>Recent comments</h6>
+	  <ul class="comments">
+	    {% for article in blog.articles %}		   
+	      {% for comment in article.comments %}
+	        <li><a href="{{ article.url }}">{{ comment.content | strip_html | truncate: 25 }}</a></li>
+	      {% endfor %}
+	    {% endfor %}
+	  </ul>	  
+	{% endif %}
+	
 		
 	{% if paginate.pages > 1 %}
 	<div id="paginate">
@@ -40,18 +43,21 @@
   {% if blog.comments_enabled? %}
   <div id="comments">
     <h3>Comments ({{ article.comments.size }})</h3>
-    <ol>
-    {% for comment in article.comments %}
-      <li class="comment">
-        {{ comment.content }}
-        <br/>
-        <span class="comment-meta">By {{ comment.author }} on {{ comment.created_at | date: "%B %d, %Y" }}</span>
-      </li>
-    {% endfor %}
-    </ol>
+    {% if article.comments.size > 0 %}
+      <ol>      
+      {% for comment in article.comments %}
+        <li class="comment">
+          {{ comment.content }}
+          <br/>
+          <span class="comment-meta">By {{ comment.author }} on {{ comment.created_at | date: "%B %d, %Y" }}</span>
+        </li>
+      {% endfor %}
+      </ol>
+    {% endif %}
     
     <!-- Comment Form -->
     {% form article %}    
+    
     <!-- Check if a comment has been submitted in the last request, and if yes display an appropriate message -->
     {% if form.posted_successfully? %}
       {% if blog.moderated? %}

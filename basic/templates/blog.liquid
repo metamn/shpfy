@@ -1,20 +1,22 @@
 {% paginate blog.articles by 10 %}
 <div id="navigation" class="left col-1">
-  <h6>Articles</h6>
-	<ul class="articles">
-	{% for article in blog.articles %}
-		<li><a href="{{ article.url }}">{{ article.title }}</a></li>
-	{% endfor %}
-	</ul>
-	
-	<h6>Recent comments</h6>
-	<ul class="comments">
+  {% if blog.articles.size > 0 %}
+    <h6>Articles</h6>
+	  <ul class="articles">
 	  {% for article in blog.articles %}
-		  {% for comment in article.comments %}
-		    <li><a href="{{ article.url }}">{{ comment.content | strip_html | truncate: 25 }}</a></li>
-		  {% endfor %}
+		  <li><a href="{{ article.url }}">{{ article.title }}</a></li>
 	  {% endfor %}
-	</ul>
+	  </ul>
+	
+	  <h6>Recent comments</h6>
+	  <ul class="comments">
+	    {% for article in blog.articles %}		   
+	      {% for comment in article.comments %}
+	        <li><a href="{{ article.url }}">{{ comment.content | strip_html | truncate: 25 }}</a></li>
+	      {% endfor %}
+	    {% endfor %}
+	  </ul>	  
+	{% endif %}
 		
 	{% if paginate.pages > 1 %}
 	<div id="paginate">

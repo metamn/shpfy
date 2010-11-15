@@ -34,7 +34,7 @@
 <div id="items" class="right col-2">
   {% paginate search.results by 6 %}
   {% if search.results.size == 0 %}
-	  <h3>We did not find any products.</h3>
+	  <h3>We did not find any products for you.</h3>
 	{% else %}
 	  {% for product in search.results %}
 	    <div id="item">
