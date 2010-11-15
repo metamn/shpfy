@@ -56,15 +56,11 @@
 #index #sale {
   margin: 10% 0;
 }
-#sale h1 {
-  font-size: 3em;
+.sale h1 {
   margin: 0;
-  text-align: center;
-  font-family: Helvetica, sans-serif;
+  text-align: center;  
 }
-#sale #item {
-  font-size: smaller;
-}
+
 
 
 

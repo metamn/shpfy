@@ -18,6 +18,13 @@ blockquote, pre, abbr, acronym, address, cite, code {
 }
 
 
+.sale h1 {
+  font-size: 3em;
+  font-family: Helvetica, sans-serif;
+}
+.page #navigation #items #item, .index #sale #item {
+  font-size: smaller;
+}
 
 
 
