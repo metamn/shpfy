@@ -46,19 +46,6 @@ jQuery(document).ready(function(){
     jQuery(this).html(arrow);     
   });
   
-  // jQZoom
-  // On Product 
-  // after image change jqzoom is reloaded, see below
-  jQuery('.product-zoom').jqzoom({
-	    zoomWidth: 480,
-	    zoomHeight: 330,
-      xOffset: 10,
-      yOffset: 0,
-      position: "left",
-      title: false,
-      preload: 0,
-      zoomType: 'reverse'
-  });
   
   // Click on Thumbnail at the Collections & Search page
   jQuery("#collection #item img.link, #search #item img.link").click(function(){
@@ -71,19 +58,7 @@ jQuery(document).ready(function(){
       wrap.find("a").attr("href", newImage);
     };
     img.src = newImage;    
-    
-    // jQZoom
-    jQuery('.product-zoom').jqzoom({
-	      zoomWidth: 480,
-	      zoomHeight: 330,
-        xOffset: 10,
-        yOffset: 0,
-        position: "left",
-        title: false,
-        preload: 0,
-        zoomType: 'reverse'
-    });
-    
+        
   }).filter(":first").click();
   
   
@@ -100,6 +75,5 @@ jQuery(document).ready(function(){
     jQuery("#index #info #excerpt").toggle();
   });
   
-  
-  
+    
 });   
