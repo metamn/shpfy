@@ -10,13 +10,13 @@
   text-decoration: none;
 }  
 #header #navigation {
-  margin-top: 5em;
+  margin: 5em 0;
 }
 .menu a, .menu a:link, .menu a:active, .menu a:visited {
   color: black;
   text-decoration: none;
 }
-.menu a:hover, .menu ul li a.active, .menu li.current_page_item {
+.menu a:hover, .menu ul li a.active {
   border-bottom: .5em solid;
   padding-bottom: .2em;
 }
@@ -24,7 +24,7 @@
   padding-right: 1em;
   margin-bottom: 1em;
 }
-#header #navigation ul li.last {
+.menu ul li.last {
   padding-right: 0;
   float: right;
 }
@@ -33,47 +33,32 @@
 /* Startpage
 */
 
-#index #info #excerpt {
+#index #info #featured {
   margin: 10% 0;
 }
-#index #info #news {
-  margin: 10% 0;
+#index #info #featured ul {
+  margin: 0;
 }
-#index #info #news table td {
+#index #info #featured ul li {
+  margin-bottom: 5%;
+}
+#index #info #featured table td {
   vertical-align: top;
 }
-#index #info #news table td.image {
+#index #info #featured table td.image {
   width: 120px;
   text-align: center;
 }
-#index #info #news table td.info {
+#index #info #featured table td.info {
   padding: 2.5% 0 0 5%;
 }
-#index #info #news ul li {
-  margin-bottom: 5%;
-}
+
 #index #sale {
   margin: 10% 0;
 }
-#sale .percent h1 {
-  font-size: 3em;
+.sale h1 {
   margin: 0;
-  text-align: center;
-  font-family: Helvetica, sans-serif;
-}
-#sale #item {
-  font-size: smaller;
-}
-
-
-/* Comments
-*/
-
-#respond {
-  border: none !important;
-}
-#commentform {
-  width: 60% !important;
+  text-align: center;  
 }
 
 
@@ -100,7 +85,7 @@
   height: auto;
   max-height: 240px;
 }
-.collection #items #item #description #full {
+.after-more {
   margin: 1em 0;
 }
 .collection #items #item #images img {
@@ -208,10 +193,7 @@
 #article #comments li {
   margin-bottom: 1em;
 }
-#article #comments .comment-meta {
-  font-size: smaller;
-  font-style: italic;
-} 
+
 
 
 
@@ -225,12 +207,22 @@
   border-top: 1px solid;
   padding-top: .5em;
 }
-
+#footer .right .inline-list li {
+  margin-left: 1em;
+}
 
 
 /* Common
 */
 
+.ui-icon {
+  display: inline-block !important;  
+}
+.title {
+  padding: .5em;
+  margin: 0;
+  font-size: 1em;
+}
 img {
   max-width: 100%;
   height: auto;
@@ -271,8 +263,6 @@ span.more {
 .hidden {
   display: none;
 }
-
-
 
 ul.inline-list {
   display: block;

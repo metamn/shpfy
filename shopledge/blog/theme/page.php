@@ -41,7 +41,7 @@ get_header(); ?>
 	</div>
 	
 	<div id="featured">  
-    <h6 class="link"><span class="more blueb">&rarr;</span> Featured articles</h6>
+    <h6 class="link"><span class="more">&rarr;</span> Featured articles</h6>
     <div id="items">
       <?php 
         $to_display = $featured; 
@@ -52,8 +52,9 @@ get_header(); ?>
   <div class="clear"></div>
   
   <div id="sale">  
-    <h6 class="link"><span class="more redb">&rarr;</span> Hot on Shopledge</h6>
+    <h6 class="link"><span class="more sale">&nbsp;!&nbsp;</span> Hot on Shopledge</h6>
     <div id="items">
+      <div id="item" class="sale"><h1>!</h1></div>
       <?php 
         $to_display = $hot; 
         include "thumbs.php";

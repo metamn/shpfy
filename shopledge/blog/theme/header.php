@@ -48,12 +48,12 @@
 	   * as styles, scripts, and meta tags.
 	   */
 	?>
-	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/jqzoom.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/jquery-ui-1.8.6.custom.cs" />
 	
 	
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	<script>!window.jQuery && document.write('<script src="/wp-includes/js/jquery/jquery.js"><\/script>')</script>
-	<script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/jqzoom.pack.1.0.1.js"></script>
+	<script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>jquery-ui-1.8.6.custom.min.js"></script>
 	<script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/js/jquery.init.js"></script>
 	
 	
@@ -78,13 +78,14 @@
 	
 	<?php 
 	  $klass = "";
-	  if (is_home() || is_category() || is_archive() || is_search() || is_front_page()) {
+	  if (is_home() || is_category() || is_archive() || is_search()) {
 	    $klass = 'collection';
 	  } elseif (is_page() || is_single() || is_404()) {
 	    $klass = 'page';
 	  }	  
 	  if (is_front_page()) {
 	    $id = "index";
+	    $klass = 'index';
 	  } else {
 	    $id = "";
 	  }

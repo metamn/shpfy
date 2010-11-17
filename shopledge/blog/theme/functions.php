@@ -4,6 +4,15 @@
 define("FEATURED", 3);
 define("HOT", 4);
 
+
+// Removes "Read more when displaying excerpts"
+function new_excerpt_more($more) {
+	return 'x';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+
+
+
 // Returns the excerpt of a page
 // - $page is the page slug
 function page_excerpt($page) {

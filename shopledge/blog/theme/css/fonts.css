@@ -5,16 +5,27 @@ del, dfn, em, font, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {  
+fieldset, form, label, legend {  
   font-family: "Droid Sans", "Lucida Grande", "Verdana", "Arial", "Helvetica", "Gill Sans", sans-serif; 
 }
+
+.post-meta,
 table, caption, tbody, tfoot, thead, tr, th, td {
   font-family: "Droid Serif", "Georgia", "Palatino", "Times New Roman", "Baskerville", "Hoefler Text", serif;  
 }
 blockquote, pre, abbr, acronym, address, cite, code {
   font-family: "Liberation Mono", Menlo, Courier New, Courier, Mono, monospace;
 }
+
+
+.sale h1 {
+  font-size: 3em;
+  font-family: Helvetica, sans-serif;
+}
+.page #navigation #items #item, .index #sale #item {
+  font-size: smaller;
+}
+
 
 
 
@@ -27,8 +38,8 @@ blockquote, pre, abbr, acronym, address, cite, code {
 
 @font-face {
   font-family: Droid Sans;
-  src: url('/fonts/Droid-Sans/DroidSans-webfont.ttf');
-  src: local('☺'), url('/fonts/Droid-Sans/DroidSans-webfont.woff') format('woff'), url('/fonts/Droid-Sans/DroidSans-webfont.ttf') format('truetype'), url('/fonts/Droid-Sans/DroidSans-webfont.svg#webfontX4pGz9fc') format('svg');
+  src: url('DroidSans-webfont.ttf');
+  src: local('☺'), url('DroidSans-webfont.woff') format('woff'), url('DroidSans-webfont.ttf') format('truetype'), url('DroidSans-webfont.svg#webfontX4pGz9fc') format('svg');
   font-weight: 400;
   font-style: normal;
 }
@@ -36,8 +47,8 @@ blockquote, pre, abbr, acronym, address, cite, code {
 
 @font-face {
   font-family: Droid Sans;
-  src: url('/fonts/Droid-Sans/DroidSans-Bold-webfont.ttf');
-  src: local('☺'), url('/fonts/Droid-Sans/DroidSans-Bold-webfont.woff') format('woff'), url('/fonts/Droid-Sans/DroidSans-Bold-webfont.ttf') format('truetype'), url('/fonts/Droid-Sans/DroidSans-Bold-webfont.svg#webfontX4pGz9fc') format('svg');
+  src: url('DroidSans-Bold-webfont.ttf');
+  src: local('☺'), url('DroidSans-Bold-webfont.woff') format('woff'), url('DroidSans-Bold-webfont.ttf') format('truetype'), url('DroidSans-Bold-webfont.svg#webfontX4pGz9fc') format('svg');
   font-weight: 700;
   font-style: normal;
 }
@@ -46,8 +57,8 @@ blockquote, pre, abbr, acronym, address, cite, code {
 
 @font-face {
   font-family: Droid Serif;
-  src: url('/fonts/Droid-Serif/DroidSerif-Italic-webfont.ttf');
-  src: local('☺'), url('/fonts/Droid-Serif/DroidSerif-Italic-webfont.woff') format('woff'), url('/fonts/Droid-Serif/DroidSerif-Italic-webfont.ttf') format('truetype'), url('/fonts/Droid-Serif/DroidSerif-Italic-webfont.svg#webfontX4pGz9fc') format('svg');
+  src: url('DroidSerif-Italic-webfont.ttf');
+  src: local('☺'), url('DroidSerif-Italic-webfont.woff') format('woff'), url('DroidSerif-Italic-webfont.ttf') format('truetype'), url('DroidSerif-Italic-webfont.svg#webfontX4pGz9fc') format('svg');
   font-weight: 400;
   font-style: italic;
 }
@@ -55,8 +66,8 @@ blockquote, pre, abbr, acronym, address, cite, code {
 
 @font-face {
   font-family: Droid Serif;
-  src: url('/fonts/Droid-Serif/DroidSerif-BoldItalic-webfont.ttf');
-  src: local('☺'), url('/fonts/Droid-Serif/DroidSerif-BoldItalic-webfont.woff') format('woff'), url('/fonts/Droid-Serif/DroidSerif-BoldItalic-webfont.ttf') format('truetype'), url('/fonts/Droid-Serif/DroidSerif-BoldItalic-webfont.svg#webfontX4pGz9fc') format('svg');
+  src: url('DroidSerif-BoldItalic-webfont.ttf');
+  src: local('☺'), url('DroidSerif-BoldItalic-webfont.woff') format('woff'), url('DroidSerif-BoldItalic-webfont.ttf') format('truetype'), url('DroidSerif-BoldItalic-webfont.svg#webfontX4pGz9fc') format('svg');
   font-weight: 700;
   font-style: italic;
 }
@@ -64,8 +75,8 @@ blockquote, pre, abbr, acronym, address, cite, code {
 
 @font-face {
   font-family: Droid Serif;
-  src: url('/fonts/Droid-Serif/DroidSerif-Bold-webfont.ttf');
-  src: local('☺'), url('/fonts/Droid-Serif/DroidSerif-Bold-webfont.woff') format('woff'), url('/fonts/Droid-Serif/DroidSerif-Bold-webfont.ttf') format('truetype'), url('/fonts/Droid-Serif/DroidSerif-Bold-webfont.svg#webfontX4pGz9fc') format('svg');
+  src: url('DroidSerif-Bold-webfont.ttf');
+  src: local('☺'), url('DroidSerif-Bold-webfont.woff') format('woff'), url('DroidSerif-Bold-webfont.ttf') format('truetype'), url('DroidSerif-Bold-webfont.svg#webfontX4pGz9fc') format('svg');
   font-weight: 700;
   font-style: normal;
 }
@@ -73,8 +84,8 @@ blockquote, pre, abbr, acronym, address, cite, code {
 
 @font-face {
   font-family: Droid Serif;
-  src: url('/fonts/Droid-Serif/DroidSerif-Regular-webfont.ttf');
-  src: local('☺'), url('/fonts/Droid-Serif/DroidSerif-Regular-webfont.woff') format('woff'), url('/fonts/Droid-Serif/DroidSerif-Regular-webfont.ttf') format('truetype'), url('/fonts/Droid-Serif/DroidSerif-Regular-webfont.svg#webfontX4pGz9fc') format('svg');
+  src: url('DroidSerif-Regular-webfont.ttf');
+  src: local('☺'), url('DroidSerif-Regular-webfont.woff') format('woff'), url('DroidSerif-Regular-webfont.ttf') format('truetype'), url('DroidSerif-Regular-webfont.svg#webfontX4pGz9fc') format('svg');
   font-weight: 400;
   font-style: normal;
 }
@@ -83,8 +94,8 @@ blockquote, pre, abbr, acronym, address, cite, code {
 
 @font-face {
   font-family: Droid Serif;
-  src: url('/fonts/Droid-Serif/DroidSerif-Italic-webfont.ttf');
-  src: local('☺'), url('/fonts/Droid-Serif/DroidSerif-Italic-webfont.woff') format('woff'), url('/fonts/Droid-Serif/DroidSerif-Italic-webfont.ttf') format('truetype'), url('/fonts/Droid-Serif/DroidSerif-Italic-webfont.svg#webfontX4pGz9fc') format('svg');
+  src: url('DroidSerif-Italic-webfont.ttf');
+  src: local('☺'), url('DroidSerif-Italic-webfont.woff') format('woff'), url('DroidSerif-Italic-webfont.ttf') format('truetype'), url('DroidSerif-Italic-webfont.svg#webfontX4pGz9fc') format('svg');
   font-weight: 400;
   font-style: italic;
 }
@@ -92,8 +103,8 @@ blockquote, pre, abbr, acronym, address, cite, code {
 
 @font-face {
   font-family: Droid Serif;
-  src: url('/fonts/Droid-Serif/DroidSerif-BoldItalic-webfont.ttf');
-  src: local('☺'), url('/fonts/Droid-Serif/DroidSerif-BoldItalic-webfont.woff') format('woff'), url('/fonts/Droid-Serif/DroidSerif-BoldItalic-webfont.ttf') format('truetype'), url('/fonts/Droid-Serif/DroidSerif-BoldItalic-webfont.svg#webfontX4pGz9fc') format('svg');
+  src: url('DroidSerif-BoldItalic-webfont.ttf');
+  src: local('☺'), url('DroidSerif-BoldItalic-webfont.woff') format('woff'), url('DroidSerif-BoldItalic-webfont.ttf') format('truetype'), url('DroidSerif-BoldItalic-webfont.svg#webfontX4pGz9fc') format('svg');
   font-weight: 700;
   font-style: italic;
 }
@@ -101,8 +112,8 @@ blockquote, pre, abbr, acronym, address, cite, code {
 
 @font-face {
   font-family: Droid Serif;
-  src: url('/fonts/Droid-Serif/DroidSerif-Bold-webfont.ttf');
-  src: local('☺'), url('/fonts/Droid-Serif/DroidSerif-Bold-webfont.woff') format('woff'), url('/fonts/Droid-Serif/DroidSerif-Bold-webfont.ttf') format('truetype'), url('/fonts/Droid-Serif/DroidSerif-Bold-webfont.svg#webfontX4pGz9fc') format('svg');
+  src: url('DroidSerif-Bold-webfont.ttf');
+  src: local('☺'), url('DroidSerif-Bold-webfont.woff') format('woff'), url('DroidSerif-Bold-webfont.ttf') format('truetype'), url('DroidSerif-Bold-webfont.svg#webfontX4pGz9fc') format('svg');
   font-weight: 700;
   font-style: normal;
 }
@@ -110,8 +121,8 @@ blockquote, pre, abbr, acronym, address, cite, code {
 
 @font-face {
   font-family: Droid Serif;
-  src: url('/fonts/Droid-Serif/DroidSerif-Regular-webfont.ttf');
-  src: local('☺'), url('/fonts/Droid-Serif/DroidSerif-Regular-webfont.woff') format('woff'), url('/fonts/Droid-Serif/DroidSerif-Regular-webfont.ttf') format('truetype'), url('/fonts/Droid-Serif/DroidSerif-Regular-webfont.svg#webfontX4pGz9fc') format('svg');
+  src: url('DroidSerif-Regular-webfont.ttf');
+  src: local('☺'), url('DroidSerif-Regular-webfont.woff') format('woff'), url('DroidSerif-Regular-webfont.ttf') format('truetype'), url('DroidSerif-Regular-webfont.svg#webfontX4pGz9fc') format('svg');
   font-weight: 400;
   font-style: normal;
 }
@@ -120,8 +131,8 @@ blockquote, pre, abbr, acronym, address, cite, code {
 
 @font-face {
   font-family: Liberation Mono;
-  src: url('/fonts/Liberation-Mono/LiberationMono-Bold-webfont.ttf');
-  src: local('☺'), url('/fonts/Liberation-Mono/LiberationMono-Bold-webfont.woff') format('woff'), url('/fonts/Liberation-Mono/LiberationMono-Bold-webfont.ttf') format('truetype'), url('/fonts/Liberation-Mono/LiberationMono-Bold-webfont.svg#webfontX4pGz9fc') format('svg');
+  src: url('LiberationMono-Bold-webfont.ttf');
+  src: local('☺'), url('LiberationMono-Bold-webfont.woff') format('woff'), url('LiberationMono-Bold-webfont.ttf') format('truetype'), url('LiberationMono-Bold-webfont.svg#webfontX4pGz9fc') format('svg');
   font-weight: 700;
   font-style: normal;
 }
@@ -129,8 +140,8 @@ blockquote, pre, abbr, acronym, address, cite, code {
 
 @font-face {
   font-family: Liberation Mono;
-  src: url('/fonts/Liberation-Mono/LiberationMono-BoldItalic-webfont.ttf');
-  src: local('☺'), url('/fonts/Liberation-Mono/LiberationMono-BoldItalic-webfont.woff') format('woff'), url('/fonts/Liberation-Mono/LiberationMono-BoldItalic-webfont.ttf') format('truetype'), url('/fonts/Liberation-Mono/LiberationMono-BoldItalic-webfont.svg#webfontX4pGz9fc') format('svg');
+  src: url('LiberationMono-BoldItalic-webfont.ttf');
+  src: local('☺'), url('LiberationMono-BoldItalic-webfont.woff') format('woff'), url('LiberationMono-BoldItalic-webfont.ttf') format('truetype'), url('LiberationMono-BoldItalic-webfont.svg#webfontX4pGz9fc') format('svg');
   font-weight: 700;
   font-style: italic;
 }
@@ -138,8 +149,8 @@ blockquote, pre, abbr, acronym, address, cite, code {
 
 @font-face {
   font-family: Liberation Mono;
-  src: url('/fonts/Liberation-Mono/LiberationMono-Regular-webfont.ttf');
-  src: local('☺'), url('/fonts/Liberation-Mono/LiberationMono-Regular-webfont.woff') format('woff'), url('/fonts/Liberation-Mono/LiberationMono-Regular-webfont.ttf') format('truetype'), url('/fonts/Liberation-Mono/LiberationMono-Regular-webfont.svg#webfontX4pGz9fc') format('svg');
+  src: url('LiberationMono-Regular-webfont.ttf');
+  src: local('☺'), url('LiberationMono-Regular-webfont.woff') format('woff'), url('LiberationMono-Regular-webfont.ttf') format('truetype'), url('LiberationMono-Regular-webfont.svg#webfontX4pGz9fc') format('svg');
   font-weight: 400;
   font-style: normal;
 }
@@ -147,8 +158,8 @@ blockquote, pre, abbr, acronym, address, cite, code {
 
 @font-face {
   font-family: Liberation Mono;
-  src: url('/fonts/Liberation-Mono/LiberationMono-Italic-webfont.ttf');
-  src: local('☺'), url('/fonts/Liberation-Mono/LiberationMono-Italic-webfont.woff') format('woff'), url('/fonts/Liberation-Mono/LiberationMono-Italic-webfont.ttf') format('truetype'), url('/fonts/Liberation-Mono/LiberationMono-Italic-webfont.svg#webfontX4pGz9fc') format('svg');
+  src: url('LiberationMono-Italic-webfont.ttf');
+  src: local('☺'), url('LiberationMono-Italic-webfont.woff') format('woff'), url('LiberationMono-Italic-webfont.ttf') format('truetype'), url('LiberationMono-Italic-webfont.svg#webfontX4pGz9fc') format('svg');
   font-weight: 400;
   font-style: italic;
 }

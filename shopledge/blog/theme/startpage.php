@@ -19,11 +19,11 @@
     <?php echo page_excerpt('about');  ?>
   </p>  
   <span class="more link">&rarr;</span>	
-	<div id="excerpt" class="hidden">
+	<div id="excerpt" class="hidden after-more">
 	  <?php echo page('about'); ?>
   </div> 
   
-  <div id="news">
+  <div id="featured">
 	  <ul>
 	    <?php 
 	    if ($news) {
@@ -77,7 +77,7 @@
   <div class="clear"></div>
   
   <div id="sale">  
-    <div id="item" class="percent"><h1>HOT!</h1></div>
+    <div id="item" class="sale"><h1>HOT!</h1></div>
     <?php 
 	     $to_display = $hot; 
 	     include "thumbs.php";

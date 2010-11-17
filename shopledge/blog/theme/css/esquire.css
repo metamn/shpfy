@@ -8,36 +8,52 @@ Hot Rocks!:
   - lila: 2E0927
 */
 
-.blackb {
-  background: black !important;
+.title {
+  background: #FFFF66 !important;
+}
+#article #comments .comment-meta {
+  font-size: smaller;
+  font-style: italic;
+} 
+.more {
+  background: #3399FF !important;
   color: white !important;
 }
-.red, .sale, .error {
-  color: #FF3300 !important;
+.button {
+  background: #99FF33 !important;
+  color: #333 !important;
 }
-.redb, .saleb, .errorb {
+.sale, .sale h1 {
   background: #FF3300 !important;
   color: white !important;
 }
-.green, .new, .success {
-  color: #99FF33 !important;
+.price-sale {
+  background: white !important;
+  color: #FF3300 !important;
 }
-.greenb, .newb, successb {
+.page #searchbox input.button {
+  background: black !important;
+  color: white !important;
+}
+#navigation #tags .more {
+  background: #FFFF66 !important;
+  color: black !important;
+}
+#navigation #searchbox .more {
+  background: black !important;
+}
+
+
+.error {
+  background: #FF3300 !important;
+  color: white !important;
+}
+.new, .success {
   background: #99FF33 !important;
   color: #4C7F19 !important;
 }
-.yellow, .highlight, .notice {
-  color: #FFFF66 !important;
-}
-.yellowb, .highlightb, .noticeb {
+.highlight, .notice {
   background: #FFFF66 !important;
-}
-.blue {
-  color: #3399FF !important;
-}
-.blueb {
-  background: #3399FF !important;
-  color: white !important;
 }
 
 a, a:visited, a:active, :link {
@@ -50,21 +66,7 @@ a, a:visited, a:active, :link {
   background: #3399FF !important;
 }
 
-#sale .percent {
-  background: #FF3300 !important;
-}
-#sale .percent h1 {
-  background: #FF3300 !important;
-}
-#sale .price {
-  color: #FF3300 !important;  
-}
 
-.title {
-  padding: .5em;
-  margin: 0;
-  font-size: 1em;
-}
 
 #paginate span {
   padding: .3em;
@@ -76,7 +78,7 @@ a, a:visited, a:active, :link {
   color: white;
 }
 
-#product #navigation .more a, #product #navigation ul li a:hover {
+.browse-more a, #product #navigation ul li a:hover {
   background: #3399FF;
   color: white;  
   padding: .3em;

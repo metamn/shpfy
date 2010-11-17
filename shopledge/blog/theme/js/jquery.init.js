@@ -1,4 +1,6 @@
+jQuery.noConflict();
      
+// Use jQuery via jQuery(...)
 jQuery(document).ready(function(){
 
 
@@ -24,39 +26,7 @@ jQuery(document).ready(function(){
   }).filter(":first").click();
   
   
-  // Show excerpt on Collections, Search, Blog
-  // 1. change arrow
-  // 2. hide original excerpt
-  // 3. insert full content
-  // 4. change div width
-  jQuery(".collection #item #description span.more, #blog #content #description span.more ").click(function(){        
-    // hide
-    jQuery(this).prev().slideToggle(200);        
-    // insert
-    jQuery(this).next().slideToggle(200);
-    // arrow
-    var arrow = jQuery(this).html();     
-    if (arrow == "→") {
-      arrow = "&larr;";
-    } else {
-      arrow = "&rarr;";
-    };
-    jQuery(this).html(arrow);     
-  });
-  
-  // jQZoom
-  // On Product 
-  // after image change jqzoom is reloaded, see below
-  jQuery('.product-zoom').jqzoom({
-	    zoomWidth: 480,
-	    zoomHeight: 330,
-      xOffset: 10,
-      yOffset: 0,
-      position: "left",
-      title: false,
-      preload: 0,
-      zoomType: 'reverse'
-  });
+   
   
   // Click on Thumbnail at the Collections & Search page
   jQuery("#collection #item img.link, #search #item img.link").click(function(){
@@ -69,25 +39,13 @@ jQuery(document).ready(function(){
       wrap.find("a").attr("href", newImage);
     };
     img.src = newImage;    
-    
-    // jQZoom
-    jQuery('.product-zoom').jqzoom({
-	      zoomWidth: 480,
-	      zoomHeight: 330,
-        xOffset: 10,
-        yOffset: 0,
-        position: "left",
-        title: false,
-        preload: 0,
-        zoomType: 'reverse'
-    });
-    
+        
   }).filter(":first").click();
   
   
   
   // Show excerpt on Frontpage, Blog
-  jQuery("#info span.more").click(function(){
+  jQuery("#index #info span.more").click(function(){
     var arrow = jQuery(this).html();     
     if (arrow == "→") {
       arrow = "&larr;";
@@ -95,9 +53,8 @@ jQuery(document).ready(function(){
       arrow = "&rarr;";
     };
     jQuery(this).html(arrow);  
-    jQuery("#info #excerpt").toggle();
+    jQuery("#index #info #excerpt").toggle();
   });
   
-  
-  
+    
 });   
