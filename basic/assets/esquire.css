@@ -45,23 +45,14 @@ Hot Rocks!:
 
 
 .error {
-  color: #FF3300 !important;
-}
-.errorb {
   background: #FF3300 !important;
   color: white !important;
 }
 .new, .success {
-  color: #99FF33 !important;
-}
-.newb, successb {
   background: #99FF33 !important;
   color: #4C7F19 !important;
 }
 .highlight, .notice {
-  color: #FFFF66 !important;
-}
-.highlightb, .noticeb {
   background: #FFFF66 !important;
 }
 
