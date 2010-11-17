@@ -85,7 +85,7 @@
   height: auto;
   max-height: 240px;
 }
-.collection #items #item #description #full {
+.after-more {
   margin: 1em 0;
 }
 .collection #items #item #images img {

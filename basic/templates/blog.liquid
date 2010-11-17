@@ -43,7 +43,7 @@
       <p>{{ article.content | strip_html | truncate: 250 }}</p>
       <span class="more link">&rarr;</span>
       
-      <div id="full" class="hidden">
+      <div id="full" class="hidden after-more">
         {{ article.content | strip_html }}
       </div>      			      
     </div>		

@@ -52,7 +52,7 @@
 	    <div id="item">
 	      <div class="left col-1">	        
 	        <div id="main-image">
-	          <a href="{{ product.featured_image | product_img_url: 'original' }}" title="{{ product.title | escape }}" class="product-zoom">	    
+	          <a href="{{ product.featured_image | product_img_url: 'original' }}" title="{{ product.title | escape }}" class="thickbox" rel="collection-featured">	    
 	            <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
 	          </a>
 	        </div>	   	        
@@ -82,7 +82,7 @@
 			      <p>{{ product.description | strip_html | truncate: 250 }}</p>
 			      <span class="more link">&rarr;</span>
 			      
-			      <div id="full" class="hidden">
+			      <div id="full" class="hidden after-more">
 			        {{ product.description | strip_html }}
 			      </div>
 			      			      
