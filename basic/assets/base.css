@@ -86,11 +86,10 @@ h4, p,
 blockquote, ul,
 fieldset, form,
 ol, dl, dir,
-menu            { margin: 1.12em 0 }
-h1, h2, h3, h4,
-h5, h6, b,
+menu            { margin:0 }
+b,
 strong          { font-weight: bolder }
-blockquote      { margin-left: 40px; margin-right: 40px }
+blockquote      { margin-left: 2em; }
 i, cite, em,
 var, address    { font-style: italic }
 pre, tt, code,
@@ -108,7 +107,7 @@ td, th, tr      { vertical-align: inherit }
 s, strike, del  { text-decoration: line-through }
 hr              { border: 1px inset }
 ol, ul, dir,
-menu, dd        { margin-left: 40px }
+menu, dd        { margin-left: 2em }
 ol              { list-style-type: decimal }
 ol ul, ul ol,
 ul ul, ol ol    { margin-top: 0; margin-bottom: 0 }
@@ -134,72 +133,21 @@ BDO[DIR="rtl"]  { direction: rtl; unicode-bidi: bidi-override }
 
 
 
-/* Typography
-*/
-
-/* universaly accessible font stacks: http://www.codestyle.org/css/font-family/sampler-CombinedResults.shtml */
-body {
-  font-size: 100%;
-  font-weight: normal;
-  font-family: Helvetica, "Arial", "Century Schoolbook L", sans-serif;
-}
-
-/* Elements of typo are not different by size but decoration */
-h1, h4 {
-  padding: 1em .5em;
-}
-h1, h2, h3, h4, h5, h6 {
-  margin: 2em 0;
-  font-size: 1.125em; /* 18px versus 16px body font */
-}
-h1 {
-  background: black;
-  color: white;
-}
-h2, h3 {
-  padding-top: .5em;
-}
-h2 {
-  border-top: .5em solid black;
-}
-h3 {
-  border-top: .1em solid black;
-}
-h4 {
-  background: #f9f9f9;
-}
-h6 {
-  font-weight: normal;
-  font-style: italic;
-}
-ol, ul, dl {
-  font-size: 0.875em; /* 14px vs. 16px body font */
-}
-small, sub, sup {
-  font-size: 0.75em; /* 12px */
-}
-
-
 
 /* Forms
 */
 input, textarea, select {
-  width: 30em;
+  width: 50%;
+  font-size: 100%; 
 }
 input.button {
   width: auto;
 }
-textarea {
-  width: 40em;
+input[type="radio"], input[type="checkbox"], input[type="file"] {
+  width: auto;
 }
 
 
-/* Common
-*/
-
-table {
-  width: 100%;
-}
 
 
 /* Hacks
