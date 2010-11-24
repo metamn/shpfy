@@ -1,0 +1,23 @@
+
+  .index #featured #item {
+    width: 100% !important;
+    margin-right: 0% !important;    
+  }
+  .collection #items #item .col-1, .collection #items #item .col-2 {
+    width: 100% !important;
+  }
+  .page .col-1, .page .col-2 {
+    float: none !important;
+    width: auto !important; 
+    margin: 2%; 
+  }
+  .page #item {
+    width: 25% !important;
+    float: left !important;
+  }
+  .page #item .col-1, .page #item .col-2 {
+    width: 40% !important;
+    margin-left: 5% !important;
+    float: left !important;
+  }  
+

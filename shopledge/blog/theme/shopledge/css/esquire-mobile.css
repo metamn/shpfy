@@ -1,0 +1,15 @@
+body {
+  background: #ececec url(../img/stripe.png) repeat 0 0 !important;
+  background-image: url(../img/stripe.png);
+}
+.box {
+  background: #f3f3b4 !important;
+}
+
+
+#index #info #featured ul li {
+  border-bottom: 2px solid #999 !important;
+}
+#index #info #featured ul li.last {
+  border-bottom: none !important;
+}
