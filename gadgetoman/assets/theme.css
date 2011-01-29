@@ -195,11 +195,12 @@ body {
 #eco.page, #eco.blog, #eco.article {
   background: url(stripe.png);
 }
-#eco ul {
-  background: #3d3d3b;
+#eco #icons, #eco ul {  
   padding: .62em 1.25em;
+}
+#eco ul {
   position: relative;
-  left: 4em;
+  top: -1em;
 }
 #eco .triangle-left {
   width:0; 
