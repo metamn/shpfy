@@ -46,25 +46,31 @@
 			      /search
 			    {% endif %}
 			  {% endcapture %}
-				
-				<ul class="inline-list">
+			  
+			  
+			  <div id="items">
 				  {% if linklists.main-menu.links.size > 0 %}				
 				    {% for link in linklists.main-menu.links %}
-					  <li{% if forloop.last %}{% if cart.item_count == 0 %} id="end"{% endif %}{% endif %}>
-					    <a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title }}</a></li>
+					  <div id="item" 
+					    {% if forloop.last %}
+					      {% if cart.item_count == 0 %} class="last"
+					      {% endif %}
+					    {% endif %}>
+					    <a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title }}</a>
+					  </div>
 					  {% endfor %}
 					{% endif %}
 					
-					{% if cart.item_count > 0 %}					
-					<li class="cart last">	
-					  <div class="triangle-left"></div>				  				  
+					{% if cart.item_count > 0 %}
+					<div class="triangle-left"></div>						
+					<div id="item" class="cart last">					  					  		  				  
 					  <a href="/cart"{% if template == "cart" %} class="active highlight"{% else %} class="highlight"{% endif %}>
-					    <p>Cart: {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}</p>
-					    <p>{{ cart.total_price }} {{ shop.currency }}</p>
+					    <div class="quantity">Cart: {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}</div>
+					    <div class="price">{{ cart.total_price }} {{ shop.currency }}</div>
 					  </a>			  
-				  </li>				  
+				  </div>				  
 				  {% endif %}
-				</ul>
+				</div>
 			</div>			
 		</div>
 	</div>
