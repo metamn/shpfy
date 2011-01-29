@@ -59,7 +59,26 @@ Grid basics: http://www.alistapart.com/articles/fluidgrids/
 
 
 
+/* Go mobile
+*/
 
+/* Better than iPhone */
+@media (max-width: 800px) {
+  .container .sidebar, .container .content {
+    float: none;
+    width: auto;
+  }
+
+}
+
+/* iPhone and less */
+@media (max-width: 480px) {
+  .container .sidebar, .container .content, .container .content .date, .container .content .tags  {
+    float: none;
+    width: auto;
+  }
+
+}
 
 
 

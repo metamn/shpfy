@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>{{ shop.name }} &#124; {{ page_title }}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	{{ 'base.css' | asset_url | stylesheet_tag }}	
+	{{ 'grid.css' | asset_url | stylesheet_tag }}	
+	{{ 'theme.css' | asset_url | stylesheet_tag }}	
+	<!--[if lte IE 6]>{{ 'ie.css' | asset_url | stylesheet_tag }}<![endif]-->
+			
+	{{ 'jquery-1.4.3.min.js' | asset_url | script_tag }}  
+	{{ 'jquery.init.js' | asset_url | script_tag }}
+	
+	
+	{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+
+	{{ content_for_header }}
+	
+</head>
+
+<body>	
+	<div id="header" class="block">
+	  <div class="container">
+		  <div id="logo" class="left">
+			  <a href="/" title="{{ shop.name }}">{{ shop.name }}</a>
+			</div>
+			<div id="navigation" class="menu right alignright">
+			  {% capture active_url %}
+			    {% if template == "index" %}
+			      /
+			    {% elsif template == "collection" %}
+			      /collections/{{ collection.handle }}
+			    {% elsif template == "product" %}
+			      {% if collection %}
+			        /collections/{{ collection.handle }}
+			      {% endif %}
+			      /products/{{ product.handle }}
+			    {% elsif template == "page" %}
+			      /pages/{{ page.handle }}
+			    {% elsif template == "blog" %}
+			      /blogs/{{ blog.handle }}
+			    {% elsif template == "cart" %}
+			      /cart
+			    {% elsif template == "search" %}
+			      /search
+			    {% endif %}
+			  {% endcapture %}
+				
+				<ul class="inline-list">
+				  {% if linklists.main-menu.links.size > 0 %}				
+				    {% for link in linklists.main-menu.links %}
+					  <li{% if forloop.last %}{% if cart.item_count == 0 %} id="end"{% endif %}{% endif %}>
+					    <a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title }}</a></li>
+					  {% endfor %}
+					{% endif %}
+					
+					{% if cart.item_count > 0 %}					
+					<li class="cart last">	
+					  <div class="triangle-left"></div>				  				  
+					  <a href="/cart"{% if template == "cart" %} class="active highlight"{% else %} class="highlight"{% endif %}>
+					    <p>Cart: {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}</p>
+					    <p>{{ cart.total_price }} {{ shop.currency }}</p>
+					  </a>			  
+				  </li>				  
+				  {% endif %}
+				</ul>
+			</div>			
+		</div>
+	</div>
+	
+	
+	{% case template %}
+	  {% when 'collection' or 'search' or 'blog' or 'article' %}
+	    <div id="{{ template }}" class="{{ template }} collection block">
+	  {% when 'page' or 'product' or 'cart' or 'not_found' %}
+	    <div id="{{ template }}" class="{{ template }} page block">
+	  {% else %}
+	    <div id="{{ template }}" class="{{ template }} block">
+	{% endcase %}			      
+	
+	{{ content_for_layout }}		    
+	
+	</div>
+	
+	
+	<div id="eco" class="{{ template }} block link">
+	  <div class="container">
+	    <div class="triangle-left right"></div>
+	    <ul class="inline-list right">
+	      <li>Blog</li>
+	      <li>Facebook</li>
+	      <li>Twitter</li>
+	    </ul>	   
+	  </div>  
+	</div>
+	
+	<div id="ecosystem" class="{{ template }} block hidden">
+    <div class="container">
+      <div class="left col-1">
+        <div id="blog">
+          <h1>News from our Blog</h1>
+          <div id="articles">
+            ID: {{ blog.id }}
+            {% for article in blog.articles %}
+	            <div id="article">
+	              <h4 class="title">
+	                <a href="{{ article.url }}" title="{{ article.title }}">
+	                  {{ article.title }}
+	                  <span class="date"> # {{ article.created_at | date: "%B %d, %Y" }}</span>
+	                </a>
+	              </h4>
+	              <div class="excerpt">
+	                {{ article.content | truncate: 200 }}
+	              </div>
+	            </div>
+	           {% endfor %}
+          </div>
+          <div id="comments">
+            content here ...
+          </div>
+        </div>
+        
+        <div id="facebook">
+          <h1>Friends on Facebook</h1>
+          <div id="friends">
+            ....
+          </div>
+          <div id="stream">
+            content here ...
+          </div>
+        </div>
+        
+        <div id="twitter">
+          <h1>The Buzz on Twitter</h1>
+          <div id="friends">
+            ....
+          </div>
+          <div id="stream">
+            content here ...
+          </div>
+        </div>      
+      </div>
+      
+      <div class="right col-2">
+        <h1> Shopping info here </h1>
+      </div>    
+    </div>
+  </div> 
+
+		
+	<div id="footer" class="block">
+	  <div class="container">
+	    <ul class="menu inline-list right">
+	      <li><a href="/">&copy; {{ "now" | date: "%Y" }} {{ shop.name }}</a></li>
+	      {% if linklists.footer.links.size > 0 %}
+			    {% for link in linklists.footer.links %}
+				    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+				  {% endfor %}
+				{% endif %}
+	    </ul>
+		</div>
+	</div>
+			
+</body>
+</html>

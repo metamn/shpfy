@@ -1,0 +1,162 @@
+<div id="info" class="block">
+  <div class="container">
+    <h1 class="title">{{ product.title }} by {{ product.vendor }} <span>{{ product.price | money }}</span></h1>
+    
+    <div id="images" class="left col-1">
+      <div id="product-image">
+		    <img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
+	    </div> 
+	    
+	    <div id="description" class="block">
+        {{ product.description }}
+      </div>    
+    </div>
+  
+    <div id="shopping" class="sidebar right col-2">
+      <div id="product-select" class="block">
+		    <form action="/cart/add" method="post" name="cartadd">
+          {% if product.available %}
+      			<div id="product-variants">
+	
+              <select id="variant-select" name='id'>
+                {% for variant in product.variants %}
+                  {% if variant.available %}
+                    <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                  {% else %}
+          					<option value="{{ variant.id }}" disabled="disabled">{{ variant.title }} - SOLD OUT</option>
+          				{% endif %}
+                {% endfor %}
+              </select>
+      			</div>      			
+
+      			<span id="price-field"></span><br />
+
+      			<input class="link button rounded" type="submit" name="add" value="Add to cart" id="add-cart">
+			    {% else %}
+			      <h6>TEMPORARILY UNAVAILABLE</h6>
+			    {% endif %}
+		    </form>
+	    </div>
+	    
+	    {% if product.images.size > 1%}
+	    <div id="thumbs" class="block">	          	               
+        {% for image in product.images %}
+          <img class="link" src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" rev="{{ image | product_img_url: 'original' }}" />
+        {% endfor %}	                
+      </div>
+      {% endif %} 
+      
+      <div id="meta" class="block">
+        <p>
+        <b>Listed in: </b> 
+        {% for item in product.collections %}
+          <a href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a>
+          {% unless forloop.last %}
+          ,
+          {% endunless %} 
+        {% endfor %}
+        </p>
+        <p>
+        <b>Tagged with: </b>
+        {{ product.tags | join: ', '}}
+        </p>
+        <p>
+          Vendor: {{ product.vendor | link_to_vendor }}
+          <br/>
+		      Type: {{ product.type | link_to_type }}
+		    </p>
+      </div>
+      
+      <div id="share" class="block">
+        Facebook
+        <br/>
+        Twitter
+      </div>
+      
+    </div>    
+  </div>
+</div>
+  
+
+<div id="latest" class="block">
+  <div class="container">
+    <h3>Check out our latest items:</h3>
+    {% for product in collections.all.products limit:5 offset:0 %}
+      <div id="item">	    
+        <div class="image">	      
+          {% for image in product.images limit: 1 %}
+            <a href="{{ product.url | within: collections.all }}" title="">	    
+              <img src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" /></a>
+          {% endfor %}
+        </div>
+        <div class="title">
+          <a href="{{ product.url | within: collections.all }}" title="">
+            {{ product.title }} by {{ product.vendor }}
+          </a>
+        </div>
+	    </div>
+    {% endfor %}  
+  </div>
+</div>  
+  
+<div id="sales" class="block">
+  <div class="container">
+    <div id="sale" class="left col-1">
+      <h1>%</h1>
+      <div class="arrow-right"></div>
+    </div>
+    <div id="items" class="right col-2">
+      {% for product in collections.all.products limit: 4 %}  
+      <div id="item">
+        <div class="image">
+          <a href="{{ product.url | within: collections.all }}">
+            <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
+          </a>
+        </div>
+        <div class="add-to-cart">
+          <img src="{{ 'sales-add-to-cart.png' | asset_url }}"/>
+        </div>        
+        <h6 class="title">
+          <a href="{{ product.url | within: collections.all }}">
+            {{ product.title }}            
+          </a>
+        </h6>
+        <div class="meta">       
+          {% if product.compare_at_price_max > product.price %} 
+            <span class="price price-sale rounded">{{ product.price | money }}</span>
+            &mdash;
+            <span class="price price-old rounded">{{ product.compare_at_price_max | money }}</span>
+          {% else %}
+            <span class="price rounded">{{ product.price | money }}</span>
+          {% endif %}          
+        </div>
+		  </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>   
+
+
+<script type="text/javascript">
+<!--
+  // mootools callback for multi variants dropdown selector
+  var selectCallback = function(variant, selector) {
+    if (variant && variant.available == true) {
+      // selected a valid variant
+      $('add-cart').removeClass('disabled'); // remove unavailable class from add-to-cart button
+      $('add-cart').disabled = false;           // reenable add-to-cart button
+      $('price-field').innerHTML = Shopify.formatMoney(variant.price, "{{shop.money_with_currency_format}}");  // update price field
+    } else {
+      // variant doesn't exist
+      $('add-cart').addClass('disabled');      // set add-to-cart button to unavailable class
+      $('add-cart').disabled = true;              // disable add-to-cart button      
+      $('price-field').innerHTML = (variant) ? "Sold Out" : "Unavailable"; // update price-field message
+    }
+  };
+
+  // initialize multi selector for product
+  window.addEvent('domready', function() {
+    new Shopify.OptionSelectors("variant-select", { product: {{ product | json }}, onVariantSelected: selectCallback }); 
+  });
+-->
+</script>

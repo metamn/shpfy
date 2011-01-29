@@ -11,14 +11,13 @@
 	
 	<div id="product-aside" class="col-2 right">
 	  
-	  {% if product.images.size > 1%}    	 
-	  <div id="thumbs">              
+	  <div id="thumbs">
+	  {% if product.images.size > 1%}    	               
       {% for image in product.images %}
         <img class="link" src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" rev="{{ image | product_img_url: 'original' }}" />
       {% endfor %}	      
-    </div>
     {% endif %}   
-    
+    </div>
     
        
 	  <div id="product-select">

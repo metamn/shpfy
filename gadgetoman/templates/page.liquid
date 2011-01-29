@@ -1,0 +1,68 @@
+<div id="info" class="block">
+  <div class="container">
+    <h1>{{ page.title }}</h1>
+    
+    <div id="content" class="col-1 left">
+      {{ page.content }}
+    </div>
+
+    <div id="navigation" class="sidebar right col-2">  
+   
+      <div id="searchbox">
+        <form action="/search" method="get">
+          <table><tr>
+			    <td><input class="text" type="text" name="q" /></td> 
+			    <td><input class="button" type="submit" value="Search" /></td>
+			    </tr></table>
+		    </form>
+	    </div>
+	
+	    <div id="featured">  
+        <h6 class="link"><span class="more">&nbsp;!&nbsp;</span> Featured products</h6>
+        <div id="items">
+          {% for product in collections.frontpage.products %}  
+          <div id="item">            
+            <a href="{{ product.url | within: collections.all }}">
+              <img class="thumb" src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" />
+            </a>
+            <h6><a href="{{ product.url | within: collections.all }}">{{ product.title }}</a></h6>            
+            {% if product.compare_at_price_max > product.price %} 
+              <span class="price price-sale">{{ product.price | money }}</span>
+              <br/>
+              <span class="price price-old">{{ product.compare_at_price_max | money }}</span>
+            {% else %}
+              <span class="price">{{ product.price | money }}</span>
+            {% endif %}		        
+		      </div>
+          {% endfor %}
+        </div>
+      </div> 
+      
+      <div class="clear"></div>
+      
+      <div id="sale">  
+        <h6 class="link"><span class="more sale">%</span> Products on sale</h6>
+        <div id="items">
+          <div id="item" class="sale"><h1>%</h1></div>
+          {% for product in collections.paginated-sale.products %}  
+          <div id="item">
+            <a href="{{ product.url | within: collections.all }}">
+              <img class="thumb" src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" />
+            </a>
+            <h6><a href="{{ product.url | within: collections.all }}">{{ product.title }}</a></h6>
+            {% if product.compare_at_price_max > product.price %} 
+              <span class="price price-sale">{{ product.price | money }}</span>
+              <br/>
+              <span class="price price-old">{{ product.compare_at_price_max | money }}</span>
+            {% else %}
+              <span class="price">{{ product.price | money }}</span>
+            {% endif %}
+		      </div>
+          {% endfor %}
+        </div>
+      </div> 
+      
+      <div class="clear"></div>
+    </div>
+  </div>  
+</div>

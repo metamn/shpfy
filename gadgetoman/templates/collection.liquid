@@ -1,0 +1,92 @@
+<div id="navigation" class="block">
+  <div class="container">      
+	  <div id="categories" class="left col-1">
+	    <div id="collection-title">
+        {% if collection.title %}  
+          <h6>{{ collection.title }}</h6>
+	        {% if collection.description.size > 0 %}
+	          <div id="collection-desc">
+	            {{ collection.description }}
+	          </div>
+	        {% endif %}
+	      {% endif %}
+	    </div>
+	    {% if collections.size > 0 %}
+        <ul class="categories">
+      	  {% for c in collections %}
+      	    {% if c.handle != "frontpage" %}
+      		    <li><a href="{{ c.url }}"{% if collection.url == c.url %} class="active"{% endif %}>{{ c.title | upcase }}</a></li>
+      		  {% endif %}
+      		{% endfor %}
+      	</ul>
+	    {% else %}
+      	<p>Once you <a href="{{ shop.url }}/admin/custom_collections">add some collections</a>, they will be displayed like this...</p>
+      	<ul>
+      		<li><a href="">EXAMPLE COLLECTION 1</a></li>
+      		<li><a href="">EXAMPLE COLLECTION 2</a></li>
+      		<li><a href="">EXAMPLE COLLECTION 3</a></li>
+      	</ul>
+      {% endif %}
+	  </div>
+	  
+	  <div id="search" class="right col-2">
+	    <h6>Search</h6>
+		  <form action="/search" method="get">
+			  <input class="text" type="text" name="q" /> 
+			  <input class="link button greenb rounded" type="submit" value="Go"  />
+		  </form>
+	  </div>
+	
+	  {% if tags %}
+    <div id="tags" class="block">
+      <h6>Tags</h6>
+      <ul class="inline-list">
+        {% for tag in collection.tags %}  
+          <li>{{ tag | link_to_tag: tag }}, </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+	  
+	</div>  
+</div>
+
+<div id="items" class="block">
+  <div class="container">
+    {% paginate collection.products by 6 %}
+    {% if collection.products.size == 0 %}
+	    <h3>No products in this collection.</h3>
+	  {% else %}
+	    {% for product in collection.products %}  
+      <div id="item">
+        <div class="image">
+          <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+            <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
+          </a>
+        </div>
+        <h6 class="title">
+          <a href="{{ product.url | within: collections.all }}">{{ product.title }} by {{ product.vendor }}</a>
+        </h6>
+        <div class="meta">       
+          {% if product.compare_at_price_max > product.price %} 
+            <span class="price price-sale">{{ product.price | money }}</span>
+            &mdash;
+            <span class="price price-old">{{ product.compare_at_price_max | money }}</span>
+          {% else %}
+            <span class="price">{{ product.price | money }}</span>
+          {% endif %}
+        </div>
+		  </div>
+      {% endfor %}
+	    <div class="clear"></div>
+	    
+	    {% if paginate.pages > 1 %}
+	    <div id="paginate" class="right alignright">
+		    {{ paginate | default_pagination }}
+	    </div>
+	    {% endif %}	  
+	  {% endif %}
+	  {% endpaginate %}
+  </div>
+</div>
+	

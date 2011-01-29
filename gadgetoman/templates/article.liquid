@@ -1,0 +1,101 @@
+<div id="info" class="block">
+  <div class="container">
+    <h1><a href="{{ article.url }}" title="Permanent link to {{ article.title }}">{{ article.title }}</a></h1>  
+    
+    <div id="content" class="col-1 left">
+      <div class="meta">
+		    By {{ article.author }} on {{ article.created_at | date: "%B %d, %Y" }}
+		    {% if blog.comments_enabled? %}
+          &mdash; 
+          <a href="{{article.url}}#comments">{{ article.comments.size }} comments</a>
+        {% endif %}
+		  </div>
+      
+      <div class="body">    
+        {{ article.content | strip_html }}
+      </div>
+      
+      {% if blog.comments_enabled? %}
+      <div class="comments">
+        <h3>Comments ({{ article.comments.size }})</h3>
+        {% if article.comments.size > 0 %}
+          <ol>      
+          {% for comment in article.comments %}
+            <li class="comment">
+              <blockquote>{{ comment.content }}</blockquote>
+              <span class="comment-meta">By {{ comment.author }} on {{ comment.created_at | date: "%B %d, %Y" }}</span>
+            </li>
+          {% endfor %}
+          </ol>
+        {% endif %}
+        
+        <!-- Comment Form -->
+        {% form article %}    
+        
+        <!-- Check if a comment has been submitted in the last request, and if yes display an appropriate message -->
+        {% if form.posted_successfully? %}
+          {% if blog.moderated? %}
+            <div class="notice">
+              Successfully posted your comment.<br />
+              It will have to be approved by the blog owner first before showing up.
+            </div>
+          {% else %}
+            <div class="notice">Successfully posted your comment.</div>
+          {% endif %}
+        {% endif %}    
+        {% if form.errors %}
+          <div class="notice error">Not all the fields have been filled out correctly!</div>
+        {% endif %}
+        
+        <h3>Leave a comment</h3>
+        
+        <dl>
+          <dt class="{% if form.errors contains 'author' %}error{% endif %}"><label for="comment_author">Your name</label></dt>
+          <dd><input type="text" id="comment_author" name="comment[author]" size="40" value="{{form.author}}" class="{% if form.errors contains 'author' %}input-error{% endif %}" /></dd>
+
+          <dt class="{% if form.errors contains 'email' %}error{% endif %}"><label for="comment_email">Your email</label></dt>
+          <dd><input type="text" id="comment_email" name="comment[email]" size="40" value="{{form.email}}" class="{% if form.errors contains 'email' %}input-error{% endif %}" /></dd>
+
+          <dt class="{% if form.errors contains 'body' %}error{% endif %}"><label for="comment_body">Your comment</label></dt>
+          <dd><textarea id="comment_body" name="comment[body]" cols="40" rows="5" class="{% if form.errors contains 'body' %}input-error{% endif %}">{{form.body}}</textarea></dd>
+          
+          <dt>&nbsp;</dt>
+          <dd><input type="submit" value="Post comment" /></dd>     
+          
+          {% if blog.moderated? %}  
+          <dt>&nbsp;</dt>
+          <dd class="comment-meta">Comments have to be approved before showing up</dd>      
+          {% endif %}
+        </dl>
+        
+        {% endform %}
+      </div>
+      {% endif %}
+    </div>
+    
+    <div id="sidebar" class="sidebar right col-2">
+      <ul class="inline-list">
+        <li>Facebook</li>
+        <li>Twitter</li>
+        <li>RSS</li>
+      </ul>
+      Subscribe by e-mail.
+      
+      <h3>Recent comments</h3>
+      <ul class="comments">
+        {% for article in blog.articles %}		   
+          {% for comment in article.comments %}
+            <li>
+              <a href="{{ article.url }}" title="Comment on {{ article.title }}">
+                <blockquote>{{ comment.content | strip_html | truncate: 250 }}</blockquote>
+              </a>
+            </li>
+          {% endfor %}
+        {% endfor %}
+      </ul>
+    </div>
+    
+    
+      
+  </div>   
+</div>

@@ -1,0 +1,88 @@
+.container {
+  width: 80%;
+  max-width: 80em;  /* 80x16px=1280px */
+  margin: 0 auto;
+}
+
+
+
+/* Startpage 
+*/
+
+
+.index #intro .col-1 {
+  width: 55%;
+  margin-right: 5%;
+}
+.index #intro .col-2 {
+  width: 40%;
+}
+
+#latest #item {
+  width: 15%;
+  margin-right: 5%;
+  float: left;
+}
+
+#sales .col-1 {
+  width: 17%;
+  margin-right: 3%;
+}
+#sales .col-2 {
+  width: 80%;
+}
+#sales #item {
+  width: 45%;
+  margin-right: 5%;
+  float: left;
+}
+
+
+#ecosystem .col-1 {
+  width: 55%;
+  margin-right: 5%;  
+} 
+#ecosystem .col-2 {
+  width: 40%; 
+} 
+
+
+
+
+/* Page
+*/
+
+.page #info .col-1, .blog #info .col-1, .article .col-1 {
+  width: 61.804%;
+}
+.page #info .col-2, .blog #info .col-2, .article .col-2 {
+  margin-left: 5%;
+  width: 28.195%; /* sidebar has an 1.25em padding */
+}
+.page #info #thumbs img {
+  max-width: 100px;
+  max-height: 100px;
+  margin: 0 1.25em 1.25em 0;
+  float: left;
+}
+
+
+/* Collections
+*/
+
+.collection #navigation .col-1 {
+  width: 45%;
+  margin-right: 5%;
+}
+.collection #navigation .col-2 {
+  width: 45%;
+  margin-left: 5%;
+}
+.collection #items #item {
+  width: 28%;
+  margin: 0 5% 1.25em 0;
+  float: left;
+  height: 25em;
+  margin-bottom: 3.75em;
+}
+

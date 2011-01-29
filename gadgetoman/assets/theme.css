@@ -1,0 +1,345 @@
+/* Typography
+
+- base measure for vertical rhythm: 1.25em
+
+*/
+
+body { font-size:100%; line-height:1.25; }
+h1, h2, h3 { margin-top:0; margin-bottom:0; }
+h1 { font-size:1.55556em; padding:1.38415em 0; }
+h2 { font-size:1.33333em; padding:1.25em 0; }
+h3 { font-size:1.22222em; padding:1.42074em 0; }
+h4 { font-size:1.11111em; padding:1.62469em 0; }
+h5, h6 { font-size:1em; padding:1.25em 0; }
+h6 {
+  font-style: italic;
+}
+h1, h2, h3 {
+  font-weight: normal;
+}
+body {   
+  font-size: 100%;
+  -webkit-text-size-adjust: none;  
+}
+p {
+  margin-bottom: 1.25em;
+}
+
+
+/* Theme
+
+- background: #f9f9f9;
+  - black: #3d3d3b 
+  - highlight/orange: #ff3300
+  - highlight/yellow: #ffb200
+  - gray: #f3f3f3
+  - dark gray: 4c4c4c
+
+*/
+
+
+
+body {
+  background: #f9f9f9;
+}
+#header {
+  background: #3d3d3b;
+  border-bottom: 1px solid #2d2d2d;
+}
+#header a, #header a:visited, #footer a, #footer a:visited {
+  color: #f9f9f9;
+  text-decoration: none;
+}
+.menu {
+  font-size: small;
+}
+.menu li {
+  margin-right: 1.52em !important;  
+}
+.menu li a {  
+  padding: .62em 0;
+}
+.menu li.last {
+  margin-right: 0 !important;
+  position: relative;
+}
+.menu li.cart {
+  background: #ff3300 !important;
+  color: #fff;
+}
+.menu li.cart a {
+  padding: 1em !important;
+  font-weight: bold;
+}
+.triangle-left {
+  width:0; 
+  height:0;
+  line-height:0;
+  border-top:4px solid transparent;
+  border-right:4px solid #3d3d3b;
+  border-bottom:4px solid transparent;
+  border-left:4px solid transparent;
+  position: relative;
+  top: .7em;
+  display: inline;
+}
+
+
+/* Index */
+
+.index #intro, .collection #navigation, #info {
+  background: url(stripe.png);
+  border-bottom: 1px solid #ededed;
+  padding: 2.5em 0;
+}
+.index #logo h1 a, .index #logo h1 a:visited, .article h1 a, .article h1 a:visited {
+  color: #3d3d3b;
+  text-decoration: none;
+}
+#latest {
+  padding: 0 0 2.5em 0;
+}
+#latest #item, .collection #items #item {
+  background: #f3f3f3;
+}
+#latest #item.hover, .collection #items #item.hover {  
+  -moz-box-shadow: 0px 1px 7px #4c4c4c;
+  -khtml-box-shadow: 0px 1px 7px #4c4c4c;
+  -webkit-box-shadow: 0px 1px 7px #4c4c4c;
+}
+#item .image {
+  background: #fff;
+  border: 1px solid #f7f7f7; 
+  border-bottom: 1px solid #ededed;
+}
+#latest #item .image {
+  height: 100px;   
+  padding: .62em 0;
+}
+#item {  
+  text-align: center;
+}
+.title {
+  padding: .62em 0; 
+}
+.title a, .title a:visited {
+  text-decoration: none;  
+  padding: .62em;
+  color: #3d3d3b;
+}
+
+#sales {
+  padding: 5em 0 2.5em;
+}
+#sale h1 {
+  background: #ff3300;
+  color: #f9f9f9;
+  font-size: 3em;
+  text-align: center;
+}
+.arrow-right {  
+  width:0; 
+  height:0;
+  line-height:0;
+  border-top:30px solid transparent;
+  border-right:30px solid transparent;
+  border-bottom:30px solid transparent;
+  border-left:30px solid #ff3300;
+  position: relative;
+  left: 100%;
+  top: -8em;
+}
+#sales #item, .collection #items #item {
+  height: 25em;
+}
+#sales #item .image, .collection #items #item .image {
+  height: 240px;    
+  padding: .62em 0;
+}
+#sales #item .meta {
+  margin-top: .62em;
+}
+#sales #item .meta .price {
+  color: #ff3300;
+  font-weight: bold;  
+}
+#sales #item.hover .meta .price {
+  color: #fff;
+  background: #ff3300;
+}
+#sales #item .add-to-cart {  
+  visibility: hidden;
+}
+#sales #item.hover .add-to-cart {
+  visibility: visible;
+  position: relative;
+  top: -70%;
+  left: 40%;
+}
+#sales #item .title, #sales #item .meta {
+  position: relative;
+  top: -25%;
+}
+
+#ecosystem {
+  background: #f3f3f3;
+  background: -moz-linear-gradient(top, rgba(249, 249, 249, .7), rgba(76, 76, 76, .7));
+  padding-bottom: 3.75em;
+}
+#ecosystem .container {
+  background: -moz-linear-gradient(left, rgba(249, 249, 249, 1), rgba(76, 76, 76, 1));
+}
+#eco {
+  background: #f9f9f9;
+}
+#eco.page, #eco.blog, #eco.article {
+  background: url(stripe.png);
+}
+#eco ul {
+  background: #3d3d3b;
+  padding: .62em 1.25em;
+  position: relative;
+  left: 4em;
+}
+#eco .triangle-left {
+  width:0; 
+  height:0;
+  line-height:0;
+  border-color: transparent #3d3d3b transparent transparent;
+  border-style: solid;
+  border-width: 2.5em;
+  position: relative;
+  right: 15em;
+  top: 0em;
+  display: inline;
+}
+#eco.index {
+  display: none;
+}
+#ecosystem.index {
+  display: block;
+}
+
+#footer {
+  background: #4c4c4c;
+  background: -moz-linear-gradient(top, rgba(76, 76, 76, 1), rgba(61, 61, 59, 1));
+  position: relative;
+  top: -2.6em;
+}
+
+
+
+
+/* Product */
+
+#shopping #thumbs, #shopping #meta, #shopping #share {
+  padding: 1.25em 0;
+  border-top: 1px solid #ededed;
+}
+#shopping #thumbs img, #product #product-image img  {
+  border: 1px solid #ededed; 
+}
+
+
+
+/* Collection */
+
+.collection #navigation #categories ul, ul.comments {
+  list-style-type: none;
+  margin: 0;
+}
+.collection #navigation #categories ul li, ul.comments li {
+  padding: .31em 0;
+  border-bottom: 1px solid #ccc;
+}
+.collection #navigation #categories ul li a, .collection #navigation #categories ul li a:visited,
+.blog ul.comments li a, .blog ul.comments li a:visited {
+  text-decoration: none;
+  color: #3d3d3b;
+}
+.collection #navigation #tags a, .collection #navigation #tags a:visited {
+  text-decoration: none;
+}
+.collection #navigation #tags a {
+  color: #4c4c4c;
+}
+.collection #navigation #tags a:visited {
+  color: #9d9d9d;
+}
+.collection #items {
+  padding: 2.5em 0;
+}
+#paginate {
+  margin-right: 6%;
+}
+#paginate a, #paginate a:visited {
+  text-decoration: none;
+  color: #4c4c4c;
+}
+#paginate .page, #paginate .prev, #paginate .next {
+  padding: .31em;
+  border: 1px solid #ddd;
+}
+#paginate .current {
+  border: none;
+}
+
+/* Blog */
+
+#articles #article {
+  margin-bottom: 3.75em;
+}
+#articles #article .title, #articles #article .title a {
+  padding: 0;
+}
+#articles #article .title .date {
+  font-size: small;
+  color: #9d9d9d;
+}
+.blog ul.comments li {
+  padding: .62em 0;
+}
+.sidebar {
+  padding: 1.25em;
+  background: #f3f3f3;
+}
+.article .meta, .article .comment-meta {
+  background: #f3f3f3;
+  padding: .62em;
+  margin-bottom: 1.25em;
+  font-size: small;
+}
+
+
+
+
+
+
+/* Single product
+*/
+
+#product #info, #product #latest, #product #sales {
+  margin-bottom: 2.5em;
+}
+#product #description {
+  margin-top: 2.5em;
+}
+
+/* Footer
+*/
+
+#footer {
+  padding: 2.5em 0;  
+}
+
+
+
+
+
+
+
+
+
+
+
+
