@@ -197,11 +197,7 @@ body {
 
 #ecosystem {
   background: #f3f3f3;
-  background: -moz-linear-gradient(top, rgba(249, 249, 249, .7), rgba(76, 76, 76, .7));
   padding-bottom: 3.75em;
-}
-#ecosystem .container {
-  background: -moz-linear-gradient(left, rgba(249, 249, 249, 1), rgba(76, 76, 76, 1));
 }
 #eco {
   background: #f9f9f9;
@@ -234,6 +230,19 @@ body {
 #ecosystem.index {
   display: block;
 }
+
+#ecosystem #item {
+  text-align: left;
+  float: left;
+  height: 60px;
+  margin: 0 .31em;
+}
+img.avatar {
+  width: 48px;
+  height: 48px;
+}
+
+
 
 #footer {
   background: #4c4c4c;

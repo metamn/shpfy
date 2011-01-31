@@ -129,22 +129,39 @@
         </div>
         
         <div id="facebook">
-          <h1>Friends on Facebook</h1>
-          <div id="friends">
-            ....
-          </div>
-          <div id="stream">
-            content here ...
-          </div>
+          <!--
+          <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like-box href="http://www.facebook.com/platform" width="292" show_faces="true" stream="false" header="false"></fb:like-box>
+          -->
         </div>
         
         <div id="twitter">
-          <h1>The Buzz on Twitter</h1>
-          <div id="friends">
-            ....
-          </div>
-          <div id="stream">
-            content here ...
+          {% assign twitter_id = "metamn" %}
+          {% assign twitter_limit = 50 %}
+        
+          <script type="text/javascript">
+            var counter = 0;
+            var BreakException= {};
+            
+            try {
+              jQuery.getJSON('http://twitter.com/statuses/followers.json?screen_name={{ twitter_id }}&callback=?',function(data){    
+              if (data) {                
+                data.forEach(function(datum) {  
+                  var str = '<div id="item">';
+                  str += '<a href="' + datum.url + '" title="' + datum.name + '">';
+                  str += '<img class="avatar" src="' + datum.profile_image_url + '" alt="' + datum.name + '" /></a>';
+                  str += '</div>';
+                  jQuery('#ecosystem #twitter #items').append(str);
+                  
+                  counter++;
+                  if(counter === {{ twitter_limit }}) throw BreakException;               
+                });
+              } 
+              });​
+            } catch(e) {
+                if (e!==BreakException) throw e;
+            }           
+          </script>
+          <div id="items">
           </div>
         </div>      
       </div>
