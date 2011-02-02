@@ -60,6 +60,7 @@ body {
   display: inline-block;
   text-align: left;
   padding: .62em;
+  font-size: small;
 }
 .menu #item a {  
   padding: .62em 0;
@@ -97,6 +98,7 @@ body {
   right: 6.4em;
   display: inline;
 }
+
 
 
 /* Index */

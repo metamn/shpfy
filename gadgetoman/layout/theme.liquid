@@ -52,7 +52,7 @@
 			  {% endcapture %}
 			  
 			  
-			  <div id="items">
+			  <div id="main-menu" class="menuline right alignright">
 				  {% if linklists.main-menu.links.size > 0 %}				
 				    {% for link in linklists.main-menu.links %}
 					  <div id="item" 
@@ -64,16 +64,29 @@
 					  </div>
 					  {% endfor %}
 					{% endif %}
+				</div>
+				<div class="clear"></div>
 					
-					
-				<div class="triangle-left"></div>						
-				<div id="item" class="cart last">					  					  		  				  
-				  <a href="/cart"{% if template == "cart" %} class="active highlight"{% else %} class="highlight"{% endif %}>
-				    <div class="quantity">Cart: {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}</div>
-				    <div class="price">{{ cart.total_price }} {{ shop.currency }}</div>
-				  </a>			  
-			  </div>				  
-				  
+			  <div id="shopping-menu" class="menuline right alignright">	
+			    {% if linklists.shopping-menu.links.size > 0 %}				
+				    {% for link in linklists.shopping-menu.links %}
+					  <div id="item" 
+					    {% if forloop.last %}
+					      {% if cart.item_count == 0 %} class="last"
+					      {% endif %}
+					    {% endif %}>
+					    <a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title }}</a>
+					  </div>
+					  {% endfor %}
+					{% endif %}						
+									
+				  <div class="triangle-left"></div>						
+				  <div id="item" class="cart last">					  					  		  				  
+				    <a href="/cart"{% if template == "cart" %} class="active highlight"{% else %} class="highlight"{% endif %}>
+				      <div class="quantity">Cart: {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}</div>
+				      <div class="price">{{ cart.total_price }} {{ shop.currency }}</div>
+				    </a>			  
+			    </div>			  
 				</div>
 			</div>			
 		</div>
