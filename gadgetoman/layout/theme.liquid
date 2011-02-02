@@ -105,21 +105,13 @@
 	<div id="ecosystem" class="{{ template }} block hidden">
     <div class="container">
       <div class="left col-1">
-           
-        
-        <!--
-        
-        - facebook friends cannot be styled => we don't show unless the user requires
-        - if fb is shown, at right side the news will be pulled
-        - if fb not shown news will be aligned left, and an fb like + follower count is shown simply 
-        
-        -->
         
         <div id="blog">
           {% assign feed_url = "http://dodocase.posterous.com/rss.xml" %}
+          {% assign feed_limit = 5 %}
           
           <script type="text/javascript">            
-            var api = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q={{ feed_url }}&num=5";
+            var api = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q={{ feed_url }}&num={{ feed_limit }}";
             jQuery.getJSON(api, function(data){				
 				      // Check for error
 				      if (data.responseStatus == 200) {	
@@ -148,13 +140,33 @@
 							      var msg = data.responseDetails;
 						      };						      
 				      };
-				      jQuery("#feed").append(msg);
+				      jQuery("#feed").replaceWith(msg);
 			      });            
           </script>
-          <div id="feed"></div>          
+          <div id="feed">
+            <img src="{{ 'loading.gif' | asset_url }}" alt="Loading feed ..." />
+            Loading feed ...
+          </div>          
         </div>
         
-        <!--
+        
+        <div id="follow">
+          <div class="col facebook">
+            <img src="{{ 'facebook.png' | asset_url }}" alt="Facebook" />
+            <div class="counter">
+              <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="true" width="150"></fb:like>
+            </div>
+          </div>
+          <div class="col twitter">            
+            <img src="{{ 'twitter.png' | asset_url }}" alt="Twitter" />
+            <div class="counter">
+              <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
+            </div> 
+          </div>         
+        </div>
+        <div class="clear"></div>
+        
+        
         <div id="twitter">
           <div id="items">
             {% assign twitter_id = "metamn" %}
@@ -187,7 +199,7 @@
             </script>          
           </div>
         </div>  
-        -->    
+     
       </div>
       
       <div class="right col-2">

@@ -46,6 +46,16 @@
   width: 40%; 
 } 
 
+#follow .col {
+  width: 20%;
+  margin-right: 10%;
+  float: left;
+}
+#follow .counter {
+  position: relative;
+  margin-left: 5em;
+  top: -2.5em;
+}
 
 
 
