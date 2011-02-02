@@ -65,15 +65,15 @@
 					  {% endfor %}
 					{% endif %}
 					
-					{% if cart.item_count > 0 %}
-					<div class="triangle-left"></div>						
-					<div id="item" class="cart last">					  					  		  				  
-					  <a href="/cart"{% if template == "cart" %} class="active highlight"{% else %} class="highlight"{% endif %}>
-					    <div class="quantity">Cart: {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}</div>
-					    <div class="price">{{ cart.total_price }} {{ shop.currency }}</div>
-					  </a>			  
-				  </div>				  
-				  {% endif %}
+					
+				<div class="triangle-left"></div>						
+				<div id="item" class="cart last">					  					  		  				  
+				  <a href="/cart"{% if template == "cart" %} class="active highlight"{% else %} class="highlight"{% endif %}>
+				    <div class="quantity">Cart: {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}</div>
+				    <div class="price">{{ cart.total_price }} {{ shop.currency }}</div>
+				  </a>			  
+			  </div>				  
+				  
 				</div>
 			</div>			
 		</div>
