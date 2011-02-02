@@ -2,7 +2,8 @@ jQuery.noConflict();
      
 // Use jQuery via jQuery(...)
 jQuery(document).ready(function(){
-
+  
+    
   // Highlight products on hover
   jQuery("#latest #item, #sales #item, .collection #items #item").hover(
     function () {
@@ -12,7 +13,6 @@ jQuery(document).ready(function(){
       jQuery(this).removeClass('hover');
     }
   );
-  
   
   
   // Pull up the Ecosystem

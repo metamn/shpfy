@@ -105,65 +105,89 @@
 	<div id="ecosystem" class="{{ template }} block hidden">
     <div class="container">
       <div class="left col-1">
+           
+        
+        <!--
+        
+        - facebook friends cannot be styled => we don't show unless the user requires
+        - if fb is shown, at right side the news will be pulled
+        - if fb not shown news will be aligned left, and an fb like + follower count is shown simply 
+        
+        -->
+        
         <div id="blog">
-          <h1>News from our Blog</h1>
-          <div id="articles">
-            ID: {{ blog.id }}
-            {% for article in blog.articles %}
-	            <div id="article">
-	              <h4 class="title">
-	                <a href="{{ article.url }}" title="{{ article.title }}">
-	                  {{ article.title }}
-	                  <span class="date"> # {{ article.created_at | date: "%B %d, %Y" }}</span>
-	                </a>
-	              </h4>
-	              <div class="excerpt">
-	                {{ article.content | truncate: 200 }}
-	              </div>
-	            </div>
-	           {% endfor %}
-          </div>
-          <div id="comments">
-            content here ...
-          </div>
-        </div>
-        
-        <div id="facebook">
-          <!--
-          <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like-box href="http://www.facebook.com/platform" width="292" show_faces="true" stream="false" header="false"></fb:like-box>
-          -->
-        </div>
-        
-        <div id="twitter">
-          {% assign twitter_id = "metamn" %}
-          {% assign twitter_limit = 50 %}
-        
-          <script type="text/javascript">
-            var counter = 0;
-            var BreakException= {};
-            
-            try {
-              jQuery.getJSON('http://twitter.com/statuses/followers.json?screen_name={{ twitter_id }}&callback=?',function(data){    
-              if (data) {                
-                data.forEach(function(datum) {  
-                  var str = '<div id="item">';
-                  str += '<a href="' + datum.url + '" title="' + datum.name + '">';
-                  str += '<img class="avatar" src="' + datum.profile_image_url + '" alt="' + datum.name + '" /></a>';
-                  str += '</div>';
-                  jQuery('#ecosystem #twitter #items').append(str);
-                  
-                  counter++;
-                  if(counter === {{ twitter_limit }}) throw BreakException;               
-                });
-              } 
-              });​
-            } catch(e) {
-                if (e!==BreakException) throw e;
-            }           
+          {% assign feed_url = "http://dodocase.posterous.com/rss.xml" %}
+          
+          <script type="text/javascript">            
+            var api = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q={{ feed_url }}&num=5";
+            jQuery.getJSON(api, function(data){				
+				      // Check for error
+				      if (data.responseStatus == 200) {	
+					      // Process the feeds
+					      var feed = data.responseData.feed;
+					      var msg = '<h1>' + feed.title + '</h1>';
+					      
+					      msg += '<ul>';		
+		            for (var i=0; i<feed.entries.length; i++) {			
+			            var entry = feed.entries[i];			
+			            var entryDate = new Date(entry.publishedDate);
+			            var pubDate = entryDate.toLocaleDateString();
+			
+			            msg += '<li><a href="'+ entry.link +'" title="View this feed at '+ feed.title +'">';				              
+				          msg += entry.title + '<span class="date"> # ' + pubDate + '</span></a>';
+				          //msg += '<div class="summary">'+ entry.content + '</div></li>';
+			          }			
+			          msg += '</ul>';
+			          
+				      } else {
+					      // Handle error if required
+					      if (options.showerror)
+						      if (options.errormsg != '') {
+							      var msg = options.errormsg;
+						      } else {
+							      var msg = data.responseDetails;
+						      };						      
+				      };
+				      jQuery("#feed").append(msg);
+			      });            
           </script>
+          <div id="feed"></div>          
+        </div>
+        
+        <!--
+        <div id="twitter">
           <div id="items">
+            {% assign twitter_id = "metamn" %}
+            {% assign twitter_limit = 50 %}
+          
+            <script type="text/javascript">
+              var counter = 0;
+              var BreakException= {};
+              
+              try {
+                jQuery.getJSON('http://twitter.com/statuses/followers.json?screen_name={{ twitter_id }}&callback=?',function(data){    
+                if (data) {                
+                  data.forEach(function(datum) {  
+                    if (datum.screen_name) {
+                      var str = '<div id="item">';
+                      str += '<a href="http://twitter.com/' + datum.screen_name + '" title="' + datum.screen_name + '">';
+                      str += '<img class="avatar" src="' + datum.profile_image_url + '" alt="' + datum.screen_name + '" /></a>';
+                      str += '</div>';
+                      jQuery('#ecosystem #twitter #items').append(str);
+                      
+                      counter++;
+                    }                    
+                    if(counter === {{ twitter_limit }}) throw BreakException;               
+                  });
+                } 
+                });​
+              } catch(e) {
+                  if (e!==BreakException) throw e;
+              }           
+            </script>          
           </div>
-        </div>      
+        </div>  
+        -->    
       </div>
       
       <div class="right col-2">
