@@ -23,7 +23,11 @@
 	<div id="header" class="block">
 	  <div class="container">
 		  <div id="logo" class="left">
-			  <a href="/" title="{{ shop.name }}">{{ shop.name }}</a>
+		    {% if settings.logo == "enabled" %}
+			    <img src="{{ "logo.png" | asset_url }}" alt="{{ shop.name | escape }}" /></a>
+			  {% else %}
+			    <a href="/" title="{{ shop.name }}">{{ shop.name | escape }}</a>
+			  {% endif %}
 			</div>
 			<div id="navigation" class="menu right alignright">
 			  {% capture active_url %}
@@ -94,7 +98,7 @@
 	  <div class="container">
 	    <div id="icons">	    
 	      <ul class="inline-list right">
-	        <li><img src="{{ 'wordpress.png' | asset_url }}" alt="News" /></li>
+	        <li><img src="{{ 'rss.png' | asset_url }}" alt="News" /></li>
 	        <li><img src="{{ 'facebook.png' | asset_url }}" alt="Friends" /></li>
 	        <li><img src="{{ 'twitter.png' | asset_url }}" alt="Buzz" /></li>
 	      </ul>
