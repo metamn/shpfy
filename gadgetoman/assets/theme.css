@@ -26,14 +26,22 @@ p {
   margin-bottom: 1.25em;
 }
 
+.index #intro h1, #header #logo h1 {
+  font-family: 'Ubuntu', arial, serif;  
+}
+.index #intro h1 {
+  font-size: 2.2em;
+}
+
+
 
 /* Theme
 
 - background: #f9f9f9;
-  - black: #3d3d3b 
+  - black: #3d3d3b     
   - highlight/orange: #ff3300
   - highlight/yellow: #ffb200
-  - gray: #f3f3f3
+  - gray: #f3f3f3, a3a3a0
   - dark gray: 4c4c4c
 
 */
@@ -53,6 +61,9 @@ body {
 }
 #header #logo {
   padding: .62em 0;
+}
+#header #logo h1 {
+  padding: 0;
 }
 .menu #item {
   margin-right: 1.52em !important;  
@@ -112,6 +123,21 @@ body {
   color: #3d3d3b;
   text-decoration: none;
 }
+.index #featured #item img {
+  max-width: 400px;
+  height: 400px; 
+}
+.index #featured #scroller {
+  text-align: center;
+  font-size: 1.5em;
+}
+.index #featured #scroller li.inactive {
+  color: #a3a3a0;
+}
+
+
+
+
 #latest {
   padding: 0 0 2.5em 0;
 }

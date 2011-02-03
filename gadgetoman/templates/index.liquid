@@ -2,14 +2,11 @@
   <div class="container">
     <div id="content" class="left col-1">
       
-      <div id="logo" class="block">
-        <h1><a href="/" title="{{ shop.name }}">{{ shop.name }}</a></h1>
-      </div>
-      
       {% assign article = pages.frontpage %}
       
       <div id="strapline" class="block">
-        <h2>{{ article.title }}</h2>
+        <!--<h1>{{ article.title }}</h1>-->
+        <h1>Making collaboration productive and enjoyable for people every day.</h1>
       </div>
       
       <div id="text" class="block">        
@@ -23,19 +20,37 @@
     </div>
     
     <div id="featured" class="right col-2">
-      {% for product in collections.frontpage.products limit: 1 offset: 0 %}
-	      <div id="item">	              
-          {% for image in product.images limit: 1 %}
-            <a href="{{ product.url | within: collections.all }}" title="">	    
-              <img src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" /></a>
+      <div id="items">
+        {% for product in collections.frontpage.products %}
+          {% assign klass = 'hidden' %}
+          {% if forloop.first %}
+            {% assign klass = 'visible' %}
+          {% endif %}
+	        <div id="item" class="{{ klass }} {{ forloop.index }}">	              
+            {% for image in product.images limit: 1 %}
+              <a href="{{ product.url | within: collections.all }}" title="">	    
+                <img src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" /></a>
+            {% endfor %}
+            <h6 class="title">
+              <a href="{{ product.url | within: collections.all }}" title="">
+                {{ product.title }} by {{ product.vendor }}
+              </a>
+            </h6>                  
+          </div>         
+	      {% endfor %}
+      </div>
+	    
+	    <div id="scroller">
+	      <ul class="inline-list">
+	        {% for product in collections.frontpage.products %}
+	          {% assign klass = 'inactive' %}
+	          {% if forloop.first %}
+              {% assign klass = 'active' %}
+            {% endif %}            
+            <li class="link {{ klass }} {{ forloop.index }}" rel="{{ forloop.index }}">&bull;</li>
           {% endfor %}
-          <h6 class="title">
-            <a href="{{ product.url | within: collections.all }}" title="">
-              {{ product.title }} by {{ product.vendor }}
-            </a>
-          </h6>          
-        </div>
-	    {% endfor %}
+        </ul>
+      </div>
     </div>
     
   </div>

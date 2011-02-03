@@ -192,7 +192,7 @@ img {
   float: right;
 }
 .hidden {
-  display: none;
+  display: none !important;
 }
 .alignright {
   text-align: right;
