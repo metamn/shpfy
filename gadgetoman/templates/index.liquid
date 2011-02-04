@@ -57,7 +57,7 @@
 
 <div id="latest" class="block">
   <div class="container">
-    <h3>Check out our latest items:</h3>
+    <h3><span class="highlight">Hot!</span> in the store now.</h3> 
     {% for product in collections.all.products limit:5 %}
       <div id="item">	    
         <div class="image">	      
@@ -73,6 +73,9 @@
         </div>
 	    </div>
     {% endfor %}  
+    <div id="call-for-subscribe" class="alignright right">
+      <h3><a href="#subscribe" class="subscribe">To stay updated please subscribe to our newsletter. It's free.</a></h3>
+    </div>
   </div>
 </div>  
   

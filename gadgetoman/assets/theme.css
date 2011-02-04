@@ -140,8 +140,31 @@ body {
 #latest {
   padding: 0 0 2.5em 0;
 }
+#latest h3 .highlight {
+  text-transform: uppercase;
+  font-style: normal;
+  background: #ffb200;
+  padding: .62em;
+}
+#latest h3 {
+  text-shadow: 1px 1px 2px #ddd;
+  font-style: italic;
+  color: #3d3d3b;
+  margin-bottom: .62em;
+}
+#latest h3 .subscribe {
+  color: #a3a3a0;
+  text-decoration: none;
+  font-size: small;
+}
+#call-for-subscribe {
+  margin-right: 5%;
+}
 #latest #item, .collection #items #item {
   background: #f3f3f3;
+  -moz-box-shadow: 0px 3px 10px #ddd;
+  -khtml-box-shadow: 0px 3px 10px #ddd;
+  -webkit-box-shadow: 0px 3px 10px #ddd;
 }
 #latest #item.hover, .collection #items #item.hover {  
   -moz-box-shadow: 0px 1px 7px #4c4c4c;
@@ -167,6 +190,9 @@ body {
   text-decoration: none;  
   padding: .62em;
   color: #3d3d3b;
+}
+#latest #item .title {
+  height: 3.5em;
 }
 
 #sales {
