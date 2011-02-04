@@ -300,7 +300,10 @@ body {
 #ecosystem #follow {
   margin: 2.5em 0;
 }
-#ecosystem #item {
+#ecosystem #twitter {
+  margin-top: 2.5em;
+}
+#ecosystem #twitter #item {
   text-align: left;
   float: left;
   height: 60px;
@@ -311,7 +314,7 @@ img.avatar {
   height: 48px;
 }
 #ecosystem .col-2 {
-  text-align: center;
+  text-align: right;
 }
 
 
@@ -319,8 +322,7 @@ img.avatar {
 #footer {
   background: #4c4c4c;
   background: -moz-linear-gradient(top, rgba(76, 76, 76, 1), rgba(61, 61, 59, 1));
-  position: relative;
-  top: -2.6em;
+  
 }
 #footer ul.menu li {
   margin-right: 1.25em;
