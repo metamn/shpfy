@@ -37,19 +37,17 @@ p {
 
 /* Theme
 
-- background: #f9f9f9;
+- background: #f3f3f3;
+  - grays light > dark: #f9f9f9, #f3f3f3, #dadada, #a3a3a0, #4c4c4c
   - black: #3d3d3b     
   - highlight/orange: #ff3300
-  - highlight/yellow: #ffb200
-  - gray: #f3f3f3, a3a3a0
-  - dark gray: 4c4c4c
-
+  - highlight/yellow: #ffb200  
 */
 
 
 
 body {
-  background: #f9f9f9;
+  background: #f3f3f3;
 }
 #header {
   background: #3d3d3b;
@@ -122,6 +120,7 @@ body {
 
 
 
+
 /* Index */
 
 .index #intro, .collection #navigation, #info {
@@ -145,7 +144,31 @@ body {
   color: #a3a3a0;
 }
 
-
+#latest-top.triangle-bottom {
+  width:0; 
+  height:0;
+  line-height:0;
+  border-top:30px solid #fff;
+  border-right:30px solid transparent;
+  border-bottom:30px solid transparent;
+  border-left:30px solid transparent;
+  position: relative;  
+  display: inline;
+  top: 2.4em;
+}
+#ecosystem-top.triangle-top {
+  width:0; 
+  height:0;
+  line-height:0;
+  border-top:30px solid transparent;
+  border-right:30px solid transparent;
+  border-bottom:30px solid #dadada;
+  border-left:30px solid transparent;
+  position: relative;  
+  display: inline;
+  top: -2.4em;
+  left: 17em;
+}
 
 #latest {
   padding: 0 0 2.5em 0;
@@ -155,13 +178,28 @@ body {
   font-style: normal;
   background: #ffb200;
   padding: .62em;
+  margin-right: 1.25em;
 }
 #latest h3 {
   text-shadow: 1px 1px 2px #ddd;
   font-style: italic;
   color: #3d3d3b;
-  margin-bottom: .62em;
+  padding-bottom: 0;
+  margin-top: 2.5em;
 }
+#latest .arrow-right {  
+  width:0; 
+  height:0;
+  line-height:0;
+  border-top:24px solid transparent;
+  border-right:24px solid transparent;
+  border-bottom:24px solid transparent;
+  border-left:24px solid #ffb200;
+  position: relative;
+  left: 4.4em;
+  top: -2.25em;
+}
+
 .subscribe a {
   color: #a3a3a0;
   text-decoration: none;
@@ -223,7 +261,7 @@ body {
   font-size: 3em;
   text-align: center;
 }
-.arrow-right {  
+#sale .arrow-right {  
   width:0; 
   height:0;
   line-height:0;
@@ -299,8 +337,10 @@ body {
 #eco.index {
   display: none;
 }
+
+
 #ecosystem {
-  background: #f3f3f3;
+  background: #dadada;
   padding-bottom: 3.75em;
 }
 #ecosystem.index {

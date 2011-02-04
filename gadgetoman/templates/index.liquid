@@ -53,11 +53,14 @@
       </div>    
     </div>
   </div>
-</div>  
+</div> 
+
 
 <div id="latest" class="block">
   <div class="container">
-    <h3><span class="highlight">Hot!</span> in the store now.</h3> 
+    <div id="latest-top" class="triangle-bottom"></div>
+    <h3><span class="highlight">Hot!</span> in the store now.</h3>
+    <div class="arrow-right"></div> 
     {% for product in collections.all.products limit:5 %}
       <div id="item">	    
         <div class="image">	      
