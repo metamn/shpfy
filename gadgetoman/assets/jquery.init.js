@@ -3,6 +3,13 @@ jQuery.noConflict();
 // Use jQuery via jQuery(...)
 jQuery(document).ready(function(){
   
+  // Click on Search in the Header
+  jQuery(".menu .search").click(function(){
+    // hide all menu items 
+    jQuery("#shopping-menu").children(".item").hide();
+    jQuery("#header .search-menu").fadeIn('slow');
+  });
+  
   // Hover on .notice
   jQuery(".notice").hover(
     function () {

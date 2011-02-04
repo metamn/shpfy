@@ -160,7 +160,7 @@ p {
 */
 
 .button, .button a {
-  background: #99FF33;
+  /*background: #99FF33;*/
   color: #333 !important;  
 }
 .button a {
@@ -192,7 +192,7 @@ img {
   float: right;
 }
 .hidden {
-  display: none !important;
+  display: none;
 }
 .alignright {
   text-align: right;

@@ -70,13 +70,16 @@
 					  </div>
 					  {% endfor %}
 					{% endif %}
+					  <div id="item" class="search last">
+					    <span class="search link">Search</span>
+					  </div>
 				</div>
 				<div class="clear"></div>
 					
 			  <div id="shopping-menu" class="menuline right alignright">	
 			    {% if linklists.shopping-menu.links.size > 0 %}				
 				    {% for link in linklists.shopping-menu.links %}
-					  <div id="item" 
+					  <div id="item" class="item"> 
 					    {% if forloop.last %}
 					      {% if cart.item_count == 0 %} class="last"
 					      {% endif %}
@@ -85,6 +88,13 @@
 					  </div>
 					  {% endfor %}
 					{% endif %}						
+										
+					<div id="item" class="search-menu">
+				    <form action="/search" method="get">
+			        <input class="text" type="text" name="q" /> 
+			        <input class="link button rounded" type="submit" value="Search"  />
+		        </form>
+				  </div>
 									
 				  <div class="triangle-left"></div>						
 				  <div id="item" class="cart last">					  					  		  				  
@@ -94,6 +104,7 @@
 				    </a>			  
 			    </div>			  
 				</div>
+				
 			</div>			
 		</div>
 	</div>
@@ -125,6 +136,7 @@
 	  </div>  
 	</div>
 	
+	<!--
 	
 	<div id="ecosystem" class="{{ template }} block hidden">
     <div class="container">
@@ -235,7 +247,7 @@
     </div>
   </div> 
   
-
+  -->
 		
 	<div id="footer" class="block">
 	  <div class="container">
