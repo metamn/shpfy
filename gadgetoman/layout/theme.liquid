@@ -8,8 +8,11 @@
 	{{ 'grid.css' | asset_url | stylesheet_tag }}	
 	{{ 'theme.css' | asset_url | stylesheet_tag }}	
 	<!--[if lte IE 6]>{{ 'ie.css' | asset_url | stylesheet_tag }}<![endif]-->
+	
+	{{ 'nivo-slider.css' | asset_url | stylesheet_tag }}
 			
 	{{ 'jquery-1.4.3.min.js' | asset_url | script_tag }}  
+	{{ 'jquery.nivo.slider.pack.js' | asset_url | script_tag }}  	
 	{{ 'jquery.init.js' | asset_url | script_tag }}
 	
 	<!--

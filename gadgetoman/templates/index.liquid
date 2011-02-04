@@ -20,37 +20,15 @@
     </div>
     
     <div id="featured" class="right col-2">
-      <div id="items">
-        {% for product in collections.frontpage.products %}
-          {% assign klass = 'hidden' %}
-          {% if forloop.first %}
-            {% assign klass = 'visible' %}
-          {% endif %}
-	        <div id="item" class="{{ klass }} {{ forloop.index }}">	              
-            {% for image in product.images limit: 1 %}
-              <a href="{{ product.url | within: collections.all }}" title="">	    
-                <img src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" /></a>
-            {% endfor %}
-            <h6 class="title">
-              <a href="{{ product.url | within: collections.all }}" title="">
-                {{ product.title }} by {{ product.vendor }}
-              </a>
-            </h6>                  
-          </div>         
+      <div id="items" class="nivoSlider">
+        {% for product in collections.frontpage.products offset: 0 %}                       
+          {% for image in product.images limit: 1 %}
+            <a href="{{ product.url | within: collections.all }}">
+              <img src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" title="{{ product.title | escape }}"/>
+            </a>
+          {% endfor %}                   
 	      {% endfor %}
-      </div>
-	    
-	    <div id="scroller">
-	      <ul class="inline-list">
-	        {% for product in collections.frontpage.products %}
-	          {% assign klass = 'inactive' %}
-	          {% if forloop.first %}
-              {% assign klass = 'active' %}
-            {% endif %}            
-            <li class="link {{ klass }} {{ forloop.index }}" rel="{{ forloop.index }}">&bull;</li>
-          {% endfor %}
-        </ul>
-      </div>
+      </div>    
     </div>
     
   </div>

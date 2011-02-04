@@ -3,7 +3,14 @@ jQuery.noConflict();
 // Use jQuery via jQuery(...)
 jQuery(document).ready(function(){
   
-  
+  jQuery('.index #featured #items').nivoSlider({
+    effect: 'random',
+    directionNavHide: false,
+    controlNav: false,
+    manualAdvance: true,
+    captionOpacity: 1
+  });
+
   // Scrolling featured products
   jQuery(".index #featured #scroller .link").click(function(){        
     var index = jQuery(this).attr('rel');
