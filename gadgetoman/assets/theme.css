@@ -125,31 +125,15 @@ body {
 }
 .index #featured #item img {
   max-width: 400px;
-  height: 400px; 
+  height: 400px;
 }
-.index #featured #items {
-  background-position: center top !important;
-}
-.index #featured .nivo-caption {
-  background: none;
+.index #featured #scroller {
   text-align: center;
-  color: #3d3d3b;
-  font-size: 1em; 
-  padding: 1.25em 0; /* <h6> */
-  font-style: italic;
-  font-weight: bold;
+  font-size: 1.5em;
 }
-.index #featured .nivo-directionNav a {
-  
-    background: url(arrows.png) no-repeat scroll 0 0 transparent;
-    border: 0 none;
-    display: block;
-    height: 30px;
-    text-indent: -9999px;
-    width: 30px;
-
+.index #featured #scroller li.inactive {
+  color: #a3a3a0;
 }
-
 
 
 
