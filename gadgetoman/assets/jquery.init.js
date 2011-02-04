@@ -3,7 +3,7 @@ jQuery.noConflict();
 // Use jQuery via jQuery(...)
 jQuery(document).ready(function(){
   
-  
+
   // Scrolling featured products
   jQuery(".index #featured #scroller .link").click(function(){        
     var index = jQuery(this).attr('rel');
@@ -11,7 +11,7 @@ jQuery(document).ready(function(){
     jQuery(".index #featured #items").children().addClass('hidden');
     jQuery(".index #featured #scroller ul").children().addClass('inactive');
     // show
-    jQuery(".index #featured #items ." + index).fadeIn(1000);
+    jQuery(".index #featured #items ." + index).fadeIn('slow');
     jQuery(".index #featured #items ." + index).removeClass('hidden');
     jQuery(".index #featured #scroller ul ." + index).removeClass('inactive');
     jQuery(".index #featured #scroller ul ." + index).addClass('active');
