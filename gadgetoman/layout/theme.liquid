@@ -125,7 +125,7 @@
 	  </div>  
 	</div>
 	
-	<!--
+	
 	<div id="ecosystem" class="{{ template }} block hidden">
     <div class="container">
       <div class="left col-1">
@@ -143,14 +143,14 @@
 					      var feed = data.responseData.feed;
 					      var msg = '<h1>' + feed.title + '</h1>';
 					      
-					      msg += '<ul>';		
+					      msg += '<ul class="list">';		
 		            for (var i=0; i<feed.entries.length; i++) {			
 			            var entry = feed.entries[i];			
 			            var entryDate = new Date(entry.publishedDate);
 			            var pubDate = entryDate.toLocaleDateString();
 			
-			            msg += '<li><a href="'+ entry.link +'" title="View this feed at '+ feed.title +'">';				              
-				          msg += entry.title + '<span class="date"> # ' + pubDate + '</span></a>';
+			            msg += '<li><h5 class="article-title"><a href="'+ entry.link +'" title="View this feed at '+ feed.title +'">';				              
+				          msg += entry.title + '<span class="date"> # ' + pubDate + '</span></a></h5></li>';
 				          //msg += '<div class="summary">'+ entry.content + '</div></li>';
 			          }			
 			          msg += '</ul>';
@@ -231,7 +231,7 @@
       </div>    
     </div>
   </div> 
-  -->
+  
 
 		
 	<div id="footer" class="block">

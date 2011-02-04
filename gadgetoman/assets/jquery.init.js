@@ -3,6 +3,15 @@ jQuery.noConflict();
 // Use jQuery via jQuery(...)
 jQuery(document).ready(function(){
   
+  // Hover on .notice
+  jQuery(".notice").hover(
+    function () {
+      jQuery(this).addClass('notice-hover');
+    },
+    function () {
+      jQuery(this).removeClass('notice-hover');
+    }
+  );
 
   // Scrolling featured products
   jQuery(".index #featured #scroller .link").click(function(){        
@@ -16,6 +25,7 @@ jQuery(document).ready(function(){
     jQuery(".index #featured #scroller ul ." + index).removeClass('inactive');
     jQuery(".index #featured #scroller ul ." + index).addClass('active');
   }); 
+    
     
   // Highlight products on hover
   jQuery("#latest #item, #sales #item, .collection #items #item").hover(

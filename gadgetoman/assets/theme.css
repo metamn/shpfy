@@ -76,6 +76,7 @@ body {
 .menu #item a {  
   padding: .62em 0;
 }
+
 .menu #item.last {
   margin-right: 0 !important;  
 }
@@ -116,7 +117,7 @@ body {
 
 .index #intro, .collection #navigation, #info {
   background: url(stripe.png);
-  border-bottom: 1px solid #ededed;
+  border-bottom: 1px solid #f3f3f3;
   padding: 2.5em 0;
 }
 .index #logo h1 a, .index #logo h1 a:visited, .article h1 a, .article h1 a:visited {
@@ -152,10 +153,19 @@ body {
   color: #3d3d3b;
   margin-bottom: .62em;
 }
-#latest h3 .subscribe {
+.subscribe a {
   color: #a3a3a0;
   text-decoration: none;
   font-size: small;
+  text-shadow: 1px 1px 2px #ddd;
+  font-style: italic;
+}
+.notice {    
+  padding: .31em; 
+}
+.notice-hover, .notice-hover a {
+  background: #ffb200;
+  color: #3d3d3b; 
 }
 #call-for-subscribe {
   margin-right: 5%;
@@ -247,11 +257,11 @@ body {
   position: relative;
   top: -25%;
 }
-
-#ecosystem {
-  background: #f3f3f3;
-  padding-bottom: 3.75em;
+#sales .subscribe {
+  text-align: center;
 }
+
+
 #eco {
   background: #f9f9f9;
 }
@@ -280,10 +290,16 @@ body {
 #eco.index {
   display: none;
 }
-#ecosystem.index {
-  display: block;
+#ecosystem {
+  background: #f3f3f3;
+  padding-bottom: 3.75em;
 }
-
+#ecosystem.index {
+  display: block !important;
+}
+#ecosystem #follow {
+  margin: 2.5em 0;
+}
 #ecosystem #item {
   text-align: left;
   float: left;
@@ -293,6 +309,9 @@ body {
 img.avatar {
   width: 48px;
   height: 48px;
+}
+#ecosystem .col-2 {
+  text-align: center;
 }
 
 
@@ -324,19 +343,27 @@ img.avatar {
 
 /* Collection */
 
-.collection #navigation #categories ul, ul.comments {
+ul.list {
   list-style-type: none;
   margin: 0;
 }
-.collection #navigation #categories ul li, ul.comments li {
+ul.list li {
   padding: .31em 0;
   border-bottom: 1px solid #ccc;
 }
-.collection #navigation #categories ul li a, .collection #navigation #categories ul li a:visited,
-.blog ul.comments li a, .blog ul.comments li a:visited {
+ul.list li a, ul.list li a:visited {
   text-decoration: none;
   color: #3d3d3b;
 }
+.article-title {
+  padding: 0;
+  margin: .31em 0;
+}
+.date {
+  font-size: small;
+  color: #9d9d9d;
+}
+
 .collection #navigation #tags a, .collection #navigation #tags a:visited {
   text-decoration: none;
 }
@@ -371,10 +398,6 @@ img.avatar {
 }
 #articles #article .title, #articles #article .title a {
   padding: 0;
-}
-#articles #article .title .date {
-  font-size: small;
-  color: #9d9d9d;
 }
 .blog ul.comments li {
   padding: .62em 0;

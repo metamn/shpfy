@@ -12,7 +12,7 @@
 	      {% endif %}
 	    </div>
 	    {% if collections.size > 0 %}
-        <ul class="categories">
+        <ul class="list">
       	  {% for c in collections %}
       	    {% if c.handle != "frontpage" %}
       		    <li><a href="{{ c.url }}"{% if collection.url == c.url %} class="active"{% endif %}>{{ c.title | upcase }}</a></li>
