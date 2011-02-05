@@ -439,6 +439,16 @@ ul.list li a, ul.list li a:visited {
 .collection #current-collection h2 {
   padding-top: .31em;
 }
+.accordion h3 {
+  padding-bottom: .31em;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+.accordion .pane {
+  display: none;
+  margin: .62em 0;
+  padding: 0 .62em;
+}
 
 
 

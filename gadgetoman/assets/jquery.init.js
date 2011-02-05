@@ -2,6 +2,26 @@ jQuery.noConflict();
      
 // Use jQuery via jQuery(...)
 jQuery(document).ready(function(){
+
+
+  // Accordions
+  
+  // Open the first pane
+  jQuery(".accordion h3.first").addClass("current");
+  jQuery(".accordion h3.first").next(".pane").show();
+  
+  jQuery(".accordion h3").toggle(
+    function () {
+      jQuery(this).addClass("current");
+      jQuery(this).next(".pane").show();
+    },
+    function () {
+      jQuery(this).removeClass("current");
+      jQuery(this).next(".pane").hide();
+    }
+  );
+  
+  
   
   // Click on Search in the Header
   jQuery(".menu .search").click(function(){

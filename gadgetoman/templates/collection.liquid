@@ -29,72 +29,121 @@
       </script>
       <!-- end hack --> 
       
-      {% if collection.description %}
-        <div id="description" class="block">
-          {{ collection.description }}
-        </div>
-      {% endif %}
-      
-      <div id="tags" class="block">
-        <h3>Tags for <em>{{ collection.title }}</em></h3>
-        <ul class="inline-list">
-          {% for tag in collection.all_tags %}
-            <li>
-              {{ tag | highlight_active_tag | link_to_tag: tag }}
-            </li>
-          {% endfor %}
-        </ul>
-      </div> 
-      
-      <h3>Remaining tags</h3> 
-      <ul class="inline-list">
-          {% for tag in collection.tags %}
-            <li>
-              {{ tag | highlight_active_tag | link_to_tag: tag }}
-            </li>
-          {% endfor %}
-        </ul>
+      <div class="accordion">
+        {% if collection.description.size > 0 %}
+          <h3>Description</h3>
+          <div id="description" class="pane">
+            {{ collection.description }}
+          </div>
+        {% endif %}
         
-      
-      <h3>Product Types</h3>  
-      <ul>
-        {% for product_type in collection.all_types %}
-          <li>
-            {{ product_type | link_to_type  }}
-          </li>
-        {% endfor %}
-      </ul>
+        {% if collection.all_tags.size > 0 %}
+          <h3 class="first">Tags for <em>{{ collection.title }}</em></h3>
+          <div id="tags" class="pane">        
+            <ul class="inline-list">
+              {% for tag in collection.all_tags %}
+                <li>
+                  {{ tag | highlight_active_tag | link_to_tag: tag }}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %} 
+        
+        {% if collection.tags.size > 0 and collection.all_tags.size > 0 and collection.tags.size != collection.all_tags.size %}
+          <h3>Similar tags</h3> 
+          <div id="tags" class="pane">
+            <ul class="inline-list">
+              {% for tag in collection.tags %}
+                <li>
+                  {{ tag | highlight_active_tag | link_to_tag: tag }}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+          
+        
+        {% if collection>all_types.size > 0 %}
+          <h3>Product Types</h3>  
+          <div class="pane">
+            <ul class="list">
+              {% for product_type in collection.all_types %}
+                <li>
+                  {{ product_type | link_to_type  }}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
 
-      <h3>Product Vendors</h3>  
-      <ul>
-        {% for product_vendor in collection.all_vendors %}
-          <li>
-            {{ product_vendor | link_to_vendor  }}
-          </li>
-        {% endfor %}
-      </ul>      
+        {% if collection.all_vendors.size > 0 %}
+          <h3>Product Vendors</h3>  
+          <div class="pane">
+            <ul class="list">
+              {% for product_vendor in collection.all_vendors %}
+                <li>
+                  {{ product_vendor | link_to_vendor  }}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      </div>
+            
     </div>
     
     <div id="taxonomies" class="right col-2">
-      <div id="collections" class="block">
-        <h3>All collections</h3>
-        <ul class="list">
-      	  {% for i in collections %}      	    
-      		  <li {% if collection.url == i.url %} class="active"{% endif %}>
-      		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title | upcase }}</a>
-      		  </li>
-      		{% endfor %}
-      	</ul>
-      </div>
       
-            
-      <div id="search" class="block">
+      <div class="accordion">        
+        {% if collections.size > 0 %}
+          <h3 class="first">All collections</h3>
+          <div class="pane">        
+            <ul class="list">
+          	  {% for i in collections %}      	    
+          		  <li {% if collection.url == i.url %} class="active"{% endif %}>
+          		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title | upcase }}</a>
+          		  </li>
+          		{% endfor %}
+          	</ul>
+          </div> 
+        {% endif %}     
+      
+      
+        {% if shop.vendors.size > 0 %}
+          <h3>All vendors</h3>
+          <div class="pane">   
+            <ul class="list">
+            	{% for product_vendor in shop.vendors %}
+                <li>
+                  {{ product_vendor | link_to_vendor  }}
+                </li>
+              {% endfor %}
+            	</ul>
+          </div>
+        {% endif %}
+        
+        {% if shop.types.size > 0 %}
+          <h3>All product types</h3>
+          <div class="pane">   
+            <ul class="list">
+            	{% for product_type in shop.types %}
+                <li>
+                  {{ product_type | link_to_type  }}
+                </li>
+              {% endfor %}
+            	</ul>
+          </div>
+        {% endif %}
+        
         <h3>Search</h3>
-		    <form action="/search" method="get">
-			    <input class="text" type="text" name="q" /> 
-			    <input class="link button greenb rounded" type="submit" value="Go"  />
-		    </form>
-      </div>
+        <div id="search" class="pane">        
+		      <form action="/search" method="get">
+			      <input class="text" type="text" name="q" /> 
+			      <input class="link button greenb rounded" type="submit" value="Go"  />
+		      </form>
+        </div>
+      </div>      
     </div>	  	
   </div>
 </div>
