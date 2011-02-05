@@ -200,20 +200,7 @@ body {
   top: -2.25em;
 }
 
-.subscribe a {
-  color: #a3a3a0;
-  text-decoration: none;
-  font-size: small;
-  text-shadow: 1px 1px 2px #ddd;
-  font-style: italic;
-}
-.notice {    
-  padding: .31em; 
-}
-.notice-hover, .notice-hover a {
-  background: #ffb200;
-  color: #3d3d3b; 
-}
+
 #call-for-subscribe {
   margin-right: 5%;
 }
@@ -310,10 +297,12 @@ body {
 
 
 #eco {
-  background: #f9f9f9;
+  background: #f3f3f3;
 }
-#eco.page, #eco.blog, #eco.article {
-  background: url(stripe.png);
+#eco #icons {
+  position: relative;
+  top: 2.6em;
+  z-index: 0;
 }
 #eco #icons, #eco ul {  
   padding: .62em 1.25em;
@@ -356,6 +345,7 @@ body {
   text-align: left;
   float: left;
   height: 60px;
+  width: auto;
   margin: 0 .31em;
 }
 img.avatar {
@@ -371,6 +361,8 @@ img.avatar {
 #footer {
   background: #4c4c4c;
   background: -moz-linear-gradient(top, rgba(76, 76, 76, 1), rgba(61, 61, 59, 1));
+  position: relative;
+  z-index: 1;
   
 }
 #footer ul.menu li {
@@ -414,7 +406,6 @@ ul.list li a, ul.list li a:visited {
   font-size: small;
   color: #9d9d9d;
 }
-
 .collection #navigation #tags a, .collection #navigation #tags a:visited {
   text-decoration: none;
 }
@@ -441,6 +432,15 @@ ul.list li a, ul.list li a:visited {
 #paginate .current {
   border: none;
 }
+.collection #latest-top.triangle-bottom {
+  top: -.1em;
+  left: -53em;
+}
+.collection #current-collection h2 {
+  padding-top: .31em;
+}
+
+
 
 /* Blog */
 

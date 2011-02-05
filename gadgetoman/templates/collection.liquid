@@ -1,58 +1,107 @@
 <div id="navigation" class="block">
-  <div class="container">      
-	  <div id="categories" class="left col-1">
-	    <div id="collection-title">
-        {% if collection.title %}  
-          <h6>{{ collection.title }}</h6>
-	        {% if collection.description.size > 0 %}
-	          <div id="collection-desc">
-	            {{ collection.description }}
-	          </div>
-	        {% endif %}
-	      {% endif %}
-	    </div>
-	    {% if collections.size > 0 %}
-        <ul class="list">
-      	  {% for c in collections %}
-      	    {% if c.handle != "frontpage" %}
-      		    <li><a href="{{ c.url }}"{% if collection.url == c.url %} class="active"{% endif %}>{{ c.title | upcase }}</a></li>
-      		  {% endif %}
-      		{% endfor %}
-      	</ul>
-	    {% else %}
-      	<p>Once you <a href="{{ shop.url }}/admin/custom_collections">add some collections</a>, they will be displayed like this...</p>
-      	<ul>
-      		<li><a href="">EXAMPLE COLLECTION 1</a></li>
-      		<li><a href="">EXAMPLE COLLECTION 2</a></li>
-      		<li><a href="">EXAMPLE COLLECTION 3</a></li>
-      	</ul>
+  <div class="container"> 
+    <div id="current-collection" class="left col-1">      
+      <span class="note tag-title-intro">Current collection</span>
+      <h2>
+        {{ collection.title }}
+        <span class="tag-title"></span>
+        // {{ collection.products_count }} items
+      </h2>
+      
+      <!-- Hack: getting the tag title, if any -->
+      <div id="current-tags-hidden" class="hidden">
+        <h3>{{ collection.title }} tags</h3>
+        <ul class="inline-list">
+          {% for tag in collection.tags %}
+            <li>
+              {{ tag | highlight_active_tag | link_to_tag: tag }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>              
+      
+      <script type="text/javascript">
+        var tag =  jQuery("#current-collection #current-tags-hidden ul").children().find("span").html();
+        if (tag) {
+          jQuery(".tag-title-intro").append(' and tag');
+          jQuery(".tag-title").append(' // ' + tag);
+        }
+      </script>
+      <!-- end hack --> 
+      
+      {% if collection.description %}
+        <div id="description" class="block">
+          {{ collection.description }}
+        </div>
       {% endif %}
-	  </div>
-	  
-	  <div id="search" class="right col-2">
-	    <h6>Search</h6>
-		  <form action="/search" method="get">
-			  <input class="text" type="text" name="q" /> 
-			  <input class="link button greenb rounded" type="submit" value="Go"  />
-		  </form>
-	  </div>
-	
-	  {% if tags %}
-    <div id="tags" class="block">
-      <h6>Tags</h6>
+      
+      <div id="tags" class="block">
+        <h3>Tags for <em>{{ collection.title }}</em></h3>
+        <ul class="inline-list">
+          {% for tag in collection.all_tags %}
+            <li>
+              {{ tag | highlight_active_tag | link_to_tag: tag }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div> 
+      
+      <h3>Remaining tags</h3> 
       <ul class="inline-list">
-        {% for tag in collection.tags %}  
-          <li>{{ tag | link_to_tag: tag }}, </li>
+          {% for tag in collection.tags %}
+            <li>
+              {{ tag | highlight_active_tag | link_to_tag: tag }}
+            </li>
+          {% endfor %}
+        </ul>
+        
+      
+      <h3>Product Types</h3>  
+      <ul>
+        {% for product_type in collection.all_types %}
+          <li>
+            {{ product_type | link_to_type  }}
+          </li>
         {% endfor %}
       </ul>
+
+      <h3>Product Vendors</h3>  
+      <ul>
+        {% for product_vendor in collection.all_vendors %}
+          <li>
+            {{ product_vendor | link_to_vendor  }}
+          </li>
+        {% endfor %}
+      </ul>      
     </div>
-    {% endif %}
-	  
-	</div>  
+    
+    <div id="taxonomies" class="right col-2">
+      <div id="collections" class="block">
+        <h3>All collections</h3>
+        <ul class="list">
+      	  {% for i in collections %}      	    
+      		  <li {% if collection.url == i.url %} class="active"{% endif %}>
+      		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title | upcase }}</a>
+      		  </li>
+      		{% endfor %}
+      	</ul>
+      </div>
+      
+            
+      <div id="search" class="block">
+        <h3>Search</h3>
+		    <form action="/search" method="get">
+			    <input class="text" type="text" name="q" /> 
+			    <input class="link button greenb rounded" type="submit" value="Go"  />
+		    </form>
+      </div>
+    </div>	  	
+  </div>
 </div>
 
 <div id="items" class="block">
   <div class="container">
+    <div id="latest-top" class="triangle-bottom"></div>
     {% paginate collection.products by 6 %}
     {% if collection.products.size == 0 %}
 	    <h3>No products in this collection.</h3>
@@ -89,4 +138,6 @@
 	  {% endpaginate %}
   </div>
 </div>
+
+
 	
