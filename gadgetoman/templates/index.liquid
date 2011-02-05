@@ -55,7 +55,7 @@
   </div>
 </div> 
 
-
+{% if collections.all.products.size > 110 %}
 <div id="latest" class="block">
   <div class="container">
     <div id="latest-top" class="triangle-bottom"></div>
@@ -82,8 +82,11 @@
       </div>
     </div>
   </div>
-</div>  
-  
+</div> 
+{% endif %} 
+
+
+{% if collections.all.products.size > 110 %}  
 <div id="sales" class="block">
   <div class="container">
     <div id="sale" class="left col-1">
@@ -124,6 +127,7 @@
     </div>
   </div>
 </div>   
+{% endif %}
 
 
 	

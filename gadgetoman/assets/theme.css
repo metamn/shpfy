@@ -49,6 +49,12 @@ p {
 body {
   background: #f3f3f3;
 }
+
+.page, .collection, .index {
+  min-height: 40em;
+}
+
+
 #header {
   background: #3d3d3b;
   border-bottom: 1px solid #2d2d2d;
@@ -363,7 +369,7 @@ img.avatar {
   background: -moz-linear-gradient(top, rgba(76, 76, 76, 1), rgba(61, 61, 59, 1));
   position: relative;
   z-index: 1;
-  
+  padding: 2.5em 0;  
 }
 #footer ul.menu li {
   margin-right: 1.25em;
@@ -382,6 +388,13 @@ img.avatar {
   border: 1px solid #ededed; 
 }
 
+#product #info, #product #latest, #product #sales {
+  margin-bottom: 2.5em;
+}
+#product #description {
+  margin-top: 2.5em;
+}
+
 
 
 /* Collection */
@@ -391,12 +404,15 @@ ul.list {
   margin: 0;
 }
 ul.list li {
-  padding: .31em 0;
+  padding: .62em 0.31em .31em;
   border-bottom: 1px solid #ccc;
 }
 ul.list li a, ul.list li a:visited {
   text-decoration: none;
   color: #3d3d3b;
+}
+ul.list li.active, .collection #current-collection .active {
+  background: #f3f3f3;
 }
 .article-title {
   padding: 0;
@@ -473,29 +489,6 @@ ul.list li a, ul.list li a:visited {
   margin-bottom: 1.25em;
   font-size: small;
 }
-
-
-
-
-
-
-/* Single product
-*/
-
-#product #info, #product #latest, #product #sales {
-  margin-bottom: 2.5em;
-}
-#product #description {
-  margin-top: 2.5em;
-}
-
-/* Footer
-*/
-
-#footer {
-  padding: 2.5em 0;  
-}
-
 
 
 

@@ -1,49 +1,65 @@
 <div id="navigation" class="block">
-  <div class="container">
-    <div id="categories" class="left col-1">
-      <div id="collection-title">
-        <h6>Search results for: {{ search.terms }}</h6>
-	    </div>
-	    {% if collections.size > 0 %}
-        <ul class="categories">
-      	  {% for c in collections %}
-      	    {% if c.handle != "frontpage" %}
-      		    <li><a href="{{ c.url }}"{% if collection.url == c.url %} class="active"{% endif %}>{{ c.title | upcase }}</a></li>
-      		  {% endif %}
-      		{% endfor %}
-      	</ul>
-	    {% else %}
-      	<p>Once you <a href="{{ shop.url }}/admin/custom_collections">add some collections</a>, they will be displayed like this...</p>
-      	<ul>
-      		<li><a href="">EXAMPLE COLLECTION 1</a></li>
-      		<li><a href="">EXAMPLE COLLECTION 2</a></li>
-      		<li><a href="">EXAMPLE COLLECTION 3</a></li>
-      	</ul>
-      {% endif %}
-	  </div>
-	  
-	  <div id="search" class="right col-2">
-	    <h6>Search</h6>
-		  <form action="/search" method="get">
-			  <input class="text" type="text" name="q" /> 
-			  <input class="link button greenb rounded" type="submit" value="Go"  />
-		  </form>
-	  </div>
-	
-	  {% if tags %}
-    <div id="tags" class="block">
-      <h6>Tags</h6>
-      <ul class="inline-list">
-        {% for tag in collection.tags %}  
-          <li>{{ tag | link_to_tag: tag }}</li>
-        {% endfor %}
-      </ul>
+  <div class="container"> 
+    <div id="current-collection" class="left col-1">      
+      <h2>
+        Search results for: {{ search.terms }}
+      </h2>            
     </div>
-    {% endif %}
-	  
-	</div>  
-</div>
-
+    
+    <div id="taxonomies" class="right col-2">      
+      <div class="accordion">        
+        {% if collections.size > 0 %}
+          <h3 class="first">All collections</h3>
+          <div class="pane">        
+            <ul class="list">
+          	  {% for i in collections %}      	    
+          		  <li {% if collection.url == i.url %} class="active"{% endif %}>
+          		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title | upcase }}</a>
+          		  </li>
+          		{% endfor %}
+          	</ul>
+          </div> 
+        {% endif %}           
+      
+        {% if shop.vendors.size > 0 %}
+          <h3>All vendors</h3>
+          <div class="pane">   
+            <ul class="list">
+            	{% for product_vendor in shop.vendors %}
+                <li>
+                  {{ product_vendor | link_to_vendor  }}
+                </li>
+              {% endfor %}
+            	</ul>
+          </div>
+        {% endif %}
+        
+        {% if shop.types.size > 0 %}
+          <h3>All product types</h3>
+          <div class="pane">   
+            <ul class="list">
+            	{% for product_type in shop.types %}
+                <li>
+                  {{ product_type | link_to_type  }}
+                </li>
+              {% endfor %}
+            	</ul>
+          </div>
+        {% endif %}
+        
+        <h3>Search</h3>
+        <div id="search" class="pane">        
+		      <form action="/search" method="get">
+			      <input class="text" type="text" name="q" /> 
+			      <input class="link button greenb rounded" type="submit" value="Go"  />
+		      </form>
+        </div>
+      </div>      
+    </div>	  	
+  </div>
+</div>  
+    
+    
 <div id="items" class="block">
   <div class="container">
     {% paginate search.results by 6 %}
