@@ -425,8 +425,6 @@ img.avatar {
   top: -.1em;
 }
 
-
-
 .sidebar h3 {
   padding-bottom: .31em;
 }
@@ -434,6 +432,38 @@ img.avatar {
   width: 32px;
   height: 32px;
 }
+
+
+/* Checkout */
+
+.cart table tr.first td {
+  vertical-align: middle; 
+  padding: 0 1em; 
+}
+.cart table tr.second td {
+  vertical-align: top; 
+  padding: 0 1.25em 1.25em;
+  border-bottom: 1px solid #ededed;
+  font-size: small;
+}
+.cart table td.image {
+  vertical-align: top;
+}
+.cart table td.update {
+  width: 30%;
+}
+.cart table td.update input.quantity {
+  width: 3em;
+}
+.cart table td.update input.update {
+  width: 6em;
+}
+.cart #checkout .button {
+  top: -0.5em;
+  position: relative;
+}
+
+
 
 
 /* Collection */
