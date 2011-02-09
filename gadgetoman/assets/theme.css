@@ -551,7 +551,9 @@ ul.list li.active, .collection #current-collection .active {
 .blog ul.comments li {
   padding: .62em 0;
 }
-
+.article .body {
+  margin: 2.5em 0;
+}
 .article .meta {
   background: #f9f9f9;
   padding: .62em;

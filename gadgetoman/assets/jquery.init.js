@@ -44,7 +44,7 @@ jQuery(document).ready(function(){
   jQuery(".index #featured #scroller .link").click(function(){        
     var index = jQuery(this).attr('rel');
     // hide all    
-    jQuery(".index #featured #items").children().addClass('hidden');
+    jQuery(".index #featured #items").children().hide();
     jQuery(".index #featured #scroller ul").children().addClass('inactive');
     // show
     jQuery(".index #featured #items ." + index).fadeIn('slow');
@@ -82,7 +82,7 @@ jQuery(document).ready(function(){
   // Click on Thumbnail at the Product page
   jQuery("#product #thumbs img.link").click(function(){
     var newImage = jQuery(this).attr('rev');  
-    var wrap = jQuery(this).parent().parent().prev().children();    
+    var wrap = jQuery("#product-image");    
     var img = new Image();
     img.onload = function() {
       // change the image
