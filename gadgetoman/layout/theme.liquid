@@ -144,46 +144,51 @@
       <div class="left col-1">
         
         <div id="blog">
-          {% assign feed_url = "http://gadgetoman.myshopify.com/blogs/news.atom" %}
-          {% assign feed_limit = 5 %}
-          
-          <script type="text/javascript">            
-            var api = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q={{ feed_url }}&num={{ feed_limit }}";
-            jQuery.getJSON(api, function(data){				
-				      // Check for error
-				      if (data.responseStatus == 200) {	
-					      // Process the feeds
-					      var feed = data.responseData.feed;
-					      var msg = '<h1>' + feed.title + '</h1>';
-					      
-					      msg += '<ul class="list">';		
-		            for (var i=0; i<feed.entries.length; i++) {			
-			            var entry = feed.entries[i];			
-			            var entryDate = new Date(entry.publishedDate);
-			            var pubDate = entryDate.toLocaleDateString();
+          {% if settings.feed == "ok" %}        
+            {% unless settings.feed_url || settings.feed_limit %}
+              <div class="note missing">
+                Please set your <em>feed_url</em> and/or <em>feed_limit</em> in Theme Settings.
+              </div>
+            {% else %}
+              <script type="text/javascript">            
+                var api = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q={{ settings.feed_url }}&num={{ settings.feed_limit }}";
+                jQuery.getJSON(api, function(data){				
+				          // Check for error
+				          if (data.responseStatus == 200) {	
+					          // Process the feeds
+					          var feed = data.responseData.feed;
+					          var msg = '<h1>' + feed.title + '</h1>';
+					          
+					          msg += '<ul class="list">';		
+		                for (var i=0; i<feed.entries.length; i++) {			
+			                var entry = feed.entries[i];			
+			                var entryDate = new Date(entry.publishedDate);
+			                var pubDate = entryDate.toLocaleDateString();
 			
-			            msg += '<li><h5 class="article-title"><a href="'+ entry.link +'" title="View this feed at '+ feed.title +'">';				              
-				          msg += entry.title + '<span class="date"> # ' + pubDate + '</span></a></h5></li>';
-				          //msg += '<div class="summary">'+ entry.content + '</div></li>';
-			          }			
-			          msg += '</ul>';
-			          
-				      } else {
-					      // Handle error if required
-					      if (options.showerror)
-						      if (options.errormsg != '') {
-							      var msg = options.errormsg;
-						      } else {
-							      var msg = data.responseDetails;
-						      };						      
-				      };
-				      jQuery("#feed").replaceWith(msg);
-			      });            
-          </script>
-          <div id="feed">
-            <img src="{{ 'loading.gif' | asset_url }}" alt="Loading feed ..." />
-            Loading feed ...
-          </div>          
+			                msg += '<li><h5 class="article-title"><a href="'+ entry.link +'" title="View this feed at '+ feed.title +'">';				              
+				              msg += entry.title + '<span class="date"> # ' + pubDate + '</span></a></h5></li>';
+				              //msg += '<div class="summary">'+ entry.content + '</div></li>';
+			              }			
+			              msg += '</ul>';
+			              
+				          } else {
+					          // Handle error if required
+					          if (options.showerror)
+						          if (options.errormsg != '') {
+							          var msg = options.errormsg;
+						          } else {
+							          var msg = data.responseDetails;
+						          };						      
+				          };
+				          jQuery("#feed").replaceWith(msg);
+			          });            
+              </script>
+              <div id="feed">
+                <img src="{{ 'loading.gif' | asset_url }}" alt="Loading feed ..." />
+                Loading feed ...
+              </div>  
+            {% endunless %}
+          {% endif %}       
         </div>
         
         
@@ -206,44 +211,62 @@
         
         <div id="twitter">
           <div id="items">
-            {% assign twitter_id = "shopify" %}
-            {% assign twitter_limit = 50 %}
-          
-            <script type="text/javascript">
-              var counter = 0;
-              var BreakException= {};
-              
-              try {
-                jQuery.getJSON('http://twitter.com/statuses/followers.json?screen_name={{ twitter_id }}&callback=?',function(data){    
-                if (data) {                
-                  data.forEach(function(datum) {  
-                    if (datum.screen_name) {
-                      var str = '<div id="item">';
-                      str += '<a href="http://twitter.com/' + datum.screen_name + '" title="' + datum.screen_name + '">';
-                      str += '<img class="avatar" src="' + datum.profile_image_url + '" alt="' + datum.screen_name + '" /></a>';
-                      str += '</div>';
-                      jQuery('#ecosystem #twitter #items').append(str);
-                      
-                      counter++;
-                    }                    
-                    if(counter === {{ twitter_limit }}) throw BreakException;               
-                  });
-                } 
-                });​
-              } catch(e) {
-                  if (e!==BreakException) throw e;
-              }           
-            </script>          
+            {% if settings.twitter_images == "ok" %}        
+              {% unless settings.twitter_id || settings.twitter_limit %}
+                <div class="note missing">
+                  Please set your <em>twitter_id</em> and/or <em>ftwitter_limit</em> in Theme Settings.
+                </div>
+              {% else %}          
+                <script type="text/javascript">
+                  var counter = 0;
+                  var BreakException= {};
+                  
+                  try {
+                    jQuery.getJSON('http://twitter.com/statuses/followers.json?screen_name={{ twitter_id }}&callback=?',function(data){    
+                    if (data) {                
+                      data.forEach(function(datum) {  
+                        if (datum.screen_name) {
+                          var str = '<div id="item">';
+                          str += '<a href="http://twitter.com/' + datum.screen_name + '" title="' + datum.screen_name + '">';
+                          str += '<img class="avatar" src="' + datum.profile_image_url + '" alt="' + datum.screen_name + '" /></a>';
+                          str += '</div>';
+                          jQuery('#ecosystem #twitter #items').append(str);
+                          
+                          counter++;
+                        }                    
+                        if(counter === {{ twitter_limit }}) throw BreakException;               
+                      });
+                    } 
+                    });​
+                  } catch(e) {
+                      if (e!==BreakException) throw e;
+                  }           
+                </script>
+              {% endunless %}
+            {% endif %}
           </div>
         </div>  
      
       </div>
       
-      <div class="right col-2">
-        <h1>Shopping Information</h1>
-        <div id="subscribe">
-          <h2>Subscribe</h2>
-        </div>
+      <div class="right col-2">     
+        {% if settings.snippets_shopping_info == "ok" %}   
+          {% include 'Shopping Info' %}
+        {% else %}
+          <div class="note missing">
+            Please create a snippet called <strong>Shopping Info</strong> then in your Theme Settings &rarr; Snippets check
+            the Shopping Info checkbox to <em>OK</em>.
+          </div>
+        {% endif %}
+        
+        {% if settings.snippets_subscribe == "ok" %}   
+          {% include 'Subscribe' %}
+        {% else %}
+          <div class="note missing">
+            Please create a snippet called <strong>Subscribe</strong> then in your Theme Settings &rarr; Snippets check
+            the Subscribe checkbox to <em>OK</em>.
+          </div>
+        {% endif %}
       </div>    
     </div>
   </div> 

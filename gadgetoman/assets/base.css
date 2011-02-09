@@ -169,6 +169,11 @@ p {
 .notice {    
   padding: .31em; 
 }
+.missing {
+  background: lightyellow;
+  padding: 1.25em;
+  margin: 1.25em;
+}
 .notice-hover, .notice-hover a {
   background: #ffb200;
   color: #3d3d3b; 
