@@ -55,7 +55,7 @@ body {
   background: #f3f3f3;
 }
 
-.page, .collection, .index {
+#info {
   min-height: 40em;
 }
 #eco.page, #eco.collection, #eco.index {
@@ -389,7 +389,7 @@ img.avatar {
 
 /* Product */
 
-#shopping .box {
+.box {
   background: #f9f9f9;
 }
 #shopping #thumbs, #shopping #meta {
@@ -399,15 +399,18 @@ img.avatar {
 #shopping #thumbs img, #product #product-image img  {
   border: 1px solid #ededed; 
 }
-#shopping .accordion h3, #shopping .accordion ul.list li {
+.box .accordion h3, .box .accordion ul.list li {
   border-bottom: 1px solid #ededed;
 }
-#shopping .pane {
+.box .pane {
   color: #3D3D3B;
 }
-#shopping li.facebook {
+#share li.facebook {
   position: relative;
   top: -.25em;
+}
+.box #comments li {
+  font-size: small;
 }
 #shopping select {
   width: 90%;
@@ -549,8 +552,8 @@ ul.list li.active, .collection #current-collection .active {
   padding: .62em 0;
 }
 
-.article .meta, .article .comment-meta {
-  background: #f3f3f3;
+.article .meta {
+  background: #f9f9f9;
   padding: .62em;
   margin-bottom: 1.25em;
   font-size: small;
@@ -559,10 +562,20 @@ blockquote {
   margin: 0;
 }
 #comments li {
-  font-size: small;
+  margin-bottom: 1.25em;
+  border-bottom: 1px solid #ededed;
 }
 #comments .date {
   margin-left: .62em;
+}
+.comments form input, .comments form textarea {
+  width: 66%;
+}
+.comments form input.button {
+  width: 33%;
+}
+.comments form dd {
+  margin-bottom: 1.25em;
 }
 
 

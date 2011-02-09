@@ -81,12 +81,11 @@
 */
 
 .collection #navigation .col-1 {
-  width: 45%;
-  margin-right: 5%;
+  width: 63%;
+  margin-right: 3%;
 }
 .collection #navigation .col-2 {
-  width: 45%;
-  margin-left: 5%;
+  width: 33%;
 }
 .collection #items #item {
   width: 28%;

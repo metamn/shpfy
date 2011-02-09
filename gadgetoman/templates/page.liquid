@@ -5,56 +5,74 @@
       {{ page.content }}
     </div>
     
-    <div id="taxonomies" class="right col-2">      
-      <div class="accordion">        
-        {% if collections.size > 0 %}
-          <h3 class="first">All collections</h3>
-          <div class="pane">        
-            <ul class="list">
-          	  {% for i in collections %}      	    
-          		  <li {% if collection.url == i.url %} class="active"{% endif %}>
-          		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title | upcase }}</a>
-          		  </li>
-          		{% endfor %}
-          	</ul>
-          </div> 
-        {% endif %}           
-      
-        {% if shop.vendors.size > 0 %}
-          <h3>All vendors</h3>
-          <div class="pane">   
-            <ul class="list">
-            	{% for product_vendor in shop.vendors %}
-                <li>
-                  {{ product_vendor | link_to_vendor  }}
-                </li>
-              {% endfor %}
+    <div class="right col-2">           
+      <div class="box block">
+        <div class="accordion">
+                    
+          {% if collections.size > 0 %}
+            <h3>Product collections</h3>
+            <div class="pane">        
+              <ul class="list">
+            	  {% for i in collections %}      	    
+            		  <li {% if collection.url == i.url %} class="active"{% endif %}>
+            		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title | upcase }}</a>
+            		  </li>
+            		{% endfor %}
             	</ul>
+            </div> 
+          {% endif %}  
+          
+          {% if shop.vendors.size > 0 %}
+            <h3>Vendors</h3>
+            <div class="pane">
+              <ul class="list">
+               {% for product_vendor in shop.vendors %}
+                  <li>
+                    {{ product_vendor | link_to_vendor }}
+                  </li>
+                {% endfor %}
+               </ul>
+            </div>
+          {% endif %}
+          
+          {% if shop.types.size > 0 %}
+            <h3>Product types</h3>
+            <div class="pane">
+              <ul class="list">
+               {% for product_type in shop.types %}
+                  <li>
+                    {{ product_type | link_to_type }}
+                  </li>
+                {% endfor %}
+               </ul>
+            </div>
+          {% endif %}
+          
+          <h3>Search</h3>
+          <div id="search" class="pane">        
+		        <form action="/search" method="get">
+			        <input class="text" type="text" name="q" /> 
+			        <input class="link button greenb rounded" type="submit" value="Go"  />
+		        </form>
           </div>
-        {% endif %}
-        
-        {% if shop.types.size > 0 %}
-          <h3>All product types</h3>
-          <div class="pane">   
-            <ul class="list">
-            	{% for product_type in shop.types %}
-                <li>
-                  {{ product_type | link_to_type  }}
+          
+          <h3>Share</h3>
+          <div id="share" class="pane">
+            <div id="icons">	    
+	            <ul class="inline-list">
+                <li class="twitter">
+                  <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
                 </li>
-              {% endfor %}
-            	</ul>
+                <li class="facebook">
+                  <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="true" width="150"></fb:like>              
+                </li>
+              </ul>
+	           </div>
           </div>
-        {% endif %}
         
-        <h3>Search</h3>
-        <div id="search" class="pane">        
-		      <form action="/search" method="get">
-			      <input class="text" type="text" name="q" /> 
-			      <input class="link button greenb rounded" type="submit" value="Go"  />
-		      </form>
         </div>
-      </div>      
-    </div>	  	
+      </div>
+    </div>   
 
     
   </div>  

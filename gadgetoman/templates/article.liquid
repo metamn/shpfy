@@ -19,14 +19,14 @@
       <div class="comments">
         <h3>Comments ({{ article.comments.size }})</h3>
         {% if article.comments.size > 0 %}
-          <ol>      
+        <ul id="comments" class="list">
           {% for comment in article.comments %}
-            <li class="comment">
-              <blockquote>{{ comment.content }}</blockquote>
-              <span class="comment-meta">By {{ comment.author }} on {{ comment.created_at | date: "%B %d, %Y" }}</span>
+            <li>              
+              <blockquote>&ldquo;{{ comment.content | strip_html  }}&rdquo;</blockquote>                              
+              <span class="date"># By {{ comment.author }} on {{ comment.created_at | date: "%B %d, %Y" }}</span>
             </li>
           {% endfor %}
-          </ol>
+        </ul>
         {% endif %}
         
         <!-- Comment Form -->
@@ -60,7 +60,7 @@
           <dd><textarea id="comment_body" name="comment[body]" cols="40" rows="5" class="{% if form.errors contains 'body' %}input-error{% endif %}">{{form.body}}</textarea></dd>
           
           <dt>&nbsp;</dt>
-          <dd><input type="submit" value="Post comment" /></dd>     
+          <dd><input class="button" type="submit" value="Post comment" /></dd>     
           
           {% if blog.moderated? %}  
           <dt>&nbsp;</dt>
@@ -73,28 +73,77 @@
       {% endif %}
     </div>
     
-    <div id="sidebar" class="sidebar right col-2">
-      <ul class="inline-list">
-        <li>Facebook</li>
-        <li>Twitter</li>
-        <li>RSS</li>
-      </ul>
-      Subscribe by e-mail.
-      
-      <h3>Recent comments</h3>
-      <ul class="comments">
-        {% for article in blog.articles %}		   
-          {% for comment in article.comments %}
-            <li>
-              <a href="{{ article.url }}" title="Comment on {{ article.title }}">
-                <blockquote>{{ comment.content | strip_html | truncate: 250 }}</blockquote>
-              </a>
-            </li>
-          {% endfor %}
-        {% endfor %}
-      </ul>
-    </div>
-    
+    <div class="right col-2">           
+      <div class="box block">
+        <div class="accordion">
+          <h3 class="first">Latest blog posts</h3>
+          <div class="pane">
+            <ul class="list">
+              {% for article in blog.articles limt: 3%}
+                <li>
+                    <a href="{{ article.url }}" title="{{ article.title }}">
+                      {{ article.title }}
+                      <span class="date"># {{ article.created_at | date: "%B %d, %Y" }}</span>
+                    </a>
+                  </li>
+                {% endfor %}
+            </ul>
+          </div>
+          
+          <h3>Recent comments</h3>
+          <div class="pane">
+            <ul id="comments" class="list">
+              {% for article in blog.articles limt: 3%}		   
+                {% for comment in article.comments limit: 2 %}
+                  <li>
+                    <a href="{{ comment.url }}" title="Comment on {{ article.title }}">
+                      <blockquote>&ldquo;{{ comment.content | strip_html | truncate: 250 }}&rdquo;</blockquote>                
+                    </a>
+                    <span class="date"># {{ comment.author }}</span>
+                  </li>
+                {% endfor %}
+              {% endfor %}
+            </ul>
+          </div>
+          
+          {% if collections.size > 0 %}
+            <h3>Product collections</h3>
+            <div class="pane">        
+              <ul class="list">
+            	  {% for i in collections %}      	    
+            		  <li {% if collection.url == i.url %} class="active"{% endif %}>
+            		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title | upcase }}</a>
+            		  </li>
+            		{% endfor %}
+            	</ul>
+            </div> 
+          {% endif %}  
+          
+          <h3>Search</h3>
+          <div id="search" class="pane">        
+		        <form action="/search" method="get">
+			        <input class="text" type="text" name="q" /> 
+			        <input class="link button greenb rounded" type="submit" value="Go"  />
+		        </form>
+          </div>
+          
+          <h3>Share</h3>
+          <div id="share" class="pane">
+            <div id="icons">	    
+	            <ul class="inline-list">
+                <li class="twitter">
+                  <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
+                </li>
+                <li class="facebook">
+                  <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="true" width="150"></fb:like>              
+                </li>
+              </ul>
+	           </div>
+          </div>
+        
+        </div>
+      </div>
+    </div>   
     
       
   </div>   

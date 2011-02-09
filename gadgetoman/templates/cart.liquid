@@ -1,14 +1,13 @@
 <div id="info" class="block">
   <div class="container">    
-    {% if cart.item_count == 0 %}
-      <h1>Your cart is empty</h1>
-      <p><a href="/">Please visit our shop.</a></p>  
-    {% else %}
-      <h1>Your Shopping Cart</h1>
-    {% endif %}
-  
     <div id="content" class="col-1 left">
-      {% if cart.item_count != 0 %}              
+      {% if cart.item_count == 0 %}
+        <h1>Your cart is empty</h1>
+        <p><a href="/">Please visit our shop.</a></p>  
+      {% else %}
+      
+        <h1>Your Shopping Cart</h1>
+              
         <form action="/cart" method="post" id="cartform" name="cartform">
         <table>
         {% for item in cart.items %}
@@ -37,7 +36,7 @@
 	      </tr>
 	      <tr class="second">
 	        <td class="description" colspan=4>
-	          {{ item.product.description | strip_html | truncate: 250 }}		  
+	          {{ item.product.description | strip_html | truncate: 450 }}		  
 	        </td>
 	       </tr>
 	      {% endfor %}
