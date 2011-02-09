@@ -63,11 +63,11 @@
 */
 
 .page #info .col-1, .blog #info .col-1, .article .col-1 {
-  width: 61.804%;
+  width: 55%;
+  margin-right: 5%;
 }
-.page #info .col-2, .blog #info .col-2, .article .col-2 {
-  margin-left: 5%;
-  width: 28.195%; /* sidebar has an 1.25em padding */
+.page #info .col-2, .blog #info .col-2, .article .col-2 {  
+  width: 40%; 
 }
 .page #info #thumbs img {
   max-width: 100px;

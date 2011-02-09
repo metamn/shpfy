@@ -173,7 +173,10 @@ p {
   background: #ffb200;
   color: #3d3d3b; 
 }
-
+.box {
+  padding: 1.25em;
+  background: #f3f3f3;
+}
 .button, .button a {
   /*background: #99FF33;*/
   color: #333 !important;  

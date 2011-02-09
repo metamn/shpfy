@@ -33,6 +33,11 @@ p {
   font-size: 2.2em;
 }
 
+blockquote {
+  font-family: tahoma, serif;
+  font-style: italic;
+}
+
 
 
 /* Theme
@@ -52,6 +57,9 @@ body {
 
 .page, .collection, .index {
   min-height: 40em;
+}
+#eco.page, #eco.collection, #eco.index {
+  min-height: 2em;
 }
 
 
@@ -309,6 +317,7 @@ body {
   position: relative;
   top: 2.6em;
   z-index: 0;
+  cursor: pointer;
 }
 #eco #icons, #eco ul {  
   padding: .62em 1.25em;
@@ -380,21 +389,51 @@ img.avatar {
 
 /* Product */
 
-#shopping #thumbs, #shopping #meta, #shopping #share {
+#shopping .box {
+  background: #f9f9f9;
+}
+#shopping #thumbs, #shopping #meta {
   padding: 1.25em 0;
   border-top: 1px solid #ededed;
 }
 #shopping #thumbs img, #product #product-image img  {
   border: 1px solid #ededed; 
 }
-
+#shopping .accordion h3, #shopping .accordion ul.list li {
+  border-bottom: 1px solid #ededed;
+}
+#shopping .pane {
+  color: #3D3D3B;
+}
+#shopping li.facebook {
+  position: relative;
+  top: -.25em;
+}
+#shopping select {
+  width: 90%;
+}
+#shopping input {
+  width: 45%;
+}
 #product #info, #product #latest, #product #sales {
   margin-bottom: 2.5em;
 }
 #product #description {
   margin-top: 2.5em;
 }
+.product #latest-top.triangle-bottom {
+  top: -.1em;
+}
 
+
+
+.sidebar h3 {
+  padding-bottom: .31em;
+}
+.sidebar #icons img {
+  width: 32px;
+  height: 32px;
+}
 
 
 /* Collection */
@@ -479,17 +518,22 @@ ul.list li.active, .collection #current-collection .active {
 .blog ul.comments li {
   padding: .62em 0;
 }
-.sidebar {
-  padding: 1.25em;
-  background: #f3f3f3;
-}
+
 .article .meta, .article .comment-meta {
   background: #f3f3f3;
   padding: .62em;
   margin-bottom: 1.25em;
   font-size: small;
 }
-
+blockquote {
+  margin: 0;
+}
+#comments li {
+  font-size: small;
+}
+#comments .date {
+  margin-left: .62em;
+}
 
 
 

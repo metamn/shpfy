@@ -1,68 +1,61 @@
 <div id="info" class="block">
-  <div class="container">
-    <h1>{{ page.title }}</h1>
-    
+  <div class="container">    
     <div id="content" class="col-1 left">
+      <h1>{{ page.title }}</h1>    
       {{ page.content }}
     </div>
+    
+    <div id="taxonomies" class="right col-2">      
+      <div class="accordion">        
+        {% if collections.size > 0 %}
+          <h3 class="first">All collections</h3>
+          <div class="pane">        
+            <ul class="list">
+          	  {% for i in collections %}      	    
+          		  <li {% if collection.url == i.url %} class="active"{% endif %}>
+          		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title | upcase }}</a>
+          		  </li>
+          		{% endfor %}
+          	</ul>
+          </div> 
+        {% endif %}           
+      
+        {% if shop.vendors.size > 0 %}
+          <h3>All vendors</h3>
+          <div class="pane">   
+            <ul class="list">
+            	{% for product_vendor in shop.vendors %}
+                <li>
+                  {{ product_vendor | link_to_vendor  }}
+                </li>
+              {% endfor %}
+            	</ul>
+          </div>
+        {% endif %}
+        
+        {% if shop.types.size > 0 %}
+          <h3>All product types</h3>
+          <div class="pane">   
+            <ul class="list">
+            	{% for product_type in shop.types %}
+                <li>
+                  {{ product_type | link_to_type  }}
+                </li>
+              {% endfor %}
+            	</ul>
+          </div>
+        {% endif %}
+        
+        <h3>Search</h3>
+        <div id="search" class="pane">        
+		      <form action="/search" method="get">
+			      <input class="text" type="text" name="q" /> 
+			      <input class="link button greenb rounded" type="submit" value="Go"  />
+		      </form>
+        </div>
+      </div>      
+    </div>	  	
 
-    <div id="navigation" class="sidebar right col-2">  
-   
-      <div id="searchbox">
-        <form action="/search" method="get">
-          <table><tr>
-			    <td><input class="text" type="text" name="q" /></td> 
-			    <td><input class="button" type="submit" value="Search" /></td>
-			    </tr></table>
-		    </form>
-	    </div>
-	
-	    <div id="featured">  
-        <h6 class="link"><span class="more">&nbsp;!&nbsp;</span> Featured products</h6>
-        <div id="items">
-          {% for product in collections.frontpage.products %}  
-          <div id="item">            
-            <a href="{{ product.url | within: collections.all }}">
-              <img class="thumb" src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" />
-            </a>
-            <h6><a href="{{ product.url | within: collections.all }}">{{ product.title }}</a></h6>            
-            {% if product.compare_at_price_max > product.price %} 
-              <span class="price price-sale">{{ product.price | money }}</span>
-              <br/>
-              <span class="price price-old">{{ product.compare_at_price_max | money }}</span>
-            {% else %}
-              <span class="price">{{ product.price | money }}</span>
-            {% endif %}		        
-		      </div>
-          {% endfor %}
-        </div>
-      </div> 
-      
-      <div class="clear"></div>
-      
-      <div id="sale">  
-        <h6 class="link"><span class="more sale">%</span> Products on sale</h6>
-        <div id="items">
-          <div id="item" class="sale"><h1>%</h1></div>
-          {% for product in collections.paginated-sale.products %}  
-          <div id="item">
-            <a href="{{ product.url | within: collections.all }}">
-              <img class="thumb" src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" />
-            </a>
-            <h6><a href="{{ product.url | within: collections.all }}">{{ product.title }}</a></h6>
-            {% if product.compare_at_price_max > product.price %} 
-              <span class="price price-sale">{{ product.price | money }}</span>
-              <br/>
-              <span class="price price-old">{{ product.compare_at_price_max | money }}</span>
-            {% else %}
-              <span class="price">{{ product.price | money }}</span>
-            {% endif %}
-		      </div>
-          {% endfor %}
-        </div>
-      </div> 
-      
-      <div class="clear"></div>
-    </div>
+    
   </div>  
 </div>

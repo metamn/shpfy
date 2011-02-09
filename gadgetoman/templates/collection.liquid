@@ -64,7 +64,7 @@
         {% endif %}
           
         
-        {% if collection>all_types.size > 0 %}
+        {% if collection.all_types.size > 0 %}
           <h3>Product Types</h3>  
           <div class="pane">
             <ul class="list">
@@ -158,12 +158,12 @@
 	    {% for product in collection.products %}  
       <div id="item">
         <div class="image">
-          <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+          <a href="{{ product.url | within: collection }}" title="{{ product.title | escape }}">
             <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
           </a>
         </div>
         <h6 class="title">
-          <a href="{{ product.url | within: collections.all }}">{{ product.title }} by {{ product.vendor }}</a>
+          <a href="{{ product.url | within: collection }}">{{ product.title }} by {{ product.vendor }}</a>
         </h6>
         <div class="meta">       
           {% if product.compare_at_price_max > product.price %} 

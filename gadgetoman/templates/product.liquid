@@ -12,76 +12,90 @@
       </div>    
     </div>
   
-    <div id="shopping" class="sidebar right col-2">
-      <div id="product-select" class="block">
-		    <form action="/cart/add" method="post" name="cartadd">
-          {% if product.available %}
-      			<div id="product-variants">
+    <div id="shopping" class="right col-2">
+      <div class="box block">
+        <div id="product-select" class="block">
+		      <form action="/cart/add" method="post" name="cartadd">
+            {% if product.available %}
+        			<div id="product-variants">
 	
-              <select id="variant-select" name='id'>
-                {% for variant in product.variants %}
-                  {% if variant.available %}
-                    <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
-                  {% else %}
-          					<option value="{{ variant.id }}" disabled="disabled">{{ variant.title }} - SOLD OUT</option>
-          				{% endif %}
-                {% endfor %}
-              </select>
-      			</div>      			
+                <select id="variant-select" name='id'>
+                  {% for variant in product.variants %}
+                    {% if variant.available %}
+                      <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                    {% else %}
+            					<option value="{{ variant.id }}" disabled="disabled">{{ variant.title }} - SOLD OUT</option>
+            				{% endif %}
+                  {% endfor %}
+                </select>
+        			</div>      			
 
-      			<span id="price-field"></span><br />
+        			<span id="price-field"></span><br />
 
-      			<input class="link button rounded" type="submit" name="add" value="Add to cart" id="add-cart">
-			    {% else %}
-			      <h6>TEMPORARILY UNAVAILABLE</h6>
-			    {% endif %}
-		    </form>
-	    </div>
-	    
-	    {% if product.images.size > 1%}
-	    <div id="thumbs" class="block">	          	               
-        {% for image in product.images %}
-          <img class="link" src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" rev="{{ image | product_img_url: 'original' }}" />
-        {% endfor %}	                
+        			<input class="link button rounded" type="submit" name="add" value="Add to cart" id="add-cart">
+			      {% else %}
+			        <h6>TEMPORARILY UNAVAILABLE</h6>
+			      {% endif %}
+		      </form>
+	      </div>
+	      
+	      {% if product.images.size > 1%}
+	      <div id="thumbs" class="block">	          	               
+          {% for image in product.images %}
+            <img class="link" src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" rev="{{ image | product_img_url: 'original' }}" />
+          {% endfor %}	                
+        </div>
+        {% endif %} 
+        
+        <div id="meta" class="block">
+          <div class="accordion">
+            {% if product.collections.size > 0 %}
+              <h3 class="first">Listed in</h3>
+              <div class="pane">        
+                <ul class="list">
+              	  {% for i in product.collections %}      	    
+              		  <li {% if collection.url == i.url %} class="active"{% endif %}>
+              		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title | upcase }}</a>
+              		  </li>
+              		{% endfor %}
+              		  <li>Tagged with <em>{{ product.tags | join: ', ' }}</em></li>
+              	</ul>
+              </div> 
+            {% endif %} 
+              
+            <h3>Browse more</h3>
+            <div class="pane">
+              See more products from {{ product.vendor | link_to_vendor }} and {{ product.type | link_to_type }}
+            </div>
+            
+            <h3>Share</h3>
+            <div class="pane">
+              <ul class="inline-list">
+                <li class="twitter">
+                  <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
+                </li>
+                <li class="facebook">
+                  <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="true" width="150"></fb:like>              
+                </li>
+              </ul>
+            </div>                
+          </div>
+        </div>                 
       </div>
-      {% endif %} 
       
-      <div id="meta" class="block">
-        <p>
-        <b>Listed in: </b> 
-        {% for item in product.collections %}
-          <a href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a>
-          {% unless forloop.last %}
-          ,
-          {% endunless %} 
-        {% endfor %}
-        </p>
-        <p>
-        <b>Tagged with: </b>
-        {{ product.tags | join: ', '}}
-        </p>
-        <p>
-          Vendor: {{ product.vendor | link_to_vendor }}
-          <br/>
-		      Type: {{ product.type | link_to_type }}
-		    </p>
-      </div>
-      
-      <div id="share" class="block">
-        Facebook
-        <br/>
-        Twitter
-      </div>
-      
+           
     </div>    
   </div>
 </div>
   
 
+{% if collections.all.products.size > 0 %}
 <div id="latest" class="block">
   <div class="container">
-    <h3>Check out our latest items:</h3>
-    {% for product in collections.all.products limit:5 offset:0 %}
+    <div id="latest-top" class="triangle-bottom"></div>
+    <h3><span class="highlight">Hot!</span> in the store now.</h3>
+    <div class="arrow-right"></div> 
+    {% for product in collections.all.products limit:5 %}
       <div id="item">	    
         <div class="image">	      
           {% for image in product.images limit: 1 %}
@@ -96,15 +110,27 @@
         </div>
 	    </div>
     {% endfor %}  
+    <div id="call-for-subscribe" class="alignright right">
+      <div class="notice link">
+        <p class="note"><a href="#subscribe">To stay updated please subscribe to our newsletter. It's free.</a></p>
+      </div>
+    </div>
   </div>
-</div>  
-  
+</div> 
+{% endif %} 
+
+
+{% if collections.all.products.size > 0 %}  
 <div id="sales" class="block">
   <div class="container">
     <div id="sale" class="left col-1">
       <h1>%</h1>
       <div class="arrow-right"></div>
-    </div>
+      <div class="notice link">
+        <h3 class="note"><a href="#ecosystem">
+        We are running periodicaly special sales on Twitter and Facebook. Follow us to get more! </a></h3>
+      </div>
+    </div>    
     <div id="items" class="right col-2">
       {% for product in collections.all.products limit: 4 %}  
       <div id="item">
@@ -135,6 +161,8 @@
     </div>
   </div>
 </div>   
+{% endif %}
+
 
 
 <script type="text/javascript">
