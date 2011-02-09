@@ -7,6 +7,10 @@
 	{{ 'base.css' | asset_url | stylesheet_tag }}	
 	{{ 'grid.css' | asset_url | stylesheet_tag }}	
 	{{ 'theme.css' | asset_url | stylesheet_tag }}	
+	{% if settings.theme == "ok" %}
+	  {{ {{ settings.color_scheme | asset_url | stylesheet_tag }}
+	{% endif %}
+	 
 	<!--[if lte IE 6]>{{ 'ie.css' | asset_url | stylesheet_tag }}<![endif]-->
 	
 			
@@ -99,7 +103,17 @@
 				  <div class="triangle-left"></div>						
 				  <div id="item" class="cart last">					  					  		  				  
 				    <a href="/cart"{% if template == "cart" %} class="active highlight"{% else %} class="highlight"{% endif %}>
-				      <div class="quantity">Cart: {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}</div>
+				      {% if settings.locale == "ok" %}
+				        {% if settings.locale_cart != "" && settings.locale_item != "" && settings.locale_items != "" %}
+				          <div class="quantity">{{ settings.locale_cart }}: {{ cart.item_count }} {{ cart.item_count | pluralize: settings.locale_item, settings.locale_items }}
+				        {% else %}
+				          <div class="note missing">
+				            Please localize <em>Cart</em>, <em>item</em> and/or <em>items</em> in your Theme Settings
+				          </div>
+				        {% endif %}
+				      {% else %}
+				        <div class="quantity">Cart: {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}</div>				        
+				      {% endif %}
 				      <div class="price">{{ cart.total_price }} {{ shop.currency }}</div>
 				    </a>			  
 			    </div>			  
