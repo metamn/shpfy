@@ -66,23 +66,29 @@
     {% if search.results.size == 0 %}
 	    <h3>We did not find any products for you.</h3>
 	  {% else %}
-	    {% for product in search.results %}
+	    {% for item in search.results %}	      
 	      <div id="item">
-          <div class="image">
-            <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-              <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
-            </a>
-          </div>
+	        <div class="image">
+	          {% if item.featured_image %}          
+              <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
+                <img src="{{ item.featured_image | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" />
+              </a>
+            {% else %}
+              <div class="text">
+                {{ item.content | truncate: 250 }}
+              </div>
+            {% endif %}
+          </div>          
           <h6 class="title">
-            <a href="{{ product.url | within: collections.all }}">{{ product.title }} by {{ product.vendor }}</a>
+            <a href="{{ item.url | within: collections.all }}">{{ item.title }}</a>
           </h6>
           <div class="meta">       
-            {% if product.compare_at_price_max > product.price %} 
-              <span class="price price-sale">{{ product.price | money }}</span>
+            {% if item.compare_at_price_max > item.price %} 
+              <span class="price price-sale">{{ item.price | money }}</span>
               &mdash;
-              <span class="price price-old">{{ product.compare_at_price_max | money }}</span>
+              <span class="price price-old">{{ item.compare_at_price_max | money }}</span>
             {% else %}
-              <span class="price">{{ product.price | money }}</span>
+              <span class="price">{{ item.price | money }}</span>
             {% endif %}
           </div>
 		    </div>

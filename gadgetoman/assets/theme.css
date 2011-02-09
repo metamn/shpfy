@@ -53,6 +53,7 @@ blockquote {
 
 body {
   background: #f3f3f3;
+  color: #3d3d3b;
 }
 
 #info {
@@ -581,6 +582,12 @@ blockquote {
 }
 
 
+/* Search */
+
+.search .text {
+  text-align: left;
+  padding: 1.25em;  
+}
 
 
 
