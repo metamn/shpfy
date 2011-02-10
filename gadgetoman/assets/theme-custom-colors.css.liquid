@@ -1,0 +1,16 @@
+#header {
+  background: {{ settings.c_h_b }};
+  border-bottom: 1px solid #2d2d2d;
+}
+#header a, #header a:visited, #footer a, #footer a:visited, .menu .search {
+  color: {{ settings.c_h_t }};
+  text-decoration: none;
+}
+
+.menu #item.cart {
+  background: {{ settings.c_h_cart_b }} !important;
+  color: {{ settings.c_h_cart_t }}; 
+}
+.menu #item.cart .quantity {
+  border-bottom: 1px dotted {{ settings.c_h_cart_t }};
+}

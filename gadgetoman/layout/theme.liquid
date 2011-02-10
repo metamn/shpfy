@@ -6,8 +6,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	{{ 'base.css' | asset_url | stylesheet_tag }}	
 	{{ 'grid.css' | asset_url | stylesheet_tag }}	
-	{{ 'theme.css' | asset_url | stylesheet_tag }}	
-	{% if settings.theme == "ok" %}
+	{{ 'theme.css' | asset_url | stylesheet_tag }}
+	{{ 'theme-custom-colors.css' | asset_url | stylesheet_tag }}	
+	{% if settings.theme == "enabled" %}
 	  {{ {{ settings.color_scheme | asset_url | stylesheet_tag }}
 	{% endif %}
 	 
@@ -99,6 +100,7 @@
 			        <input class="link button rounded" type="submit" value="Search"  />
 		        </form>
 				  </div>
+				  
 									
 				  <div class="triangle-left"></div>						
 				  <div id="item" class="cart last">					  					  		  				  
@@ -108,7 +110,7 @@
 				          <div class="quantity">{{ settings.locale_cart }}: {{ cart.item_count }} {{ cart.item_count | pluralize: settings.locale_item, settings.locale_items }}
 				        {% else %}
 				          <div class="note missing">
-				            Please localize <em>Cart</em>, <em>item</em> and/or <em>items</em> in your Theme Settings
+				            Please localize <em>Cart</em>, <em>item</em> and/or <em>items</em> in your Theme Settings.
 				          </div>
 				        {% endif %}
 				      {% else %}
