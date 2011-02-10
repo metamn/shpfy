@@ -105,14 +105,8 @@
 				  <div class="triangle-left"></div>						
 				  <div id="item" class="cart last">					  					  		  				  
 				    <a href="/cart"{% if template == "cart" %} class="active highlight"{% else %} class="highlight"{% endif %}>
-				      {% if settings.locale == "ok" %}
-				        {% if settings.locale_cart != "" && settings.locale_item != "" && settings.locale_items != "" %}
-				          <div class="quantity">{{ settings.locale_cart }}: {{ cart.item_count }} {{ cart.item_count | pluralize: settings.locale_item, settings.locale_items }}
-				        {% else %}
-				          <div class="note missing">
-				            Please localize <em>Cart</em>, <em>item</em> and/or <em>items</em> in your Theme Settings.
-				          </div>
-				        {% endif %}
+				      {% if settings.locale == "enabled" %}
+				        <div class="quantity">{{ settings.locale_cart }}: {{ cart.item_count }} {{ cart.item_count | pluralize: settings.locale_item, settings.locale_items }}				        
 				      {% else %}
 				        <div class="quantity">Cart: {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}</div>				        
 				      {% endif %}
