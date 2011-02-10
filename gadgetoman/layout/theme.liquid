@@ -28,6 +28,8 @@
 	
 	{{ 'option_selection.js' | shopify_asset_url | script_tag }}
 	{{ content_for_header }}	
+	
+	{% assign dev = true %}
 </head>
 
 <body>	
@@ -260,23 +262,12 @@
       </div>
       
       <div class="right col-2">     
-        {% if settings.snippets_shopping_info == "ok" %}   
-          {% include 'Shopping Info' %}
+        {% if dev %}
+          dev mode
         {% else %}
-          <div class="note missing">
-            Please create a snippet called <strong>Shopping Info</strong> then in your Theme Settings &rarr; Snippets check
-            the Shopping Info checkbox to <em>OK</em>.
-          </div>
-        {% endif %}
-        
-        {% if settings.snippets_subscribe == "ok" %}   
-          {% include 'Subscribe' %}
-        {% else %}
-          <div class="note missing">
-            Please create a snippet called <strong>Subscribe</strong> then in your Theme Settings &rarr; Snippets check
-            the Subscribe checkbox to <em>OK</em>.
-          </div>
-        {% endif %}
+          {% include 'shopping_info' %} 
+          {% include 'subscribe' %} 
+        {% endif %}       
       </div>    
     </div>
   </div> 
