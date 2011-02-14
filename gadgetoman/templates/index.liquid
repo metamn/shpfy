@@ -58,8 +58,8 @@
         <h3><span class="highlight">{{ settings.locale_hot }}</span> {{ settings.locale_hot_instore }}</h3>
       {% else %}
         <h3><span class="highlight">Hot!</span> in the store now.</h3>
-      {% endif %}
-      <div class="arrow-right"></div> 
+        <div class="arrow-right"></div>
+      {% endif %}       
       {% for product in collections.all.products limit:5 %}
         <div id="item">	    
           <div class="image">	      

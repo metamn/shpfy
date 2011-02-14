@@ -77,7 +77,13 @@
 					  {% endfor %}
 					{% endif %}
 					  <div id="item" class="search last">
-					    <span class="search link">Search</span>
+					    <span class="search link">
+					    {% if settings.locale == "enabled" %}
+					      {{ settings.locale_search }}
+					    {% else %}
+					      Search
+					    {% endif %}
+					    </span>
 					  </div>
 				</div>
 				<div class="clear"></div>
@@ -111,7 +117,7 @@
 				  <div id="item" class="cart last">					  					  		  				  
 				    <a href="/cart"{% if template == "cart" %} class="active highlight"{% else %} class="highlight"{% endif %}>
 				      {% if settings.locale == "enabled" %}
-				        <div class="quantity">{{ settings.locale_cart }}: {{ cart.item_count }} {{ cart.item_count | pluralize: settings.locale_item, settings.locale_items }}				        
+				        <div class="quantity">{{ settings.locale_cart }}: {{ cart.item_count }} {{ cart.item_count | pluralize: settings.locale_item, settings.locale_items }}</div>				        
 				      {% else %}
 				        <div class="quantity">Cart: {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}</div>				        
 				      {% endif %}
