@@ -1,11 +1,22 @@
 <div id="navigation" class="block">
   <div class="container"> 
     <div id="current-collection" class="left col-1">      
-      <span class="note tag-title-intro">Current collection</span>
+      <span class="note tag-title-intro">
+      {% if settings.locale == "enabled" %}
+        {{ settings.locale_coll_current }}
+      {% else %}
+        Current collection
+      {% endif %} 
+      </span>
       <h2>
         {{ collection.title }}
         <span class="tag-title"></span>
-        // {{ collection.products_count }} items
+        // {{ collection.products_count }} 
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_items }}
+        {% else %}
+          items
+        {% endif %}
       </h2>
       
       <!-- Hack: getting the tag title, if any -->
@@ -31,14 +42,26 @@
       
       <div class="accordion">
         {% if collection.description.size > 0 %}
-          <h3>Description</h3>
+          <h3>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_coll_description }}
+          {% else %}
+            Description
+          {% endif %}
+          </h3>
           <div id="description" class="pane">
             {{ collection.description }}
           </div>
         {% endif %}
         
         {% if collection.all_tags.size > 0 %}
-          <h3 class="first">Tags for <em>{{ collection.title }}</em></h3>
+          <h3 class="first">
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_coll_tags }}
+          {% else %}
+            Tags for
+          {% endif %}
+           <em>{{ collection.title }}</em></h3>
           <div id="tags" class="pane">        
             <ul class="inline-list">
               {% for tag in collection.all_tags %}
@@ -51,7 +74,13 @@
         {% endif %} 
         
         {% if collection.tags.size > 0 and collection.all_tags.size > 0 and collection.tags.size != collection.all_tags.size %}
-          <h3>Similar tags</h3> 
+          <h3>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_coll_tags_smilar }}
+          {% else %}
+            Similar tags
+          {% endif %}
+          </h3> 
           <div id="tags" class="pane">
             <ul class="inline-list">
               {% for tag in collection.tags %}
@@ -65,7 +94,13 @@
           
         
         {% if collection.all_types.size > 0 %}
-          <h3>Product Types</h3>  
+          <h3>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_coll_types }}
+          {% else %}
+            Product Types
+          {% endif %}
+          </h3>  
           <div class="pane">
             <ul class="list">
               {% for product_type in collection.all_types %}
@@ -78,7 +113,13 @@
         {% endif %}
 
         {% if collection.all_vendors.size > 0 %}
-          <h3>Product Vendors</h3>  
+          <h3>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_coll_vendors }}
+          {% else %}
+            Product Vendors
+          {% endif %}
+          </h3>  
           <div class="pane">
             <ul class="list">
               {% for product_vendor in collection.all_vendors %}
@@ -96,8 +137,15 @@
     <div id="taxonomies" class="right col-2">
       
       <div class="accordion">        
+        
         {% if collections.size > 0 %}
-          <h3 class="first">All collections</h3>
+          <h3 class="first">
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_allcollections }}
+          {% else %}
+            All collections
+          {% endif %}
+          </h3>
           <div class="pane">        
             <ul class="list">
           	  {% for i in collections %}      	    
@@ -107,11 +155,16 @@
           		{% endfor %}
           	</ul>
           </div> 
-        {% endif %}     
-      
+        {% endif %}           
       
         {% if shop.vendors.size > 0 %}
-          <h3>All vendors</h3>
+          <h3>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_allvendors }}
+          {% else %}
+            All vendors
+          {% endif %}
+          </h3>
           <div class="pane">   
             <ul class="list">
             	{% for product_vendor in shop.vendors %}
@@ -124,7 +177,13 @@
         {% endif %}
         
         {% if shop.types.size > 0 %}
-          <h3>All product types</h3>
+          <h3>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_alltypes }}
+          {% else %}
+            All product types
+          {% endif %}          
+          </h3>
           <div class="pane">   
             <ul class="list">
             	{% for product_type in shop.types %}
@@ -136,13 +195,24 @@
           </div>
         {% endif %}
         
-        <h3>Search</h3>
+        <h3>
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_search }}
+          {% assign s = settings.locale_search %}
+        {% else %}
+          Search
+          {% assign s = "Search" %}
+        {% endif %} 
+        </h3>
         <div id="search" class="pane">        
 		      <form action="/search" method="get">
 			      <input class="text" type="text" name="q" /> 
-			      <input class="link button greenb rounded" type="submit" value="Go"  />
+			      <input class="link button greenb rounded" type="submit" value="{{ s }}"  />
 		      </form>
         </div>
+        
+        
+        
       </div>      
     </div>	  	
   </div>

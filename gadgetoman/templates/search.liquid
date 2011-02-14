@@ -2,14 +2,26 @@
   <div class="container"> 
     <div id="current-collection" class="left col-1">      
       <h2>
-        Search results for: {{ search.terms }}
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_search_title }}
+        {% else %}
+          Search results for:
+        {% endif %}
+         {{ search.terms }}
       </h2>            
     </div>
     
     <div id="taxonomies" class="right col-2">      
       <div class="accordion">        
+        
         {% if collections.size > 0 %}
-          <h3 class="first">All collections</h3>
+          <h3 class="first">
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_allcollections }}
+          {% else %}
+            All collections
+          {% endif %}
+          </h3>
           <div class="pane">        
             <ul class="list">
           	  {% for i in collections %}      	    
@@ -22,7 +34,13 @@
         {% endif %}           
       
         {% if shop.vendors.size > 0 %}
-          <h3>All vendors</h3>
+          <h3>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_allvendors }}
+          {% else %}
+            All vendors
+          {% endif %}
+          </h3>
           <div class="pane">   
             <ul class="list">
             	{% for product_vendor in shop.vendors %}
@@ -35,7 +53,13 @@
         {% endif %}
         
         {% if shop.types.size > 0 %}
-          <h3>All product types</h3>
+          <h3>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_alltypes }}
+          {% else %}
+            All product types
+          {% endif %}          
+          </h3>
           <div class="pane">   
             <ul class="list">
             	{% for product_type in shop.types %}
@@ -47,13 +71,22 @@
           </div>
         {% endif %}
         
-        <h3>Search</h3>
+        <h3>
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_search }}
+          {% assign s = settings.locale_search %}
+        {% else %}
+          Search
+          {% assign s = "Search" %}
+        {% endif %} 
+        </h3>
         <div id="search" class="pane">        
 		      <form action="/search" method="get">
 			      <input class="text" type="text" name="q" /> 
-			      <input class="link button greenb rounded" type="submit" value="Go"  />
+			      <input class="link button greenb rounded" type="submit" value="{{ s }}"  />
 		      </form>
-        </div>
+        </div>        
+                
       </div>      
     </div>	  	
   </div>
@@ -64,7 +97,13 @@
   <div class="container">
     {% paginate search.results by 6 %}
     {% if search.results.size == 0 %}
-	    <h3>We did not find any products for you.</h3>
+	    <h3>
+	    {% if settings.locale == "enabled" %}
+        {{ settings.locale_search_notfound }}
+      {% else %}
+        We did not find any products for you.
+      {% endif %} 
+	    </h3>
 	  {% else %}
 	    {% for item in search.results %}	      
 	      <div id="item">
