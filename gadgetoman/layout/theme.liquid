@@ -36,7 +36,7 @@
 	  <div class="container">
 		  <div id="logo" class="left">
 		    {% if settings.logo == "enabled" %}
-			    <img src="{{ "logo.png" | asset_url }}" alt="{{ shop.name | escape }}" /></a>
+			    <a href="/" title="{{ shop.name }}"><img src="{{ "logo.png" | asset_url }}" alt="{{ shop.name | escape }}" /></a>
 			  {% else %}
 			    <h1><a href="/" title="{{ shop.name }}">{{ shop.name | escape }}</a></h1>
 			  {% endif %}

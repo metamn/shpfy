@@ -88,8 +88,8 @@
       </div>
     {% else %}
       <div class="note">
-        To see here the list of the latest products please create a new collection name it's handle <strong>all</strong>
-        then add items to it.
+        To see here the list of the latest products please <a href="/admin/custom_collections/new">create a new collection</a>
+        and name it's handle to <strong>all</strong> then add products to it.
       </div>
     {% endif %} 
   </div>
@@ -113,8 +113,8 @@
       </div>
     </div>    
     <div id="items" class="right col-2">
-      {% if collections.all.products.size > 0 %} 
-        {% for product in collections.all.products limit: 4 offset: 3 %}  
+      {% if collections.sale.products.size > 0 %} 
+        {% for product in collections.all.products limit: 4  %}  
         <div id="item">
           <div class="image">
             <a href="{{ product.url | within: collections.all }}">
@@ -142,8 +142,8 @@
         {% endfor %}
       {% else %}
         <div class="note">
-          To see here a list of products on sale please create a new collection and name it's handle <strong>sale</strong> 
-          then items to it.
+          To see here a list of products on sale please <a href="/admin/custom_collections/new">create a new collection</a>
+          and name it's handle to <strong>sale</strong> then add products to it.
         </div>
       {% endif %}
     </div>

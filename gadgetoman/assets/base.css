@@ -166,6 +166,9 @@ p {
   text-shadow: 1px 1px 2px #ddd;
   font-style: italic;
 }
+.note a {
+  text-decoration: underline;
+}
 .notice {    
   padding: .31em; 
 }

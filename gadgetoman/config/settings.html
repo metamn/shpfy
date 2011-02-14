@@ -3,7 +3,8 @@
 	<p>
 	Either you are keeping your site without logo, as is by default, or you upload a small logo and replace your shop name.
   <br/>
-  We recommend to use a small, standard-sized logo of 120×60 pixels. 
+  We recommend to use a small, standard-sized logo of 120×60 pixels. However you can set your logo width, height is adjusted
+  automatically.
   </p><hr/><br/>
 	<table>
 		<tr>
@@ -18,6 +19,10 @@
 		<tr>
 			<th><label for="logo_file">Logo Image</label></th>
 			<td><input type="file" name="logo.png" id="logo_file" data-max-width="500" data-max-height="300" /></td>			
+		</tr>
+		<tr>
+			<th><label for="logo_width">Logo Image Size (width, in pixels)</label></th>
+			<td><input type="text" name="logo_width" id="logo_width" value="120" /></td>			
 		</tr>
 	</table>
 </fieldset>

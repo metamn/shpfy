@@ -55,6 +55,17 @@ body {
   background: #f3f3f3;
   color: #3d3d3b;
 }
+a, a:visited, :link, :visited {
+  color: #3d3d3b;
+  text-decoration: underline;
+}
+a:hover, a:focus, a:active {
+  color: #f9f9f9;
+  background: #3d3d3b;
+  text-decoration: none;
+}
+
+
 
 #info {
   min-height: 40em;
@@ -142,6 +153,11 @@ body {
   background: url(stripe.png);
   border-bottom: 1px solid #f3f3f3;
   padding: 2.5em 0;
+}
+.index #intro #text b, .collection #navigation #text b, #info #text b {
+  background: #f3f3f3;
+  padding: 0 .32em;
+  font-weight: normal;
 }
 .index #logo h1 a, .index #logo h1 a:visited, .article h1 a, .article h1 a:visited {
   color: #3d3d3b;
