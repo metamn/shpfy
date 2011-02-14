@@ -29,7 +29,6 @@
 	{{ 'option_selection.js' | shopify_asset_url | script_tag }}
 	{{ content_for_header }}	
 	
-	{% assign dev = true %}
 </head>
 
 <body>	
@@ -99,7 +98,11 @@
 					<div id="item" class="search-menu">
 				    <form action="/search" method="get">
 			        <input class="text" type="text" name="q" /> 
-			        <input class="link button rounded" type="submit" value="Search"  />
+			        {% if settings.locale == "enabled" %}
+			          <input class="link button rounded" type="submit" value="{{ settings.locale_search }}"  />
+			        {% else %}
+			          <input class="link button rounded" type="submit" value="Search"  />
+			        {% endif %}
 		        </form>
 				  </div>
 				  
@@ -156,50 +159,43 @@
       <div class="left col-1">
         
         <div id="blog">
-          {% if settings.feed == "ok" %}        
-            {% unless settings.feed_url || settings.feed_limit %}
-              <div class="note missing">
-                Please set your <em>feed_url</em> and/or <em>feed_limit</em> in Theme Settings.
-              </div>
-            {% else %}
-              <script type="text/javascript">            
-                var api = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q={{ settings.feed_url }}&num={{ settings.feed_limit }}";
-                jQuery.getJSON(api, function(data){				
-				          // Check for error
-				          if (data.responseStatus == 200) {	
-					          // Process the feeds
-					          var feed = data.responseData.feed;
-					          var msg = '<h1>' + feed.title + '</h1>';
-					          
-					          msg += '<ul class="list">';		
-		                for (var i=0; i<feed.entries.length; i++) {			
-			                var entry = feed.entries[i];			
-			                var entryDate = new Date(entry.publishedDate);
-			                var pubDate = entryDate.toLocaleDateString();
-			
-			                msg += '<li><h5 class="article-title"><a href="'+ entry.link +'" title="View this feed at '+ feed.title +'">';				              
-				              msg += entry.title + '<span class="date"> # ' + pubDate + '</span></a></h5></li>';
-				              //msg += '<div class="summary">'+ entry.content + '</div></li>';
-			              }			
-			              msg += '</ul>';
-			              
-				          } else {
-					          // Handle error if required
-					          if (options.showerror)
-						          if (options.errormsg != '') {
-							          var msg = options.errormsg;
-						          } else {
-							          var msg = data.responseDetails;
-						          };						      
-				          };
-				          jQuery("#feed").replaceWith(msg);
-			          });            
-              </script>
-              <div id="feed">
-                <img src="{{ 'loading.gif' | asset_url }}" alt="Loading feed ..." />
-                Loading feed ...
-              </div>  
-            {% endunless %}
+          {% if settings.rss_feed == "enabled" %}                    
+            <script type="text/javascript">            
+              var api = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q={{ settings.rss_feed_url }}&num={{ settings.rss_feed_limit }}";
+              jQuery.getJSON(api, function(data){				
+			          // Check for error
+			          if (data.responseStatus == 200) {	
+				          // Process the feeds
+				          var feed = data.responseData.feed;
+				          var msg = '<h1>' + feed.title + '</h1>';
+				          
+				          msg += '<ul class="list">';		
+	                for (var i=0; i<feed.entries.length; i++) {			
+		                var entry = feed.entries[i];			
+		                var entryDate = new Date(entry.publishedDate);
+		                var pubDate = entryDate.toLocaleDateString();
+		
+		                msg += '<li><h5 class="article-title"><a href="'+ entry.link +'" title="View this feed at '+ feed.title +'">';				              
+			              msg += entry.title + '<span class="date"> # ' + pubDate + '</span></a></h5></li>';
+			              //msg += '<div class="summary">'+ entry.content + '</div></li>';
+		              }			
+		              msg += '</ul>';
+		              
+			          } else {
+				          // Handle error if required
+				          if (options.showerror)
+					          if (options.errormsg != '') {
+						          var msg = options.errormsg;
+					          } else {
+						          var msg = data.responseDetails;
+					          };						      
+			          };
+			          jQuery("#feed").replaceWith(msg);
+		          });            
+            </script>
+            <div id="feed">
+              <img src="{{ 'loading.gif' | asset_url }}" alt="Loading feed ..." />
+            </div> 
           {% endif %}       
         </div>
         
@@ -223,18 +219,13 @@
         
         <div id="twitter">
           <div id="items">
-            {% if settings.twitter_images == "ok" %}        
-              {% unless settings.twitter_id || settings.twitter_limit %}
-                <div class="note missing">
-                  Please set your <em>twitter_id</em> and/or <em>ftwitter_limit</em> in Theme Settings.
-                </div>
-              {% else %}          
-                <script type="text/javascript">
+            {% if settings.twitter_followers == "enabled" %}        
+              <script type="text/javascript">
                   var counter = 0;
                   var BreakException= {};
                   
                   try {
-                    jQuery.getJSON('http://twitter.com/statuses/followers.json?screen_name={{ twitter_id }}&callback=?',function(data){    
+                    jQuery.getJSON('http://twitter.com/statuses/followers.json?screen_name={{ settings.twitter_followers_id }}&callback=?',function(data){    
                     if (data) {                
                       data.forEach(function(datum) {  
                         if (datum.screen_name) {
@@ -246,7 +237,7 @@
                           
                           counter++;
                         }                    
-                        if(counter === {{ twitter_limit }}) throw BreakException;               
+                        if(counter === {{ settings.twitter_followers_limit }}) throw BreakException;               
                       });
                     } 
                     });​
@@ -254,7 +245,6 @@
                       if (e!==BreakException) throw e;
                   }           
                 </script>
-              {% endunless %}
             {% endif %}
           </div>
         </div>  
@@ -262,11 +252,17 @@
       </div>
       
       <div class="right col-2">     
-        {% if dev %}
-          dev mode
-        {% else %}
+        {% if settings.snippets == "enabled" %}
           {% include 'shopping_info' %} 
           {% include 'subscribe' %} 
+        {% else %}
+          <h1 id="shopping-info">Shopping info</h1>
+          <p>Please describe in a few words how easy is to buy from your store.</p>
+          <p>If there are any additional important information about shopping, payments, shipping etc. please summarise here</p>
+          
+          <h2 id="subscribe">Subscribe</h2>
+          <p>Please provide here a link / button to enable visitors sign up for a newsletter</p>
+          <p>We recommand Google's Feedburner Feed Service. Easy to set up and manage</p>
         {% endif %}       
       </div>    
     </div>

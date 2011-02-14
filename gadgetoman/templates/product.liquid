@@ -1,6 +1,6 @@
 <div id="info" class="block">
   <div class="container">
-    <h1 class="title">{{ product.title }} by {{ product.vendor }} <span>{{ product.price | money }}</span></h1>
+    <h1 class="title">{{ product.title | escape }} by {{ product.vendor }} <span>{{ product.price | money }}</span></h1>
     
     <div id="images" class="left col-1">
       <div id="product-image">
@@ -17,14 +17,19 @@
         <div id="product-select" class="block">
 		      <form action="/cart/add" method="post" name="cartadd">
             {% if product.available %}
-        			<div id="product-variants">
-	
+        			<div id="product-variants">	
                 <select id="variant-select" name='id'>
                   {% for variant in product.variants %}
                     {% if variant.available %}
                       <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
                     {% else %}
-            					<option value="{{ variant.id }}" disabled="disabled">{{ variant.title }} - SOLD OUT</option>
+                      <option value="{{ variant.id }}" disabled="disabled">{{ variant.title }} - 
+                      {% if settings.locale == "enabled" %}
+                        {{ settings.locale_soldout }}
+                      {% else %}
+                        SOLD OUT
+                      {% endif %}
+                      </option>
             				{% endif %}
                   {% endfor %}
                 </select>
@@ -34,7 +39,13 @@
 
         			<input class="link button rounded" type="submit" name="add" value="Add to cart" id="add-cart">
 			      {% else %}
-			        <h6>TEMPORARILY UNAVAILABLE</h6>
+			        <h6>
+			        {% if settings.locale == "enabled" %}
+                {{ settings.locale_unavailable }}
+              {% else %}
+                TEMPORARILY UNAVAILABLE
+              {% endif %}
+			        </h6>
 			      {% endif %}
 		      </form>
 	      </div>
@@ -50,7 +61,13 @@
         <div id="meta" class="block">
           <div class="accordion">
             {% if product.collections.size > 0 %}
-              <h3>Listed in</h3>
+              <h3>
+              {% if settings.locale == "enabled" %}
+                {{ settings.locale_listedin }}
+              {% else %}
+                Listed in
+              {% endif %}
+              </h3>
               <div class="pane">        
                 <ul class="list">
               	  {% for i in product.collections %}      	    
@@ -58,17 +75,50 @@
               		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title | upcase }}</a>
               		  </li>
               		{% endfor %}
-              		  <li>Tagged with <em>{{ product.tags | join: ', ' }}</em></li>
+              		  <li>
+              		  {% if settings.locale == "enabled" %}
+                      {{ settings.locale_taggedwith }}
+                    {% else %}
+                      Tagged with
+                    {% endif %}
+                    <em>{{ product.tags | join: ', ' }}</em>
+                    </li>
               	</ul>
               </div> 
             {% endif %} 
               
-            <h3>Browse more</h3>
+            <h3>
+            {% if settings.locale == "enabled" %}
+              {{ settings.locale_browsemore }}
+            {% else %}
+              Browse more
+            {% endif %}            
+            </h3>
             <div class="pane">
-              See more products from {{ product.vendor | link_to_vendor }} and {{ product.type | link_to_type }}
+              {% if settings.locale == "enabled" %}
+                {{ settings.locale_seemore }}
+              {% else %}
+                See more products from 
+              {% endif %} 
+              {{ product.vendor | link_to_vendor }} 
+              
+              {% if settings.locale == "enabled" %}
+                {{ settings.locale_and }}
+              {% else %}
+                and 
+              {% endif %}
+              
+              {{ product.type | link_to_type }}
             </div>
             
-            <h3>Share</h3>
+            <h3>
+            {% if settings.locale == "enabled" %}
+              {{ settings.locale_share }}
+            {% else %}
+              Share 
+            {% endif %}
+            
+            </h3>
             <div class="pane">
               <ul class="inline-list">
                 <li class="twitter">
@@ -87,38 +137,53 @@
 </div>
   
 
-{% if collections.all.products.size > 0 %}
 <div id="latest" class="block">
   <div class="container">
     <div id="latest-top" class="triangle-bottom"></div>
-    <h3><span class="highlight">Hot!</span> in the store now.</h3>
-    <div class="arrow-right"></div> 
-    {% for product in collections.all.products limit:5 %}
-      <div id="item">	    
-        <div class="image">	      
-          {% for image in product.images limit: 1 %}
-            <a href="{{ product.url | within: collections.all }}" title="">	    
-              <img src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" /></a>
-          {% endfor %}
+    {% if collections.all.products.size > 0 %}
+      {% if settings.locale == "enabled" %}
+        <h3><span class="highlight">{{ settings.locale_hot }}</span> {{ settings.locale_hot_instore }}</h3>
+      {% else %}
+        <h3><span class="highlight">Hot!</span> in the store now.</h3>
+      {% endif %}
+      <div class="arrow-right"></div> 
+      {% for product in collections.all.products limit:5 %}
+        <div id="item">	    
+          <div class="image">	      
+            {% for image in product.images limit: 1 %}
+              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">	    
+                <img src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" /></a>
+            {% endfor %}
+          </div>
+          <div class="title">
+            <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+              {{ product.title }}
+            </a>
+          </div>
+	      </div>
+      {% endfor %}  
+      <div id="call-for-subscribe" class="alignright right">
+        <div class="notice link">
+          <p class="note"><a href="#subscribe">
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_subscribe_email }}
+          {% else %}
+            To stay updated please subscribe to our newsletter. It's free.
+          {% endif %}         
+          </a></p>
         </div>
-        <div class="title">
-          <a href="{{ product.url | within: collections.all }}" title="">
-            {{ product.title }} by {{ product.vendor }}
-          </a>
-        </div>
-	    </div>
-    {% endfor %}  
-    <div id="call-for-subscribe" class="alignright right">
-      <div class="notice link">
-        <p class="note"><a href="#subscribe">To stay updated please subscribe to our newsletter. It's free.</a></p>
       </div>
-    </div>
+    {% else %}
+      <div class="note">
+        To see here the list of the latest products please create a new collection name it's handle <strong>all</strong>
+        then add items to it.
+      </div>
+    {% endif %} 
   </div>
 </div> 
-{% endif %} 
 
 
-{% if collections.all.products.size > 0 %}  
+ 
 <div id="sales" class="block">
   <div class="container">
     <div id="sale" class="left col-1">
@@ -126,40 +191,52 @@
       <div class="arrow-right"></div>
       <div class="notice link">
         <h3 class="note"><a href="#ecosystem">
-        We are running periodicaly special sales on Twitter and Facebook. Follow us to get more! </a></h3>
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_subscribe_social }}
+        {% else %}
+          We are running periodicaly special sales on Twitter and Facebook. Follow us to get more! 
+        {% endif %} 
+        </a></h3>
       </div>
     </div>    
     <div id="items" class="right col-2">
-      {% for product in collections.all.products limit: 4 %}  
-      <div id="item">
-        <div class="image">
-          <a href="{{ product.url | within: collections.all }}">
-            <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
-          </a>
+      {% if collections.all.products.size > 0 %} 
+        {% for product in collections.all.products limit: 4 offset: 3 %}  
+        <div id="item">
+          <div class="image">
+            <a href="{{ product.url | within: collections.all }}">
+              <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
+            </a>
+          </div>
+          <div class="add-to-cart">
+            <img src="{{ 'sales-add-to-cart.png' | asset_url }}"/>
+          </div>        
+          <h6 class="title">
+            <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+              {{ product.title | escape }}            
+            </a>
+          </h6>
+          <div class="meta">       
+            {% if product.compare_at_price_max > product.price %} 
+              <span class="price price-sale rounded">{{ product.price | money }}</span>
+              &mdash;
+              <span class="price price-old rounded">{{ product.compare_at_price_max | money }}</span>
+            {% else %}
+              <span class="price rounded">{{ product.price | money }}</span>
+            {% endif %}          
+          </div>
+		    </div>
+        {% endfor %}
+      {% else %}
+        <div class="note">
+          To see here a list of products on sale please create a new collection and name it's handle <strong>sale</strong> 
+          then items to it.
         </div>
-        <div class="add-to-cart">
-          <img src="{{ 'sales-add-to-cart.png' | asset_url }}"/>
-        </div>        
-        <h6 class="title">
-          <a href="{{ product.url | within: collections.all }}">
-            {{ product.title }}            
-          </a>
-        </h6>
-        <div class="meta">       
-          {% if product.compare_at_price_max > product.price %} 
-            <span class="price price-sale rounded">{{ product.price | money }}</span>
-            &mdash;
-            <span class="price price-old rounded">{{ product.compare_at_price_max | money }}</span>
-          {% else %}
-            <span class="price rounded">{{ product.price | money }}</span>
-          {% endif %}          
-        </div>
-		  </div>
-      {% endfor %}
+      {% endif %}
     </div>
   </div>
 </div>   
-{% endif %}
+
 
 
 

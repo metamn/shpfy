@@ -9,12 +9,7 @@
       </div>
       
       <div id="text" class="block">        
-        {% if article.content != "" %}      		
-      		{{ article.content }}
-      	{% else %}
-      	  In <em>Admin &gt; Blogs &amp; Pages</em>, create a page with the handle <strong><code>frontpage</code></strong> and it will show up here.<br />
-      	  {{ "Learn more about handles" | link_to "http://wiki.shopify.com/Handle" }}
-      	{% endif %}
+        {{ article.content }}      	
       </div>
     </div>
     
@@ -27,12 +22,12 @@
           {% endif %}
           <div id="item" class="{{ klass }} {{ forloop.index }}">
             {% for image in product.images limit: 1 %}
-              <a href="{{ product.url | within: collections.all }}" title="">
+              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
                 <img src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" /></a>
             {% endfor %}
             <h6 class="title">
-              <a href="{{ product.url | within: collections.all }}" title="">
-                {{ product.title }} by {{ product.vendor }}
+              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                {{ product.title | escape }} 
               </a>
             </h6>
           </div>
@@ -59,26 +54,36 @@
   <div class="container">
     <div id="latest-top" class="triangle-bottom"></div>
     {% if collections.all.products.size > 0 %}
-      <h3><span class="highlight">Hot!</span> in the store now.</h3>
+      {% if settings.locale == "enabled" %}
+        <h3><span class="highlight">{{ settings.locale_hot }}</span> {{ settings.locale_hot_instore }}</h3>
+      {% else %}
+        <h3><span class="highlight">Hot!</span> in the store now.</h3>
+      {% endif %}
       <div class="arrow-right"></div> 
       {% for product in collections.all.products limit:5 %}
         <div id="item">	    
           <div class="image">	      
             {% for image in product.images limit: 1 %}
-              <a href="{{ product.url | within: collections.all }}" title="">	    
+              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">	    
                 <img src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" /></a>
             {% endfor %}
           </div>
           <div class="title">
-            <a href="{{ product.url | within: collections.all }}" title="">
-              {{ product.title }} by {{ product.vendor }}
+            <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+              {{ product.title }}
             </a>
           </div>
 	      </div>
       {% endfor %}  
       <div id="call-for-subscribe" class="alignright right">
         <div class="notice link">
-          <p class="note"><a href="#subscribe">To stay updated please subscribe to our newsletter. It's free.</a></p>
+          <p class="note"><a href="#subscribe">
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_subscribe_email }}
+          {% else %}
+            To stay updated please subscribe to our newsletter. It's free.
+          {% endif %}         
+          </a></p>
         </div>
       </div>
     {% else %}
@@ -99,12 +104,17 @@
       <div class="arrow-right"></div>
       <div class="notice link">
         <h3 class="note"><a href="#ecosystem">
-        We are running periodicaly special sales on Twitter and Facebook. Follow us to get more! </a></h3>
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_subscribe_social }}
+        {% else %}
+          We are running periodicaly special sales on Twitter and Facebook. Follow us to get more! 
+        {% endif %} 
+        </a></h3>
       </div>
     </div>    
     <div id="items" class="right col-2">
-      {% if collections.sale.products.size > 0 %} 
-        {% for product in collections.sale.products limit: 4 %}  
+      {% if collections.all.products.size > 0 %} 
+        {% for product in collections.all.products limit: 4 offset: 3 %}  
         <div id="item">
           <div class="image">
             <a href="{{ product.url | within: collections.all }}">
@@ -115,8 +125,8 @@
             <img src="{{ 'sales-add-to-cart.png' | asset_url }}"/>
           </div>        
           <h6 class="title">
-            <a href="{{ product.url | within: collections.all }}">
-              {{ product.title }}            
+            <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+              {{ product.title | escape }}            
             </a>
           </h6>
           <div class="meta">       

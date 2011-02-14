@@ -1,16 +1,33 @@
 <div id="info" class="block">
   <div class="container">    
     <div id="contents" class="col-1 left">
-      <h2>Page Not Found</h2>
-      <p>The page you are looking for is not found.</p>
-      <p>Either the page address was wrong, or, the page itself was moved / removed by the site administrator.</p>
-      <p>Please try the <strong>search</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p>
+      <h2>
+      {% if settings.locale == "enabled" %}
+        {{ settings.locale_notfound }}
+      {% else %}
+        Page Not Found  
+      {% endif %}
+      </h2>
+      
+      {% if settings.snippets == "enabled" %}
+        {% include 'page_not_found' %}        
+      {% else %}
+        <p>The page you are looking for is not found.</p>
+        <p>Either the page address was wrong, or, the page itself was moved / removed by the site administrator.</p>
+        <p>Please try the <strong>search</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p>         
+      {% endif %}      
     </div>
 
     <div id="taxonomies" class="right col-2">      
       <div class="accordion">        
         {% if collections.size > 0 %}
-          <h3 class="first">All collections</h3>
+          <h3 class="first">
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_allcollections }}
+          {% else %}
+            All collections
+          {% endif %}
+          </h3>
           <div class="pane">        
             <ul class="list">
           	  {% for i in collections %}      	    
@@ -23,7 +40,13 @@
         {% endif %}           
       
         {% if shop.vendors.size > 0 %}
-          <h3>All vendors</h3>
+          <h3>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_allvendors }}
+          {% else %}
+            All vendors
+          {% endif %}
+          </h3>
           <div class="pane">   
             <ul class="list">
             	{% for product_vendor in shop.vendors %}
@@ -36,7 +59,13 @@
         {% endif %}
         
         {% if shop.types.size > 0 %}
-          <h3>All product types</h3>
+          <h3>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_alltypes }}
+          {% else %}
+            All product types
+          {% endif %}          
+          </h3>
           <div class="pane">   
             <ul class="list">
             	{% for product_type in shop.types %}
@@ -48,11 +77,19 @@
           </div>
         {% endif %}
         
-        <h3>Search</h3>
+        <h3>
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_search }}
+          {% assign s = settings.locale_search %}
+        {% else %}
+          Search
+          {% assign s = "Search" %}
+        {% endif %} 
+        </h3>
         <div id="search" class="pane">        
 		      <form action="/search" method="get">
 			      <input class="text" type="text" name="q" /> 
-			      <input class="link button greenb rounded" type="submit" value="Go"  />
+			      <input class="link button greenb rounded" type="submit" value="{{ s }}"  />
 		      </form>
         </div>
       </div>      
