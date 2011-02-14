@@ -7,9 +7,11 @@
 	{{ 'base.css' | asset_url | stylesheet_tag }}	
 	{{ 'grid.css' | asset_url | stylesheet_tag }}	
 	{{ 'theme.css' | asset_url | stylesheet_tag }}
-	{{ 'theme-custom-colors.css' | asset_url | stylesheet_tag }}	
+	{% if settings.colors == "enabled" %}
+	  {{ 'theme-custom-colors.css' | asset_url | stylesheet_tag }}	
+	{% endif %}	
 	{% if settings.theme == "enabled" %}
-	  {{ {{ settings.color_scheme | asset_url | stylesheet_tag }}
+	  {{ settings.color_scheme | asset_url | stylesheet_tag }}
 	{% endif %}
 	 
 	<!--[if lte IE 6]>{{ 'ie.css' | asset_url | stylesheet_tag }}<![endif]-->

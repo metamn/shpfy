@@ -165,7 +165,7 @@ a:hover, a:focus, a:active {
 }
 .index #featured #item img {
   max-width: 400px;
-  height: 400px;
+  max-height: 400px;
 }
 .index #featured #scroller {
   text-align: center;
