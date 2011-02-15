@@ -190,16 +190,16 @@ a.underline {
   color: #3d3d3b;
   text-decoration: none;
 }
-.index #featured #item img {
-  max-width: 400px;
-  max-height: 400px;
-}
+
 .index #featured #scroller {
   text-align: center;
   font-size: 1.5em;
 }
 .index #featured #scroller li.inactive {
   color: #a3a3a0;
+}
+.index #featured a, .index #featured a:visited {
+  text-decoration: none;
 }
 
 #latest-top.triangle-bottom {
