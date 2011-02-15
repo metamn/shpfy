@@ -166,7 +166,7 @@
       <div id="ecosystem-top" class="triangle-top"></div>
       <div class="left col-1">
         
-        <div id="blog">
+        <div id="blog">        
           {% if settings.rss_feed == "enabled" %}                    
             <script type="text/javascript">            
               var api = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q={{ settings.rss_feed_url }}&num={{ settings.rss_feed_limit }}";
@@ -269,8 +269,15 @@
           <p>If there are any additional important information about shopping, payments, shipping etc. please summarise here</p>
           
           <h2 id="subscribe">Subscribe</h2>
-          <p>Please provide here a link / button to enable visitors sign up for a newsletter</p>
-          <p>We recommand Google's Feedburner Feed Service. Easy to set up and manage</p>
+          <div class="form">
+            <form action="http://www.feedburner.com/fb/a/emailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=Gadgetoman-News', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">	
+	          <input class="text" type="text" name="email" value="Enter your email address" autocomplete="off"/>
+            <input type="hidden" value="Gadgetoman-News" name="uri"/>
+            <input type="hidden" name="loc" value="en_US"/>
+            <br/>
+            <input class="button" type="submit" value="Subscribe to newsletter" />
+	        </form>
+          </div>    
         {% endif %}       
       </div>    
     </div>

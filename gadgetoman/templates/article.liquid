@@ -30,8 +30,8 @@
         {% endif %}
 		  </div>
       
-      <div class="body">    
-        {{ article.content | strip_html }}
+      <div class="text body">    
+        {{ article.content }}
       </div>
       
       {% if blog.comments_enabled? %}

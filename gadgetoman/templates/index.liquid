@@ -8,7 +8,7 @@
         <h1>{{ article.title }}</h1>        
       </div>
       
-      <div id="text" class="block">        
+      <div id="text" class="text block">        
         {{ article.content }}      	
       </div>
     </div>
@@ -88,8 +88,12 @@
       </div>
     {% else %}
       <div class="note">
-        To see here the list of the latest products please <a href="/admin/custom_collections/new">create a new collection</a>
+        <p>
+        <br/>
+        <br/>
+        To see here the list of the latest products please <a class="underline" href="/admin/custom_collections/new">create a new collection</a>
         and name it's handle to <strong>all</strong> then add products to it.
+        </p>
       </div>
     {% endif %} 
   </div>
@@ -142,7 +146,7 @@
         {% endfor %}
       {% else %}
         <div class="note">
-          To see here a list of products on sale please <a href="/admin/custom_collections/new">create a new collection</a>
+          To see here a list of products on sale please <a class="underline" href="/admin/custom_collections/new">create a new collection</a>
           and name it's handle to <strong>sale</strong> then add products to it.
         </div>
       {% endif %}

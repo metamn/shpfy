@@ -58,8 +58,8 @@
 		      </td>
 	      </tr>
 	      <tr class="second">
-	        <td class="description" colspan=4>
-	          {{ item.product.description | strip_html | truncate: 450 }}		  
+	        <td class="description text" colspan=4>
+	          {{ item.product.description | truncate: 450 }}		  
 	        </td>
 	       </tr>
 	      {% endfor %}
