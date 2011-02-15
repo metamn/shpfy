@@ -14,7 +14,7 @@
 	  {{ settings.color_scheme | asset_url | stylesheet_tag }}
 	{% endif %}
 	 
-	<!--[if lte IE 6]>{{ 'ie.css' | asset_url | stylesheet_tag }}<![endif]-->
+	<!--[if IE]>{{ 'ie.css' | asset_url | stylesheet_tag }}<![endif]-->
 	
 			
 	{{ 'jquery-1.4.3.min.js' | asset_url | script_tag }}
@@ -149,12 +149,10 @@
 	
 	<div id="eco" class="{{ template }} block">
 	  <div class="container">
-	    <div id="icons">	    
-	      <ul class="inline-list right">
-	        <li><img src="{{ 'rss.png' | asset_url }}" alt="News" /></li>
-	        <li><img src="{{ 'facebook.png' | asset_url }}" alt="Friends" /></li>
-	        <li><img src="{{ 'twitter.png' | asset_url }}" alt="Buzz" /></li>
-	      </ul>
+	    <div id="icons" class="right">	    
+	      <div id="item"><img src="{{ 'rss.png' | asset_url }}" alt="News" /></div>
+	      <div id="item"><img src="{{ 'facebook.png' | asset_url }}" alt="Friends" /></div>
+	      <div id="item"><img src="{{ 'twitter.png' | asset_url }}" alt="Buzz" /></div>	      
 	     </div>	   
 	  </div>  
 	</div>
@@ -166,7 +164,7 @@
       <div id="ecosystem-top" class="triangle-top"></div>
       <div class="left col-1">
         
-        <div id="blog">        
+        <div id="blog">  
           {% if settings.rss_feed == "enabled" %}                    
             <script type="text/javascript">            
               var api = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q={{ settings.rss_feed_url }}&num={{ settings.rss_feed_limit }}";
@@ -226,33 +224,33 @@
         
         
         <div id="twitter">
-          <div id="items">
+          <div id="items">          
             {% if settings.twitter_followers == "enabled" %}        
-              <script type="text/javascript">
-                  var counter = 0;
-                  var BreakException= {};
-                  
-                  try {
-                    jQuery.getJSON('http://twitter.com/statuses/followers.json?screen_name={{ settings.twitter_followers_id }}&callback=?',function(data){    
-                    if (data) {                
-                      data.forEach(function(datum) {  
+              <script type="text/javascript">          
+                var counter = 0;
+                var BreakException= {};
+                
+                try {            
+                  var api = 'http://twitter.com/statuses/followers.json?screen_name={{ settings.twitter_followers_id }}&callback=?';
+                  jQuery.getJSON(api, function(data){	
+                    if (data) {
+                      data.forEach(function(datum) {
                         if (datum.screen_name) {
                           var str = '<div id="item">';
                           str += '<a href="http://twitter.com/' + datum.screen_name + '" title="' + datum.screen_name + '">';
                           str += '<img class="avatar" src="' + datum.profile_image_url + '" alt="' + datum.screen_name + '" /></a>';
                           str += '</div>';
-                          jQuery('#ecosystem #twitter #items').append(str);
-                          
+                          jQuery('#ecosystem #twitter #items').append(str);                      
                           counter++;
-                        }                    
-                        if(counter === {{ settings.twitter_followers_limit }}) throw BreakException;               
+                        }  
+                        if (counter === {{ settings.twitter_followers_limit }}) throw BreakException; 
                       });
-                    } 
-                    });​
-                  } catch(e) {
-                      if (e!==BreakException) throw e;
-                  }           
-                </script>
+                    }
+                  });
+                } catch(e) {
+                    if (e!==BreakException) throw e;
+                }                                 
+              </script>
             {% endif %}
           </div>
         </div>  

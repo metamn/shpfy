@@ -2,7 +2,7 @@
   <div class="container">
     
     <div id="content" class="text col-1 left">
-      <h1><a href="{{ article.url }}" title="Permanent link to {{ article.title }}">{{ article.title }}</a></h1> 
+      <h1 class="title"><a href="{{ article.url }}" title="Permanent link to {{ article.title }}">{{ article.title }}</a></h1> 
       <div class="meta">
         {% if settings.locale == "enabled" %}
           {{ settings.locale_by }}

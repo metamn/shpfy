@@ -285,16 +285,14 @@ a.underline {
 #item {  
   text-align: center;
 }
-.title {
-  padding: .62em 0; 
-}
-.title a, .title a:visited {
-  text-decoration: none;  
-  padding: .62em;
+.title a, .title a:visited, .title a:hover {
+  text-decoration: none; 
   color: #3d3d3b;
+  background: none;
 }
 #latest #item .title {
-  height: 3.5em;
+  min-height: 4.5em;
+  padding: .32em;
 }
 
 #sales {
@@ -363,12 +361,11 @@ a.underline {
   z-index: 0;
   cursor: pointer;
 }
-#eco #icons, #eco ul {  
-  padding: .62em 1.25em;
+#eco #icons, #eco #item {  
+  padding: .62em .31em;
 }
-#eco ul {
-  position: relative;
-  top: -1em;
+#eco #item {  
+  float: left;
 }
 #eco .triangle-left {
   width:0; 
