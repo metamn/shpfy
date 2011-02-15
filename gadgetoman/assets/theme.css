@@ -563,10 +563,10 @@ ul.list li.active, .collection #current-collection .active {
 }
 #paginate .page, #paginate .prev, #paginate .next {
   padding: .31em;
-  border: 1px solid #ddd;
 }
 #paginate .current {
-  border: none;
+  background: #a3a3a0;
+  color: #f9f9f9;
 }
 .collection #latest-top.triangle-bottom {
   top: -.1em;

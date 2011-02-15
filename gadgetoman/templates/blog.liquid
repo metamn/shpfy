@@ -1,7 +1,7 @@
 <div id="info" class="block">
-  <div class="container">    
-    <h1>{{ blog.title }}</h1>
-    <div id="content" class="col-1 left">      
+  <div class="container">        
+    <div id="content" class="text col-1 left">
+      <h1>{{ blog.title }}</h1>      
       {% if blog.articles.size > 0 %}
         {% paginate blog.articles by 10 %}        
 	        <div id="articles">
@@ -13,7 +13,7 @@
 		                <span class="date"> # {{ article.created_at | date: "%B %d, %Y" }}</span>
 		              </a>
 		            </h4>
-		            <div class="excerpt text">
+		            <div class="excerpt">
 		              {{ article.content | truncate: 200 }}
 		            </div>
 		          </div>
