@@ -45,6 +45,7 @@ jQuery(document).ready(function(){
     var index = jQuery(this).attr('rel');
     // hide all    
     jQuery(".index #featured #items").children().hide();
+    jQuery(".index #featured #scroller ul").children().removeClass('active');
     jQuery(".index #featured #scroller ul").children().addClass('inactive');
     // show
     jQuery(".index #featured #items ." + index).fadeIn('slow');

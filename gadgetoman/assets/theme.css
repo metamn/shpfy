@@ -459,7 +459,7 @@ img.avatar {
 .box .pane {
   color: #3D3D3B;
 }
-#share li.facebook {
+li.facebook {
   position: relative;
   top: -.25em;
 }

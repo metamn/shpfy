@@ -27,7 +27,7 @@
 }
 
 
-.index #intro, .collection #navigation, #info {
+.index #intro, .collection #navigation  {
   background: {{ settings.c_intro_b }} url(custom_stripe.png);  
   color: {{ settings.c_intro_t }};
   border-bottom: 1px solid {{ settings.c_latest_b }};
@@ -149,16 +149,24 @@
   background: {{ settings.c_coll_info_b }};
   color: {{ settings.c_coll_info_t }};
 }
-#taxonomies, #sidebar  {
+#taxonomies, #sidebar, #shopping  {
   background: {{ settings.c_coll_tax_b }};
   color: {{ settings.c_coll_tax_t }};
+}
+.text a, .text a:visited, .text :link, .text :visited {
+  color: {{ settings.c_a }};
+  background: {{ settings.c_a_b }};
+}
+.text a:hover, .text a:focus, .text a:active {
+  color: {{ settings.c_a_h }};
+  background: {{ settings.c_a_h_b }};
 }
 
 
 #shopping #thumbs, #shopping #meta {
   border-top: 1px solid {{ settings.c_coll_u }};
 }
-.accordion h3, ul.list li {
+.accordion h3, ul.list li, .cart table tr.second td {
   border-bottom: 1px solid {{ settings.c_coll_u }};
 }
 ul.list li.active, .collection #current-collection  .active,.collection #navigation #tags a:visited {
@@ -175,13 +183,7 @@ ul.list li.active, .collection #current-collection  .active,.collection #navigat
 }
 
 
-.box {
-  background: {{ settings.c_box_b }};
-  color: {{ settings.c_box_t }};
-}
-.box a, .box a:visited {
-  color: {{ settings.c_box_t }};
-}
+
 .box .accordion h3, .box .accordion ul.list li {
   border-bottom: 1px solid {{ settings.c_box_h }};
 }
