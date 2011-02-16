@@ -27,7 +27,7 @@
 }
 
 
-.index #intro, .collection #navigation  {
+.index #intro, .collection #navigation, .product #info, .page #info, .blog #info, .article #info  {
   background: {{ settings.c_intro_b }} url(custom_stripe.png);  
   color: {{ settings.c_intro_t }};
   border-bottom: 1px solid {{ settings.c_latest_b }};
@@ -139,6 +139,9 @@
 .product #product-image {
   background: {{ settings.c_prod_img_b }};
 }
+#product #product-image img {
+border: none;
+}
 .product #description {
   background: {{ settings.c_prod_descr_b }};
   color: {{ settings.c_prod_descr_t }};
@@ -153,21 +156,12 @@
   background: {{ settings.c_coll_tax_b }};
   color: {{ settings.c_coll_tax_t }};
 }
-.text a, .text a:visited, .text :link, .text :visited {
-  color: {{ settings.c_a }};
-  background: {{ settings.c_a_b }};
-}
-.text a:hover, .text a:focus, .text a:active {
-  color: {{ settings.c_a_h }};
-  background: {{ settings.c_a_h_b }};
-}
-
 
 #shopping #thumbs, #shopping #meta {
   border-top: 1px solid {{ settings.c_coll_u }};
 }
 .accordion h3, ul.list li, .cart table tr.second td {
-  border-bottom: 1px solid {{ settings.c_coll_u }};
+  border-bottom: 1px solid {{ settings.c_coll_u }} !important;
 }
 ul.list li.active, .collection #current-collection  .active,.collection #navigation #tags a:visited {
   background: {{ settings.c_coll_h }};
@@ -184,39 +178,35 @@ ul.list li.active, .collection #current-collection  .active,.collection #navigat
 
 
 
-.box .accordion h3, .box .accordion ul.list li {
-  border-bottom: 1px solid {{ settings.c_box_h }};
-}
-.article .meta {
-  background: {{ settings.c_box_b }};
-}
-
-
-
-
 #eco {
   background: {{ settings.c_latest_b }};
 }
 #eco.page, #eco.blog, #eco.cart, #eco.article {
  background: {{ settings.c_intro_b }} url(custom_stripe.png);
 }
+
+
 body {
   background: {{ settings.c_latest_b }};
   color: {{ settings.c_latest_t }};
 }
 .text a, .text a:visited, .text :link, .text :visited {
-  color: {{ settings.c_latest_t }};
-  text-decoration: underline;
+  color: {{ settings.c_a }};
+  background: {{ settings.c_a_b }};
 }
 .text a:hover, .text a:focus, .text a:active {
-  color: {{ settings.c_latest_b }};
-  background: {{ settings.c_latest_t }};
-  text-decoration: none;
+  color: {{ settings.c_a_h }} !important;
+  background: {{ settings.c_a_h_b }};
 }
 .text b {
   background: {{ settings.c_info_h }};
   padding: 0 .32em;
   font-weight: normal;
 }
+#index .text a, #index .text a:visited, #index .text a:hover {
+color: none;
+background: none;
+}
+
 
 
