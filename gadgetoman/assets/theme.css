@@ -42,7 +42,7 @@ blockquote {
 
 /* Theme
 
-- background: #f3f3f3;
+- background: #eee;
   - grays light > dark: #f9f9f9, #f3f3f3, #dadada, #a3a3a0, #4c4c4c
   - black: #3d3d3b     
   - highlight/orange: #ff3300
@@ -52,7 +52,7 @@ blockquote {
 
 
 body {
-  background: #f3f3f3;
+  background: #eee;
   color: #3d3d3b;
 }
 
@@ -102,6 +102,9 @@ a.underline {
 }
 #eco.page, #eco.collection, #eco.index {
   min-height: 2em;
+}
+.box {
+  background: #eee;
 }
 
 
@@ -172,7 +175,7 @@ a.underline {
   border-left:4px solid transparent;
   position: relative;
   top: 2.9em;
-  right: 6.4em;
+  right: 100%;
   display: inline;
 }
 
@@ -183,7 +186,7 @@ a.underline {
 
 .index #intro, .collection #navigation, #info {
   background: url(stripe.png);
-  border-bottom: 1px solid #f3f3f3;
+  border-bottom: 1px solid #eee;
   padding: 2.5em 0;
 }
 .index #logo h1 a, .index #logo h1 a:visited, .article h1 a, .article h1 a:visited {
@@ -212,7 +215,7 @@ a.underline {
   border-left:30px solid transparent;
   position: relative;  
   display: inline;
-  top: 2.4em;
+  top: 2.3em;
 }
 #ecosystem-top.triangle-top {
   width:0; 
@@ -249,10 +252,10 @@ a.underline {
   width:0; 
   height:0;
   line-height:0;
-  border-top:24px solid transparent;
-  border-right:24px solid transparent;
-  border-bottom:24px solid transparent;
-  border-left:24px solid #ffb200;
+  border-top:23px solid transparent;
+  border-right:23px solid transparent;
+  border-bottom:23px solid transparent;
+  border-left:23px solid #ffb200;
   position: relative;
   left: 4.4em;
   top: -2.25em;
@@ -286,9 +289,9 @@ a.underline {
   text-align: center;
 }
 .title a, .title a:visited, .title a:hover {
-  text-decoration: none; 
-  color: #3d3d3b;
-  background: none;
+  text-decoration: none !important; 
+  color: #3d3d3b !important;
+  background: none !important;
 }
 #latest #item .title {
   min-height: 4.5em;
@@ -353,7 +356,13 @@ a.underline {
 
 
 #eco {
-  background: #f3f3f3;
+  background: #eee;
+}
+#eco.page, #eco.blog, #eco.cart, #eco.article {
+  background: url("stripe.png") repeat scroll 0 0 transparent;
+}
+#page #info, #blog #info, #article #info {
+  border-bottom: none;
 }
 #eco #icons {
   position: relative;
@@ -434,8 +443,9 @@ img.avatar {
 
 /* Product */
 
-.box {
+#product #info #description {
   background: #f9f9f9;
+  padding: 1.25em;
 }
 #shopping #thumbs, #shopping #meta {
   padding: 1.25em 0;
@@ -445,7 +455,7 @@ img.avatar {
   border: 1px solid #ededed; 
 }
 .box .accordion h3, .box .accordion ul.list li {
-  border-bottom: 1px solid #ededed;
+  border-bottom: 1px solid #f9f9f9;
 }
 .box .pane {
   color: #3D3D3B;
@@ -497,6 +507,10 @@ img.avatar {
 .cart table td.image {
   vertical-align: top;
 }
+.cart img {
+  max-width: 100px;
+  max-height: 100px;
+}
 .cart table td.update {
   width: 30%;
 }
@@ -529,7 +543,7 @@ ul.list li a, ul.list li a:visited {
   color: #3d3d3b;
 }
 ul.list li.active, .collection #current-collection .active {
-  background: #f3f3f3;
+  background: #eee;
 }
 .article-title {
   padding: 0;

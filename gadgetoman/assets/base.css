@@ -101,7 +101,7 @@ input, select   { display: inline-block }
 big             { font-size: 1.17em }
 sub             { vertical-align: sub }
 sup             { vertical-align: super }
-table           { border-spacing: 2px; }
+table           { border-spacing: 2px; width: 100%; }
 thead, tbody,
 tfoot           { vertical-align: middle }
 td, th, tr      { vertical-align: inherit }
@@ -162,7 +162,6 @@ p {
 
 .box {
   padding: 1.25em;
-  background: #f3f3f3;
 }
 .button, .button a {
   /*background: #99FF33;*/
