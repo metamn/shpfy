@@ -8,12 +8,14 @@
 	    </div> 
 	    
 	    <div id="description" class="block">
-        {{ product.description }}
+	      <div class="box">
+          {{ product.description }}
+        </div>
       </div>    
     </div>
   
     <div id="shopping" class="right col-2">
-      <div class="box block">
+      <div class="box">
         <div id="product-select" class="block">
 		      <form action="/cart/add" method="post" name="cartadd">
             {% if product.available %}

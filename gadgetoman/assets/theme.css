@@ -103,7 +103,7 @@ a.underline {
 #eco.page, #eco.collection, #eco.index {
   min-height: 2em;
 }
-.box {
+#shopping {
   background: #eee;
 }
 
@@ -445,7 +445,6 @@ img.avatar {
 
 #product #info #description {
   background: #f9f9f9;
-  padding: 1.25em;
 }
 #shopping #thumbs, #shopping #meta {
   padding: 1.25em 0;

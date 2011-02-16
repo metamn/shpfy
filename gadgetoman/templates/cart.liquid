@@ -1,89 +1,91 @@
 <div id="info" class="block">
   <div class="container">    
     <div id="content">
-      {% if cart.item_count == 0 %}
-        <h1>
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_cart_empty }}
+      <div class="box">
+        {% if cart.item_count == 0 %}
+          <h1>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_cart_empty }}
+          {% else %}
+            Your cart is empty 
+          {% endif %}
+          </h1>
+          <p><a href="/">
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_cart_visit }}
+          {% else %}
+            Please visit our shop
+          {% endif %}        
+          .</a></p>  
         {% else %}
-          Your cart is empty 
-        {% endif %}
-        </h1>
-        <p><a href="/">
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_cart_visit }}
-        {% else %}
-          Please visit our shop
-        {% endif %}        
-        .</a></p>  
-      {% else %}
-      
-        <h1>
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_cart_title }}
-        {% else %}
-          Your Shopping Cart
-        {% endif %}  
-        </h1>
-              
-        <form action="/cart" method="post" id="cartform" name="cartform">
-        <table>
-        {% for item in cart.items %}
-	      <tr class="first">
-	        <td class="image" rowspan=2>
-	          <a href="{{ item.product.url | within: collections.all }}">
-	            <img src="{{ item.product.images.last | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" />
-	          </a>
-	        </td>
-		      <td class="info">
-		        <h6 class="title"><a href="{{ item.product.url | within: collections.all }}">
-		          {{ item.title }} <span>{{ item.price | money }}
-		        </a></h6>		  
-		      </td>
-		      <td class="update">
-		        <input type="text" class="quantity name="updates[]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();" />
-			      <input type="hidden" name="id" value="{{ item.variant.id }}" />
-			      {% if settings.locale == "enabled" %}
-              {% assign u = settings.locale_cart_update %}
-            {% else %}
-              {% assign u = "Update" %}
-            {% endif %}  
-			      <input type="submit" class="update" name="update" value="{{ u }}" id="update-cart" />
-		      </td>
-		      <td class="price">
-			      {{ item.line_price | money }}
-		      </td>
-		      <td class="remove">
-		        <a href="/cart/change/{{ item.variant.id }}?quantity=0">x</a>
-		      </td>
-	      </tr>
-	      <tr class="second">
-	        <td class="description text" colspan=4>	          
-	        </td>
-	       </tr>
-	      {% endfor %}
-	      </table>
-	
-	      <div id="checkout">
-		      <h4>
-		        {% if settings.locale == "enabled" %}
-              {{ settings.locale_cart_total }}
-            {% else %}
-              TOTAL:
-            {% endif %} 
-		         <span>{{ cart.total_price | money }} {{ shop.currency }}</span>
-		        <span class="right">
-		          {% if settings.locale == "enabled" %}
-                {% assign p = settings.locale_cart_checkout %}
+        
+          <h1>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_cart_title }}
+          {% else %}
+            Your Shopping Cart
+          {% endif %}  
+          </h1>
+                
+          <form action="/cart" method="post" id="cartform" name="cartform">
+          <table>
+          {% for item in cart.items %}
+	        <tr class="first">
+	          <td class="image" rowspan=2>
+	            <a href="{{ item.product.url | within: collections.all }}">
+	              <img src="{{ item.product.images.last | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" />
+	            </a>
+	          </td>
+		        <td class="info">
+		          <h6 class="title"><a href="{{ item.product.url | within: collections.all }}">
+		            {{ item.title }} <span>{{ item.price | money }}
+		          </a></h6>		  
+		        </td>
+		        <td class="update">
+		          <input type="text" class="quantity name="updates[]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();" />
+			        <input type="hidden" name="id" value="{{ item.variant.id }}" />
+			        {% if settings.locale == "enabled" %}
+                {% assign u = settings.locale_cart_update %}
               {% else %}
-                {% assign p = "Proceed to checkout" %}
+                {% assign u = "Update" %}
+              {% endif %}  
+			        <input type="submit" class="update" name="update" value="{{ u }}" id="update-cart" />
+		        </td>
+		        <td class="price">
+			        {{ item.line_price | money }}
+		        </td>
+		        <td class="remove">
+		          <a href="/cart/change/{{ item.variant.id }}?quantity=0">x</a>
+		        </td>
+	        </tr>
+	        <tr class="second">
+	          <td class="description text" colspan=4>	          
+	          </td>
+	         </tr>
+	        {% endfor %}
+	        </table>
+	
+	        <div id="checkout">
+		        <h4>
+		          {% if settings.locale == "enabled" %}
+                {{ settings.locale_cart_total }}
+              {% else %}
+                TOTAL:
               {% endif %} 
-		          <input class="link button rounded" type="submit" id="getout" name="checkout" value="{{ p }}" />
-		        </span>
-		      </h4>
-	      </div>	
-        </form>
-      {% endif %}
+		           <span>{{ cart.total_price | money }} {{ shop.currency }}</span>
+		          <span class="right">
+		            {% if settings.locale == "enabled" %}
+                  {% assign p = settings.locale_cart_checkout %}
+                {% else %}
+                  {% assign p = "Proceed to checkout" %}
+                {% endif %} 
+		            <input class="link button rounded" type="submit" id="getout" name="checkout" value="{{ p }}" />
+		          </span>
+		        </h4>
+	        </div>	
+          </form>
+        {% endif %}
+      </div>
     </div>
  	
     

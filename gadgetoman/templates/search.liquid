@@ -1,18 +1,20 @@
 <div id="navigation" class="block">
   <div class="container"> 
     <div id="current-collection" class="left col-1">      
-      <h2>
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_search_title }}
-        {% else %}
-          Search results for:
-        {% endif %}
-         {{ search.terms }}
-      </h2>            
+      <div class="box">
+        <h2>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_search_title }}
+          {% else %}
+            Search results for:
+          {% endif %}
+           {{ search.terms }}
+        </h2>
+      </div>            
     </div>
     
     <div id="taxonomies" class="right col-2">      
-      <div class="accordion">        
+      <div class="box accordion">        
         
         {% if collections.size > 0 %}
           <h3 class="first">

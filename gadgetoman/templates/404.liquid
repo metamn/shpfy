@@ -1,25 +1,27 @@
 <div id="info" class="block">
   <div class="container">    
-    <div id="contents" class="text col-1 left">
-      <h2>
-      {% if settings.locale == "enabled" %}
-        {{ settings.locale_notfound }}
-      {% else %}
-        Page Not Found  
-      {% endif %}
-      </h2>
-      
-      {% if settings.snippets == "enabled" %}
-        {% include 'page_not_found' %}        
-      {% else %}
-        <p>The page you are looking for is not found.</p>
-        <p>Either the page address was wrong, or, the page itself was moved / removed by the site administrator.</p>
-        <p>Please try the <strong>search</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p>         
-      {% endif %}      
+    <div id="content" class="text col-1 left">
+      <div class="box">
+        <h2>
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_notfound }}
+        {% else %}
+          Page Not Found  
+        {% endif %}
+        </h2>
+        
+        {% if settings.snippets == "enabled" %}
+          {% include 'page_not_found' %}        
+        {% else %}
+          <p>The page you are looking for is not found.</p>
+          <p>Either the page address was wrong, or, the page itself was moved / removed by the site administrator.</p>
+          <p>Please try the <strong>search</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p>         
+        {% endif %}      
+      </div>
     </div>
 
     <div id="taxonomies" class="right col-2">      
-      <div class="accordion">        
+      <div class="accordion box">        
         {% if collections.size > 0 %}
           <h3 class="first">
           {% if settings.locale == "enabled" %}

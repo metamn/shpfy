@@ -1,134 +1,133 @@
 <div id="info" class="block">
   <div class="container">        
     <div id="content" class="text col-1 left">
-      <h1>{{ blog.title }}</h1>      
-      {% if blog.articles.size > 0 %}
-        {% paginate blog.articles by 10 %}        
-	        <div id="articles">
-	          {% for article in blog.articles %}
-		          <div id="article">
-		            <h4 class="title">
-		              <a href="{{ article.url }}" title="{{ article.title }}">
-		                {{ article.title }}
-		                <span class="date"> # {{ article.created_at | date: "%B %d, %Y" }}</span>
-		              </a>
-		            </h4>
-		            <div class="excerpt">
-		              {{ article.content | truncate: 200 }}
+      <div class="box">
+        <h1>{{ blog.title }}</h1>      
+        {% if blog.articles.size > 0 %}
+          {% paginate blog.articles by 10 %}        
+	          <div id="articles">
+	            {% for article in blog.articles %}
+		            <div id="article">
+		              <h4 class="title">
+		                <a href="{{ article.url }}" title="{{ article.title }}">
+		                  {{ article.title }}
+		                  <span class="date"> # {{ article.created_at | date: "%B %d, %Y" }}</span>
+		                </a>
+		              </h4>
+		              <div class="excerpt">
+		                {{ article.content | truncate: 200 }}
+		              </div>
 		            </div>
-		          </div>
-	          {% endfor %}
-	        </div>
-	
-	       	{% if paginate.pages > 1 %}
-	          <div id="paginate">
-		          {{ paginate | default_pagination }}
+	            {% endfor %}
 	          </div>
-	        {% endif %}
-	        
-	       {% endpaginate %}	       	  
-	    {% endif %}
+	
+	         	{% if paginate.pages > 1 %}
+	            <div id="paginate">
+		            {{ paginate | default_pagination }}
+	            </div>
+	          {% endif %}
+	          
+	         {% endpaginate %}	       	  
+	      {% endif %}
+	     </div>
     </div>
 
-    <div class="right col-2">           
-      <div class="box block">
-        <div class="accordion">
-          <h3 class="first">
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_article_posts }}
-          {% else %}
-            Latest blog posts
-          {% endif %}</h3>
-          <div class="pane">
-            <ul class="list">
-              {% for article in blog.articles limt: 3%}
+    <div id="sidebar" class="right col-2">           
+      <div class="box accordion">
+        <h3 class="first">
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_article_posts }}
+        {% else %}
+          Latest blog posts
+        {% endif %}</h3>
+        <div class="pane">
+          <ul class="list">
+            {% for article in blog.articles limt: 3%}
+              <li>
+                  <a href="{{ article.url }}" title="{{ article.title }}">
+                    {{ article.title }}
+                    <span class="date"># {{ article.created_at | date: "%B %d, %Y" }}</span>
+                  </a>
+                </li>
+              {% endfor %}
+          </ul>
+        </div>
+        
+        <h3>
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_article_comments }}
+        {% else %}
+          Recent comments
+        {% endif %}
+        </h3>
+        <div class="pane">
+          <ul id="comments" class="list">
+            {% for article in blog.articles limt: 3%}		   
+              {% for comment in article.comments limit: 2 %}
                 <li>
-                    <a href="{{ article.url }}" title="{{ article.title }}">
-                      {{ article.title }}
-                      <span class="date"># {{ article.created_at | date: "%B %d, %Y" }}</span>
-                    </a>
-                  </li>
-                {% endfor %}
-            </ul>
-          </div>
-          
+                  <a href="{{ comment.url }}" title="Comment on {{ article.title }}">
+                    <blockquote>&ldquo;{{ comment.content | strip_html | truncate: 250 }}&rdquo;</blockquote>                
+                  </a>
+                  <span class="date"># {{ comment.author }}</span>
+                </li>
+              {% endfor %}
+            {% endfor %}
+          </ul>
+        </div>
+        
+        {% if collections.size > 0 %}
           <h3>
           {% if settings.locale == "enabled" %}
-            {{ settings.locale_article_comments }}
+            {{ settings.locale_article_collections }}
           {% else %}
-            Recent comments
+            Product collections
           {% endif %}
           </h3>
-          <div class="pane">
-            <ul id="comments" class="list">
-              {% for article in blog.articles limt: 3%}		   
-                {% for comment in article.comments limit: 2 %}
-                  <li>
-                    <a href="{{ comment.url }}" title="Comment on {{ article.title }}">
-                      <blockquote>&ldquo;{{ comment.content | strip_html | truncate: 250 }}&rdquo;</blockquote>                
-                    </a>
-                    <span class="date"># {{ comment.author }}</span>
-                  </li>
-                {% endfor %}
-              {% endfor %}
-            </ul>
-          </div>
-          
-          {% if collections.size > 0 %}
-            <h3>
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_article_collections }}
-            {% else %}
-              Product collections
-            {% endif %}
-            </h3>
-            <div class="pane">        
-              <ul class="list">
-            	  {% for i in collections %}      	    
-            		  <li {% if collection.url == i.url %} class="active"{% endif %}>
-            		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title | upcase }}</a>
-            		  </li>
-            		{% endfor %}
-            	</ul>
-            </div> 
-          {% endif %}  
-          
-          <h3>
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_search }}
-            {% assign s = settings.locale_search %}
-          {% else %}
-            Search
-            {% assign s = "Search" %}
-          {% endif %} 
-          </h3>
-          <div id="search" class="pane">        
-		        <form action="/search" method="get">
-			        <input class="text" type="text" name="q" /> 
-			        <input class="link button greenb rounded" type="submit" value="{{ s }}"  />
-		        </form>
-          </div>
-          
-          <h3>
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_share }}
-            {% else %}
-              Share 
-            {% endif %}
-          </h3>
-          <div id="share" class="pane">
-            <div id="icons">	    
-	            <ul class="inline-list">
-                <li class="twitter">
-                  <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
-                </li>
-                <li class="facebook">
-                  <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="true" width="150"></fb:like>              
-                </li>
-              </ul>
-	           </div>
-          </div>
+          <div class="pane">        
+            <ul class="list">
+          	  {% for i in collections %}      	    
+          		  <li {% if collection.url == i.url %} class="active"{% endif %}>
+          		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title | upcase }}</a>
+          		  </li>
+          		{% endfor %}
+          	</ul>
+          </div> 
+        {% endif %}  
         
+        <h3>
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_search }}
+          {% assign s = settings.locale_search %}
+        {% else %}
+          Search
+          {% assign s = "Search" %}
+        {% endif %} 
+        </h3>
+        <div id="search" class="pane">        
+	        <form action="/search" method="get">
+		        <input class="text" type="text" name="q" /> 
+		        <input class="link button greenb rounded" type="submit" value="{{ s }}"  />
+	        </form>
+        </div>
+        
+        <h3>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_share }}
+          {% else %}
+            Share 
+          {% endif %}
+        </h3>
+        <div id="share" class="pane">
+          <div id="icons">	    
+            <ul class="inline-list">
+              <li class="twitter">
+                <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
+              </li>
+              <li class="facebook">
+                <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="true" width="150"></fb:like>              
+              </li>
+            </ul>
+           </div>
         </div>
       </div>
     </div>    
