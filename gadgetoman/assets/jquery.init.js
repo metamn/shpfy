@@ -4,8 +4,25 @@ jQuery.noConflict();
 jQuery(document).ready(function(){
 
 
-  // Accordions
-  
+  // Highlight More button on Frontpage
+  jQuery("#latest #more").hover(
+    function () {
+      jQuery(this).addClass('highlight');
+    },
+    function () {
+      jQuery(this).removeClass('highlight');
+    }
+  );
+  jQuery("#sales #more").hover(
+    function () {
+      jQuery(this).addClass('sale');
+    },
+    function () {
+      jQuery(this).removeClass('sale');
+    }
+  );
+
+  // Accordions  
   // Open the first pane
   jQuery(".accordion h3.first").addClass("current");
   jQuery(".accordion h3.first").next(".pane").show();
@@ -20,8 +37,6 @@ jQuery(document).ready(function(){
       jQuery(this).next(".pane").hide();
     }
   );
-  
-  
   
   // Click on Search in the Header
   jQuery(".menu .search").click(function(){
@@ -83,56 +98,7 @@ jQuery(document).ready(function(){
     };
     img.src = newImage;       
   }).filter(":first").click();
-  
-  
-  // Show excerpt on Collections, Search, Blog
-  // 1. change arrow
-  // 2. hide original excerpt
-  // 3. insert full content
-  // 4. change div width
-  jQuery(".collection #item #description span.more, #blog #content #description span.more ").click(function(){        
-    // hide
-    jQuery(this).prev().slideToggle(200);        
-    // insert
-    jQuery(this).next().slideToggle(200);
-    // arrow
-    var arrow = jQuery(this).html();     
-    if (arrow == "→") {
-      arrow = "&larr;";
-    } else {
-      arrow = "&rarr;";
-    };
-    jQuery(this).html(arrow);     
-  });
-  
-  
-  // Click on Thumbnail at the Collections & Search page
-  jQuery("#collection #item img.link, #search #item img.link").click(function(){
-    var newImage = jQuery(this).attr('rev');  
-    var wrap = jQuery(this).parent().parent().prev().children();    
-    var img = new Image();
-    img.onload = function() {
-      // change the image
-      wrap.find("img").attr("src", newImage);
-      wrap.find("a").attr("href", newImage);
-    };
-    img.src = newImage;    
-        
-  }).filter(":first").click();
-  
-  
-  
-  // Show excerpt on Frontpage, Blog
-  jQuery("#index #info span.more").click(function(){
-    var arrow = jQuery(this).html();     
-    if (arrow == "→") {
-      arrow = "&larr;";
-    } else {
-      arrow = "&rarr;";
-    };
-    jQuery(this).html(arrow);  
-    jQuery("#index #info #excerpt").toggle();
-  });
+   
   
     
 });   

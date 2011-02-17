@@ -18,21 +18,8 @@
   width: 40%;
 }
 
-#latest #item {
-  width: 15%;
-  margin-right: 5%;
-  float: left;
-}
-
-#sales .col-1 {
-  width: 17%;
-  margin-right: 3%;
-}
-#sales .col-2 {
-  width: 80%;
-}
-#sales #item {
-  width: 45%;
+#item.product, .subscribe-twitter, #hot {
+  width: 20%;
   margin-right: 5%;
   float: left;
 }

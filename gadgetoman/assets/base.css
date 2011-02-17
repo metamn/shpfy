@@ -169,7 +169,9 @@ p {
 /* Common 
 */
 
-
+.small {
+  font-size: small;
+}
 .box {
   padding: 1.25em;
 }
