@@ -45,7 +45,7 @@
 		    {% if settings.logo == "enabled" %}
 			    <a href="/" title="{{ shop.name }}"><img src="{{ "logo.png" | asset_url }}" alt="{{ shop.name | escape }}" /></a>
 			  {% else %}
-			    <h1><a href="/" title="{{ shop.name }}">{{ shop.name | escape }}</a></h1>
+			    <h2 class="logo"><a href="/" title="{{ shop.name }}">{{ shop.name | escape }}</a></h2>
 			  {% endif %}
 			</div>
 			<div id="navigation" class="menu right alignright">
@@ -169,7 +169,7 @@
       <div id="ecosystem-top" class="triangle-top"></div>
       <div class="left col-1">
         
-        <div id="blog">  
+        <div id="blog" class="text">  
           {% if settings.rss_feed == "enabled" %}                    
             <script type="text/javascript">            
               var api = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q={{ settings.rss_feed_url }}&num={{ settings.rss_feed_limit }}";
@@ -262,16 +262,16 @@
      
       </div>
       
-      <div class="right col-2">     
+      <div id="shopping-info" class="text right col-2">     
         {% if settings.snippets == "enabled" %}
           {% include 'shopping_info' %} 
           {% include 'subscribe' %} 
         {% else %}
-          <h1 id="shopping-info">Shopping info</h1>
+          <h2>Shopping info</h2>
           <p>Please describe in a few words how easy is to buy from your store.</p>
           <p>If there are any additional important information about shopping, payments, shipping etc. please summarise here</p>
           
-          <h2 id="subscribe">Subscribe</h2>
+          <h3 id="subscribe">Subscribe</h3>
           <div class="form">
             <form action="http://www.feedburner.com/fb/a/emailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=Gadgetoman-News', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">	
 	          <input class="text" type="text" name="email" value="Enter your email address" autocomplete="off"/>

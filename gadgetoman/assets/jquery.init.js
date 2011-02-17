@@ -30,16 +30,7 @@ jQuery(document).ready(function(){
     jQuery("#header .search-menu").fadeIn('slow');
   });
   
-  // Hover on .notice
-  jQuery(".notice").hover(
-    function () {
-      jQuery(this).addClass('notice-hover');
-    },
-    function () {
-      jQuery(this).removeClass('notice-hover');
-    }
-  );
-
+  
   // Scrolling featured products
   jQuery(".index #featured #scroller .link").click(function(){        
     var index = jQuery(this).attr('rel');

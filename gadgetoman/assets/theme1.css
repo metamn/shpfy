@@ -1,0 +1,212 @@
+#header {
+  background: #4f4442;
+}
+#header a, #header a:visited, .menu .search {
+  color: #0593f2;
+  text-decoration: none;
+}
+
+#header #logo img {
+  max-width: 120;
+  width: 120;
+  height: auto;
+}
+
+.menu #item.cart {
+  background: #abf205 !important;
+  color: #fcfefb; 
+}
+.menu #item.cart .quantity {
+  border-bottom: 1px dotted #fcfefb;
+}
+.menu #item.cart a {
+  color: #fcfefb; 
+}
+.menu .triangle-left {
+  border-color: transparent #4f4442 transparent transparent;
+}
+
+
+.index #intro, .collection #navigation, .product #info, .page #info, .blog #info, .article #info  {
+  background: #a39b87 url(custom_stripe.png);  
+  color: #3d3d3b;
+  border-bottom: 1px solid #c0bbad;
+}
+.index #intro a, .collection #navigation a, #info a {
+  color: #3d3d3b;
+}
+.index #featured #scroller li.inactive {
+  color: #eeeeee;
+}
+.index #featured #scroller li.active {
+  color: #3d3d3b;
+}
+
+.text b {
+  background: #c0bbad;
+}
+#latest-top.triangle-bottom {
+  border-color: #a39b87 transparent transparent;
+}
+
+
+#latest {
+  background: #c0bbad;
+  color: #3d3d3b;
+}
+#latest h3 .highlight {
+  background: #f9dd07;
+}
+#latest .arrow-right {
+  border-color: transparent transparent transparent #f9dd07;
+}
+.note, .note a {
+  color: #706b5d;
+}
+#latest #item, .collection #items #item {
+  -moz-box-shadow: 0 3px 10px #a39b88;
+  background: none repeat scroll 0 0 #cdc7b8;
+}
+#latest #item a, .collection #items #item a {
+  color: #3d3d3b;
+}
+
+
+#sales {
+  background: #c0bbad;
+  color: #3d3d3b;
+}
+#sale h1 {
+  background: #bf2f17;
+  color: #f9f9f9;
+}
+#sale .arrow-right {
+  border-color: transparent transparent transparent #bf2f17;
+}
+#sales #item .meta .price {
+  color: #bf2f17;
+}
+#sales #item.hover .meta .price {
+  color: #f9f9f9;
+  background: #bf2f17;
+}
+#sales .note, #sales .note a {
+  color: #706b5d;
+}
+#sales #item {  
+  background: none repeat scroll 0 0 #c0bbad;
+}
+#sales #item a {
+  color: #3d3d3b;
+}
+#sales #item .meta .price {
+  color: #bf2f17;
+}
+#sales #item.hover .meta .price {
+  color:#f9f9f9;
+  background: #bf2f17;
+}
+
+
+
+#ecosystem {
+  background: #cdc7b8;
+  color: #3d3d3b;
+}
+#ecosystem-top.triangle-top {
+  border-color: transparent transparent #cdc7b8;
+}
+.date {
+  color: #a39b87;
+}
+#ecosystem .list li {
+  border-bottom: 1px solid #c0bbad
+}
+
+
+#footer {
+  background: #4f4442;
+}
+#footer a, #footer a:visited {
+  color: #0593f2;
+}
+
+
+.page .title {
+  background: ;
+  color: ;
+}
+.product #product-image {
+  background: #ffffff;
+}
+#product #product-image img {
+border: none;
+}
+.product #description {
+  background: #c0bbad;
+  color: #3d3d3b;
+}
+
+
+.collection #current-collection, #content  {
+  background: #ffffff;
+  color: #3d3d3b;
+}
+#taxonomies, #sidebar, #shopping  {
+  background: #cdc7b8;
+  color: #3d3d3b;
+}
+
+#shopping #thumbs, #shopping #meta {
+  border-top: 1px solid #a39b87;
+}
+.accordion h3, ul.list li, .cart table tr.second td {
+  border-bottom: 1px solid #a39b87 !important;
+}
+ul.list li.active, .collection #current-collection  .active,.collection #navigation #tags a:visited {
+  background: #eeeeee;
+}
+
+#paginate .current {
+  background: #a3a3a0;
+  color: #3d3d3b;
+}
+#paginate a, #paginate a:visited {
+  background: #c0bbad;
+  color: #3d3d3b;
+}
+
+
+
+#eco {
+  background: #c0bbad;
+}
+#eco.page, #eco.blog, #eco.cart, #eco.article {
+ background: #a39b87 url(custom_stripe.png);
+}
+
+
+body {
+  background: #c0bbad;
+  color: #3d3d3b;
+}
+.text a, .text a:visited, .text :link, .text :visited {
+  color: #3d3d3b;
+  background: #ffffff;
+}
+.text a:hover, .text a:focus, .text a:active {
+  color: #3d3d3b !important;
+  background: #ffffff;
+}
+.text b {
+  background: ;
+  padding: 0 .32em;
+  font-weight: normal;
+}
+#index .text a, #index .text a:visited, #index .text a:hover {
+color: none;
+background: none;
+}
+
+
+
