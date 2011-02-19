@@ -1,6 +1,5 @@
 <div class="container"> 
   <div id="items" class="left col-1">
-    <div id="latest-top" class="triangle-bottom"></div>
     {% paginate collection.products by 9 %}
     {% if collection.products.size == 0 %}
       <h3>No products in this collection.</h3>
