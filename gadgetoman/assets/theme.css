@@ -205,12 +205,13 @@ a.underline {
   border: 1px solid #f7f7f7; 
   border-bottom: 1px solid #ededed;  
   padding: .62em 0;
+  width: 99%;
 }
 #item.product .image img {
   height: 10em;
 }
 #item.product .title {
-  padding: .32em;
+  padding: .32em 0;
 }
 #call-for-subscribe {
   margin: 1em 5% 0 0;

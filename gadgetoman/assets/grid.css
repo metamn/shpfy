@@ -18,7 +18,7 @@
   width: 40%;
 }
 
-#item.product, .subscribe-twitter, #hot {
+#item.product, .subscribe-twitter {
   width: 20%;
   margin-right: 5%;
   float: left;
