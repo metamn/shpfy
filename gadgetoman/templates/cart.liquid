@@ -37,9 +37,9 @@
 	            </a>
 	          </td>
 		        <td class="info">
-		          <h6 class="title"><a href="{{ item.product.url | within: collections.all }}">
+		          <a href="{{ item.product.url | within: collections.all }}">
 		            {{ item.title }} <span>{{ item.price | money }}
-		          </a></h6>		  
+		          </a>	  
 		        </td>
 		        <td class="update">
 		          <input type="text" class="quantity name="updates[]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();" />
