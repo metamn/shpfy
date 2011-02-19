@@ -16,7 +16,7 @@ body {
   -webkit-text-size-adjust: none; 
   font-family: 'Ubuntu', arial, serif;  
   /* setting the rhythm */
-  line-height: 1.25em;
+  line-height: 1.3em;
 }
 
 
@@ -133,7 +133,7 @@ a.underline {
   border-bottom:4px solid transparent;
   border-left:4px solid transparent;
   position: relative;
-  top: 3.3em;
+  top: 2.9em;
   right: 100%;
   display: inline;
 }

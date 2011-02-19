@@ -221,7 +221,7 @@
             <ul class="list">
           	  {% for i in collections %}      	    
           		  <li {% if collection.url == i.url %} class="active"{% endif %}>
-          		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title | upcase }}</a>
+          		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title }}</a>
           		  </li>
           		{% endfor %}
           	</ul>
