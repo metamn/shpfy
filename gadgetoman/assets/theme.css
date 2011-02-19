@@ -114,9 +114,7 @@ a.underline {
   top: .5em;
   font-size: small;
 }
-.menu #item.cart a {
-  font-weight: bold;
-}
+
 .menu #item.cart .quantity {
   margin-bottom: .31em;
   border-bottom: 1px dotted #f9f9f9;
@@ -133,7 +131,7 @@ a.underline {
   border-bottom:4px solid transparent;
   border-left:4px solid transparent;
   position: relative;
-  top: 2.9em;
+  top: 3.3em;
   right: 100%;
   display: inline;
 }
@@ -174,7 +172,7 @@ a.underline {
   border-left:30px solid transparent;
   position: relative;  
   display: inline;
-  top: 1.18em;
+  top: 1.1em;
 }
 #latest .highlight {
   font-variant: small-caps;
@@ -416,6 +414,9 @@ li.facebook {
 
 /* Checkout */
 
+.cart table tr {
+  height: 3em;
+}
 .cart table tr.first td {
   vertical-align: middle; 
   padding: 0 1em; 
