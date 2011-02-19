@@ -1,3 +1,20 @@
+body {
+  background: #c0bbad url(custom_stripe.png);
+  color: #3d3d3b;
+}
+a, a:visited, a:hover, :link, :visited {
+  color: #3d3d3b;
+}
+.text a, .text a:visited, .text :link, .text :visited {
+  color: #3d3d3b;
+  background: ;
+}
+.text a:hover, .text a:focus, .text a:active {
+  color: #f9f9f9 !important;
+  background: #3d3d3b;
+}
+
+
 #header {
   background: #4f4442;
 }
@@ -14,24 +31,20 @@
 
 .menu #item.cart {
   background: #abf205 !important;
-  color: #fcfefb; 
+  color: #4f4442; 
 }
 .menu #item.cart .quantity {
-  border-bottom: 1px dotted #fcfefb;
+  border-bottom: 1px dotted #4f4442;
 }
 .menu #item.cart a {
-  color: #fcfefb; 
+  color: #4f4442; 
 }
 .menu .triangle-left {
   border-color: transparent #4f4442 transparent transparent;
 }
 
 
-.index #intro, .collection #navigation, .product #info, .page #info, .blog #info, .article #info  {
-  background: #a39b87 url(custom_stripe.png);  
-  color: #3d3d3b;
-  border-bottom: 1px solid #c0bbad;
-}
+
 .index #intro a, .collection #navigation a, #info a {
   color: #3d3d3b;
 }
@@ -42,68 +55,53 @@
   color: #3d3d3b;
 }
 
-.text b {
-  background: #c0bbad;
-}
 #latest-top.triangle-bottom {
   border-color: #a39b87 transparent transparent;
 }
 
 
-#latest {
+#latest, #sales {
   background: #c0bbad;
   color: #3d3d3b;
 }
-#latest h3 .highlight {
+#latest .highlight {
   background: #f9dd07;
 }
-#latest .arrow-right {
-  border-color: transparent transparent transparent #f9dd07;
-}
 .note, .note a {
-  color: #706b5d;
+  color: #a3a3a0;
 }
-#latest #item, .collection #items #item {
+#item.product {
   -moz-box-shadow: 0 3px 10px #a39b88;
+  -khtml-box-shadow: 0px 3px 10px #a39b88;
+  -webkit-box-shadow: 0px 3px 10px #a39b88;
   background: none repeat scroll 0 0 #cdc7b8;
 }
-#latest #item a, .collection #items #item a {
-  color: #3d3d3b;
+#item.hover {
+  -moz-box-shadow: 0px 1px 7px #4c4c4c;
+  -khtml-box-shadow: 0px 1px 7px #4c4c4c;
+  -webkit-box-shadow: 0px 1px 7px #4c4c4c;
+}
+#item.product a {
+  color: ;
 }
 
 
-#sales {
-  background: #c0bbad;
-  color: #3d3d3b;
-}
-#sale h1 {
+#sale .sale {
   background: #bf2f17;
-  color: #f9f9f9;
-}
-#sale .arrow-right {
-  border-color: transparent transparent transparent #bf2f17;
+  color: #fcf3fb;
 }
 #sales #item .meta .price {
   color: #bf2f17;
 }
 #sales #item.hover .meta .price {
-  color: #f9f9f9;
+  color: #fcf3fb;
   background: #bf2f17;
-}
-#sales .note, #sales .note a {
-  color: #706b5d;
-}
-#sales #item {  
-  background: none repeat scroll 0 0 #c0bbad;
-}
-#sales #item a {
-  color: #3d3d3b;
 }
 #sales #item .meta .price {
   color: #bf2f17;
 }
 #sales #item.hover .meta .price {
-  color:#f9f9f9;
+  color:#fcf3fb;
   background: #bf2f17;
 }
 
@@ -117,7 +115,7 @@
   border-color: transparent transparent #cdc7b8;
 }
 .date {
-  color: #a39b87;
+  color: #9d9d9d;
 }
 #ecosystem .list li {
   border-bottom: 1px solid #c0bbad
@@ -140,73 +138,50 @@
   background: #ffffff;
 }
 #product #product-image img {
-border: none;
-}
-.product #description {
-  background: #c0bbad;
-  color: #3d3d3b;
+  border: none;
 }
 
 
-.collection #current-collection, #content  {
-  background: #ffffff;
-  color: #3d3d3b;
-}
-#taxonomies, #sidebar, #shopping  {
-  background: #cdc7b8;
+#taxonomies, #sidebar, #shopping, .page #content, #product #description, .search #current-collection,
+.collection #current-collection, .blog #content, .article #content  {
+  background: #b0a792;
   color: #3d3d3b;
 }
 
 #shopping #thumbs, #shopping #meta {
-  border-top: 1px solid #a39b87;
+  border-top: 1px solid #bab291;
 }
-.accordion h3, ul.list li, .cart table tr.second td {
-  border-bottom: 1px solid #a39b87 !important;
+.accordion h4, ul.list li, .cart table tr.second td {
+  border-bottom: 1px solid #bab291 !important;
 }
 ul.list li.active, .collection #current-collection  .active,.collection #navigation #tags a:visited {
-  background: #eeeeee;
+  background: #bab291;
 }
 
 #paginate .current {
-  background: #a3a3a0;
+  background: #bab291;
   color: #3d3d3b;
 }
 #paginate a, #paginate a:visited {
-  background: #c0bbad;
+  background: #a39b87;
   color: #3d3d3b;
 }
 
 
 
-#eco {
+#eco.product {
   background: #c0bbad;
-}
-#eco.page, #eco.blog, #eco.cart, #eco.article {
- background: #a39b87 url(custom_stripe.png);
 }
 
 
-body {
-  background: #c0bbad;
-  color: #3d3d3b;
+.blog .date, .article .date {
+  color: #706b5d
 }
-.text a, .text a:visited, .text :link, .text :visited {
-  color: #3d3d3b;
-  background: #ffffff;
+.article .meta, .comment-form input, .comment-form textarea {
+  background: #c0bbad
 }
-.text a:hover, .text a:focus, .text a:active {
-  color: #3d3d3b !important;
-  background: #ffffff;
-}
-.text b {
-  background: ;
-  padding: 0 .32em;
-  font-weight: normal;
-}
-#index .text a, #index .text a:visited, #index .text a:hover {
-color: none;
-background: none;
-}
+
+    
 
 
 

@@ -1,3 +1,20 @@
+body {
+  background: {{ settings.c_latest_b }} url(custom_stripe.png);
+  color: {{ settings.c_latest_t }};
+}
+a, a:visited, a:hover, :link, :visited {
+  color: {{ settings.c_latest_t }};
+}
+.text a, .text a:visited, .text :link, .text :visited {
+  color: {{ settings.c_a }};
+  background: {{ settings.c_a_b }};
+}
+.text a:hover, .text a:focus, .text a:active {
+  color: {{ settings.c_a_h }} !important;
+  background: {{ settings.c_a_h_b }};
+}
+
+
 #header {
   background: {{ settings.c_h_b }};
 }
@@ -7,8 +24,8 @@
 }
 
 #header #logo img {
-  max-width: {{ settings.logo_width }};
-  width: {{ settings.logo_width }};
+  max-width: {{ settings.logo_width }}px;
+  width: {{ settings.logo_width }}px;
   height: auto;
 }
 
@@ -27,11 +44,7 @@
 }
 
 
-.index #intro, .collection #navigation, .product #info, .page #info, .blog #info, .article #info  {
-  background: {{ settings.c_intro_b }} url(custom_stripe.png);  
-  color: {{ settings.c_intro_t }};
-  border-bottom: 1px solid {{ settings.c_latest_b }};
-}
+
 .index #intro a, .collection #navigation a, #info a {
   color: {{ settings.c_intro_t }};
 }
@@ -161,21 +174,14 @@ ul.list li.active, .collection #current-collection  .active,.collection #navigat
 }
 
 
-body {
-  background: {{ settings.c_latest_b }} url(custom_stripe.png);
-  color: {{ settings.c_latest_t }};
+.blog .date, .article .date {
+  color: {{ settings.c_blog_d }}
 }
-a, a:visited, a:hover, :link, :visited {
-  color: {{ settings.c_latest_t }};
+.article .meta, .comment-form input, .comment-form textarea {
+  background: {{ settings.c_blog_f }}
 }
-.text a, .text a:visited, .text :link, .text :visited {
-  color: {{ settings.c_a }};
-  background: {{ settings.c_a_b }};
-}
-.text a:hover, .text a:focus, .text a:active {
-  color: {{ settings.c_a_h }} !important;
-  background: {{ settings.c_a_h_b }};
-}
+
+
     
 
 
