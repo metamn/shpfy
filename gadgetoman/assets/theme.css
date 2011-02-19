@@ -266,7 +266,7 @@ a.underline {
 
 
 
-#eco.product, #eco.page, #eco.blog, #eco.cart, #eco.article {
+#eco.product {
   background: #eee;
 }
 #page #info, #blog #info, #article #info {

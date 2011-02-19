@@ -66,7 +66,7 @@
 	        </table>
 	
 	        <div id="checkout">
-		        <h4>
+		        <h3>
 		          {% if settings.locale == "enabled" %}
                 {{ settings.locale_cart_total }}
               {% else %}
@@ -81,7 +81,7 @@
                 {% endif %} 
 		            <input class="link button rounded" type="submit" id="getout" name="checkout" value="{{ p }}" />
 		          </span>
-		        </h4>
+		        </h3>
 	        </div>	
           </form>
         {% endif %}

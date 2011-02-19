@@ -11,18 +11,18 @@
       <div class="box accordion">
                     
         {% if collections.size > 0 %}
-        <h3 class="first">
+        <h4 class="first">
         {% if settings.locale == "enabled" %}
           {{ settings.locale_allcollections }}
         {% else %}
           All collections
         {% endif %}
-        </h3>
+        </h4>
         <div class="pane">        
           <ul class="list">
         	  {% for i in collections %}      	    
         		  <li {% if collection.url == i.url %} class="active"{% endif %}>
-        		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title | upcase }}</a>
+        		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title }}</a>
         		  </li>
         		{% endfor %}
         	</ul>
@@ -30,13 +30,13 @@
       {% endif %}           
     
       {% if shop.vendors.size > 0 %}
-        <h3>
+        <h4>
         {% if settings.locale == "enabled" %}
           {{ settings.locale_allvendors }}
         {% else %}
           All vendors
         {% endif %}
-        </h3>
+        </h4>
         <div class="pane">   
           <ul class="list">
           	{% for product_vendor in shop.vendors %}
@@ -49,13 +49,13 @@
       {% endif %}
       
       {% if shop.types.size > 0 %}
-        <h3>
+        <h4>
         {% if settings.locale == "enabled" %}
           {{ settings.locale_alltypes }}
         {% else %}
           All product types
         {% endif %}          
-        </h3>
+        </h4>
         <div class="pane">   
           <ul class="list">
           	{% for product_type in shop.types %}
@@ -67,7 +67,7 @@
         </div>
       {% endif %}
       
-      <h3>
+      <h4>
       {% if settings.locale == "enabled" %}
         {{ settings.locale_search }}
         {% assign s = settings.locale_search %}
@@ -75,7 +75,7 @@
         Search
         {% assign s = "Search" %}
       {% endif %} 
-      </h3>
+      </h4>
       <div id="search" class="pane">        
 	      <form action="/search" method="get">
 		      <input class="text" type="text" name="q" /> 

@@ -169,6 +169,9 @@ p {
 /* Common 
 */
 
+table {
+  width: 100%;
+}
 .small {
   font-size: small;
 }
