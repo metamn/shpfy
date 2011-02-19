@@ -25,7 +25,7 @@ body {
 */
 
 /* Overwrite browser default styles for links */
-a, a:visited, a:hover {
+a, a:visited, a:hover, :link, :visited {
   text-decoration: none; 
   color: #3d3d3b;
   background: none;
@@ -265,11 +265,9 @@ a.underline {
 }
 
 
-#eco {
-  
-}
-#eco.page, #eco.blog, #eco.cart, #eco.article {
-  
+
+#eco.product, #eco.page, #eco.blog, #eco.cart, #eco.article {
+  background: #eee;
 }
 #page #info, #blog #info, #article #info {
   border-bottom: none;
@@ -365,15 +363,18 @@ img.avatar {
 
 /* Product */
 
-#product #info #description {
-  background: #f9f9f9;
-}
 #shopping #thumbs, #shopping #meta {
   padding: 1.25em 0;
   border-top: 1px solid #ededed;
 }
 #shopping #thumbs img, #product #product-image img  {
   border: 1px solid #ededed; 
+}
+#product #thumbs img {
+  max-width: 75px;
+  max-height: 75px;
+  margin: 0 1.25em 1.25em 0;
+  float: left;
 }
 .box .accordion h3, .box .accordion ul.list li {
   border-bottom: 1px solid #f9f9f9;
@@ -395,16 +396,13 @@ li.facebook {
   width: 45%;
 }
 #product #info, #product #latest, #product #sales {
-  margin-bottom: 2.5em;
+  padding-bottom: 2.5em;
 }
 #product #description {
   margin-top: 2.5em;
 }
-.product #latest-top.triangle-bottom {
-  top: -.1em;
-}
 
-.sidebar h3 {
+.sidebar h4 {
   padding-bottom: .31em;
 }
 .sidebar #icons img {

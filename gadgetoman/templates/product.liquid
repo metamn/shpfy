@@ -41,13 +41,13 @@
 
         			<input class="link button rounded" type="submit" name="add" value="Add to cart" id="add-cart">
 			      {% else %}
-			        <h6>
+			        <h3>
 			        {% if settings.locale == "enabled" %}
                 {{ settings.locale_unavailable }}
               {% else %}
                 TEMPORARILY UNAVAILABLE
               {% endif %}
-			        </h6>
+			        </h3>
 			      {% endif %}
 		      </form>
 	      </div>
@@ -63,18 +63,18 @@
         <div id="meta" class="block">
           <div class="accordion">
             {% if product.collections.size > 0 %}
-              <h3>
+              <h4>
               {% if settings.locale == "enabled" %}
                 {{ settings.locale_listedin }}
               {% else %}
                 Listed in
               {% endif %}
-              </h3>
+              </h4>
               <div class="pane">        
                 <ul class="list">
               	  {% for i in product.collections %}      	    
               		  <li {% if collection.url == i.url %} class="active"{% endif %}>
-              		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title | upcase }}</a>
+              		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title }}</a>
               		  </li>
               		{% endfor %}
               		  <li>
@@ -89,13 +89,13 @@
               </div> 
             {% endif %} 
               
-            <h3>
+            <h4>
             {% if settings.locale == "enabled" %}
               {{ settings.locale_browsemore }}
             {% else %}
               Browse more
             {% endif %}            
-            </h3>
+            </h4>
             <div class="pane">
               {% if settings.locale == "enabled" %}
                 {{ settings.locale_seemore }}
@@ -113,13 +113,13 @@
               {{ product.type | link_to_type }}
             </div>
             
-            <h3>
+            <h4>
             {% if settings.locale == "enabled" %}
               {{ settings.locale_share }}
             {% else %}
               Share 
             {% endif %}            
-            </h3>
+            </h4>
             <div class="pane">
               <div id="item" class="left twitter">
                 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
@@ -128,54 +128,69 @@
                 <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="true" width="150"></fb:like>              
               </div>
             </div>                
+            
+            
           </div>
-        </div>                 
-      </div>
-    </div>  
-  </div>
+        </div> 
+      </div>                
+    </div>
+    
+  </div>  
 </div>
-  
 
+  
 <div id="latest" class="block">
   <div class="container">
     <div id="latest-top" class="triangle-bottom"></div>
     {% if collections.all.products.size > 0 %}
-      {% if settings.locale == "enabled" %}
-        <h3><span class="highlight">{{ settings.locale_hot }}</span> {{ settings.locale_hot_instore }}</h3>
-      {% else %}
-        <h3><span class="highlight">Hot!</span> in the store now.</h3>
-      {% endif %}
-      <div class="arrow-right"></div> 
-      {% for product in collections.all.products limit:5 %}
-        <div id="item">	    
-          <div class="image">	      
+      <div class="block">
+        <div id="hot" class="left">
+          {% if settings.locale == "enabled" %}
+            <h4><span class="highlight">{{ settings.locale_hot }}</span> {{ settings.locale_hot_instore }}</h4>
+          {% else %}
+            <h4><span class="highlight">Hot!</span> in the store now.</h4>          
+          {% endif %}       
+        </div>
+        
+        <div id="call-for-subscribe" class="right">
+          <p class="note">
+            <a href="#subscribe">
+            {% if settings.locale == "enabled" %}
+              {{ settings.locale_subscribe_email }}
+            {% else %}
+              To stay updated please subscribe to our newsletter. It's free.
+            {% endif %}         
+            </a>
+          </p>
+        </div>
+      </div>
+      
+      {% for product in collections.all.products limit:8 %}
+        <div id="item" class="product">	    
+          <div class="image block">	      
             {% for image in product.images limit: 1 %}
               <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">	    
-                <img src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" /></a>
+                <img src="{{ image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>
             {% endfor %}
           </div>
-          <div class="title">
+          <div class="title block">
             <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
               {{ product.title }}
             </a>
           </div>
 	      </div>
-      {% endfor %}  
-      <div id="call-for-subscribe" class="alignright right">
-        <div class="notice link">
-          <p class="note"><a href="#subscribe">
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_subscribe_email }}
-          {% else %}
-            To stay updated please subscribe to our newsletter. It's free.
-          {% endif %}         
-          </a></p>
-        </div>
+      {% endfor %}   
+      
+      <div id="more" class="right alignright">
+        <a href="collections/all">See all new products &rarr;</a>
       </div>
+           
     {% else %}
-      <div class="note">
-        To see here the list of the latest products please create a new collection name it's handle <strong>all</strong>
-        then add items to it.
+      <div class="missing">
+        <p class="note">
+        To see here the list of the latest products please <a class="underline" href="/admin/custom_collections/new">create a new collection</a>
+        and name it's handle to <strong>all</strong> then add products to it.
+        </p>
       </div>
     {% endif %} 
   </div>
@@ -185,56 +200,66 @@
  
 <div id="sales" class="block">
   <div class="container">
-    <div id="sale" class="left col-1">
-      <h1>%</h1>
-      <div class="arrow-right"></div>
-      <div class="notice link">
-        <h3 class="note"><a href="#ecosystem">
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_subscribe_social }}
-        {% else %}
-          We are running periodicaly special sales on Twitter and Facebook. Follow us to get more! 
-        {% endif %} 
-        </a></h3>
-      </div>
-    </div>    
-    <div id="items" class="right col-2">
-      {% if collections.all.products.size > 0 %} 
-        {% for product in collections.all.products limit: 4 offset: 3 %}  
-        <div id="item">
-          <div class="image">
-            <a href="{{ product.url | within: collections.all }}">
-              <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
-            </a>
-          </div>
-          <div class="add-to-cart">
-            <img src="{{ 'sales-add-to-cart.png' | asset_url }}"/>
-          </div>        
-          <h6 class="title">
-            <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-              {{ product.title | escape }}            
-            </a>
-          </h6>
-          <div class="meta">       
-            {% if product.compare_at_price_max > product.price %} 
-              <span class="price price-sale rounded">{{ product.price | money }}</span>
-              &mdash;
-              <span class="price price-old rounded">{{ product.compare_at_price_max | money }}</span>
-            {% else %}
-              <span class="price rounded">{{ product.price | money }}</span>
-            {% endif %}          
-          </div>
-		    </div>
-        {% endfor %}
-      {% else %}
-        <div class="note">
-          To see here a list of products on sale please create a new collection and name it's handle <strong>sale</strong> 
-          then items to it.
+    {% if collections.sale.products.size > 0 %} 
+      <div id="item" class="product clean">
+        <div class="sale">
+          {% if settings.locale == "enabled" %}
+            <h4>{{ settings.locale_sales }}
+          {% else %}
+            <h4>Sales!</h4>          
+          {% endif %} 
         </div>
-      {% endif %}
-    </div>
+        
+        <p class="note">
+          <a href="#ecosystem">
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_subscribe_social }}
+          {% else %}
+            We are running periodicaly special sales on Twitter and Facebook. Follow us to get more! 
+          {% endif %} 
+        </a></p> 
+      </div>      
+      
+      {% for product in collections.all.products limit: 3 %}
+        <div id="item" class="product">	    
+          <div class="image">	      
+            {% for image in product.images limit: 1 %}
+              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">	    
+                <img src="{{ image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>
+            {% endfor %}
+          </div>
+          <div class="title">
+            <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+              {{ product.title }}              
+              <div class="meta small">       
+                {% if product.compare_at_price_max > product.price %} 
+                  <span class="price price-sale rounded">{{ product.price | money }}</span>
+                  &mdash;
+                  <span class="price price-old rounded">{{ product.compare_at_price_max | money }}</span>
+                {% else %}
+                  <span class="price rounded">{{ product.price | money }}</span>
+                {% endif %}          
+              </div>
+            </a>
+          </div>
+	      </div>
+      {% endfor %}
+      
+      <div id="more" class="right alignright">
+        <a href="collections/sale">See all products on sale &rarr;</a>
+      </div>
+     
+    {% else %}
+      <div class="missing">
+        <p class="note">
+          To see here a list of products on sale please <a class="underline" href="/admin/custom_collections/new">create a new collection</a>
+          and name it's handle to <strong>sale</strong> then add products to it.
+        </p>
+      </div>
+    {% endif %}    
   </div>
 </div>   
+
 
 
 

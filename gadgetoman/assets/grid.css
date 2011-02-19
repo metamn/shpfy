@@ -56,12 +56,6 @@
 .page #info .col-2, .blog #info .col-2, .article .col-2 {  
   width: 40%; 
 }
-.page #info #thumbs img {
-  max-width: 100px;
-  max-height: 100px;
-  margin: 0 1.25em 1.25em 0;
-  float: left;
-}
 
 
 /* Collections
