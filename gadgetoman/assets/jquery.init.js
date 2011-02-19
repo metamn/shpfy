@@ -24,10 +24,10 @@ jQuery(document).ready(function(){
 
   // Accordions  
   // Open the first pane
-  jQuery(".accordion h3.first").addClass("current");
-  jQuery(".accordion h3.first").next(".pane").show();
+  jQuery(".accordion h4.first").addClass("current");
+  jQuery(".accordion h4.first").next(".pane").show();
   
-  jQuery(".accordion h3").toggle(
+  jQuery(".accordion h4").toggle(
     function () {
       jQuery(this).addClass("current");
       jQuery(this).next(".pane").show();

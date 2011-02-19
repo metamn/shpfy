@@ -1,156 +1,144 @@
-<div id="navigation" class="block">
-  <div class="container"> 
-    <div id="current-collection" class="left col-1"> 
-      <div class="box">     
-        <span class="note tag-title-intro">
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_coll_current }}
-        {% else %}
-          Current collection
-        {% endif %} 
-        </span>
-        <h2>
-          {{ collection.title }}
-          <span class="tag-title"></span>
-          // {{ collection.products_count }} 
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_items }}
-          {% else %}
-            items
-          {% endif %}
-        </h2>
-        
-        <!-- Hack: getting the tag title, if any -->
-        <div id="current-tags-hidden" class="hidden">
-          <h3>{{ collection.title }} tags</h3>
-          <ul class="inline-list">
-            {% for tag in collection.tags %}
-              <li>
-                {{ tag | highlight_active_tag | link_to_tag: tag }}
-              </li>
-            {% endfor %}
-          </ul>
-        </div>              
-        
-        <script type="text/javascript">
-          var tag =  jQuery("#current-collection #current-tags-hidden ul").children().find("span").html();
-          if (tag) {
-            jQuery(".tag-title-intro").append(' and tag');
-            jQuery(".tag-title").append(' // ' + tag);
-          }
-        </script>
-        <!-- end hack --> 
-        
-        <div class="accordion">
-          {% if collection.description.size > 0 %}
-            <h3>
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_coll_description }}
-            {% else %}
-              Description
-            {% endif %}
-            </h3>
-            <div id="description" class="text pane">
-              {{ collection.description }}
+<div class="container"> 
+  <div id="items" class="left col-1">
+    <div id="latest-top" class="triangle-bottom"></div>
+    {% paginate collection.products by 9 %}
+    {% if collection.products.size == 0 %}
+      <h3>No products in this collection.</h3>
+    {% else %}
+      {% for product in collection.products %}  
+      <div id="item" class="product">
+        <div class="image">	      
+          {% for image in product.images limit: 1 %}
+            <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">	    
+              <img src="{{ image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>
+          {% endfor %}
+        </div>
+        <div class="title">
+          <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+            {{ product.title }}              
+            <div class="meta small">       
+              {% if product.compare_at_price_max > product.price %} 
+                <span class="price price-sale rounded">{{ product.price | money }}</span>
+                &mdash;
+                <span class="price price-old rounded">{{ product.compare_at_price_max | money }}</span>
+              {% else %}
+                <span class="price rounded">{{ product.price | money }}</span>
+              {% endif %}          
             </div>
-          {% endif %}
-          
-          {% if collection.all_tags.size > 0 %}
-            <h3 class="first">
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_coll_tags }}
-            {% else %}
-              Tags for
-            {% endif %}
-             <em>{{ collection.title }}</em></h3>
-            <div id="tags" class="pane">        
-              <ul class="inline-list">
-                {% for tag in collection.all_tags %}
-                  <li>
-                    {{ tag | highlight_active_tag | link_to_tag: tag }}
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          {% endif %} 
-          
-          {% if collection.tags.size > 0 and collection.all_tags.size > 0 and collection.tags.size != collection.all_tags.size %}
-            <h3>
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_coll_tags_smilar }}
-            {% else %}
-              Similar tags
-            {% endif %}
-            </h3> 
-            <div id="tags" class="pane">
-              <ul class="inline-list">
-                {% for tag in collection.tags %}
-                  <li>
-                    {{ tag | highlight_active_tag | link_to_tag: tag }}
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          {% endif %}
-            
-          
-          {% if collection.all_types.size > 0 %}
-            <h3>
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_coll_types }}
-            {% else %}
-              Product Types
-            {% endif %}
-            </h3>  
-            <div class="pane">
-              <ul class="list">
-                {% for product_type in collection.all_types %}
-                  <li>
-                    {{ product_type | link_to_type  }}
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          {% endif %}
-
-          {% if collection.all_vendors.size > 0 %}
-            <h3>
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_coll_vendors }}
-            {% else %}
-              Product Vendors
-            {% endif %}
-            </h3>  
-            <div class="pane">
-              <ul class="list">
-                {% for product_vendor in collection.all_vendors %}
-                  <li>
-                    {{ product_vendor | link_to_vendor  }}
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          {% endif %}
+          </a>
         </div>
       </div>
-            
-    </div>
-    
-    <div id="taxonomies" class="right col-2">      
-      <div class="accordion box">                
+      {% endfor %}
+      <div class="clear"></div>
+      
+      {% if paginate.pages > 1 %}
+      <div id="paginate" class="right alignright">
+        {{ paginate | default_pagination }}
+      </div>
+      {% endif %}	  
+    {% endif %}
+    {% endpaginate %}
+  </div>
+
+  <div id="current-collection" class="right col-2"> 
+    <div class="box">             
+      <h3>
+        {{ collection.title }}
+        <span class="tag-title"></span>
+        // {{ collection.products_count }} 
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_items }}
+        {% else %}
+          items
+        {% endif %}
+      </h3>
+      
+      <!-- Hack: getting the tag title, if any -->
+      <div id="current-tags-hidden" class="hidden">
+        <h4>{{ collection.title }} tags</h4>
+        <ul class="inline-list">
+          {% for tag in collection.tags %}
+            <li>
+              {{ tag | highlight_active_tag | link_to_tag: tag }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>              
+      
+      <script type="text/javascript">
+        var tag =  jQuery("#current-collection #current-tags-hidden ul").children().find("span").html();
+        if (tag) {
+          jQuery(".tag-title").append(' // ' + tag);
+        }
+      </script>
+      <!-- end hack --> 
+      
+      <div class="accordion">
+        {% if collection.description.size > 0 %}
+          <h4>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_coll_description }}
+          {% else %}
+            Description
+          {% endif %}
+          </h4>
+          <div id="description" class="text pane">
+            {{ collection.description }}
+          </div>
+        {% endif %}
+        
+        {% if collection.all_tags.size > 0 %}
+          <h4 class="first">
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_coll_tags }}
+          {% else %}
+            Tags for
+          {% endif %}
+           <em>{{ collection.title }}</em>
+          </h4>
+          <div id="tags" class="pane">        
+            <ul class="inline-list">
+              {% for tag in collection.all_tags %}
+                <li>
+                  {{ tag | highlight_active_tag | link_to_tag: tag }}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %} 
+        
+        {% if collection.tags.size > 0 and collection.all_tags.size > 0 and collection.tags.size != collection.all_tags.size %}
+          <h4>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_coll_tags_smilar }}
+          {% else %}
+            Similar tags
+          {% endif %}
+          </h4> 
+          <div id="tags" class="pane">
+            <ul class="inline-list">
+              {% for tag in collection.tags %}
+                <li>
+                  {{ tag | highlight_active_tag | link_to_tag: tag }}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}            
+                       
         {% if collections.size > 0 %}
-          <h3 class="first">
+          <h4 class="first">
           {% if settings.locale == "enabled" %}
             {{ settings.locale_allcollections }}
           {% else %}
             All collections
           {% endif %}
-          </h3>
+          </h4>
           <div class="pane">        
             <ul class="list">
           	  {% for i in collections %}      	    
           		  <li {% if collection.url == i.url %} class="active"{% endif %}>
-          		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title | upcase }}</a>
+          		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title }}</a>
           		  </li>
           		{% endfor %}
           	</ul>
@@ -158,13 +146,13 @@
         {% endif %}           
       
         {% if shop.vendors.size > 0 %}
-          <h3>
+          <h4>
           {% if settings.locale == "enabled" %}
             {{ settings.locale_allvendors }}
           {% else %}
             All vendors
           {% endif %}
-          </h3>
+          </h4>
           <div class="pane">   
             <ul class="list">
             	{% for product_vendor in shop.vendors %}
@@ -177,13 +165,13 @@
         {% endif %}
         
         {% if shop.types.size > 0 %}
-          <h3>
+          <h4>
           {% if settings.locale == "enabled" %}
             {{ settings.locale_alltypes }}
           {% else %}
             All product types
           {% endif %}          
-          </h3>
+          </h4>
           <div class="pane">   
             <ul class="list">
             	{% for product_type in shop.types %}
@@ -195,7 +183,7 @@
           </div>
         {% endif %}
         
-        <h3>
+        <h4>
         {% if settings.locale == "enabled" %}
           {{ settings.locale_search }}
           {% assign s = settings.locale_search %}
@@ -203,60 +191,21 @@
           Search
           {% assign s = "Search" %}
         {% endif %} 
-        </h3>
+        </h4>
         <div id="search" class="pane">        
-		      <form action="/search" method="get">
-			      <input class="text" type="text" name="q" /> 
-			      <input class="link button greenb rounded" type="submit" value="{{ s }}"  />
-		      </form>
-        </div>
-        
-        
-        
+	        <form action="/search" method="get">
+		        <input class="text" type="text" name="q" /> 
+		        <input class="link button greenb rounded" type="submit" value="{{ s }}"  />
+	        </form>
+        </div>       
+      
       </div>      
-    </div>	  	
-  </div>
+    </div>
+  </div>	  	
 </div>
 
-<div id="items" class="block">
-  <div class="container">
-    <div id="latest-top" class="triangle-bottom"></div>
-    {% paginate collection.products by 9 %}
-    {% if collection.products.size == 0 %}
-	    <h3>No products in this collection.</h3>
-	  {% else %}
-	    {% for product in collection.products %}  
-      <div id="item">
-        <div class="image">
-          <a href="{{ product.url | within: collection }}" title="{{ product.title | escape }}">
-            <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
-          </a>
-        </div>
-        <h6 class="title">
-          <a href="{{ product.url | within: collection }}">{{ product.title }} by {{ product.vendor }}</a>
-        </h6>
-        <div class="meta">       
-          {% if product.compare_at_price_max > product.price %} 
-            <span class="price price-sale">{{ product.price | money }}</span>
-            &mdash;
-            <span class="price price-old">{{ product.compare_at_price_max | money }}</span>
-          {% else %}
-            <span class="price">{{ product.price | money }}</span>
-          {% endif %}
-        </div>
-		  </div>
-      {% endfor %}
-	    <div class="clear"></div>
-	    
-	    {% if paginate.pages > 1 %}
-	    <div id="paginate" class="right alignright">
-		    {{ paginate | default_pagination }}
-	    </div>
-	    {% endif %}	  
-	  {% endif %}
-	  {% endpaginate %}
-  </div>
-</div>
+
+
 
 
 	

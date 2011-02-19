@@ -266,10 +266,10 @@ a.underline {
 
 
 #eco {
-  background: #eee;
+  
 }
 #eco.page, #eco.blog, #eco.cart, #eco.article {
-  background: url("stripe.png") repeat scroll 0 0 transparent;
+  
 }
 #page #info, #blog #info, #article #info {
   border-bottom: none;
@@ -507,7 +507,7 @@ ul.list li.active, .collection #current-collection .active {
 .collection #current-collection h2 {
   padding-top: .31em;
 }
-.accordion h3 {
+.accordion h4 {
   padding-bottom: .31em;
   border-bottom: 1px solid #ccc;
   cursor: pointer;
