@@ -167,7 +167,7 @@
       <div class="left col-1">
         
         <div id="blog" class="text">  
-          {% if settings.rss_feed == "enabled" %}                    
+          {% if settings.rss_feed != "disabled" %}                    
             <script type="text/javascript">            
               var api = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q={{ settings.rss_feed_url }}&num={{ settings.rss_feed_limit }}";
               jQuery.getJSON(api, function(data){				
@@ -227,7 +227,7 @@
         
         <div id="twitter">
           <div id="items">          
-            {% if settings.twitter_followers == "enabled" %}        
+            {% if settings.twitter_followers != "disabled" %}        
               <script type="text/javascript">          
                 var counter = 0;
                 var BreakException= {};

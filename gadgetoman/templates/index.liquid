@@ -4,15 +4,15 @@
 	  <div id="featured" class="block">
 		  <div class="section">
 			  <ul>
-				  <li class="sub" id="section0">
+				  <li class="sub" id="featured0">
 				    <div class="col-1 left">
 				      {% assign article = pages.frontpage %}
 					    <h1>{{ article.title }}</h1>
 					    <div class="text">
 					      {{ article.content }}
 					    </div>
-					    <div class="nav">					      
-					      <a href="#section1" class="next right alignright">&rarr;</a>
+					    <div class="nav left">					      
+					      <a href="#featured1" class="next"><div class="triangle-bottom"></div></a>					      
 					    </div>
 					  </div>
 					  <div class="image col-2 left">
@@ -25,7 +25,7 @@
 					  </div>					  
 				  </li>
 				  {% for product in collections.frontpage.products %}
-				    <li class="sub" id="section{{ forloop.index }}">
+				    <li class="sub" id="featured{{ forloop.index }}">
 				      <div class="col-1 left">
 				        <h1>
 				          <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
@@ -33,20 +33,20 @@
                 </h1>
                 <div class="text">
                   {{ product.description | truncate:250 }}
+                </div>                
+                <div class="nav left">
+                  {% assign i = forloop.index0 %}
+                  {% assign prev = i - 1 %}
+                  {% assign next = i + 1 %}                  
+                  {% unless forloop.last %}
+                    <a href="#featured{{ next }}" class="next"><div class="triangle-bottom"></div></a>                    
+                  {% endunless %}
+                  <a href="#featured{{ prev }}" class="prev"><div class="triangle-top"></div></a>                  
                 </div>
-                <div class="add-to-cart">
+                <div id="add-to-cart" class="right">
                   <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
                   Add to Cart
                   </a>
-                </div>
-                <div class="nav">
-                  {% assign i = forloop.index0 %}
-                  {% assign prev = i - 1 %}
-                  {% assign next = i + 1 %}
-                  <a href="#section{{ prev }}" class="prev left">&larr;</a>
-                  {% unless forloop.last %}
-                    <a href="#section{{ next }}" class="next right alignright">&rarr;</a>
-                  {% endunless %}
                 </div>
 				      </div>
 				      <div class="image col-2 left">
@@ -60,26 +60,11 @@
 			  </ul>
 		  </div>		
 	  </div>
-	  
-	  <div class="col-1 left">&nbsp;</div>
-	  <div id="scroller" class="col-2 left">    
-	    <ul id="navigation" class="inline-list">
-		    <li class="sup">
-			    <a href="#section0">&bull;</a>
-			    <ul class="inline-list">
-			    {% for product in collections.frontpage.products %}
-				    <li><a href="#section{{ forloop.index }}">&bull;</a></li>
-				  {% endfor %}
-			    </ul>					
-		    </li>		
-	    </ul>
-	 </div>		
-    
-        
+	         
   </div>
 </div> 
 
-{% if settings.frontpage_all != "enabled" %}
+{% if settings.frontpage_all != "disabled" %}
 <div id="latest" class="block">
   <div class="container">
     <div id="latest-top" class="triangle-bottom"></div>
@@ -139,7 +124,7 @@
 {% endif %}
 
 
-{% if settings.frontpage_sales == "enabled" %} 
+{% if settings.frontpage_sales != "disabled" %} 
 <div id="sales" class="block">
   <div class="container">
     {% if collections.sale.products.size > 0 %} 

@@ -67,8 +67,8 @@ jQuery(document).ready(function(){
   
     
     
-  // Highlight products on hover
-  jQuery("#latest #item, #sales #item, .collection #items #item").hover(
+  // Highlight items on hover
+  jQuery("#item.product, #add-to-cart").hover(
     function () {
       jQuery(this).addClass('hover');
     },
