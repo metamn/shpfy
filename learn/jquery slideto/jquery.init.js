@@ -1,4 +1,8 @@
-jQuery(function( $ ){
+jQuery.noConflict();
+     
+// Use jQuery via jQuery(...)
+jQuery(document).ready(function(){
+
 	/**
 	 * Most jQuery.localScroll's settings, actually belong to jQuery.ScrollTo, check it's demo for an example of each option.
 	 * @see http://flesler.demos.com/jquery/scrollTo/
@@ -7,10 +11,10 @@ jQuery(function( $ ){
 	
 	// The default axis is 'y', but in this demo, I want to scroll both
 	// You can modify any default like this
-	$.localScroll.defaults.axis = 'xy';
+	jQuery.localScroll.defaults.axis = 'xy';
 	
 	// Scroll initially if there's a hash (#something) in the url 
-	$.localScroll.hash({
+	jQuery.localScroll.hash({
 		target: '#content', // Could be a selector or a jQuery object too.
 		queue:true,
 		duration:1500
@@ -20,7 +24,7 @@ jQuery(function( $ ){
 	 * NOTE: I use $.localScroll instead of $('#navigation').localScroll() so I
 	 * also affect the >> and << links. I want every link in the page to scroll.
 	 */
-	$.localScroll({
+	jQuery.localScroll({
 		target: '#content', // could be a selector or a jQuery object too.
 		queue:true,
 		duration:1000,

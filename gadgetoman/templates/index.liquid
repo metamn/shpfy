@@ -1,49 +1,52 @@
 <div id="intro" class="block">
-  <div class="container">
+  <div class="container">    
+  													
+	  <div id="featured" class="block">
+		  <div class="section">
+			  <ul>
+				  <li class="sub" id="section1">
+					  <h2>Section 1</h2>
+					  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et turpis sed metus fermentum pellentesque. Vestibulum auctor neque ac nunc elementum malesuada. Praesent non est sed libero vestibulum consectetuer. Sed vehicula. Vivamus quis tellus sit amet erat ultrices luctus. Fusce a ligula. Fusce viverra libero vitae velit. Aenean bibendum nibh non lorem. Suspendisse quis velit. Integer sit amet lacus. Curabitur tristique. Morbi eu lectus. Vestibulum tristique aliquam quam. Sed neque.</p>
+					  <p>Nulla facilisi. Quisque eleifend libero. Sed eros. Morbi vel leo. Morbi varius tincidunt sem. Nam sodales volutpat velit. Suspendisse potenti. Duis vehicula pede non nisi. Proin elit pede, ultrices non, ultrices quis, vulputate sit amet, magna. Praesent sodales pellentesque justo. Donec blandit, augue id convallis congue, magna libero hendrerit erat, id blandit est lorem a tellus. Vestibulum tincidunt lectus quis metus. Pellentesque placerat lacus in urna.</p>
+					  <a href="#section1b" class="next">&gt;&gt;</a>
+				  </li>
+				  <li class="sub" id="section1b">
+					  <h2>Section 1-b</h2>
+					  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et turpis sed metus fermentum pellentesque. Vestibulum auctor neque ac nunc elementum malesuada. Praesent non est sed libero vestibulum consectetuer. Sed vehicula. Vivamus quis tellus sit amet erat ultrices luctus. Fusce a ligula. Fusce viverra libero vitae velit. Aenean bibendum nibh non lorem. Suspendisse quis velit. Integer sit amet lacus. Curabitur tristique. Morbi eu lectus. Vestibulum tristique aliquam quam. Sed neque.</p>
+					  <p>Nulla facilisi. Quisque eleifend libero. Sed eros. Morbi vel leo. Morbi varius tincidunt sem. Nam sodales volutpat velit. Suspendisse potenti. Duis vehicula pede non nisi. Proin elit pede, ultrices non, ultrices quis, vulputate sit amet, magna. Praesent sodales pellentesque justo. Donec blandit, augue id convallis congue, magna libero hendrerit erat, id blandit est lorem a tellus. Vestibulum tincidunt lectus quis metus. Pellentesque placerat lacus in urna.</p>
+					  <a href="#section1" class="prev">&lt;&lt;</a>
+					  <a href="#section1c" class="next">&gt;&gt;</a>					
+				  </li>
+				  <li class="sub" id="section1c">
+					  <h2>Section 1-c</h2>
+					  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et turpis sed metus fermentum pellentesque. Vestibulum auctor neque ac nunc elementum malesuada. Praesent non est sed libero vestibulum consectetuer. Sed vehicula. Vivamus quis tellus sit amet erat ultrices luctus. Fusce a ligula. Fusce viverra libero vitae velit. Aenean bibendum nibh non lorem. Suspendisse quis velit. Integer sit amet lacus. Curabitur tristique. Morbi eu lectus. Vestibulum tristique aliquam quam. Sed neque.</p>
+					  <p>Nulla facilisi. Quisque eleifend libero. Sed eros. Morbi vel leo. Morbi varius tincidunt sem. Nam sodales volutpat velit. Suspendisse potenti. Duis vehicula pede non nisi. Proin elit pede, ultrices non, ultrices quis, vulputate sit amet, magna. Praesent sodales pellentesque justo. Donec blandit, augue id convallis congue, magna libero hendrerit erat, id blandit est lorem a tellus. Vestibulum tincidunt lectus quis metus. Pellentesque placerat lacus in urna.</p>
+					  <a href="#section1b" class="prev">&lt;&lt;</a>
+				  </li>
+				  <li class="sub" id="section1d">
+					  <h2>Section 1-d</h2>
+					  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et turpis sed metus fermentum pellentesque. Vestibulum auctor neque ac nunc elementum malesuada. Praesent non est sed libero vestibulum consectetuer. Sed vehicula. Vivamus quis tellus sit amet erat ultrices luctus. Fusce a ligula. Fusce viverra libero vitae velit. Aenean bibendum nibh non lorem. Suspendisse quis velit. Integer sit amet lacus. Curabitur tristique. Morbi eu lectus. Vestibulum tristique aliquam quam. Sed neque.</p>
+					  <p>Nulla facilisi. Quisque eleifend libero. Sed eros. Morbi vel leo. Morbi varius tincidunt sem. Nam sodales volutpat velit. Suspendisse potenti. Duis vehicula pede non nisi. Proin elit pede, ultrices non, ultrices quis, vulputate sit amet, magna. Praesent sodales pellentesque justo. Donec blandit, augue id convallis congue, magna libero hendrerit erat, id blandit est lorem a tellus. Vestibulum tincidunt lectus quis metus. Pellentesque placerat lacus in urna.</p>
+					  <a href="#section1b" class="prev">&lt;&lt;</a>
+				  </li>				
+			  </ul>
+		  </div>		
+	  </div>
+	  
+	  <div id="scroller" class="block right alignright">    
+	    <ul id="navigation" class="inline-list">
+		    <li class="sup">
+			    <a href="#section1">Section 1</a>
+			    <ul class="inline-list">
+				    <li><a href="#section1b">Section 1-b</a></li>
+				    <li><a href="#section1c">Section 1-c</a></li>
+				    <li><a href="#section1d">Section 1-d</a></li>
+			    </ul>					
+		    </li>		
+	    </ul>
+	 </div>		
     
-    <div id="frontpage" class="left col-1">      
-      {% assign article = pages.frontpage %}      
-      <div id="title" class="block">
-        <h1>{{ article.title }}</h1>        
-      </div>      
-      <div class="text block">        
-        {{ article.content }}      	
-      </div>
-    </div>
-    
-    <div id="featured" class="right col-2">
-      <div id="items">
-        {% for product in collections.frontpage.products %}
-          {% assign klass = 'hidden' %}
-          {% if forloop.first %}
-            {% assign klass = 'visible' %}
-          {% endif %}
-          <div id="item" class="{{ klass }} {{ forloop.index }}">
-            {% for image in product.images limit: 1 %}
-              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                <img src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" /></a>
-            {% endfor %}
-            <h3 class="title">
-              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                {{ product.title | escape }} 
-              </a>
-            </h3>
-          </div>
-      {% endfor %}
-      </div>
-
-      <div id="scroller">
-        <ul class="inline-list">
-        {% for product in collections.frontpage.products %}
-          {% assign klass = 'inactive' %}
-          {% if forloop.first %}
-            {% assign klass = 'active' %}
-          {% endif %}
-          <li class="link {{ klass }} {{ forloop.index }}" rel="{{ forloop.index }}">&bull;</li>
-        {% endfor %}
-        </ul>
-      </div>    
-    </div>
+        
   </div>
 </div> 
 
