@@ -73,6 +73,11 @@ a.underline {
   margin: 1.25em 0;
 }
 
+.button {
+  background: #f3f3f3 !important;
+  padding: .62em 1.25em;
+}
+
 
 
 #header {
@@ -144,39 +149,45 @@ a.underline {
 .index #intro, .collection #navigation, #info{
   padding: 2.5em 0;
 }
-.index #navigation, .index #featured, .index .section{
+.index #navigation, .index #featured, .index .section {
 	padding: 0;
 	margin: 0;
-	list-style:none;
+}
+.index #navigation ul, .index #featured ul {
+  list-style-type: none;
+}
+.index #navigation ul.inline-list {
+  display: inline;
+}
+.index #navigation li {
+  font-size: large;
 }
 .index #featured {
 	overflow: hidden;
-	width: 630px;
 	position: relative;
 	float: left;
 }
 .index .section {
-	width: 3500px;
+	width: 3500em; /* 80em * 4, item_width * nr_of_items */
 	position: relative;
 }
 .index .section .sub {
 	position: relative;
 	float: left;
-	padding: 9px 21px 42px 45px;
-	width: 567px;
+	padding: 0;
+	width: 80em;
 }
-.index .section .sub p {
-	width: 550px;
-	margin: 16px 0; 
+.index #featured .image, .index #scroller {
+  text-align: center;
 }
-.index #first {
-	top: 484px !important;
-	top: 498px;			
+.index #featured .add-to-cart, .index #featured .nav {
+  padding: 1.25em 0;
 }
-.index #second{
-	top: 503px !important;
-	top: 517px;			
+.index #featured .nav .alignright {
+  margin-right: 5%;
 }
+
+
 
 
 /* Latest */

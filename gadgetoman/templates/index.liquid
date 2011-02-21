@@ -4,43 +4,70 @@
 	  <div id="featured" class="block">
 		  <div class="section">
 			  <ul>
-				  <li class="sub" id="section1">
-					  <h2>Section 1</h2>
-					  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et turpis sed metus fermentum pellentesque. Vestibulum auctor neque ac nunc elementum malesuada. Praesent non est sed libero vestibulum consectetuer. Sed vehicula. Vivamus quis tellus sit amet erat ultrices luctus. Fusce a ligula. Fusce viverra libero vitae velit. Aenean bibendum nibh non lorem. Suspendisse quis velit. Integer sit amet lacus. Curabitur tristique. Morbi eu lectus. Vestibulum tristique aliquam quam. Sed neque.</p>
-					  <p>Nulla facilisi. Quisque eleifend libero. Sed eros. Morbi vel leo. Morbi varius tincidunt sem. Nam sodales volutpat velit. Suspendisse potenti. Duis vehicula pede non nisi. Proin elit pede, ultrices non, ultrices quis, vulputate sit amet, magna. Praesent sodales pellentesque justo. Donec blandit, augue id convallis congue, magna libero hendrerit erat, id blandit est lorem a tellus. Vestibulum tincidunt lectus quis metus. Pellentesque placerat lacus in urna.</p>
-					  <a href="#section1b" class="next">&gt;&gt;</a>
+				  <li class="sub" id="section0">
+				    <div class="col-1 left">
+				      {% assign article = pages.frontpage %}
+					    <h1>{{ article.title }}</h1>
+					    <div class="text">
+					      {{ article.content }}
+					    </div>
+					    <a href="#section1" class="next">&rarr;</a>
+					  </div>
+					  <div class="image col-2 left">
+					    {% for product in collections.frontpage.products limit: 1%}
+					      {% for image in product.images limit: 1 %}
+					        <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                    <img src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" /></a>
+					      {% endfor %}
+					    {% endfor %}
+					  </div>					  
 				  </li>
-				  <li class="sub" id="section1b">
-					  <h2>Section 1-b</h2>
-					  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et turpis sed metus fermentum pellentesque. Vestibulum auctor neque ac nunc elementum malesuada. Praesent non est sed libero vestibulum consectetuer. Sed vehicula. Vivamus quis tellus sit amet erat ultrices luctus. Fusce a ligula. Fusce viverra libero vitae velit. Aenean bibendum nibh non lorem. Suspendisse quis velit. Integer sit amet lacus. Curabitur tristique. Morbi eu lectus. Vestibulum tristique aliquam quam. Sed neque.</p>
-					  <p>Nulla facilisi. Quisque eleifend libero. Sed eros. Morbi vel leo. Morbi varius tincidunt sem. Nam sodales volutpat velit. Suspendisse potenti. Duis vehicula pede non nisi. Proin elit pede, ultrices non, ultrices quis, vulputate sit amet, magna. Praesent sodales pellentesque justo. Donec blandit, augue id convallis congue, magna libero hendrerit erat, id blandit est lorem a tellus. Vestibulum tincidunt lectus quis metus. Pellentesque placerat lacus in urna.</p>
-					  <a href="#section1" class="prev">&lt;&lt;</a>
-					  <a href="#section1c" class="next">&gt;&gt;</a>					
-				  </li>
-				  <li class="sub" id="section1c">
-					  <h2>Section 1-c</h2>
-					  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et turpis sed metus fermentum pellentesque. Vestibulum auctor neque ac nunc elementum malesuada. Praesent non est sed libero vestibulum consectetuer. Sed vehicula. Vivamus quis tellus sit amet erat ultrices luctus. Fusce a ligula. Fusce viverra libero vitae velit. Aenean bibendum nibh non lorem. Suspendisse quis velit. Integer sit amet lacus. Curabitur tristique. Morbi eu lectus. Vestibulum tristique aliquam quam. Sed neque.</p>
-					  <p>Nulla facilisi. Quisque eleifend libero. Sed eros. Morbi vel leo. Morbi varius tincidunt sem. Nam sodales volutpat velit. Suspendisse potenti. Duis vehicula pede non nisi. Proin elit pede, ultrices non, ultrices quis, vulputate sit amet, magna. Praesent sodales pellentesque justo. Donec blandit, augue id convallis congue, magna libero hendrerit erat, id blandit est lorem a tellus. Vestibulum tincidunt lectus quis metus. Pellentesque placerat lacus in urna.</p>
-					  <a href="#section1b" class="prev">&lt;&lt;</a>
-				  </li>
-				  <li class="sub" id="section1d">
-					  <h2>Section 1-d</h2>
-					  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et turpis sed metus fermentum pellentesque. Vestibulum auctor neque ac nunc elementum malesuada. Praesent non est sed libero vestibulum consectetuer. Sed vehicula. Vivamus quis tellus sit amet erat ultrices luctus. Fusce a ligula. Fusce viverra libero vitae velit. Aenean bibendum nibh non lorem. Suspendisse quis velit. Integer sit amet lacus. Curabitur tristique. Morbi eu lectus. Vestibulum tristique aliquam quam. Sed neque.</p>
-					  <p>Nulla facilisi. Quisque eleifend libero. Sed eros. Morbi vel leo. Morbi varius tincidunt sem. Nam sodales volutpat velit. Suspendisse potenti. Duis vehicula pede non nisi. Proin elit pede, ultrices non, ultrices quis, vulputate sit amet, magna. Praesent sodales pellentesque justo. Donec blandit, augue id convallis congue, magna libero hendrerit erat, id blandit est lorem a tellus. Vestibulum tincidunt lectus quis metus. Pellentesque placerat lacus in urna.</p>
-					  <a href="#section1b" class="prev">&lt;&lt;</a>
-				  </li>				
+				  {% for product in collections.frontpage.products %}
+				    <li class="sub" id="section{{ forloop.index }}">
+				      <div class="col-1 left">
+				        <h1>
+				          <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                  {{ product.title | escape }} by {{ product.vendor }} <span>{{ product.price | money }} </a>
+                </h1>
+                <div class="text">
+                  {{ product.description | truncate:250 }}
+                </div>
+                <div class="add-to-cart">
+                  <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                  Add to Cart
+                  </a>
+                </div>
+                <div class="nav">
+                  {% assign i = forloop.index0 %}
+                  {% assign prev = i - 1 %}
+                  {% assign next = i + 1 %}
+                  <a href="#section{{ prev }}" class="prev left">&larr;</a>
+                  {% unless forloop.last %}
+                    <a href="#section{{ next }}" class="next right alignright">&rarr;</a>
+                  {% endunless %}
+                </div>
+				      </div>
+				      <div class="image col-2 left">
+					      {% for image in product.images limit: 1 %}
+					        <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                    <img src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" /></a>
+					      {% endfor %}					    
+					    </div>
+				    </li>
+				  {% endfor %}				  	
 			  </ul>
 		  </div>		
 	  </div>
 	  
-	  <div id="scroller" class="block right alignright">    
+	  <div class="col-1 left">&nbsp;</div>
+	  <div id="scroller" class="col-2 left">    
 	    <ul id="navigation" class="inline-list">
 		    <li class="sup">
-			    <a href="#section1">Section 1</a>
+			    <a href="#section0">&bull;</a>
 			    <ul class="inline-list">
-				    <li><a href="#section1b">Section 1-b</a></li>
-				    <li><a href="#section1c">Section 1-c</a></li>
-				    <li><a href="#section1d">Section 1-d</a></li>
+			    {% for product in collections.frontpage.products %}
+				    <li><a href="#section{{ forloop.index }}">&bull;</a></li>
+				  {% endfor %}
 			    </ul>					
 		    </li>		
 	    </ul>
