@@ -167,9 +167,21 @@
       <div class="left col-1">
         
         <div id="blog" class="text">  
-          {% if settings.rss_feed != "disabled" %}                    
+          {% if settings.rss_feed != "disabled" %}     
+          
+            {% assign rss_url = settings.rss_feed_url %}
+            {% assign rss_limit = settings.rss_feed_limit %}
+            
+            {% unless rss_url %}
+              {% assign rss_url = "http://www.shopledge.com/feed/" %}
+            {% endunless %}
+            
+            {% unless rss_limit %}
+              {% assign rss_limit = 5 %}
+            {% endunless %}
+                         
             <script type="text/javascript">            
-              var api = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q={{ settings.rss_feed_url }}&num={{ settings.rss_feed_limit }}";
+              var api = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q={{ rss_url }}&num={{ rss_limit }}";
               jQuery.getJSON(api, function(data){				
 			          // Check for error
 			          if (data.responseStatus == 200) {	
@@ -227,13 +239,25 @@
         
         <div id="twitter">
           <div id="items">          
-            {% if settings.twitter_followers != "disabled" %}        
+            {% if settings.twitter_followers != "disabled" %}    
+            
+              {% assign twitter_id = settings.twitter_folowers_id %}
+              {% assign twitter_count = settings.twitter_followers_limit %}
+              
+              {% unless twitter_id %}
+                {% assign twitter_id = "shopify" %}
+              {% endunless %}
+              
+              {% unless twitter_count %}
+                {% assign twitter_count = 50 %}
+              {% endunless %}              
+                             
               <script type="text/javascript">          
                 var counter = 0;
                 var BreakException= {};
                 
                 try {            
-                  var api = 'http://twitter.com/statuses/followers.json?screen_name={{ settings.twitter_followers_id }}&callback=?';
+                  var api = 'http://twitter.com/statuses/followers.json?screen_name={{ twitter_id }}&callback=?';
                   jQuery.getJSON(api, function(data){	
                     if (data) {
                       data.forEach(function(datum) {
@@ -245,7 +269,7 @@
                           jQuery('#ecosystem #twitter #items').append(str);                      
                           counter++;
                         }  
-                        if (counter === {{ settings.twitter_followers_limit }}) throw BreakException; 
+                        if (counter === {{ twitter_count }}) throw BreakException; 
                       });
                     }
                   });

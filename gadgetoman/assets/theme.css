@@ -194,7 +194,7 @@ a.underline {
 .index #featured .nav {
   margin: 2.5em 0;
 }
-#add-to-cart.hover, #add-to-cart.hover a {
+.index #featured #add-to-cart.hover, .index #featured #add-to-cart.hover a {
   background: #C60017 !important;
   color: #f9f9f9 !important;
 }
@@ -291,6 +291,13 @@ a.underline {
 #item.product .title {
   padding: .32em 0;
 }
+#item.product #add-to-cart {
+  display: none;
+  margin: .32em 1.25em;
+}
+#item.hover #add-to-cart {
+  display: block;
+}
 #call-for-subscribe {
   margin: 1em 5% 0 0;
 }
@@ -340,6 +347,9 @@ a.underline {
   position: relative;
   top: -7.5em;
   text-align: center;
+}
+#sales #item.product #add-to-cart {
+  margin: 0 1.25em;
 }
 
 
