@@ -139,7 +139,7 @@
 </div>
 
   
-{% if settings.frontpage_all == "enabled" %}
+{% if settings.frontpage_all != "disabled" %}
 <div id="latest" class="block">
   <div class="container">
     <div id="latest-top" class="triangle-bottom"></div>
@@ -177,6 +177,14 @@
           <div class="title block">
             <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
               {{ product.title }}
+              <div class="meta small">
+                <span class="price rounded">{{ product.price | money }}</span>
+              </div>
+              <div id="add-to-cart" class="meta small">
+                <a class="highlight rounded" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                Add to Cart
+                </a>
+              </div>
             </a>
           </div>
 	      </div>
@@ -199,7 +207,7 @@
 {% endif %}
 
 
-{% if settings.frontpage_sales == "enabled" %} 
+{% if settings.frontpage_sales != "disabled" %} 
 <div id="sales" class="block">
   <div class="container">
     {% if collections.sale.products.size > 0 %} 
@@ -233,15 +241,14 @@
           <div class="title">
             <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
               {{ product.title }}              
-              <div class="meta small">       
-                {% if product.compare_at_price_max > product.price %} 
-                  <span class="price price-sale rounded">{{ product.price | money }}</span>
-                  &mdash;
-                  <span class="price price-old rounded">{{ product.compare_at_price_max | money }}</span>
-                {% else %}
-                  <span class="price rounded">{{ product.price | money }}</span>
-                {% endif %}          
+              <div class="meta small">                       
+                <span class="price rounded">{{ product.price | money }}</span>                
               </div>
+            </a>
+          </div>
+          <div id="add-to-cart" class="meta small">
+            <a class="sale" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+            Add to Cart
             </a>
           </div>
 	      </div>

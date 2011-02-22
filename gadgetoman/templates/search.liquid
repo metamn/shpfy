@@ -27,14 +27,13 @@
           <div class="title">
             <a href="{{ item.url | within: collections.all }}">
               {{ item.title }}              
-              <div class="meta small">       
-                {% if item.compare_at_price_max > item.price %} 
-                  <span class="price price-sale rounded">{{ item.price | money }}</span>
-                  &mdash;
-                  <span class="price price-old rounded">{{ item.compare_at_price_max | money }}</span>
-                {% else %}
-                  <span class="price rounded">{{ item.price | money }}</span>
-                {% endif %}          
+              <div class="meta small">
+                <span class="price rounded">{{ item.price | money }}</span>
+              </div>
+              <div id="add-to-cart" class="meta small">
+                <a class="highlight rounded" href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
+                Add to Cart
+                </a>
               </div>
             </a>
           </div>

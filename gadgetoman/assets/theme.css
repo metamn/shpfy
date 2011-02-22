@@ -254,7 +254,7 @@ a.underline {
   display: inline;
   top: 1.1em;
 }
-#latest .highlight {
+#latest .highlight, .collection .highlight {
   font-variant: small-caps;
   background: #ffb200;
   padding: .62em;

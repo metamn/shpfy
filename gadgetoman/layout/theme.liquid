@@ -4,8 +4,12 @@
 <head>
 	<title>{{ shop.name }} &#124; {{ page_title }}</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	{{ 'base.css' | asset_url | stylesheet_tag }}	
 	{{ 'grid.css' | asset_url | stylesheet_tag }}	
+	
+	<link href="{{ 'tablet.css' | asset_url }}" charset="utf-8" media="screen and (max-width: 1024px)" rel="stylesheet" type="text/css" />
+	
 	{{ 'theme.css' | asset_url | stylesheet_tag }}
 	{% if settings.colors == "enabled" %}
 	  {{ 'theme-custom-colors.css' | asset_url | stylesheet_tag }}	
@@ -142,8 +146,8 @@
 	    <div id="{{ template }}" class="{{ template }} page block">
 	  {% else %}
 	    <div id="{{ template }}" class="{{ template }} block">
-	{% endcase %}			      
-	
+	{% endcase %}			      	
+		
 	{{ content_for_layout }}		    
 	
 	</div>
