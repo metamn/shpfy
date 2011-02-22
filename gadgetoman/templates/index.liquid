@@ -13,7 +13,7 @@
 					    </div>
 					    <div class="left nav">	
 					      &nbsp;				      
-					      <a href="#featured1" class="next"><div class="triangle-bottom"></div></a>					      
+					      <a href="#featured1" class="next"><div class="triangle triangle-bottom"></div></a>					      
 					    </div>
 					  </div>
 					  <div class="image col-2 left">
@@ -41,9 +41,9 @@
                   {% assign prev = i - 1 %}
                   {% assign next = i + 1 %}                  
                   {% unless forloop.last %}
-                    <a href="#featured{{ next }}" class="next"><div class="triangle-bottom"></div></a>                    
+                    <a href="#featured{{ next }}" class="next"><div class="triangle triangle-bottom"></div></a>                    
                   {% endunless %}
-                  <a href="#featured{{ prev }}" class="prev"><div class="triangle-top"></div></a>                  
+                  <a href="#featured{{ prev }}" class="prev"><div class="triangle triangle-top"></div></a>                  
                 </div>
                 <div id="add-to-cart" class="right">
                   <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
@@ -69,7 +69,7 @@
 {% if settings.frontpage_all != "disabled" %}
 <div id="latest" class="block">
   <div class="container">
-    <div id="latest-top" class="triangle-bottom"></div>
+    <div id="latest-top" class="triangle triangle-bottom"></div>
     {% if collections.all.products.size > 0 %}
       <div class="block">
         <div id="hot" class="left">

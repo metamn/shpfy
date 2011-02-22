@@ -5,9 +5,8 @@
 	<title>{{ shop.name }} &#124; {{ page_title }}</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	{{ 'base.css' | asset_url | stylesheet_tag }}	
-	{{ 'grid.css' | asset_url | stylesheet_tag }}	
-	
+	{{ 'base.css' | asset_url | stylesheet_tag }}		
+	{{ 'layout.css' | asset_url | stylesheet_tag }}
 	<link href="{{ 'tablet.css' | asset_url }}" charset="utf-8" media="screen and (max-width: 1024px)" rel="stylesheet" type="text/css" />
 	
 	{{ 'theme.css' | asset_url | stylesheet_tag }}
@@ -121,7 +120,7 @@
 				  </div>
 				  
 									
-				  <div class="triangle-left"></div>						
+				  <div class="triangle triangle-left"></div>						
 				  <div id="item" class="cart last">					  					  		  				  
 				    <a href="/cart"{% if template == "cart" %} class="active highlight"{% else %} class="highlight"{% endif %}>
 				      {% if settings.locale == "enabled" %}
@@ -167,7 +166,7 @@
 	
 	<div id="ecosystem" class="{{ template }} block hidden">
     <div class="container">
-      <div id="ecosystem-top" class="triangle-top"></div>
+      <div id="ecosystem-top" class="triangle triangle-top"></div>
       <div class="left col-1">
         
         <div id="blog" class="text">  
@@ -199,8 +198,8 @@
 		                var entryDate = new Date(entry.publishedDate);
 		                var pubDate = entryDate.toLocaleDateString();
 		
-		                msg += '<li><h5 class="article-title"><a href="'+ entry.link +'" title="View this feed at '+ feed.title +'">';				              
-			              msg += entry.title + '<span class="date"> # ' + pubDate + '</span></a></h5></li>';
+		                msg += '<li class="title"><a href="'+ entry.link +'" title="View this feed at '+ feed.title +'">';				              
+			              msg += entry.title + '<span class="date"> # ' + pubDate + '</span></a></li>';
 			              //msg += '<div class="summary">'+ entry.content + '</div></li>';
 		              }			
 		              msg += '</ul>';

@@ -169,6 +169,17 @@ p {
 /* Common 
 */
 
+
+.triangle {
+  border-style: solid;  
+  display: inline;
+  height: 0;
+  width: 0;
+  line-height: 0;
+  position: relative;
+}
+
+
 table {
   width: 100%;
 }
