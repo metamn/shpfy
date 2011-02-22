@@ -1,20 +1,24 @@
 <div id="info" class="block">
-  <div class="container text">
-    <h1 class="title">{{ product.title | escape }} by {{ product.vendor }} <span>{{ product.price | money }}</span></h1>
-    
+  <div class="container">
     <div id="images" class="left col-1">
+      <h1>
+        <a class="title" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+          {{ product.title | escape }} by {{ product.vendor }} <span>{{ product.price | money }}</span>
+        </a>
+      </h1>
+      
       <div id="product-image">
 		    <img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
 	    </div> 
 	    
 	    <div id="description" class="block">
-	      <div class="box">
+	      <div class="box text">
           {{ product.description }}
         </div>
       </div>    
     </div>
   
-    <div id="shopping" class="right col-2">
+    <div id="sidebar" class="right col-2">
       <div class="box">
         <div id="product-select" class="block">
 		      <form action="/cart/add" method="post" name="cartadd">
@@ -39,7 +43,7 @@
 
         			<span id="price-field"></span><br />
 
-        			<input class="link button rounded" type="submit" name="add" value="Add to cart" id="add-cart">
+        			<input class="" type="submit" name="add" value="Add to cart" id="add-cart">
 			      {% else %}
 			        <h3>
 			        {% if settings.locale == "enabled" %}
@@ -96,7 +100,7 @@
               Browse more
             {% endif %}            
             </h4>
-            <div class="pane">
+            <div class="pane text">
               {% if settings.locale == "enabled" %}
                 {{ settings.locale_seemore }}
               {% else %}

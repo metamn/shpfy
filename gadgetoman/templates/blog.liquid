@@ -1,6 +1,6 @@
 <div id="info" class="block">
   <div class="container">        
-    <div id="content" class="text col-1 left">
+    <div id="content" class="col-1 left">
       <div class="box">
         <h1>{{ blog.title }}</h1>      
         {% if blog.articles.size > 0 %}
@@ -14,7 +14,7 @@
 		                  <span class="date"> # {{ article.created_at | date: "%B %d, %Y" }}</span>
 		                </a>
 		              </h3>
-		              <div class="excerpt">
+		              <div class="excerpt text">
 		                {{ article.content | truncate: 200 }}
 		              </div>
 		            </div>
@@ -22,10 +22,10 @@
 	          </div>
 	
 	         	{% if paginate.pages > 1 %}
-	            <div id="paginate">
-		            {{ paginate | default_pagination }}
-	            </div>
-	          {% endif %}
+            <div id="paginate" class="right alignright">
+              {{ paginate | default_pagination }}
+            </div>
+            {% endif %}	  
 	          
 	         {% endpaginate %}	       	  
 	      {% endif %}
@@ -107,7 +107,7 @@
         <div id="search" class="pane">        
 	        <form action="/search" method="get">
 		        <input class="text" type="text" name="q" /> 
-		        <input class="link button greenb rounded" type="submit" value="{{ s }}"  />
+		        <input class="" type="submit" value="{{ s }}"  />
 	        </form>
         </div>
         

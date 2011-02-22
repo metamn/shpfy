@@ -1,10 +1,10 @@
 <div id="info" class="block">
   <div class="container">
     
-    <div id="content" class="text col-1 left">      
+    <div id="content" class="col-1 left">      
       <div class="box">
         <h1 class="title"><a href="{{ article.url }}" title="Permanent link to {{ article.title }}">{{ article.title }}</a></h1> 
-        <div class="meta">
+        <div class="meta text">
           {% if settings.locale == "enabled" %}
             {{ settings.locale_by }}
           {% else %}
@@ -37,13 +37,14 @@
         
         {% if blog.comments_enabled? %}
         <div class="comments">
-          <h3>
+          <h2>
           {% if settings.locale == "enabled" %}
             {{ settings.locale_comments }}
           {% else %}
             Comments  
           {% endif %} 
-           ({{ article.comments.size }})</h3>
+           ({{ article.comments.size }})
+          </h2>
           {% if article.comments.size > 0 %}
           <ul id="comments" class="list">
             {% for comment in article.comments %}
@@ -102,13 +103,13 @@
             </div>
           {% endif %}
           
-          <h3>
+          <h2>
           {% if settings.locale == "enabled" %}
             {{ settings.locale_commentleave }}
           {% else %}
             Leave a comment
           {% endif %}
-          </h3>
+          </h2>
           
           <dl>
             <dt class="{% if form.errors contains 'author' %}error{% endif %}"><label for="comment_author">
@@ -240,7 +241,7 @@
         <div id="search" class="pane">        
 	        <form action="/search" method="get">
 		        <input class="text" type="text" name="q" /> 
-		        <input class="link button greenb rounded" type="submit" value="{{ s }}"  />
+		        <input class="" type="submit" value="{{ s }}"  />
 	        </form>
         </div>
         

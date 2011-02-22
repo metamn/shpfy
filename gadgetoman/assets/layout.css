@@ -90,6 +90,20 @@ body {
 
 
 
+/* Common */
+.read-more {
+  font-size: small;
+  margin-right: 2.5em;
+  font-variant: small-caps;
+}
+
+.date {
+  font-size: smaller;
+}
+
+
+
+
 /* Header */
 
 
@@ -137,7 +151,7 @@ body {
 
 /* Index */
 
-.index #intro, .collection #navigation, #info{
+.index #intro {
   padding: 2.5em 0;
 }
 .index #navigation, .index #featured, .index .section {
@@ -364,10 +378,10 @@ img.avatar {
 
 
 
-#shopping #thumbs, #shopping #meta {
+.product #thumbs, .product #meta {
   padding: 1.25em 0;
 }
-#product #thumbs img {
+.product #thumbs img {
   max-width: 75px;
   max-height: 75px;
   margin: 0 1.25em 1.25em 0;
@@ -380,22 +394,21 @@ li.facebook {
 .box #comments li {
   font-size: small;
 }
-#shopping select {
+.product #sidebar select {
   width: 90%;
 }
-#shopping input {
+.product #sidebar input {
   width: 45%;
 }
-#product #info, #product #latest, #product #sales {
-  padding-bottom: 2.5em;
-}
-#product #description {
+.product #description {
   margin-top: 2.5em;
 }
-.sidebar h4 {
+
+#sidebar .accordion h4 {
   padding-bottom: .31em;
+  cursor: pointer;
 }
-.sidebar #icons img {
+#sidebar #icons img {
   width: 32px;
   height: 32px;
 }
@@ -491,7 +504,9 @@ ul.list li {
 /* Blog */
 
 
-
+#info, #search {
+  padding-bottom: 2.5em;
+}
 #articles #article {
   margin-bottom: 3.75em;
 }
@@ -528,13 +543,6 @@ blockquote {
   margin-bottom: 1.25em;
 }
 
-
-/* Search */
-
-.search .text {
-  text-align: left;
-  padding: 1.25em;  
-}
 
 
 

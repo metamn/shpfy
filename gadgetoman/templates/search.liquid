@@ -50,7 +50,7 @@
       {% endpaginate %}
     </div>  
   
-    <div id="current-collection" class="right col-2">      
+    <div id="sidebar" class="right col-2">      
       <div class="box">
         <h3>
           {% if settings.locale == "enabled" %}
@@ -132,7 +132,7 @@
           <div id="search" class="pane">        
 		        <form action="/search" method="get">
 			        <input class="text" type="text" name="q" /> 
-			        <input class="link button greenb rounded" type="submit" value="{{ s }}"  />
+			        <input class="" type="submit" value="{{ s }}"  />
 		        </form>
           </div>
         </div>

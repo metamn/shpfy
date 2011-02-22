@@ -7,9 +7,10 @@
 				  <li class="sub" id="featured0">
 				    <div class="col-1 left">
 				      {% assign article = pages.frontpage %}
-					    <h1>{{ article.title }}</h1>
+					    <h1><a class="title" title="{{ article.title }}" href="{{ article.url }}">{{ article.title }}</a></h1>
 					    <div class="text">
-					      {{ article.content }}
+					      {{ article.content | truncate : 250 }}
+					      <a class="read-more" title="{{ article.title }}" href="{{ article.url }}">Read more &rarr;</a>
 					    </div>
 					    <div class="left nav">	
 					      &nbsp;				      
@@ -33,7 +34,9 @@
                   {{ product.title | escape }} by {{ product.vendor }} <span>{{ product.price | money }} </a>
                 </h1>
                 <div class="text">
-                  {{ product.description | truncate:250 }}
+                  {{ product.description | truncate : 250 }}
+                  <a class="read-more" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                  Read more &rarr;</a>
                 </div>                
                 <div class="nav left">
                   &nbsp;

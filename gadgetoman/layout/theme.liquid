@@ -112,9 +112,9 @@
 				    <form action="/search" method="get">
 			        <input class="text" type="text" name="q" /> 
 			        {% if settings.locale == "enabled" %}
-			          <input class="link button rounded" type="submit" value="{{ settings.locale_search }}"  />
+			          <input class="" type="submit" value="{{ settings.locale_search }}"  />
 			        {% else %}
-			          <input class="link button rounded" type="submit" value="Search"  />
+			          <input class="" type="submit" value="Search"  />
 			        {% endif %}
 		        </form>
 				  </div>
@@ -169,7 +169,7 @@
       <div id="ecosystem-top" class="triangle triangle-top"></div>
       <div class="left col-1">
         
-        <div id="blog" class="text">  
+        <div id="blog">  
           {% if settings.rss_feed != "disabled" %}     
           
             {% assign rss_url = settings.rss_feed_url %}

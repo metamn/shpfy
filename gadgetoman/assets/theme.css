@@ -1,8 +1,8 @@
 /* Theme
 
 - background: #eee;
-  - grays light > dark: #f9f9f9, #f3f3f3, #dadada, #a3a3a0, #4c4c4c
-  - black: #3d3d3b     
+  - grays light > dark: #f9f9f9, #f3f3f3, #dadada, #ddd, #ccc, #a3a3a0, #777, #4c4c4c
+  - black: #3d3d3b  > 2d2d2d   
   - highlight/orange: #ff3300
   - highlight/yellow: #C60017  
 */
@@ -26,25 +26,26 @@ a, a:visited, a:hover, :link, :visited {
   background: none;
 }
 
-/* forcing highlight when necessary */
+/* Forcing highlight when necessary */
 a.underline {
   text-decoration: underline !important;
 }
 
-/* Links are styled only for texts. Images etc. are not touched */
+/* Links for texts */
 .text a, .text a:visited, .text :link, .text :visited {
   color: #3d3d3b;
   text-decoration: underline;
+  padding: 0 .32em;
 }
 .text a:hover, .text a:focus, .text a:active {
   color: #f9f9f9 !important;
   background: #3d3d3b;
   text-decoration: none;
 }
-.title a, .title a:visited {
+a.read-more {
+  color: #a3a3a0 !important;
   text-decoration: none !important;
 }
-
 /* notes, highlighting texts */
 .note, .note a {
   color: #a3a3a0;
@@ -54,24 +55,37 @@ a.underline {
   font-style: italic;
   padding: .31em
 }
-.missing {
-  background: lightyellow;
-  padding: 1.25em;
-  margin: 1.25em;
-}
 .note a:hover {
   color: #3d3d3b; 
 }
 
-/* Typography for texts */
-.text h1, .text h2, .text h3 {
-  margin: 1.25em 0;
-}
+
+
+
+/* Common */
 
 .button {
   background: #f3f3f3 !important;
   padding: .62em 1.25em;
 }
+
+.missing {
+  background: lightyellow;
+  padding: 1.25em;
+  margin: 1.25em;
+}
+
+
+
+
+
+/* Typography for texts */
+
+
+.text h1, .text h2, .text h3 {
+  margin: 1.25em 0;
+}
+
 
 
 /* Header */
@@ -93,7 +107,7 @@ a.underline {
   border-bottom: 1px dotted #f9f9f9;
 }
 .triangle-left {
-  border-color: transparent #3d3d3b transparent;  
+  border-color: transparent #3d3d3b transparent transparent;  
 }
 
 
@@ -140,8 +154,7 @@ a.underline {
 }
 #latest #hot {
   text-shadow: 1px 1px 2px #ddd;
-  color: #3d3d3b;
-  
+  color: #3d3d3b;  
 }
 #item.product {  
   background: #f3f3f3;
@@ -188,28 +201,36 @@ a.underline {
 }
 
 
+/* Ecosystem + Footer */
+
+
 #eco.product {
   background: #eee;
 }
 #eco .triangle-left {
-  border-color: transparent #3d3d3b transparent transparent;
-  
+  border-color: transparent #3d3d3b transparent transparent;  
 }
 
 
 #ecosystem {
   background: #dadada;
 }
-.form input.text {
+#ecosystem .form input.text {
   color: #4c4c4c;
 }
 #ecosystem-top.triangle-top {
   border-color: transparent transparent #dadada;  
 }
+#ecosystem ul.list li {
+  border-bottom: 1px solid #ccc;
+}
+#ecosystem .date {
+  color: #777;
+}
 
 #footer {
-  background: #4c4c4c;
-  background: -moz-linear-gradient(top, rgba(76, 76, 76, 1), rgba(61, 61, 59, 1));  
+  background: #3d3d3b;
+  border-top: 1px solid #2d2d2d; 
 }
 
 
@@ -217,20 +238,28 @@ a.underline {
 
 /* Product */
 
-#shopping #thumbs, #shopping #meta {
-  border-top: 1px solid #ededed;
+#sidebar {
+  background: #f3f3f3;
 }
-#shopping #thumbs img, #product #product-image img  {
+#sidebar img, .product #product-image img  {
   border: 1px solid #ededed; 
 }
-.box .accordion h3, .box .accordion ul.list li {
-  border-bottom: 1px solid #f9f9f9;
+#sidebar .accordion h4 {
+  border-bottom: 1px solid #ccc;
 }
-.box .pane {
-  color: #3D3D3B;
+#sidebar ul.list li {
+  border-bottom: 1px solid #ededed;
 }
-#shopping {
-  background: #eee;
+#sidebar ul.list li a, #sidebar ul.list li a:visited {
+  text-decoration: none;
+  color: #3d3d3b;
+}
+#sidebar ul.list li.active {
+  background: #dadada;
+}
+#sidebar .date {
+  color: #9d9d9d;
+}
 
 
 /* Checkout */
@@ -240,22 +269,9 @@ a.underline {
 }
 
 
-
 /* Collection */
 
-ul.list li {
-  border-bottom: 1px solid #ccc;
-}
-ul.list li a, ul.list li a:visited {
-  text-decoration: none;
-  color: #3d3d3b;
-}
-ul.list li.active, .collection #current-collection .active {
-  background: #eee;
-}
-.date {
-  color: #9d9d9d;
-}
+
 .collection #navigation #tags a, .collection #navigation #tags a:visited {
   text-decoration: none;
 }
@@ -265,17 +281,16 @@ ul.list li.active, .collection #current-collection .active {
 .collection #navigation #tags a:visited {
   color: #9d9d9d;
 }
+
 #paginate a, #paginate a:visited {
   text-decoration: none;
   color: #4c4c4c;
 }
-#paginate .current {
+#paginate .current, #paginate .deco {
   background: #a3a3a0;
   color: #f9f9f9;
 }
-.accordion h4 {
-  border-bottom: 1px solid #ccc;
-}
+
 
 
 
