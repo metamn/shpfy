@@ -178,6 +178,9 @@ table {
 .box {
   padding: 1.25em;
 }
+.button {
+  display: block;
+}
 .button, .button a {
   /*background: #99FF33;*/
   color: #333 !important;  

@@ -155,6 +155,8 @@ a.underline {
 }
 .index #navigation ul, .index #featured ul {
   list-style-type: none;
+  padding: 0;
+	margin: 0;
 }
 .index #navigation ul.inline-list {
   display: inline;
@@ -186,14 +188,11 @@ a.underline {
 .index #featured .image img {
   width: 20em;
 }
-.index #featured #add-to-cart, .index #featured .nav {
-  padding: 1.25em 0;
+.index #featured #add-to-cart {
+  margin: .62em 1.25em;
 }
 .index #featured .nav {
-  margin-top: 1.25em;
-}
-.index #featured #add-to-cart {
-  margin-right: 1.25em; 
+  margin: 2.5em 0;
 }
 #add-to-cart.hover, #add-to-cart.hover a {
   background: #C60017 !important;

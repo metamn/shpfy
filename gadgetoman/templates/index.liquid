@@ -11,7 +11,8 @@
 					    <div class="text">
 					      {{ article.content }}
 					    </div>
-					    <div class="nav left">					      
+					    <div class="left nav">	
+					      &nbsp;				      
 					      <a href="#featured1" class="next"><div class="triangle-bottom"></div></a>					      
 					    </div>
 					  </div>
@@ -35,6 +36,7 @@
                   {{ product.description | truncate:250 }}
                 </div>                
                 <div class="nav left">
+                  &nbsp;
                   {% assign i = forloop.index0 %}
                   {% assign prev = i - 1 %}
                   {% assign next = i + 1 %}                  
