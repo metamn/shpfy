@@ -7,8 +7,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	{{ 'base.css' | asset_url | stylesheet_tag }}		
 	{{ 'layout.css' | asset_url | stylesheet_tag }}
-	<link href="{{ 'tablet.css' | asset_url }}" charset="utf-8" media="screen and (max-width: 1024px)" rel="stylesheet" type="text/css" />
-	
+	<link href="{{ 'mobile.css' | asset_url }}" charset="utf-8" media="screen and (max-width: 480px)" rel="stylesheet" type="text/css" />
+	<link href="{{ 'tablet.css' | asset_url }}" charset="utf-8" media="screen and (min-width: 481px) and (max-width: 1024px)" rel="stylesheet" type="text/css" />
+  
 	{{ 'theme.css' | asset_url | stylesheet_tag }}
 	{% if settings.colors == "enabled" %}
 	  {{ 'theme-custom-colors.css' | asset_url | stylesheet_tag }}	

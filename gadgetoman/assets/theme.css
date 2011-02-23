@@ -1,7 +1,7 @@
 /* Theme
 
 - background: #eee;
-  - grays light > dark: #f9f9f9, #f3f3f3, #dadada, #ddd, #ccc, #a3a3a0, #777, #4c4c4c
+  - grays: light > dark: #f9f9f9, #f3f3f3, #dadada, #ddd, #ccc, #a3a3a0, #777, #4c4c4c
   - black: #3d3d3b  > 2d2d2d   
   - highlight/orange: #ff3300
   - highlight/yellow: #C60017  
@@ -42,6 +42,15 @@ a.underline {
   background: #3d3d3b;
   text-decoration: none;
 }
+.text ul {
+ margin: 1.25em !important;
+ list-style-type: disc !important;
+}
+.text ul li {
+  margin-bottom: .62em 0 !important;
+}
+
+
 a.read-more {
   color: #a3a3a0 !important;
   text-decoration: none !important;

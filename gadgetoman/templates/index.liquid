@@ -9,8 +9,7 @@
 				      {% assign article = pages.frontpage %}
 					    <h1><a class="title" title="{{ article.title }}" href="{{ article.url }}">{{ article.title }}</a></h1>
 					    <div class="text">
-					      {{ article.content | truncate : 250 }}
-					      <a class="read-more" title="{{ article.title }}" href="{{ article.url }}">Read more &rarr;</a>
+					      {{ article.content | truncate : 300 }}					      
 					    </div>
 					    <div class="left nav">	
 					      &nbsp;				      
@@ -31,28 +30,31 @@
 				      <div class="col-1 left">
 				        <h1>
 				          <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                  {{ product.title | escape }} by {{ product.vendor }} <span>{{ product.price | money }} </a>
+                  {{ product.title | escape }} </a>
                 </h1>
                 <div class="text">
-                  {{ product.description | truncate : 250 }}
+                  {{ product.description | truncate : 500 }}
                   <a class="read-more" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
                   Read more &rarr;</a>
                 </div>                
                 <div class="nav left">
                   &nbsp;
-                  {% assign i = forloop.index0 %}
-                  {% assign prev = i - 1 %}
-                  {% assign next = i + 1 %}                  
+                  {% assign i = forloop.index0 %}                  
                   {% unless forloop.last %}
-                    <a href="#featured{{ next }}" class="next"><div class="triangle triangle-bottom"></div></a>                    
+                    <a href="#featured{{ i | plus:2 }}" class="next"><div class="triangle triangle-bottom"></div></a> 
+                  {% else %}
+                    <a href="#featured0" class="next"><div class="triangle triangle-bottom"></div></a>                 
                   {% endunless %}
-                  <a href="#featured{{ prev }}" class="prev"><div class="triangle triangle-top"></div></a>                  
+                  <a href="#featured{{ i }}" class="prev"><div class="triangle triangle-top"></div></a>                  
                 </div>
-                <div id="add-to-cart" class="right">
+                {% if product.price > 0 %}
+                <div id="add-to-cart" class="right">                  
                   <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                  {{ product.price | money }} &nbsp;&nbsp;
                   Add to Cart
                   </a>
                 </div>
+                {% endif %}
 				      </div>
 				      <div class="image col-2 left">
 					      {% for image in product.images limit: 1 %}
