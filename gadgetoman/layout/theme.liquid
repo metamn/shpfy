@@ -7,9 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	{{ 'base.css' | asset_url | stylesheet_tag }}		
 	{{ 'layout.css' | asset_url | stylesheet_tag }}
-	<link href="{{ 'mobile.css' | asset_url }}" charset="utf-8" media="screen and (max-width: 480px)" rel="stylesheet" type="text/css" />
-	<link href="{{ 'tablet.css' | asset_url }}" charset="utf-8" media="screen and (min-width: 481px) and (max-width: 1024px)" rel="stylesheet" type="text/css" />
-  
+	
 	{{ 'theme.css' | asset_url | stylesheet_tag }}
 	{% if settings.colors == "enabled" %}
 	  {{ 'theme-custom-colors.css' | asset_url | stylesheet_tag }}	
@@ -25,6 +23,10 @@
   <!--[if lte IE 6]>
   {{ 'ie6.css' | asset_url | stylesheet_tag }}  
   <![endif]-->
+  
+  <link href="{{ 'mobile.css' | asset_url }}" charset="utf-8" media="screen and (max-width: 480px)" rel="stylesheet" type="text/css" />
+	<link href="{{ 'tablet.css' | asset_url }}" charset="utf-8" media="screen and (min-width: 481px) and (max-width: 1024px)" rel="stylesheet" type="text/css" />
+  
 			
 	{{ 'jquery-1.4.3.min.js' | asset_url | script_tag }}
 	{{ 'jquery.scrollTo-min.js' | asset_url | script_tag }}
@@ -42,99 +44,98 @@
 <body>	
 	<div id="header" class="block">
 	  <div class="container">
-		  <div id="logo" class="left">
-		    {% if settings.logo == "enabled" %}
-			    <a href="/" title="{{ shop.name }}"><img src="{{ "logo.png" | asset_url }}" alt="{{ shop.name | escape }}" /></a>
-			  {% else %}
-			    <h2 class="logo"><a href="/" title="{{ shop.name }}">{{ shop.name | escape }}</a></h2>
-			  {% endif %}
-			</div>
-			<div id="navigation" class="menu right alignright">
-			  {% capture active_url %}
-			    {% if template == "index" %}
-			      /
-			    {% elsif template == "collection" %}
-			      /collections/{{ collection.handle }}
-			    {% elsif template == "product" %}
-			      {% if collection %}
+	    <div class="block">		    
+			  <div id="navigation" class="menu right">
+			    {% capture active_url %}
+			      {% if template == "index" %}
+			        /
+			      {% elsif template == "collection" %}
 			        /collections/{{ collection.handle }}
-			      {% endif %}
-			      /products/{{ product.handle }}
-			    {% elsif template == "page" %}
-			      /pages/{{ page.handle }}
-			    {% elsif template == "blog" %}
-			      /blogs/{{ blog.handle }}
-			    {% elsif template == "cart" %}
-			      /cart
-			    {% elsif template == "search" %}
-			      /search
-			    {% endif %}
-			  {% endcapture %}
-			  
-			  
-			  <div id="main-menu" class="menuline right alignright">
-				  {% if linklists.main-menu.links.size > 0 %}				
-				    {% for link in linklists.main-menu.links %}
-					  <div id="item" 
-					    {% if forloop.last %}
-					      {% if cart.item_count == 0 %} class="last"
-					      {% endif %}
-					    {% endif %}>
-					    <a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title }}</a>
-					  </div>
-					  {% endfor %}
-					{% endif %}
-					  <div id="item" class="search last">
-					    <span class="search link">
-					    {% if settings.locale == "enabled" %}
-					      {{ settings.locale_search }}
-					    {% else %}
-					      Search
-					    {% endif %}
-					    </span>
-					  </div>
-				</div>
-				<div class="clear"></div>
-					
-			  <div id="shopping-menu" class="menuline right alignright">	
-			    {% if linklists.shopping-menu.links.size > 0 %}				
-				    {% for link in linklists.shopping-menu.links %}
-					  <div id="item" class="item"> 
-					    {% if forloop.last %}
-					      {% if cart.item_count == 0 %} class="last"
-					      {% endif %}
-					    {% endif %}>
-					    <a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title }}</a>
-					  </div>
-					  {% endfor %}
-					{% endif %}						
-										
-					<div id="item" class="search-menu">
-				    <form action="/search" method="get">
-			        <input class="text" type="text" name="q" /> 
-			        {% if settings.locale == "enabled" %}
-			          <input class="" type="submit" value="{{ settings.locale_search }}"  />
-			        {% else %}
-			          <input class="" type="submit" value="Search"  />
+			      {% elsif template == "product" %}
+			        {% if collection %}
+			          /collections/{{ collection.handle }}
 			        {% endif %}
-		        </form>
-				  </div>
-				  
-									
-				  <div class="triangle triangle-left"></div>						
-				  <div id="item" class="cart last">					  					  		  				  
-				    <a href="/cart"{% if template == "cart" %} class="active highlight"{% else %} class="highlight"{% endif %}>
+			        /products/{{ product.handle }}
+			      {% elsif template == "page" %}
+			        /pages/{{ page.handle }}
+			      {% elsif template == "blog" %}
+			        /blogs/{{ blog.handle }}
+			      {% elsif template == "cart" %}
+			        /cart
+			      {% elsif template == "search" %}
+			        /search
+			      {% endif %}
+			    {% endcapture %}
+			    
+			    
+			    <div id="main-menu" class="menu">
+				    {% if linklists.main-menu.links.size > 0 %}				
+				      {% for link in linklists.main-menu.links %}
+					    <div id="item">
+					      <a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title }}</a>
+					    </div>
+					    {% endfor %}
+					  {% endif %}
+				    <div id="item">
+				      <span class="search link">
 				      {% if settings.locale == "enabled" %}
-				        <div class="quantity">{{ settings.locale_cart }}: {{ cart.item_count }} {{ cart.item_count | pluralize: settings.locale_item, settings.locale_items }}</div>				        
+				        {{ settings.locale_search }}
 				      {% else %}
-				        <div class="quantity">Cart: {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}</div>				        
+				        Search
 				      {% endif %}
-				      <div class="price">{{ cart.total_price | money }}</div>
-				    </a>			  
-			    </div>			  
-				</div>
+				      </span>
+				    </div>
+				  </div>			  		
+				</div>	
 				
-			</div>			
+				<div id="logo" class="left">
+		      {% if settings.logo == "enabled" %}
+			      <a href="/" title="{{ shop.name }}"><img src="{{ "logo.png" | asset_url }}" alt="{{ shop.name | escape }}" /></a>
+			    {% else %}
+			      <h2 class="logo"><a href="/" title="{{ shop.name }}">{{ shop.name | escape }}</a></h2>
+			    {% endif %}
+			  </div>
+										
+			</div>	
+						
+			<div class="block">
+		    <div id="shopping-menu" class="menu right">	
+		      {% if linklists.shopping-menu.links.size > 0 %}				
+			      {% for link in linklists.shopping-menu.links %}
+				    <div id="item" class="item"> 
+				      {% if forloop.last %}
+				        {% if cart.item_count == 0 %} class="last"
+				        {% endif %}
+				      {% endif %}>
+				      <a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title }}</a>
+				    </div>
+				    {% endfor %}
+				  {% endif %}		
+				  
+				  <div id="item" class="search-menu">
+			      <form action="/search" method="get">
+		          <input class="text" type="text" name="q" /> 
+		          {% if settings.locale == "enabled" %}
+		            <input class="" type="submit" value="{{ settings.locale_search }}"  />
+		          {% else %}
+		            <input class="" type="submit" value="Search"  />
+		          {% endif %}
+	          </form>
+			    </div>
+								
+			    <div class="triangle triangle-left"></div>						
+			    <div id="item" class="cart last">					  					  		  				  
+			      <a href="/cart"{% if template == "cart" %} class="active highlight"{% else %} class="highlight"{% endif %}>
+			        {% if settings.locale == "enabled" %}
+			          <div class="quantity">{{ settings.locale_cart }}: {{ cart.item_count }} {{ cart.item_count | pluralize: settings.locale_item, settings.locale_items }}</div>				        
+			        {% else %}
+			          <div class="quantity">Cart: {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}</div>				        
+			        {% endif %}
+			        <div class="price">{{ cart.total_price | money }}</div>
+			      </a>			  
+		      </div>			  
+			  </div>
+			</div>		
 		</div>
 	</div>
 	

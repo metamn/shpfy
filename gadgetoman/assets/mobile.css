@@ -26,15 +26,31 @@
 
 /* Header */
 
-
+#header .logo {
+  margin-bottom: 0.75em;
+} 
 .menu #item {
   padding-left: 0;
+  margin-right: 0;
+}
+.menu #navigation {
+  float: left;
+}
+.menu #shopping-menu {
+  position: absolute;
+  float: right;
+  top: 0;
+  right: 0;  
 }
 .menu #item.cart {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding-left: .62em;
+  margin-right: 0 !important;
+}
+.menu #item.cart .quantity {
+  border-bottom: none;
+}
+.menu .cart .quantity, .menu .cart .price {
+  float: left;
+  padding-left: .31em;
 }
 .menu .triangle {
   display: none;
@@ -108,7 +124,7 @@
 }
 .cart #info #checkout input {
   float: left;
-  margin-top: 1.25em;
+  margin-top: 1.25em; 
 }
 
 

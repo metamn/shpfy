@@ -106,9 +106,11 @@ body {
 
 /* Header */
 
-
+#header .logo {
+  margin-bottom: 0;
+} 
 .menu #item {
-  margin-right: 1.52em !important;  
+  margin-right: 1.52em;  
   float: left;
   display: inline-block;
   text-align: left;
@@ -128,9 +130,7 @@ body {
   font-size: small;
   padding: .25em .5em;
 }
-.menu #item.last {
-  margin-right: 0 !important;  
-}
+
 .menu #item.cart {
   position: relative;
   top: .5em;
