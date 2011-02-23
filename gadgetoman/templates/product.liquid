@@ -11,6 +11,14 @@
 		    <img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
 	    </div> 
 	    
+      {% if product.images.size > 1%}
+      <div id="thumbs" class="mobile block">	          	               
+        {% for image in product.images %}
+          <img class="link" src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" rev="{{ image | product_img_url: 'original' }}" />
+        {% endfor %}	                
+      </div>
+      {% endif %} 
+	    
 	    <div id="description" class="block">
 	      <div class="box text">
           {{ product.description }}
@@ -57,7 +65,7 @@
 	      </div>
 	      
 	      {% if product.images.size > 1%}
-	      <div id="thumbs" class="block">	          	               
+	      <div id="thumbs" class="desktop block">	          	               
           {% for image in product.images %}
             <img class="link" src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" rev="{{ image | product_img_url: 'original' }}" />
           {% endfor %}	                

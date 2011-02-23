@@ -415,39 +415,38 @@ li.facebook {
 
 /* Checkout */
 
-
-
-.cart table tr {
-  height: 3em;
+.cart #info ul {
+  margin-bottom: 1.25em;
+  padding-bottom: 1.25em;
 }
-.cart table tr.first td {
-  vertical-align: middle; 
-  padding: 0 1em; 
+.cart #info li {
+  width: 18%;
+  margin-right: 2%;
+  display: inline-block !important;
+  position: relative;
+  top: -70px;
 }
-.cart table tr.second td {
-  vertical-align: top; 
-  padding: 0 1.25em 1.25em;
-  font-size: small;
+.cart #info li.image {
+  top: 0;
 }
-.cart table td.image {
-  vertical-align: top;
+.cart #info li.image, .cart #info li.lineprice {
+  width: 10%;
 }
-.cart img {
+.cart #info li.info, .cart #info li.update {
+  width: 30%;
+}
+.cart #info li.remove {
+  width: 3%;
+}
+.cart #info input.quantity {
+  width: 3em;
+}
+.cart #info img {
   max-width: 100px;
   max-height: 100px;
 }
-.cart table td.update {
-  width: 30%;
-}
-.cart table td.update input.quantity {
-  width: 3em;
-}
-.cart table td.update input.update {
-  width: 6em;
-}
-.cart #checkout .button {
-  top: -0.5em;
-  position: relative;
+.cart #info #checkout input {
+  float: right;
 }
 
 

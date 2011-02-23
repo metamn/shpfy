@@ -179,6 +179,9 @@ p {
   position: relative;
 }
 
+.mobile {
+  display: none;
+}
 
 table {
   width: 100%;

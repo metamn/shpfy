@@ -1,0 +1,124 @@
+.container {
+  margin: 0 .61em;
+  background: none;
+}
+
+.container, 
+.index #intro .col-1, .index #intro .col-2,
+#item.product, .subscribe-twitter,
+#ecosystem .col-1, #ecosystem .col-2,
+#follow .col, 
+#info .col-1, #info .col-2,
+.collection .col-1, .collection .col-2,
+.collection #items #item {
+  width: auto;  
+  float: none;
+}
+
+
+.mobile {
+  display: block;
+}
+.desktop {
+  display: none;
+}
+
+
+/* Header */
+
+
+.menu #item {
+  padding-left: 0;
+}
+.menu #item.cart {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-left: .62em;
+}
+.menu .triangle {
+  display: none;
+}
+
+
+/* Frontpage */
+
+.index #featured, .index .section .sub  {
+  height: 58em;
+}
+.index #featured #add-to-cart {
+  float: none;
+  margin: 0;
+}
+.index #featured .nav {
+  float: none;
+  margin: 1.25em 0;
+}
+
+
+#item.product {
+  margin-top: 1.25em;
+  height: auto;
+}
+#item.product #add-to-cart {
+  display: block;
+  margin-bottom: 3.75em;
+}
+
+
+/* Product */
+
+.product #info #description {
+  margin: 0;
+}
+  .product #thumbs img {
+  margin-bottom: 0;
+}
+.product #thumbs {
+  padding: 1.25em 0 0;
+}
+
+
+/* Cart */
+
+.cart #info li {
+  margin: 0;
+  display: inline-block !important;
+  position: relative;
+  top: 0;
+}
+.cart #info li.image {
+  top: 0;
+  width: 30%;
+  float: left;
+}
+.cart #info li.info {
+  width: 70%;
+  float: left;  
+} 
+.cart #info li.quantity {
+  width: 70%;
+}
+.cart #info li.remove {
+  width: 10%;
+  margin-left: 2em;
+}
+.cart #info li.lineprice {
+  display: none !important;
+}
+.cart #info #checkout input {
+  float: left;
+  margin-top: 1.25em;
+}
+
+
+
+/* Blog */
+
+.comments form input, .comments form textarea, .comments form input.button  {
+  width: 99%;
+}
+
+
+
+

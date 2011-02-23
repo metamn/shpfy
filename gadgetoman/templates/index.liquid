@@ -5,6 +5,14 @@
 		  <div class="section">
 			  <ul>
 				  <li class="sub" id="featured0">
+				    <div class="image col-2 right">
+					    {% for product in collections.frontpage.products limit: 1%}
+					      {% for image in product.images limit: 1 %}
+					        <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                    <img src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" /></a>
+					      {% endfor %}
+					    {% endfor %}
+					  </div>
 				    <div class="col-1 left">
 				      {% assign article = pages.frontpage %}
 					    <h1><a class="title" title="{{ article.title }}" href="{{ article.url }}">{{ article.title }}</a></h1>
@@ -15,18 +23,16 @@
 					      &nbsp;				      
 					      <a href="#featured1" class="next"><div class="triangle triangle-bottom"></div></a>					      
 					    </div>
-					  </div>
-					  <div class="image col-2 left">
-					    {% for product in collections.frontpage.products limit: 1%}
-					      {% for image in product.images limit: 1 %}
-					        <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                    <img src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" /></a>
-					      {% endfor %}
-					    {% endfor %}
-					  </div>					  
+					  </div>					  					  
 				  </li>
 				  {% for product in collections.frontpage.products %}
 				    <li class="sub" id="featured{{ forloop.index }}">
+				      <div class="image col-2 right">
+					      {% for image in product.images limit: 1 %}
+					        <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                    <img src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" /></a>
+					      {% endfor %}					    
+					    </div>
 				      <div class="col-1 left">
 				        <h1>
 				          <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
@@ -55,13 +61,7 @@
                   </a>
                 </div>
                 {% endif %}
-				      </div>
-				      <div class="image col-2 left">
-					      {% for image in product.images limit: 1 %}
-					        <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                    <img src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" /></a>
-					      {% endfor %}					    
-					    </div>
+				      </div>				      
 				    </li>
 				  {% endfor %}				  	
 			  </ul>

@@ -273,7 +273,7 @@ a.read-more {
 
 /* Checkout */
 
-.cart table tr.second td {
+.cart #info ul {
   border-bottom: 1px solid #ededed;
 }
 
