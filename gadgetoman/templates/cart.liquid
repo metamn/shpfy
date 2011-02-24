@@ -59,24 +59,26 @@
               </ul>
             {% endfor %}
           </form>
-          
-          <div id="checkout">
-		        <h3>
-		          {% if settings.locale == "enabled" %}
-                {{ settings.locale_cart_total }}
-              {% else %}
-                TOTAL:
-              {% endif %} 
-		           <span>{{ cart.total_price | money }} {{ shop.currency }}</span>
-		          <span>
+                    
+          <div id="checkout" class="block">
+            <div id="total" class="left">
+		          <h3>
 		            {% if settings.locale == "enabled" %}
-                  {% assign p = settings.locale_cart_checkout %}
+                  {{ settings.locale_cart_total }}
                 {% else %}
-                  {% assign p = "Proceed to checkout" %}
+                  TOTAL:
                 {% endif %} 
-		            <input class="" type="submit" id="getout" name="checkout" value="{{ p }}" />
-		          </span>
-		        </h3>
+		             <span>{{ cart.total_price | money }} {{ shop.currency }}</span>		          
+		          </h3>
+		        </div>
+		        <div id="gotocheckout" class="right">		          
+	            {% if settings.locale == "enabled" %}
+                {% assign p = settings.locale_cart_checkout %}
+              {% else %}
+                {% assign p = "Proceed to checkout" %}
+              {% endif %} 
+	            <input class="" type="submit" id="getout" name="checkout" value="{{ p }}" />		          
+		        </div>
 	        </div>	
           </form>
         {% endif %}

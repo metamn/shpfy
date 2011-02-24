@@ -3,26 +3,7 @@ jQuery.noConflict();
 // Use jQuery via jQuery(...)
 jQuery(document).ready(function(){
 
-  // Scrolling featured products
-  jQuery.localScroll.defaults.axis = 'xy';
-  jQuery.localScroll.hash({
-		target: '#featured', 
-		queue: true,
-		duration: 1500
-	});
-	jQuery.localScroll({
-		target: '#featured', 
-		queue: true,
-		duration: 1000,
-		hash: true,
-		onBefore:function( e, anchor, $target ){
-			
-		},
-		onAfter:function( anchor, settings ){
-			
-		}
-	});
-
+  
   // Highlight More button on Frontpage
   jQuery("#latest #more").hover(
     function () {
@@ -58,10 +39,10 @@ jQuery(document).ready(function(){
   );
   
   // Click on Search in the Header
-  jQuery(".menu .search").click(function(){
+  jQuery("#main-menu .search").click(function(){
     // hide all menu items 
     jQuery("#shopping-menu").children(".item").hide();
-    jQuery("#header .search-menu").fadeIn('slow');
+    jQuery("#shopping-menu .search-menu").fadeIn('slow');
   });
   
   
@@ -106,5 +87,24 @@ jQuery(document).ready(function(){
   }).filter(":first").click();
    
   
+  // Scrolling featured products
+  jQuery.localScroll.defaults.axis = 'xy';
+  jQuery.localScroll.hash({
+		target: '#featured', 
+		queue: true,
+		duration: 1500
+	});
+	jQuery.localScroll({
+		target: '#featured', 
+		queue: true,
+		duration: 1000,
+		hash: true,
+		onBefore:function( e, anchor, $target ){
+			
+		},
+		onAfter:function( anchor, settings ){
+			
+		}
+	});
     
 });   

@@ -40,6 +40,7 @@
 	{% else %}
 	  {{ 'jquery.mobile.js' | asset_url | script_tag }}
 	{% endunless %}
+	
 	{{ 'jquery.init.js' | asset_url | script_tag }}
 	
 	
@@ -55,7 +56,7 @@
 	<div id="header" class="block">
 	  <div class="container">
 	    <div class="block">		    
-			  <div id="navigation" class="menu right">
+			  <div id="navigation" class="menu desktop right">
 			    {% capture active_url %}
 			      {% if template == "index" %}
 			        /
@@ -105,6 +106,49 @@
 			      <h2 class="logo"><a href="/" title="{{ shop.name }}">{{ shop.name | escape }}</a></h2>
 			    {% endif %}
 			  </div>
+			  
+			  <div id="navigation-m" class="menu mobile left">
+			    {% capture active_url %}
+			      {% if template == "index" %}
+			        /
+			      {% elsif template == "collection" %}
+			        /collections/{{ collection.handle }}
+			      {% elsif template == "product" %}
+			        {% if collection %}
+			          /collections/{{ collection.handle }}
+			        {% endif %}
+			        /products/{{ product.handle }}
+			      {% elsif template == "page" %}
+			        /pages/{{ page.handle }}
+			      {% elsif template == "blog" %}
+			        /blogs/{{ blog.handle }}
+			      {% elsif template == "cart" %}
+			        /cart
+			      {% elsif template == "search" %}
+			        /search
+			      {% endif %}
+			    {% endcapture %}
+			    
+			    
+			    <div id="main-menu" class="menu">
+				    {% if linklists.main-menu.links.size > 0 %}				
+				      {% for link in linklists.main-menu.links %}
+					    <div id="item">
+					      <a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title }}</a>
+					    </div>
+					    {% endfor %}
+					  {% endif %}
+				    <div id="item">
+				      <span class="search link">
+				      {% if settings.locale == "enabled" %}
+				        {{ settings.locale_search }}
+				      {% else %}
+				        Search
+				      {% endif %}
+				      </span>
+				    </div>
+				  </div>			  		
+				</div>
 										
 			</div>	
 						
