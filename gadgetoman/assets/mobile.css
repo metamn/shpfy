@@ -59,8 +59,11 @@
 
 /* Frontpage */
 
-.index #featured, .index .section .sub  {
-  height: 58em;
+.index #featured {
+  height: auto;
+}
+.index .section .sub  {
+  height: auto;
 }
 .index #featured #add-to-cart {
   float: none;

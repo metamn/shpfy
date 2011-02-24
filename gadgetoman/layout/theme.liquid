@@ -5,6 +5,7 @@
 	<title>{{ shop.name }} &#124; {{ page_title }}</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
 	{{ 'base.css' | asset_url | stylesheet_tag }}		
 	{{ 'layout.css' | asset_url | stylesheet_tag }}
 	
@@ -24,14 +25,23 @@
   {{ 'ie6.css' | asset_url | stylesheet_tag }}  
   <![endif]-->
   
-  <link href="{{ 'mobile.css' | asset_url }}" charset="utf-8" media="screen and (max-width: 480px)" rel="stylesheet" type="text/css" />
+  {% if settings.mobile != "disabled" %}  
+    <link href="{{ 'mobile.css' | asset_url }}" charset="utf-8" media="screen and (max-width: 480px)" rel="stylesheet" type="text/css" />
+  {% endif %}    
+  
 	<link href="{{ 'tablet.css' | asset_url }}" charset="utf-8" media="screen and (min-width: 481px) and (max-width: 1024px)" rel="stylesheet" type="text/css" />
   
 			
 	{{ 'jquery-1.4.3.min.js' | asset_url | script_tag }}
-	{{ 'jquery.scrollTo-min.js' | asset_url | script_tag }}
-	{{ 'jquery.localscroll-min.js' | asset_url | script_tag }}
+	
+	{% unless settings.mobile != "disabled" %} 	
+	  {{ 'jquery.scrollTo-min.js' | asset_url | script_tag }}
+	  {{ 'jquery.localscroll-min.js' | asset_url | script_tag }}
+	{% else %}
+	  {{ 'jquery.mobile.js' | asset_url | script_tag }}
+	{% endunless %}
 	{{ 'jquery.init.js' | asset_url | script_tag }}
+	
 	
   <link href='http://fonts.googleapis.com/css?family=Ubuntu:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 
