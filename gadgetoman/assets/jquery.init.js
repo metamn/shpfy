@@ -45,8 +45,6 @@ jQuery(document).ready(function(){
     jQuery("#shopping-menu .search-menu").fadeIn('slow');
   });
   
-  
-    
     
   // Highlight items on hover
   jQuery("#item.product, #add-to-cart").hover(

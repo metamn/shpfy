@@ -34,15 +34,23 @@
 			
 	{{ 'jquery-1.4.3.min.js' | asset_url | script_tag }}
 	
+	
+	<script type="text/javascript">
+	  alert(screen.width);
+	</script>
+	<!--
 	{% unless settings.mobile != "disabled" %} 	
 	  {{ 'jquery.scrollTo-min.js' | asset_url | script_tag }}
 	  {{ 'jquery.localscroll-min.js' | asset_url | script_tag }}
 	{% else %}
 	  {{ 'jquery.mobile.js' | asset_url | script_tag }}
 	{% endunless %}
+	-->
+	{{ 'jquery.scrollTo-min.js' | asset_url | script_tag }}
+	  {{ 'jquery.localscroll-min.js' | asset_url | script_tag }}
 	
 	{{ 'jquery.init.js' | asset_url | script_tag }}
-	
+	{{ 'jquery.mobile.js' | asset_url | script_tag }}
 	
   <link href='http://fonts.googleapis.com/css?family=Ubuntu:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 
