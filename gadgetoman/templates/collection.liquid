@@ -9,7 +9,9 @@
         <div class="image">	      
           {% for image in product.images limit: 1 %}
             <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">	    
-              <img src="{{ image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>
+              <img class="desktop" src="{{ image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />          
+              <img class="mobile" src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
+            </a>
           {% endfor %}
         </div>
         <div class="title">

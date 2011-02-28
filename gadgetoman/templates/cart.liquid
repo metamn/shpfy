@@ -29,7 +29,7 @@
                 
           <form action="/cart" method="post" id="cartform" name="cartform">          
             {% for item in cart.items %}
-              <ul class="inline-list">
+              <ul>
                 <li id="item" class="image">
                   <a href="{{ item.product.url | within: collections.all }}">
 	                  <img src="{{ item.product.images.last | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" />
