@@ -48,7 +48,7 @@
                   {% else %}
                     {% assign u = "Update" %}
                   {% endif %}  
-			            <input type="submit" class="update" name="update" value="{{ u }}" id="update-cart" />
+			            <input type="submit" class="button update" name="update" value="{{ u }}" id="update-cart" />
                 </li>
                 <li id="item" class="lineprice">
                   {{ item.line_price | money }}
@@ -77,7 +77,7 @@
               {% else %}
                 {% assign p = "Proceed to checkout" %}
               {% endif %} 
-	            <input class="" type="submit" id="getout" name="checkout" value="{{ p }}" />		          
+	            <input class="button" type="submit" id="getout" name="checkout" value="{{ p }}" />		          
 		        </div>
 	        </div>	
           </form>

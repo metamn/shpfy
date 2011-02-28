@@ -192,20 +192,19 @@ table {
 .box {
   padding: 1.25em;
 }
-.button {
-  display: block;
-}
-.button, .button a {
-  /*background: #99FF33;*/
-  color: #333 !important;  
+button, textarea, input, select {
+  padding: .31em 1.25em;
+  margin-bottom: .62em;
 }
 .button a {
   text-decoration: none;
 }
-.rounded {  
-  padding: .5em 1em;
-  -moz-border-radius: 1em;  
-  -webkit-border-radius: 1em;
+input.text {
+  width: 90%;
+}
+.rounded {    
+  -moz-border-radius: .62em;  
+  -webkit-border-radius: .62em;
 }
 img {
   max-width: 100%;

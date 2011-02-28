@@ -50,9 +50,9 @@
                 </select>
         			</div>      			
 
-        			<span id="price-field"></span><br />
+        			<span id="price-field"></span>
 
-        			<input class="" type="submit" name="add" value="Add to cart" id="add-cart">
+        			<input class="button" type="submit" name="add" value="Add to cart" id="add-cart">
 			      {% else %}
 			        <h3>
 			        {% if settings.locale == "enabled" %}
@@ -125,6 +125,22 @@
               
               {{ product.type | link_to_type }}
             </div>
+            
+            <h4>
+            {% if settings.locale == "enabled" %}
+              {{ settings.locale_search }}
+              {% assign s = settings.locale_search %}
+            {% else %}
+              Search
+              {% assign s = "Search" %}
+            {% endif %} 
+            </h4>
+            <div id="search" class="pane">        
+	            <form action="/search" method="get">
+		            <input class="text" type="text" name="q" /> 
+		            <input class="button" type="submit" value="{{ s }}"  />
+	            </form>
+            </div>  
             
             <h4>
             {% if settings.locale == "enabled" %}
