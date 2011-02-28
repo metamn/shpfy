@@ -13,11 +13,11 @@
 					      {% endfor %}
 					    {% endfor %}
 					  </div>
-				    <div class="col-1 left">
-				      {% assign article = pages.frontpage %}
-					    <h1><a class="title" title="{{ article.title }}" href="{{ article.url }}">{{ article.title }}</a></h1>
+				    <div id="text" class="col-1 left">
+				      {% assign article = pages.frontpage %}					    
 					    <div class="text">
-					      {{ article.content | strip_html | truncate : 300 }}					      
+					      <h1><a class="nopadding title" title="{{ article.title }}" href="{{ article.url }}">{{ article.title }}</a></h1>
+					      {{ article.content }}					      
 					    </div>
 					    <div class="left nav">	
 					      &nbsp;				      
@@ -33,34 +33,44 @@
                     <img src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" /></a>
 					      {% endfor %}					    
 					    </div>
-				      <div class="col-1 left">
-				        <h1>
-				          <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+				      <div id="text" class="col-1 left">
+                <h1>
+			            <a class="title nopadding" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
                   {{ product.title | escape }} </a>
                 </h1>
-                <div class="text">
-                  {{ product.description | strip_html | truncate : 500 }}
-                  <a class="read-more" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                  Read more &rarr;</a>
-                </div>                
-                <div class="nav left">
-                  &nbsp;
-                  {% assign i = forloop.index0 %}                  
-                  {% unless forloop.last %}
-                    <a href="#featured{{ i | plus:2 }}" class="next"><div class="triangle triangle-bottom"></div></a> 
-                  {% else %}
-                    <a href="#featured0" class="next"><div class="triangle triangle-bottom"></div></a>                 
-                  {% endunless %}
-                  <a href="#featured{{ i }}" class="prev"><div class="triangle triangle-top"></div></a>                  
+                <div id="description" class="text">                
+                  {{ product.description }}
                 </div>
-                {% if product.price > 0 %}
-                <div id="add-to-cart" class="right">                  
-                  <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                  {{ product.price | money }} &nbsp;&nbsp;
-                  Add to Cart
-                  </a>
+                <div id="description-bottom">&nbsp;</div>
+                <div id="links" class="block">
+                  <div class="nav left">
+                    &nbsp;
+                    {% assign i = forloop.index0 %}                  
+                    {% unless forloop.last %}
+                      <a href="#featured{{ i | plus:2 }}" class="next"><div class="triangle triangle-bottom"></div></a> 
+                    {% else %}
+                      <a href="#featured0" class="next"><div class="triangle triangle-bottom"></div></a>                 
+                    {% endunless %}
+                    <a href="#featured{{ i }}" class="prev"><div class="triangle triangle-top"></div></a> 
+                  </div>
+                  
+                  <div id="add-to-cart" class="right">  
+                    <ul>   
+                      {% if product.price > 0 %}                               
+                      <li class="add">
+                        <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                        {{ product.price | money }} &nbsp;&nbsp;
+                        Add to Cart
+                        </a>
+                      </li>
+                      {% endif %}
+                      <li class="text ">
+                        <a class="read-more" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                        Read more &rarr;</a>
+                      </li>
+                    </ul>
+                  </div>                    
                 </div>
-                {% endif %}
 				      </div>				      
 				    </li>
 				  {% endfor %}				  	

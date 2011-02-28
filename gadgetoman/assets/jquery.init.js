@@ -30,6 +30,11 @@ jQuery(document).ready(function(){
     
   }
   
+  // Empty subscibe to email on click 
+  jQuery("input.subscribe").click(function(){        
+    jQuery(this).attr('value', '');       
+  }); 
+  
   // Highlight More button on Frontpage
   jQuery("#latest #more").hover(
     function () {
@@ -71,7 +76,7 @@ jQuery(document).ready(function(){
       jQuery("#shopping-menu .search-menu").fadeIn('slow');
     },
     function () {
-      jQuery("#shopping-menu").children(".item").show();
+      jQuery("#shopping-menu").children(".item").show();      
       jQuery("#shopping-menu .search-menu").fadeOut('slow');
     }
   );

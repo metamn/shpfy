@@ -169,8 +169,10 @@
 		          {% endif %}
 	          </form>
 			    </div>
-								
-			    <div class="triangle triangle-left"></div>						
+					
+					<div id="item">
+					  <div class="triangle triangle-left"></div>
+					</div>
 			    <div id="item" class="cart last">					  					  		  				  
 			      <a href="/cart"{% if template == "cart" %} class="active highlight"{% else %} class="highlight"{% endif %}>
 			        {% if settings.locale == "enabled" %}
@@ -180,7 +182,7 @@
 			        {% endif %}
 			        <div class="price">{{ cart.total_price | money }}</div>
 			      </a>			  
-		      </div>			  
+		      </div>		      							  
 			  </div>
 			</div>		
 		</div>
@@ -347,7 +349,7 @@
           <h3 id="subscribe">Subscribe</h3>
           <div class="form">
             <form action="http://www.feedburner.com/fb/a/emailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=Gadgetoman-News', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">	
-	          <input class="text" type="text" name="email" value="Enter your email address" autocomplete="off"/>
+	          <input class="text subscribe" type="text" name="email" value="Enter your email address" autocomplete="off"/>
             <input type="hidden" value="Gadgetoman-News" name="uri"/>
             <input type="hidden" name="loc" value="en_US"/>
             <input class="button" type="submit" value="Subscribe to newsletter" />

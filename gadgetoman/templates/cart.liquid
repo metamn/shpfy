@@ -54,7 +54,7 @@
                   {{ item.line_price | money }}
                 </li>
                 <li id="item" class="remove">
-                  <a href="/cart/change/{{ item.variant.id }}?quantity=0">x</a>
+                  <a class="button" href="/cart/change/{{ item.variant.id }}?quantity=0">Remove</a>
                 </li>
               </ul>
             {% endfor %}

@@ -55,6 +55,12 @@ a.read-more {
   color: #a3a3a0 !important;
   text-decoration: none !important;
 }
+a.title {
+  text-decoration: none !important;
+}
+a.nopadding {
+  padding: 0 !important;
+}
 /* notes, highlighting texts */
 .note, .note a {
   color: #a3a3a0;
@@ -78,15 +84,15 @@ a.read-more {
 	-webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
 	box-shadow: inset 0px 1px 0px 0px #ffffff;
 	
-	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
-	background: -moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
-	background-color: #ededed;
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) ) !important;
+	background: -moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% ) !important;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf') !important;
+	background-color: #ededed !important;
 	
 	border: 1px solid #dcdcdc;
 	
-	color: #4c4c4c;	
-	text-decoration:none;
+	color: #4c4c4c !important;	
+	text-decoration:none !important;
 	text-shadow: 1px 1px 0px #ffffff;	
 }
 .button:hover, select:hover {
@@ -151,10 +157,7 @@ input:active, input:hover, textarea:active, textarea:hover {
 
 /* Index */
 
-.index #featured #add-to-cart.hover, .index #featured #add-to-cart.hover a {
-  background: #C60017 !important;
-  color: #f9f9f9 !important;
-}
+
 .index #featured .triangle-bottom {
   border-color: #DDDDDD transparent transparent;  
 }

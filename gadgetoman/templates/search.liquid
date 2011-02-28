@@ -2,7 +2,7 @@
   <div class="container"> 
     <div id="items" class="left col-1">  
       {% paginate search.results by 9 %}
-      {% if search.results.size == 2 %}
+      {% if search.results.size == 0 %}
         <h3>
         {% if settings.locale == "enabled" %}
           {{ settings.locale_search_notfound }}
