@@ -20,9 +20,8 @@
                 {{ article.title }} </a>
               </h1>
 				      <div id="description" class="text">                
-                 {{ article.content }}	
-              </div>
-              <div id="description-bottom">&nbsp;</div>
+                 {{ article.content | truncatewords: 40 }}	
+              </div>             
 				     	<div id="links" class="block">
                 <div id="add-to-cart" class="right">  
                   <ul>                       
@@ -53,9 +52,9 @@
                   {{ product.title | escape }} </a>
                 </h1>
                 <div id="description" class="text">                
-                  {{ product.description }}
+                  {{ product.description | truncatewords: 40 }}
                 </div>
-                <div id="description-bottom">&nbsp;</div>
+                
                 <div id="links" class="block">
                   <div id="add-to-cart" class="right">  
                     <ul>   
