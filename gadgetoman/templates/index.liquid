@@ -61,9 +61,7 @@
                       {% if product.price > 0 %}                               
                       <li class="add">
                         <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                        {{ product.price | money }} &nbsp;&nbsp;
-                        Add to Cart
-                        </a>
+                          {{ product.price | money }} &nbsp;&nbsp; Add to Cart</a>
                       </li>
                       {% endif %}
                       <li class="read-more">

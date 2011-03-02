@@ -459,27 +459,34 @@ li.facebook {
 /* Checkout */
 
 .cart #info ul {
+  margin: 0;
   margin-bottom: 1.25em;
   padding-bottom: 1.25em;
 }
 .cart #info li {
-  width: 18%;
   margin-right: 2%;
-  display: inline-block !important;
-  position: relative;
-  top: -70px;
+  display: inline-block !important;  
 }
 .cart #info li.image {
-  top: 0;
-}
-.cart #info li.image, .cart #info li.lineprice {
   width: 10%;
 }
-.cart #info li.info, .cart #info li.update {
-  width: 30%;
+.cart #info li.info, .cart #info li.update, .cart #info li.lineprice, .cart #info li.remove {
+  position: relative;
+  top: -2em;
+}
+.cart #info li.info {
+  width: 23%;
+  margin: 0 4%;
+}
+.cart #info li.update {
+  width: 24%;
+}
+.cart #info li.lineprice {
+  width: 10%;
 }
 .cart #info li.remove {
-  width: 3%;
+  width: 16%;
+  margin-right: 0;
 }
 .cart #info input.quantity {
   width: 3em;

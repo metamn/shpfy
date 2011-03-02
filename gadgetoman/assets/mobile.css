@@ -170,16 +170,21 @@
 
 /* Cart */
 
-.cart ul {
+.cart #info ul {
   margin: 0;
+  margin-bottom: 1.25em;
+  padding-bottom: 1.25em;
 }
 .cart #info li {
-  width: auto;
-  position: static;
-  margin: .31em 0;
+  margin: 5% 0;
+  display: block !important;  
 }
-.cart #info li.image, .cart #info li.info, .cart #info li.quantity, .cart #info li.remove {
+.cart #info li.image, .cart #info li.info, .cart #info li.update, .cart #info li.lineprice, .cart #info li.remove, .cart #checkout #total {
   width: 100%;
+  top: 0;
+}
+.cart #info li.update, .cart #info li.remove {
+  margin-left: 5%;
 }
 .cart #info li.lineprice {
   display: none !important;
