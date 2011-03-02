@@ -1,13 +1,77 @@
-/* Theme
+/*
+# The Gadgetoman Theme for Shopify
 
-- background: #eee;
-  - grays: light > dark: #f9f9f9, #f3f3f3, #dadada, #ddd, #ccc, #a3a3a0, #777, #4c4c4c
-  - black: #3d3d3b  > 2d2d2d   
-  - highlight/orange: #ff3300
-  - highlight/yellow: #C60017  
+* Description: A minimal, simple and completely customisable theme with mobile support especially for selling gadgets and electronics
+* Author: [Shopledge](http://www.shopledge.com/ "shopledge -- webshop design & development ")
+* Version: 1.0
+* Last changed: 12 March 2011
+
+
+## Style Guide
+
+A general overview for designers.
+
+### Introduction
+
+Gadgetoman is built on a fluid layout using the Responsive Web Design technique. This allows to be streched to various tablet
+and mobile displays.
+
+All measuring units -- for containers, divs, text, images, etc -- are either in "%" or "em". 
+No "px" is used for positioning. They are used only for decoration: borders, text shadows, etc.
+
+There are different CSS files each dedicated to a separate task:
+
+* base.css -- To reset the browser and for holding some common styling like alignments, clearfixes etc.
+* layout.css -- The grid and the design elements aligned on it. Has no color definitions at all.
+* theme.css -- The current theme / color scheme, as seen at the webpage. Has no alignment definitions at all just colors. 
+* mobile.css -- The stylesheet for mobile devices 
+* tablet.css -- The stylesheet for tablets
+
+### The Layout / Grid
+
+### Theming / Typography, Colors, Forms, Design elements
+
+### Mobile Support
+
+### Hacks, Workarounds, Tricks
+
+---
 */
 
 
+
+/*
+# Theming / Typography, Colors, Forms, Design elements
+
+## Typography
+
+* Nothing special, inherited from [base.css](base.html "")
+* Uses the *Ubuntu* Google font which is hardwired (the .js in header)
+*/
+body {
+  -webkit-text-size-adjust: none; 
+  font-family: 'Ubuntu', arial, serif;  
+}
+/*
+* Plain text headings margin-bottom is moderated
+  * h1, h2, h3 under **.text** has margin 0
+
+*/
+.text h1, .text h2, .text h3 {
+  margin: 1.25em 0;
+}
+
+
+/*
+## Color scheme
+
+* basic color / background: #eee;
+  * grays, from light to dark: #f9f9f9, #f3f3f3, #dadada, #ddd, #ccc, #a3a3a0, #777, #4c4c4c
+* black: #3d3d3b  > 2d2d2d   
+* highlight / orange: #ff3300
+* highlight / yellow: #C60017  
+
+*/
 
 body {
   background: #eee url(stripe.png);
@@ -15,79 +79,78 @@ body {
 }
 
 
+/* 
 
-/* Links */
+## Links
 
-
-/* Overwrite browser default styles for links */
+* The *default* style is simple, no underline, no hover
+*/
 a, a:visited, a:hover, :link, :visited {
   text-decoration: none; 
   color: #3d3d3b;
   background: none;
 }
-
-/* Forcing highlight when necessary */
+/* 
+  * **a.underline** forces text decoration (!important)
+*/
 a.underline {
   text-decoration: underline !important;
 }
 
-/* Links for texts */
+/* 
+* Plain text style for post body, product description, pages etc. 
+  * class name: **.text**
+  * default style: underlined
+*/
 .text a, .text a:visited, .text :link, .text :visited {
   color: #3d3d3b;
   text-decoration: underline;
   padding: 0 .32em;
 }
+/*
+  * hover: inverted colors 
+*/
 .text a:hover, .text a:focus, .text a:active {
   color: #f9f9f9 !important;
   background: #3d3d3b;
   text-decoration: none;
 }
-.text ul {
- margin: 1.25em !important;
- list-style-type: disc !important;
-}
-.text ul li {
-  margin-bottom: .62em 0 !important;
-}
-
-
-a.read-more {
-  color: #a3a3a0 !important;
-  text-decoration: none !important;
-}
+/*
+  * headings are unstyled using **a.title**
+*/
 a.title {
   text-decoration: none !important;
 }
-a.nopadding {
-  padding: 0 !important;
-}
-/* notes, highlighting texts */
+
+/* 
+* Notes, highlighting texts
+  * class name: **.note**
+  * default style: gray with shadow, changing color on hover, no decoration 
+*/
 .note, .note a {
   color: #a3a3a0;
-  text-decoration: none;
-  font-size: small;
-  text-shadow: 1px 1px 2px #ddd;
-  font-style: italic;
-  padding: .31em
+  text-decoration: none;  
 }
 .note a:hover {
   color: #3d3d3b; 
 }
 
 
+/* 
 
-
-/* Forms */
-
-.button, button, select, input, textarea {
+## Forms 
+Forms are completely re-styled
+* 
+*/
+input, select, textarea, a.button {
 	-moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
 	box-shadow: inset 0px 1px 0px 0px #ffffff;
 	
-	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) ) !important;
-	background: -moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% ) !important;
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf') !important;
-	background-color: #ededed !important;
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+	background: -moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color: #ededed;
 	
 	border: 1px solid #dcdcdc;
 	
@@ -95,20 +158,17 @@ a.nopadding {
 	text-decoration:none !important;
 	text-shadow: 1px 1px 0px #ffffff;	
 }
-.button:hover, select:hover {
+input.button:hover, select:hover, a.button:hover {
 	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
 	background: -moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
 	background-color: #dfdfdf;
 }
+input.text, textarea {
+  background: #fff;
+}
 select, select:hover {
   background: none;
-}
-input, textarea {
-  background: #f9f9f9;
-}
-input:active, input:hover, textarea:active, textarea:hover {
-  background: #fff;
 }
 
 
@@ -117,19 +177,11 @@ input:active, input:hover, textarea:active, textarea:hover {
 }
 
 
+/* 
 
+## Header 
 
-
-/* Typography for texts */
-
-
-.text h1, .text h2, .text h3 {
-  margin: 1.25em 0;
-}
-
-
-
-/* Header */
+*/
 
 
 #header {
@@ -153,7 +205,11 @@ input:active, input:hover, textarea:active, textarea:hover {
 
 
 
-/* Index */
+/* 
+
+## Index 
+
+*/
 
 
 .index #featured .triangle-bottom {
@@ -174,11 +230,17 @@ input:active, input:hover, textarea:active, textarea:hover {
 .index #featured a:hover .triangle-top {
   border-color: transparent transparent #3d3d3b;
 }
+.index #featured .read-more a {
+  color: #a3a3a0;
+}
 
 
 
+/* 
 
-/* Latest */
+## Latest Products 
+
+*/
 
 #latest {
   background: #eee;
@@ -213,7 +275,11 @@ input:active, input:hover, textarea:active, textarea:hover {
 
 
 
-/* Sales */
+/* 
+
+## Products on Sale 
+
+*/
 
 #sales {
   background: #eee;
@@ -238,7 +304,11 @@ input:active, input:hover, textarea:active, textarea:hover {
 }
 
 
-/* Ecosystem + Footer */
+/* 
+
+## Ecosystem + Footer 
+
+*/
 
 
 #eco.product {
@@ -273,7 +343,11 @@ input:active, input:hover, textarea:active, textarea:hover {
 
 
 
-/* Product */
+/* 
+
+## Single Product 
+
+*/
 
 #sidebar {
   background: #f3f3f3;
@@ -299,14 +373,22 @@ input:active, input:hover, textarea:active, textarea:hover {
 }
 
 
-/* Checkout */
+/* 
+
+### Checkout 
+
+*/
 
 .cart #info ul {
   border-bottom: 1px solid #ededed;
 }
 
 
-/* Collection */
+/* 
+
+## Product collections 
+
+*/
 
 
 .collection #navigation #tags a, .collection #navigation #tags a:visited {
@@ -331,7 +413,11 @@ input:active, input:hover, textarea:active, textarea:hover {
 
 
 
-/* Blog */
+/* 
+
+## Blog 
+
+*/
 
 .article .meta {
   background: #f9f9f9;

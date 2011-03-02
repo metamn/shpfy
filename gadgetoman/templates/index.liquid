@@ -3,7 +3,7 @@
   													
 	  <div id="featured" class="block">
 		  <div class="section">
-			  <ul>
+			  <ul class="subs">
 				  <li class="sub" id="featured0">
 				    <div class="image col-2 right">
 					    {% for product in collections.frontpage.products limit: 1%}
@@ -14,15 +14,29 @@
 					    {% endfor %}
 					  </div>
 				    <div id="text" class="col-1 left">
-				      {% assign article = pages.frontpage %}					    
-					    <div class="text">
-					      <h1><a class="nopadding title" title="{{ article.title }}" href="{{ article.url }}">{{ article.title }}</a></h1>
-					      {{ article.content }}					      
-					    </div>
-					    <div class="left nav">	
-					      &nbsp;				      
-					      <a href="#featured1" class="next"><div class="triangle triangle-bottom"></div></a>					      
-					    </div>
+				      {% assign article = pages.frontpage %}					    					    
+				      <h1>
+		            <a class="title nopadding" href="{{ article.url }}" title="{{ article.title }}">
+                {{ article.title }} </a>
+              </h1>
+				      <div id="description" class="text">                
+                 {{ article.content }}	
+              </div>
+              <div id="description-bottom">&nbsp;</div>
+				     	<div id="links" class="block">
+                <div id="add-to-cart" class="right">  
+                  <ul>                       
+                    <li class="read-more">
+                      <a href="{{ article.url }}" title="{{ article.title }}">
+                      Read more &rarr;</a>
+                    </li>
+                  </ul>
+                </div>	
+                <div class="nav left">
+                  &nbsp;				      
+				          <a href="#featured1" class="next"><div class="triangle triangle-bottom"></div></a>
+                </div>                                  	      
+					    </div>					    
 					  </div>					  					  
 				  </li>
 				  {% for product in collections.frontpage.products %}
@@ -43,17 +57,6 @@
                 </div>
                 <div id="description-bottom">&nbsp;</div>
                 <div id="links" class="block">
-                  <div class="nav left">
-                    &nbsp;
-                    {% assign i = forloop.index0 %}                  
-                    {% unless forloop.last %}
-                      <a href="#featured{{ i | plus:2 }}" class="next"><div class="triangle triangle-bottom"></div></a> 
-                    {% else %}
-                      <a href="#featured0" class="next"><div class="triangle triangle-bottom"></div></a>                 
-                    {% endunless %}
-                    <a href="#featured{{ i }}" class="prev"><div class="triangle triangle-top"></div></a> 
-                  </div>
-                  
                   <div id="add-to-cart" class="right">  
                     <ul>   
                       {% if product.price > 0 %}                               
@@ -64,12 +67,22 @@
                         </a>
                       </li>
                       {% endif %}
-                      <li class="text ">
-                        <a class="read-more" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                      <li class="read-more">
+                        <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
                         Read more &rarr;</a>
                       </li>
                     </ul>
-                  </div>                    
+                  </div>  
+                  <div class="nav left">
+                    &nbsp;
+                    {% assign i = forloop.index0 %}                  
+                    {% unless forloop.last %}
+                      <a href="#featured{{ i | plus:2 }}" class="next"><div class="triangle triangle-bottom"></div></a> 
+                    {% else %}
+                      <a href="#featured0" class="next"><div class="triangle triangle-bottom"></div></a>                 
+                    {% endunless %}
+                    <a href="#featured{{ i }}" class="prev"><div class="triangle triangle-top"></div></a> 
+                  </div>            
                 </div>
 				      </div>				      
 				    </li>
@@ -165,14 +178,16 @@
           {% endif %} 
         </div>
         
-        <p class="note">
-          <a href="#ecosystem">
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_subscribe_social }}
-          {% else %}
-            We are running periodicaly special sales on Twitter and Facebook. Follow us to get more! 
-          {% endif %} 
-        </a></p> 
+        <div id="call-for-subscribe">
+          <p class="note">
+            <a href="#ecosystem">
+            {% if settings.locale == "enabled" %}
+              {{ settings.locale_subscribe_social }}
+            {% else %}
+              We are running periodicaly special sales on Twitter and Facebook. Follow us to get more! 
+            {% endif %} 
+          </a></p> 
+        </div>
       </div>      
       
       {% for product in collections.sale.products limit: 3 %}
@@ -185,19 +200,19 @@
               </a>
             {% endfor %}
           </div>
-          <div class="title">
+          <div class="title block">
             <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-              {{ product.title }}              
-              <div class="meta small">                       
-                <span class="price rounded">{{ product.price | money }}</span>                
+              {{ product.title }}
+              <div class="meta small">
+                <span class="price rounded">{{ product.price | money }}</span>
+              </div>
+              <div id="add-to-cart" class="meta small">
+                <a class="sale rounded" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                Add to Cart
+                </a>
               </div>
             </a>
-          </div>
-          <div id="add-to-cart" class="meta small">
-            <a class="sale" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-            Add to Cart
-            </a>
-          </div>
+          </div>          
 	      </div>
       {% endfor %}
       

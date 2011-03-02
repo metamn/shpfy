@@ -41,7 +41,7 @@
 		              </a>	
                 </li>
                 <li id="item" class="update">
-                  <input type="text" class="quantity name="updates[]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();" />
+                  <input type="text" class="text quantity name="updates[]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();" />
 			            <input type="hidden" name="id" value="{{ item.variant.id }}" />
 			            {% if settings.locale == "enabled" %}
                     {% assign u = settings.locale_cart_update %}

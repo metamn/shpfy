@@ -70,7 +70,7 @@
 .collection .col-2 {
   width: 33%;
 }
-.collection #items #item {
+.collection #item.product {
   width: 28%;
   margin: 0 5% 1.25em 0;
   float: left;
@@ -81,9 +81,7 @@
 
 
 
-body {
-  -webkit-text-size-adjust: none; 
-  font-family: 'Ubuntu', arial, serif;  
+body {  
   /* setting the rhythm */
   line-height: 1.3em;
 }
@@ -92,9 +90,9 @@ body {
 
 /* Common */
 
-.read-more {
+.note, .note a {
   font-size: small;
-  font-variant: small-caps;
+  font-style: italic;
 }
 .date {
   font-size: smaller;
@@ -102,6 +100,10 @@ body {
 .missing {
   padding: 1.25em;
   margin: 1.25em;
+}
+.text ul {
+  list-style-type: disc !important;
+  margin-left: 1.25em !important;
 }
 
 
@@ -118,9 +120,6 @@ body {
 	position: relative;
 	top: 1px;
 }
-
-
-
 
 
 
@@ -223,7 +222,7 @@ body {
 }
 .index #featured #text #description-bottom {
   background: #fff;
-  opacity: .8;
+  opacity: .9;
   position: relative;
   top: -1.5em;
   height: 2em;
@@ -243,6 +242,10 @@ body {
 }
 .index #featured .nav {
   margin: 1.25em 0;
+}
+.index #featured .read-more {
+  font-size: small;
+  font-variant: small-caps;
 }
 .index #featured .image, .index #scroller {
   text-align: center;
@@ -326,7 +329,8 @@ body {
   margin: .62em 0;
 }
 #sales .meta .price {
-  font-weight: bold;  
+  font-weight: bold; 
+  padding: .62em; 
 }
 #sales .subscribe-twitter {
   position: relative;

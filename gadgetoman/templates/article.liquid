@@ -119,7 +119,7 @@
               Your name
             {% endif %}
             </label></dt>
-            <dd><input type="text" id="comment_author" name="comment[author]" size="40" value="{{form.author}}" class="{% if form.errors contains 'author' %}input-error{% endif %}" /></dd>
+            <dd><input type="text" id="comment_author" name="comment[author]" size="40" value="{{form.author}}" class="text {% if form.errors contains 'author' %}input-error{% endif %}" /></dd>
 
             <dt class="{% if form.errors contains 'email' %}error{% endif %}"><label for="comment_email">
             {% if settings.locale == "enabled" %}
@@ -128,7 +128,7 @@
               Your email
             {% endif %}
             </label></dt>
-            <dd><input type="text" id="comment_email" name="comment[email]" size="40" value="{{form.email}}" class="{% if form.errors contains 'email' %}input-error{% endif %}" /></dd>
+            <dd><input type="text" id="comment_email" name="comment[email]" size="40" value="{{form.email}}" class="text {% if form.errors contains 'email' %}input-error{% endif %}" /></dd>
 
             <dt class="{% if form.errors contains 'body' %}error{% endif %}"><label for="comment_body">
             {% if settings.locale == "enabled" %}

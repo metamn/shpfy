@@ -8,7 +8,7 @@ jQuery(document).ready(function(){
   if (mobile) {
        
     // Scrolling featured items on mobile  
-    jQuery("#featured .section ul").children().addClass('hidden');
+    jQuery("#featured .section ul.subs").children().addClass('hidden');
     jQuery("#featured0").removeClass('hidden');
     
     jQuery("#featured .nav a").click(function(event){    
