@@ -219,6 +219,7 @@ body {
   padding-bottom: 1em;
   height: 8em;
   margin-bottom: 1em;
+  overflow: hidden;
 }
 .index #featured #add-to-cart {
   margin: 0 1.25em;

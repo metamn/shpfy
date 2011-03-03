@@ -85,7 +85,7 @@ a.title {
 Forms are completely re-styled
 * 
 */
-input, select, textarea, a.button {
+input, textarea, a.button {
 	-moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
 	box-shadow: inset 0px 1px 0px 0px #ffffff;
@@ -101,7 +101,7 @@ input, select, textarea, a.button {
 	text-decoration:none !important;
 	text-shadow: 1px 1px 0px #ffffff;	
 }
-input.button:hover, select:hover, a.button:hover {
+input.button:hover, a.button:hover {
 	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
 	background: -moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
@@ -110,9 +110,7 @@ input.button:hover, select:hover, a.button:hover {
 input.text, textarea {
   background: #fff;
 }
-select, select:hover {
-  background: none;
-}
+
 
 
 .missing {
