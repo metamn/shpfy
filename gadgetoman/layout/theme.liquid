@@ -9,7 +9,7 @@
 	{{ 'base.css' | asset_url | stylesheet_tag }}		
 	{{ 'layout.css' | asset_url | stylesheet_tag }}
 	
-	{{ 'theme.css' | asset_url | stylesheet_tag }}
+	{{ 'smuff.css' | asset_url | stylesheet_tag }}
 	{% if settings.colors == "enabled" %}
 	  {{ 'theme-custom-colors.css' | asset_url | stylesheet_tag }}	
 	{% endif %}	
@@ -48,7 +48,7 @@
 <body>	
 	<div id="header" class="block">
 	  <div class="container">
-	    <div class="block">		    
+	    <div class="block line-1">		    
 			  <div id="navigation" class="menu desktop right">
 			    {% capture active_url %}
 			      {% if template == "index" %}
@@ -145,7 +145,7 @@
 										
 			</div>	
 						
-			<div class="block">
+			<div class="block line-2">
 		    <div id="shopping-menu" class="menu right">	
 		      {% if linklists.shopping-menu.links.size > 0 %}				
 			      {% for link in linklists.shopping-menu.links %}

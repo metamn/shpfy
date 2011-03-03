@@ -74,7 +74,7 @@ a.title {
 Forms are completely re-styled
 * 
 */
-input, select, textarea, a.button {
+input, textarea, a.button {
 	-moz-box-shadow: inset 0px 1px 0px 0px {{ settings.c_button_shadow }};
 	-webkit-box-shadow: inset 0px 1px 0px 0px {{ settings.c_button_shadow }};
 	box-shadow: inset 0px 1px 0px 0px {{ settings.c_button_shadow }};
@@ -90,7 +90,7 @@ input, select, textarea, a.button {
 	text-decoration:none !important;
 	text-shadow: 1px 1px 0px {{ settings.c_button_c_sh }};	
 }
-input.button:hover, select:hover, a.button:hover {
+input.button:hover, a.button:hover {
 	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, {{ settings.c_button_b2 }}), color-stop(1, {{ settings.c_button_b }}) );
 	background: -moz-linear-gradient( center top, {{ settings.c_button_b2 }} 5%, {{ settings.c_button_b }} 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='{{ settings.c_button_b2 }}', endColorstr='{{ settings.c_button_b }}');
@@ -99,9 +99,7 @@ input.button:hover, select:hover, a.button:hover {
 input.text, textarea {
   background: {{ settings.c_input_b }};
 }
-select, select:hover {
-  background: none;
-}
+
 
 
 .missing {
@@ -237,7 +235,7 @@ select, select:hover {
   color: {{ settings.c_sales_h_t }};
 }
 #sales .meta .price {
-  color: color: {{ settings.c_sales_h }};
+  color: {{ settings.c_sales_h }};
 }
 #sales #item.hover .meta .price {
   color: {{ settings.c_sales_h_t }};

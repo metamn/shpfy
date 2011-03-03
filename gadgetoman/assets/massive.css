@@ -34,7 +34,7 @@ a.title {
 .note a:hover {
     color: #3D3D3B;
 }
-input, select, textarea, a.button {
+input, textarea, a.button {
     -moz-box-shadow: 0 1px 0 0 #BAB291 inset;
     background: -moz-linear-gradient(center top , #C0BBAD 5%, #B1AB9A 100%) repeat scroll 0 0 #C0BBAD;
     border: 1px solid #C0BBAD;
@@ -42,15 +42,13 @@ input, select, textarea, a.button {
     text-decoration: none !important;
     text-shadow: 1px 1px 0 #DDDDDD;
 }
-input.button:hover, select:hover, a.button:hover {
+input.button:hover, a.button:hover {
     background: -moz-linear-gradient(center top , #B1AB9A 5%, #C0BBAD 100%) repeat scroll 0 0 #B1AB9A;
 }
 input.text, textarea {
     background: none repeat scroll 0 0 #DEDBD3;
 }
-select, select:hover {
-    background: none repeat scroll 0 0 transparent;
-}
+
 .missing {
     background: none repeat scroll 0 0 lightyellow;
 }
