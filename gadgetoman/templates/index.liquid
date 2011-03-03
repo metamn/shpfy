@@ -28,7 +28,7 @@
                     <li class="read-more">
                       <a href="{{ article.url }}" title="{{ article.title }}">
                       {% if settings.locale == "enabled" %}
-                        {{ settings.locale_read_more }}
+                        {{ settings.locale_read_more }} &rarr;
                       {% else %}
                         Read more &rarr;
                       {% endif %}
@@ -77,7 +77,7 @@
                       <li class="read-more">
                         <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
                         {% if settings.locale == "enabled" %}
-                          {{ settings.locale_read_more }}
+                          {{ settings.locale_read_more }} &rarr;
                         {% else %}
                           Read more &rarr;
                         {% endif %}
@@ -165,7 +165,13 @@
       {% endfor %}   
       
       <div id="more" class="right alignright">
-        <a href="collections/all">See all new products &rarr;</a>
+        <a href="collections/all">
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_more_products }} &rarr;
+        {% else %}
+          See all new products &rarr;
+        {% endif %}
+        </a>
       </div>
            
     {% else %}
@@ -237,7 +243,13 @@
       {% endfor %}
       
       <div id="more" class="right alignright">
-        <a href="collections/sale">See all products on sale &rarr;</a>
+        <a href="collections/sale">
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_more_sales }} &rarr;
+        {% else %}
+          See all products on sale &rarr;
+        {% endif %}
+        </a>
       </div>
      
     {% else %}

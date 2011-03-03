@@ -233,7 +233,13 @@
       {% endfor %}   
       
       <div id="more" class="right alignright">
-        <a href="collections/all">See all new products &rarr;</a>
+        <a href="collections/all">
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_more_products }} &rarr;
+        {% else %}
+          See all new products &rarr;
+        {% endif %}
+        </a>
       </div>
            
     {% else %}
@@ -303,7 +309,13 @@
       {% endfor %}
       
       <div id="more" class="right alignright">
-        <a href="collections/sale">See all products on sale &rarr;</a>
+        <a href="collections/sale">
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_more_sales }} &rarr;
+        {% else %}
+          See all products on sale &rarr;
+        {% endif %}
+        </a>
       </div>
      
     {% else %}
