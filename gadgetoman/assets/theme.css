@@ -1,65 +1,8 @@
-/*
-# The Gadgetoman Theme for Shopify
-
-* Description: A minimal, simple and completely customisable theme with mobile support especially for selling gadgets and electronics
-* Author: [Shopledge](http://www.shopledge.com/ "shopledge -- webshop design & development ")
-* Version: 1.0
-* Last changed: 12 March 2011
-
-
-## Style Guide
-
-A general overview for designers.
-
-### Introduction
-
-Gadgetoman is built on a fluid layout using the Responsive Web Design technique. This allows to be streched to various tablet
-and mobile displays.
-
-All measuring units -- for containers, divs, text, images, etc -- are either in "%" or "em". 
-No "px" is used for positioning. They are used only for decoration: borders, text shadows, etc.
-
-There are different CSS files each dedicated to a separate task:
-
-* base.css -- To reset the browser and for holding some common styling like alignments, clearfixes etc.
-* layout.css -- The grid and the design elements aligned on it. Has no color definitions at all.
-* theme.css -- The current theme / color scheme, as seen at the webpage. Has no alignment definitions at all just colors. 
-* mobile.css -- The stylesheet for mobile devices 
-* tablet.css -- The stylesheet for tablets
-
-### The Layout / Grid
-
-### Theming / Typography, Colors, Forms, Design elements
-
-### Mobile Support
-
-### Hacks, Workarounds, Tricks
-
----
-*/
-
-
-
-/*
-# Theming / Typography, Colors, Forms, Design elements
-
-## Typography
-
-* Nothing special, inherited from [base.css](base.html "")
-* Uses the *Ubuntu* Google font which is hardwired (the .js in header)
-*/
 body {
   -webkit-text-size-adjust: none; 
   font-family: 'Ubuntu', arial, serif;  
 }
-/*
-* Plain text headings margin-bottom is moderated
-  * h1, h2, h3 under **.text** has margin 0
 
-*/
-.text h1, .text h2, .text h3 {
-  margin: 1.25em 0;
-}
 
 
 /*
@@ -233,6 +176,11 @@ select, select:hover {
 .index #featured .read-more a {
   color: #a3a3a0;
 }
+.index #featured .image img {
+  -moz-box-shadow: none;
+  -khtml-box-shadow: none;
+  -webkit-box-shadow: none;
+}
 
 
 
@@ -287,6 +235,7 @@ select, select:hover {
 #sales .sale  {
   color: #f9f9f9;  
   background: #C60017;
+  text-shadow: none;
 }
 #sales .sale a, #sales .sale a:hover {
   color: #f9f9f9;

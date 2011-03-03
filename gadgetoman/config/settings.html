@@ -112,6 +112,10 @@
 			<th><label for="c_h_t">Header text</label></th>
 			<td><input type="text" name="c_h_t" id="c_h_t" class="color" value="#f9f9f9" /></td>
 		</tr>
+		<tr>
+			<th><label for="c_h_bb">Header border bottom</label></th>
+			<td><input type="text" name="c_h_bb" id="c_h_bb" class="color" value="#2d2d2d" /></td>
+		</tr>
 		
 		<tr>
 			<th><label for="c_h_cart_b">Cart background</label></th>
@@ -131,19 +135,26 @@
 			<td><input type="file" name="custom_stripe.png" id="custom_stripe" data-max-width="500" data-max-height="300" /></td>			
 		</tr>
 		<tr>
+			<th><label for="c_intro_img_sh">Intro featured image shadow</label></th>
+			<td><input type="text" name="c_intro_img_sh" id="c_intro_img_sh" class="color" value="#000" /></td>
+		</tr>	
+		<tr>
 			<th><label for="c_intro_t">Intro text</label></th>
 			<td><input type="text" name="c_intro_t" id="c_intro_t" class="color" value="#3d3d3b" /></td>
 		</tr>
 				
 		<tr>
-			<th><label for="c_scroll_a">Scroll button active</label></th>
+			<th><label for="c_scroll_a">Scroll button </label></th>
 			<td><input type="text" name="c_scroll_a" id="c_scroll_a" class="color" value="#3d3d3b" /></td>
 		</tr>
 		<tr>
-			<th><label for="c_scroll_i">Scroll button inactive</label></th>
-			<td><input type="text" name="c_scroll_i" id="scroll_i" class="color" value="#eee" /></td>
+			<th><label for="c_scroll_i">Scroll button mouse hover</label></th>
+			<td><input type="text" name="c_scroll_i" id="c_scroll_i" class="color" value="#eee" /></td>
 		</tr>
-		
+		<tr>
+			<th><label for="c_read_more">Read more text</label></th>
+			<td><input type="text" name="c_read_more" id="c_read_more" class="color" value="#a3a3a0" /></td>
+		</tr>
 		
 		<tr>
 			<th><label for="c_latest_b">Latest background</label></th>
@@ -158,8 +169,24 @@
 			<td><input type="text" name="c_latest_h" id="c_latest_h" class="color" value="#ffb200" /></td>
 		</tr>
 		<tr>
+			<th><label for="c_latest_h_t">Latest highlight text</label></th>
+			<td><input type="text" name="c_latest_h_t" id="c_latest_h_t" class="color" value="#3d3d3b" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_latest_h_t_sh">Latest highlight text shadow</label></th>
+			<td><input type="text" name="c_latest_h_t_sh" id="c_latest_h_t_sh" class="color" value="#ddd" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_latest_img">Latest image background</label></th>
+			<td><input type="text" name="c_latest_img" id="c_latest_img" class="color" value="#fff" /></td>
+		</tr>
+		<tr>
 			<th><label for="c_latest_n">Latest notice</label></th>
 			<td><input type="text" name="c_latest_n" id="c_latest_n" class="color" value="#A3A3A0" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_latest_n_hover">Latest notice mouse over</label></th>
+			<td><input type="text" name="c_latest_n_hover" id="c_latest_n_hover" class="color" value="#3d3d3b" /></td>
 		</tr>
 		<tr>
 			<th><label for="c_latest_p_b">Latest product background</label></th>
@@ -202,6 +229,35 @@
 			<td><input type="text" name="c_eco_d" id="c_eco_d" class="color" value="#9D9D9D" /></td>
 		</tr>
 		
+		<tr>
+			<th><label for="c_button_shadow">Button shadow</label></th>
+			<td><input type="text" name="c_button_shadow" id="c_button_shadow" class="color" value="#fff" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_button_b">Button background (gradient, top)</label></th>
+			<td><input type="text" name="c_button_b" id="c_button_b" class="color" value="#ededed" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_button_b2">Button background (gradient, bottom)</label></th>
+			<td><input type="text" name="c_button_b2" id="c_button_b2" class="color" value="#dfdfdf" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_button_bo">Button border</label></th>
+			<td><input type="text" name="c_button_bo" id="c_button_bo" class="color" value="#dcdcdc" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_button_c">Button text</label></th>
+			<td><input type="text" name="c_button_c" id="c_button_c" class="color" value="#4c4c4c" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_button_c_sh">Button text shadow</label></th>
+			<td><input type="text" name="c_button_c_sh" id="c_button_c_sh" class="color" value="#fff" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_input_b">Input, Textarea background</label></th>
+			<td><input type="text" name="c_input_b" id="c_input_b" class="color" value="#fff" /></td>
+		</tr>
+		
 		
 		<tr>
 			<th><label for="c_f_b">Footer background</label></th>
@@ -235,13 +291,31 @@
 			<td><input type="text" name="c_coll_tax_t" id="c_coll_tax_t" class="color" value="#3d3d3b" /></td>
 		</tr>
 		<tr>
-			<th><label for="c_coll_u">Sidebar collection underline</label></th>
+			<th><label for="c_coll_tax_bo">Sidebar thumbs border</label></th>
+			<td><input type="text" name="c_coll_tax_bo" id="c_coll_tax_bo" class="color" value="#ededed" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_coll_u">Sidebar items underline</label></th>
 			<td><input type="text" name="c_coll_u" id="c_coll_u" class="color" value="#ccc" /></td>
 		</tr>
 		<tr>
-			<th><label for="c_coll_h">Sidebar collection highlight</label></th>
+			<th><label for="c_coll_u_li">Sidebar list items underline</label></th>
+			<td><input type="text" name="c_coll_u_li" id="c_coll_u_li" class="color" value="#ededed" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_coll_h">Sidebar item highlight</label></th>
 			<td><input type="text" name="c_coll_h" id="c_coll_h" class="color" value="#eee" /></td>
 		</tr>
+		<tr>
+			<th><label for="c_coll_d">Sidebar date</label></th>
+			<td><input type="text" name="c_coll_d" id="c_coll_d" class="color" value="#9d9d9d" /></td>
+		</tr>
+		
+		<tr>
+			<th><label for="c_cart_bo">Checkout items separator</label></th>
+			<td><input type="text" name="c_coll_bo" id="c_coll_bo" class="color" value="#ededed" /></td>
+		</tr>
+		
 		<tr>
 			<th><label for="c_pagin_b">Pagination background</label></th>
 			<td><input type="text" name="c_pagin_b" id="c_pagin_b" class="color" value="#eee" /></td>

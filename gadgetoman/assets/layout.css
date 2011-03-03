@@ -85,6 +85,9 @@ body {
   /* setting the rhythm */
   line-height: 1.3em;
 }
+.text h1, .text h2, .text h3 {
+  margin: 1.25em 0;
+}
 
 
 
@@ -525,6 +528,9 @@ ul.list li {
 .collection #items {
   padding: 2.5em 0;
 }
+#item.product .image .text {
+  padding: 1.25em;
+}
 #paginate {
   margin-right: 6%;
 }
@@ -590,7 +596,7 @@ blockquote {
 .comments form dd {
   margin-bottom: 1.25em;
 }
-#search.collection #search input.text, #not_found #search input.text {
+#search.collection #search input.text, #search.notfound input.text {
   width: 60%;
 }
 
