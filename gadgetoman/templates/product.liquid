@@ -51,8 +51,12 @@
         			</div>      			
 
         			<span id="price-field"></span>
-
-        			<input class="button" type="submit" name="add" value="Add to cart" id="add-cart">
+              {% if settings.locale == "enabled" %}
+                <input class="button" type="submit" name="add" value="{{ settings.locale_cart_add }}" id="add-cart">
+              {% else %}
+                <input class="button" type="submit" name="add" value="Add to cart" id="add-cart">
+              {% endif %}
+        			
 			      {% else %}
 			        <h3>
 			        {% if settings.locale == "enabled" %}
@@ -216,7 +220,11 @@
               </div>
               <div id="add-to-cart" class="meta small">
                 <a class="highlight rounded" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                Add to Cart
+                {% if settings.locale == "enabled" %}
+                  {{ settings.locale_cart_add }}
+                {% else %}
+                  Add to cart
+                {% endif %}
                 </a>
               </div>
             </a>
@@ -284,7 +292,11 @@
           </div>
           <div id="add-to-cart" class="meta small">
             <a class="sale" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-            Add to Cart
+            {% if settings.locale == "enabled" %}
+              {{ settings.locale_cart_add }}
+            {% else %}
+              Add to cart
+            {% endif %}
             </a>
           </div>
 	      </div>

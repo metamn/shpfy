@@ -3,27 +3,25 @@
     <div id="items" class="left col-1">  
       {% paginate search.results by 9 %}
       {% if search.results.size == 0 %}
-        <h3>
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_search_notfound }}
+        {% if settings.snippets == "enabled" %}
+          {% include 'search_not_found' %}        
         {% else %}
-          We did not find any products for you.
+          <h2>We did not found any products for you.</h2>
+          <p>Please try searching <strong>again</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p> 
         {% endif %} 
-        </h3>
-        Please use the navigation bar, or search again.
+        <br/>
         {% if settings.locale == "enabled" %}
           {{ settings.locale_search }}
           {% assign s = settings.locale_search %}
         {% else %}
-          Search
           {% assign s = "Search" %}
         {% endif %} 
         <div id="search" class="notfound">        
-	        <form action="/search" method="get">
-		        <input class="text" type="text" name="q" /> 
-		        <input class="button" type="submit" value="{{ s }}"  />
-	        </form>
-        </div>
+          <form action="/search" method="get">
+	          <input class="text" type="text" name="q" /> 
+	          <input class="button" type="submit" value="{{ s }}"  />
+          </form>
+        </div>  
       {% else %}
         {% for item in search.results %}
         <div id="item" class="product">
@@ -34,7 +32,7 @@
                 </a>
               {% else %}
                 <div class="text">
-                  {{ item.content | truncate: 250 }}
+                  {{ item.content | truncatewords: 20 }}
                 </div>
               {% endif %}
           </div>
@@ -46,7 +44,11 @@
               </div>
               <div id="add-to-cart" class="meta small">
                 <a class="highlight rounded" href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
-                Add to Cart
+                {% if settings.locale == "enabled" %}
+                  {{ settings.locale_cart_add }}
+                {% else %}
+                  Add to cart
+                {% endif %}
                 </a>
               </div>
             </a>

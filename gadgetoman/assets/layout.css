@@ -590,7 +590,7 @@ blockquote {
 .comments form dd {
   margin-bottom: 1.25em;
 }
-#search.collection #search input.text {
+#search.collection #search input.text, #not_found #search input.text {
   width: 60%;
 }
 

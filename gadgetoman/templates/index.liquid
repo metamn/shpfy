@@ -27,7 +27,12 @@
                   <ul>                       
                     <li class="read-more">
                       <a href="{{ article.url }}" title="{{ article.title }}">
-                      Read more &rarr;</a>
+                      {% if settings.locale == "enabled" %}
+                        {{ settings.locale_read_more }}
+                      {% else %}
+                        Read more &rarr;
+                      {% endif %}
+                      </a>
                     </li>
                   </ul>
                 </div>	
@@ -61,12 +66,22 @@
                       {% if product.price > 0 %}                               
                       <li class="add">
                         <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                          {{ product.price | money }} &nbsp;&nbsp; Add to Cart</a>
+                          {{ product.price | money }} &nbsp;&nbsp; 
+                          {% if settings.locale == "enabled" %}
+                            {{ settings.locale_cart_add }}
+                          {% else %}
+                            Add to cart
+                          {% endif %}</a>
                       </li>
                       {% endif %}
                       <li class="read-more">
                         <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                        Read more &rarr;</a>
+                        {% if settings.locale == "enabled" %}
+                          {{ settings.locale_read_more }}
+                        {% else %}
+                          Read more &rarr;
+                        {% endif %}
+                        </a>
                       </li>
                     </ul>
                   </div>  
@@ -137,7 +152,11 @@
               </div>
               <div id="add-to-cart" class="meta small">
                 <a class="highlight rounded" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                Add to Cart
+                {% if settings.locale == "enabled" %}
+                  {{ settings.locale_cart_add }}
+                {% else %}
+                  Add to cart
+                {% endif %}
                 </a>
               </div>
             </a>
@@ -205,7 +224,11 @@
               </div>
               <div id="add-to-cart" class="meta small">
                 <a class="sale rounded" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                Add to Cart
+                {% if settings.locale == "enabled" %}
+                  {{ settings.locale_cart_add }}
+                {% else %}
+                  Add to cart
+                {% endif %}
                 </a>
               </div>
             </a>

@@ -10,7 +10,7 @@
             Your cart is empty 
           {% endif %}
           </h1>
-          <p><a href="/">
+          <p><a class="underline" href="/">
           {% if settings.locale == "enabled" %}
             {{ settings.locale_cart_visit }}
           {% else %}
@@ -54,7 +54,13 @@
                   {{ item.line_price | money }}
                 </li>
                 <li id="item" class="remove">
-                  <a class="button" href="/cart/change/{{ item.variant.id }}?quantity=0">Remove</a>
+                  <a class="button" href="/cart/change/{{ item.variant.id }}?quantity=0">
+                  {% if settings.locale == "enabled" %}
+                    {{ settings.locale_cart_remove }}
+                  {% else %}
+                    Remove
+                  {% endif %} 
+                  </a>
                 </li>
               </ul>
             {% endfor %}

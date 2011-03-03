@@ -2,7 +2,25 @@
   <div id="items" class="left col-1">
     {% paginate collection.products by 9 %}
     {% if collection.products.size == 0 %}
-      <h3>No products in this collection.</h3>
+      {% if settings.snippets == "enabled" %}
+        {% include 'collection_empty' %}        
+      {% else %}
+        <h2>No Items Found In This Collection</h2>
+        <p>Please try the <strong>search</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p> 
+      {% endif %} 
+      <br/>
+      {% if settings.locale == "enabled" %}
+        {{ settings.locale_search }}
+        {% assign s = settings.locale_search %}
+      {% else %}
+        {% assign s = "Search" %}
+      {% endif %} 
+      <div id="search" class="notfound">        
+        <form action="/search" method="get">
+          <input class="text" type="text" name="q" /> 
+          <input class="button" type="submit" value="{{ s }}"  />
+        </form>
+      </div>
     {% else %}
       {% for product in collection.products %}  
       <div id="item" class="product">	    
@@ -22,7 +40,11 @@
             </div>
             <div id="add-to-cart" class="meta small">
               <a class="highlight rounded" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-              Add to Cart
+              {% if settings.locale == "enabled" %}
+                {{ settings.locale_cart_add }}
+              {% else %}
+                Add to cart
+              {% endif %}
               </a>
             </div>
           </a>
