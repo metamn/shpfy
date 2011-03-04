@@ -132,8 +132,7 @@ body {
 #header .logo {
   margin-bottom: 0;
 } 
-.menu #item {
-  margin-right: 1.52em;  
+.menu #item { 
   float: left;
   display: inline-block;
   text-align: left;
