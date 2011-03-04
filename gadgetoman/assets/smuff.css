@@ -76,15 +76,14 @@ a.underline {
 
 
 #latest-top.triangle-bottom {
-  border-color: transparent; 
+  border-color: #97AFB3 transparent transparent; 
 }
-#hot {
-  margin: 2.5em 0;
+#latest #hot {
+  margin: 2.5em 0 1.25em;
 }
 #latest .highlight, .collection .highlight {
-  background: #222;
-  color: #E6E2D9;
-  padding: 2.5em;
+  background: #97AFB3;
+  padding: 1.25em;
 }
 #latest #item .highlight {
   padding: .31em 1.25em;

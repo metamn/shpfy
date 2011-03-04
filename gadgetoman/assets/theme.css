@@ -11,8 +11,8 @@ body {
 * basic color / background: #eee;
   * grays, from light to dark: #f9f9f9, #f3f3f3, #dadada, #ddd, #ccc, #a3a3a0, #777, #4c4c4c
 * black: #3d3d3b  > 2d2d2d   
-* highlight / orange: #ff3300
-* highlight / yellow: #C60017  
+* highlight / orange: #ffb300
+* highlight / yellow: #C60017
 
 */
 
@@ -299,6 +299,9 @@ input.text, textarea {
 #sidebar {
   background: #f3f3f3;
 }
+#sidebar h2 {
+  color: #C60017;
+}
 #sidebar img, .product #product-image img  {
   border: 1px solid #ededed; 
 }
@@ -312,7 +315,7 @@ input.text, textarea {
   text-decoration: none;
   color: #3d3d3b;
 }
-#sidebar ul.list li.active {
+#sidebar ul.list li.active, #sidebar #tags .active {
   background: #dadada;
 }
 #sidebar .date {

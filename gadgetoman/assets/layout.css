@@ -39,6 +39,7 @@
   width: 40%;
   margin-right: 10%;
   float: left;
+  height: 5em;
 }
 #follow .counter {
   position: relative;
@@ -422,10 +423,13 @@ img.avatar {
 .product #thumbs, .product #meta {
   padding: 1.25em 0;
 }
+.product #thumbs {
+  padding-bottom: 0;
+}
 .product #thumbs img {
   max-width: 75px;
   max-height: 75px;
-  margin: 0 1.25em 1.25em 0;
+  margin: 0 1.25em .62em 0;
   float: left;
 }
 li.facebook {
@@ -456,6 +460,9 @@ li.facebook {
 #sidebar #search input.text {
   width: 80%;
   margin-right: 1.25em;
+}
+#sidebar #tags li, #sidebar #tags span {
+  padding: .31em;
 }
 
 
@@ -514,7 +521,7 @@ ul.list {
   margin: 0;
 }
 ul.list li {
-  padding: .62em 0.31em .31em;
+  padding: .62em 0.31em;
 }
 .article-title {
   padding: 0;

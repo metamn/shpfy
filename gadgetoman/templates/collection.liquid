@@ -64,7 +64,7 @@
 
   <div id="sidebar" class="right col-2"> 
     <div class="box">             
-      <h3>
+      <h2>
         {{ collection.title }}
         <span class="tag-title"></span>
         // {{ collection.products_count }} 
@@ -73,13 +73,12 @@
         {% else %}
           items
         {% endif %}
-      </h3>
+      </h2>
       
       <!-- Hack: getting the tag title, if any -->
       <div id="current-tags-hidden" class="hidden">
-        <h4>{{ collection.title }} tags</h4>
         <ul class="inline-list">
-          {% for tag in collection.tags %}
+          {% for tag in collection.all_tags %}
             <li>
               {{ tag | highlight_active_tag | link_to_tag: tag }}
             </li>
@@ -108,9 +107,68 @@
             {{ collection.description }}
           </div>
         {% endif %}
+                           
+                       
+        {% if collections.size > 0 %}
+          <h4>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_allcollections }}
+          {% else %}
+            All collections
+          {% endif %}
+          </h4>
+          <div class="pane">        
+            <ul class="list">
+          	  {% for i in collections %}      	    
+          		  <li {% if collection.url == i.url %} class="active"{% endif %}>
+          		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title }}</a>
+          		  </li>
+          		{% endfor %}
+          	</ul>
+          </div> 
+        {% endif %}           
+      
+                
+        {% if shop.types.size > 0 %}
+          <h4>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_alltypes }}
+          {% else %}
+            All product types
+          {% endif %}          
+          </h4>
+          <div class="pane">   
+            <ul class="list">
+            	{% for product_type in shop.types %}
+                <li>
+                  {{ product_type | link_to_type  }}
+                </li>
+              {% endfor %}
+            	</ul>
+          </div>
+        {% endif %}
+        
+        {% if shop.vendors.size > 0 %}
+          <h4>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_allvendors }}
+          {% else %}
+            All vendors
+          {% endif %}
+          </h4>
+          <div class="pane">   
+            <ul class="list">
+            	{% for product_vendor in shop.vendors %}
+                <li {% if collection.url == url_for_vendor %} class="active"{% endif %}>
+                  {{ product_vendor | link_to_vendor  }}
+                </li>
+              {% endfor %}
+            	</ul>
+          </div>
+        {% endif %}
         
         {% if collection.all_tags.size > 0 %}
-          <h4 class="first">
+          <h4>
           {% if settings.locale == "enabled" %}
             {{ settings.locale_coll_tags }}
           {% else %}
@@ -146,64 +204,7 @@
               {% endfor %}
             </ul>
           </div>
-        {% endif %}            
-                       
-        {% if collections.size > 0 %}
-          <h4>
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_allcollections }}
-          {% else %}
-            All collections
-          {% endif %}
-          </h4>
-          <div class="pane">        
-            <ul class="list">
-          	  {% for i in collections %}      	    
-          		  <li {% if collection.url == i.url %} class="active"{% endif %}>
-          		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title }}</a>
-          		  </li>
-          		{% endfor %}
-          	</ul>
-          </div> 
-        {% endif %}           
-      
-        {% if shop.vendors.size > 0 %}
-          <h4>
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_allvendors }}
-          {% else %}
-            All vendors
-          {% endif %}
-          </h4>
-          <div class="pane">   
-            <ul class="list">
-            	{% for product_vendor in shop.vendors %}
-                <li>
-                  {{ product_vendor | link_to_vendor  }}
-                </li>
-              {% endfor %}
-            	</ul>
-          </div>
-        {% endif %}
-        
-        {% if shop.types.size > 0 %}
-          <h4>
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_alltypes }}
-          {% else %}
-            All product types
-          {% endif %}          
-          </h4>
-          <div class="pane">   
-            <ul class="list">
-            	{% for product_type in shop.types %}
-                <li>
-                  {{ product_type | link_to_type  }}
-                </li>
-              {% endfor %}
-            	</ul>
-          </div>
-        {% endif %}
+        {% endif %} 
         
         <h4>
         {% if settings.locale == "enabled" %}
@@ -219,8 +220,9 @@
 		        <input class="text" type="text" name="q" /> 
 		        <input class="button" type="submit" value="{{ s }}"  />
 	        </form>
-        </div>       
-      
+        </div>   
+        
+              
       </div>      
     </div>
   </div>	  	

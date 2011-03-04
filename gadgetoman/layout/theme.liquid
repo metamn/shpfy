@@ -9,7 +9,7 @@
 	{{ 'base.css' | asset_url | stylesheet_tag }}		
 	{{ 'layout.css' | asset_url | stylesheet_tag }}
 	
-	{{ 'smuff.css' | asset_url | stylesheet_tag }}
+	{{ 'theme.css' | asset_url | stylesheet_tag }}
 	{% if settings.colors == "enabled" %}
 	  {{ 'theme-custom-colors.css' | asset_url | stylesheet_tag }}	
 	{% endif %}	
@@ -225,7 +225,8 @@
           
             {% assign rss_url = settings.rss_feed_url %}
             {% assign rss_limit = settings.rss_feed_limit %}
-            
+            {% assign rss_title = settings.rss_title %}
+                       
             {% unless rss_url %}
               {% assign rss_url = "http://www.shopledge.com/feed/" %}
             {% endunless %}
@@ -241,7 +242,11 @@
 			          if (data.responseStatus == 200) {	
 				          // Process the feeds
 				          var feed = data.responseData.feed;
-				          var msg = '<h1>' + feed.title + '</h1>';
+				          {% unless rss_title %}
+				            var msg = '<h1>' + feed.title + '</h1>';
+				          {% else %}
+				            var msg = '<h1>' + '{{ rss_title }}' + '</h1>';
+				          {% endunless %}
 				          
 				          msg += '<ul class="list">';		
 	                for (var i=0; i<feed.entries.length; i++) {			
@@ -286,7 +291,13 @@
             <div class="counter">
               <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
             </div> 
-          </div>         
+          </div>  
+          <div class="col rss">          
+            <img src="{{ 'rss.png' | asset_url }}" alt="News" />
+            <div class="counter">
+              <a href="http://feeds.feedburner.com/Gadgetoman-News"><img src="http://feeds.feedburner.com/~fc/Gadgetoman-News?bg=ffa64b&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+            </div>              
+          </div>                
         </div>
         <div class="clear"></div>
         
@@ -333,7 +344,7 @@
               </script>
             {% endif %}
           </div>
-        </div>  
+        </div> 
         <div class="clear"></div>     
       </div>
       
@@ -354,7 +365,7 @@
             <input type="hidden" name="loc" value="en_US"/>
             <input class="button" type="submit" value="Subscribe to newsletter" />
 	        </form>
-          </div>    
+          </div>              
         {% endif %}       
       </div>    
     </div>

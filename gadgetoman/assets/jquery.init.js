@@ -30,7 +30,17 @@ jQuery(document).ready(function(){
     
   }
   
-  // Empty subscibe to email on click 
+  // Pull up ecosystem if the subscribe link is clicked
+  jQuery("#latest .note a, #sales .note a").click(function(event){        
+    if ( jQuery("#ecosystem").is(":hidden") ) {
+      event.preventDefault();
+      jQuery("#ecosystem").slideToggle(700);
+      jQuery("#eco").slideToggle(700);            
+    }   
+    jQuery.scrollTo("#subscribe"); 
+  }); 
+  
+  // Empty input text on click 
   jQuery("input.subscribe").click(function(){        
     jQuery(this).attr('value', '');       
   }); 

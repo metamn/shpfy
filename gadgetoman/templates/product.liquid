@@ -130,23 +130,8 @@
               {{ product.type | link_to_type }}
             </div>
             
-            <h4>
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_search }}
-              {% assign s = settings.locale_search %}
-            {% else %}
-              Search
-              {% assign s = "Search" %}
-            {% endif %} 
-            </h4>
-            <div id="search" class="pane">        
-	            <form action="/search" method="get">
-		            <input class="text" type="text" name="q" /> 
-		            <input class="button" type="submit" value="{{ s }}"  />
-	            </form>
-            </div>  
-            
-            <h4>
+                       
+            <h4 class="first">
             {% if settings.locale == "enabled" %}
               {{ settings.locale_share }}
             {% else %}
@@ -233,7 +218,7 @@
       {% endfor %}   
       
       <div id="more" class="right alignright">
-        <a href="collections/all">
+        <a href="/collections/all">
         {% if settings.locale == "enabled" %}
           {{ settings.locale_more_products }} &rarr;
         {% else %}
@@ -309,7 +294,7 @@
       {% endfor %}
       
       <div id="more" class="right alignright">
-        <a href="collections/sale">
+        <a href="/collections/sale">
         {% if settings.locale == "enabled" %}
           {{ settings.locale_more_sales }} &rarr;
         {% else %}

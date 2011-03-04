@@ -29,25 +29,7 @@
         </div> 
       {% endif %}           
     
-      {% if shop.vendors.size > 0 %}
-        <h4>
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_allvendors }}
-        {% else %}
-          All vendors
-        {% endif %}
-        </h4>
-        <div class="pane">   
-          <ul class="list">
-          	{% for product_vendor in shop.vendors %}
-              <li>
-                {{ product_vendor | link_to_vendor  }}
-              </li>
-            {% endfor %}
-          	</ul>
-        </div>
-      {% endif %}
-      
+            
       {% if shop.types.size > 0 %}
         <h4>
         {% if settings.locale == "enabled" %}
@@ -61,6 +43,25 @@
           	{% for product_type in shop.types %}
               <li>
                 {{ product_type | link_to_type  }}
+              </li>
+            {% endfor %}
+          	</ul>
+        </div>
+      {% endif %}
+      
+      {% if shop.vendors.size > 0 %}
+        <h4>
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_allvendors }}
+        {% else %}
+          All vendors
+        {% endif %}
+        </h4>
+        <div class="pane">   
+          <ul class="list">
+          	{% for product_vendor in shop.vendors %}
+              <li>
+                {{ product_vendor | link_to_vendor  }}
               </li>
             {% endfor %}
           	</ul>
