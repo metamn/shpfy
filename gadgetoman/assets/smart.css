@@ -2,12 +2,12 @@ body {
     font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
 }
 body {
-    background: url("shopl_stripe.png") repeat scroll 0 0 #B2BAFF;
-    color: #2D3134;
+    background: url("simple_stripe.png") repeat scroll 0 0 #e6e2d9;
+    color: #111;
 }
 a, a:visited, a:hover, *:link, *:visited {
     background: none repeat scroll 0 0 transparent;
-    color: #2D3134;
+    color: #111;
     text-decoration: none;
 }
 
@@ -29,25 +29,25 @@ input.text, textarea {
 
 
 #header {
-    background: none repeat scroll 0 #524A6B;
-    border-bottom: 1px solid #524A6B;
+    background: none repeat scroll 0 0 #4a4742;
+    border-bottom: 1px solid #4F4442;
 }
 #header a, #header a:visited, #footer a, #footer a:visited, .menu .search {
-    color: #b3a1eb;
+    color: #BF8326;
     text-decoration: none;
 }
 .menu #item.cart {
-    background: none repeat scroll 0 0 #EDD467 !important;
-    color: #2D3134;
+    background: none repeat scroll 0 0 #F25E18 !important;
+    color: #4a4742;
 }
 .menu #item.cart .quantity {
-    border-bottom: 1px dotted #2D3134;
+    border-bottom: 1px dotted;
 }
 .menu #item.cart a {
-    color: #2D3134;
+    color: #4a4742;
 }
 .triangle-left {
-    border-color: transparent #B8A26C transparent transparent;
+    border-color: transparent #cac1b2 transparent transparent;
 }
 
 
@@ -68,26 +68,27 @@ input.text, textarea {
 }
 
 
+
 #latest {
-    background: none repeat scroll 0 0 #E0DCBE;
+    background: none repeat scroll 0 0 #DFDBD0;
     color: #111;
 }
 #latest-top.triangle-bottom {
-    border-color: #B8A26C transparent transparent;
+    border-color: #e6e2d9 transparent transparent;
 }
 #latest .highlight, .collection .highlight {
-    background: none repeat scroll 0 0 #EDD467;
+    background: none repeat scroll 0 0 #cac4b2;
 }
 #latest #hot {
-    color: #111;
+    color: #F25E18;
     text-shadow: 1px 1px 2px none;
 }
 #item.product {
     -moz-box-shadow: 0 3px 10px none;
-    background: none repeat scroll 0 0 #E5E3C7;
+    background: none repeat scroll 0 0 #d8d3c6;
 }
 #item.hover {
-    -moz-box-shadow: 0 0.5em #E4DAD1;
+    -moz-box-shadow: 0 0.5em #cac4b2;
 }
 #item.product .image {
     background: none repeat scroll 0 0 #FFFFFF;
@@ -98,10 +99,10 @@ input.text, textarea {
 
 
 #sales {
-    background: none repeat scroll 0 0 #E0DCBE;
+    background: none repeat scroll 0 0 #DFDBD0;
 }
 #sales .sale {
-    background: none repeat scroll 0 0 #852427;
+    background: none repeat scroll 0 0 #F25E18;
     color: #e6e2d9;
 }
 #sales .sale a, #sales .sale a:hover {
@@ -110,12 +111,12 @@ input.text, textarea {
 #sales .meta .price {
 }
 #sales #item.hover .meta .price {
-    background: none repeat scroll 0 0 #852427;
+    background: none repeat scroll 0 0 #F25E18;
     color: #e6e2d9;
 }
 #sales #item.product #add-to-cart .sale {
     background: none repeat scroll 0 0 transparent;
-    color: #852427;
+    color: #F25E18;
 }
 
 
@@ -124,7 +125,7 @@ input.text, textarea {
 }
 
 #ecosystem {
-    background: none repeat scroll 0 0 #E0DCBE;
+    background: none repeat scroll 0 0 #CAC1B2;
     color: #111;
 }
 #ecosystem .form input.text {
@@ -141,7 +142,7 @@ input.text, textarea {
 
 
 #footer {
-    background: none repeat scroll 0 0 #E0DCBE;
+    background: none repeat scroll 0 0 #CAC1B2;
     border-top: 1px solid none;
 }
 
