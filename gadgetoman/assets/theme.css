@@ -171,7 +171,7 @@ input.text, textarea {
 .index #featured a:hover .triangle-top {
   border-color: transparent transparent #3d3d3b;
 }
-.index #featured .read-more a {
+.read-more a {
   color: #a3a3a0;
 }
 .index #featured .image img {

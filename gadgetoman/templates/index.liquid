@@ -65,13 +65,13 @@
                     <ul>   
                       {% if product.price > 0 %}                               
                       <li class="add">
+                        {% if settings.locale == "enabled" %}
+                          {% assign add = settings.locale_cart_add %}
+                        {% else %}
+                          {% assign add = "Add to cart" %}
+                        {% endif %}
                         <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                          {{ product.price | money }} &nbsp;&nbsp; 
-                          {% if settings.locale == "enabled" %}
-                            {{ settings.locale_cart_add }}
-                          {% else %}
-                            Add to cart
-                          {% endif %}</a>
+                          {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
                       </li>
                       {% endif %}
                       <li class="read-more">
@@ -202,7 +202,7 @@
         
         <div id="call-for-subscribe">
           <p class="note">
-            <a href="#ecosystem">
+            <a href="#blog">
             {% if settings.locale == "enabled" %}
               {{ settings.locale_subscribe_social }}
             {% else %}

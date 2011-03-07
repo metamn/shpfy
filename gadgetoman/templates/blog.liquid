@@ -8,15 +8,22 @@
 	          <div id="articles">
 	            {% for article in blog.articles %}
 		            <div id="article">
-		              <h3 class="title">
+		              <h2 class="title">
 		                <a href="{{ article.url }}" title="{{ article.title }}">
 		                  {{ article.title }}
 		                  <span class="date"> # {{ article.created_at | date: "%B %d, %Y" }}</span>
 		                </a>
-		              </h3>
+		              </h2>
 		              <div class="excerpt text">
-		                {{ article.content | truncate: 200 }}
+		                {{ article.content | truncatewords: 40 }}
 		              </div>
+                  <a class="read-more" href="{{ article.url }}" title="{{ article.title }}">
+                    {% if settings.locale == "enabled" %}
+                      {{ settings.locale_read_more }} &rarr;
+                    {% else %}
+                      Read more &rarr;
+                    {% endif %}
+                  </a>
 		            </div>
 	            {% endfor %}
 	          </div>
@@ -63,6 +70,7 @@
         </h4>
         <div class="pane">
           <ul id="comments" class="list">
+            {% assign comments_found = false %}
             {% for article in blog.articles limt: 3%}		   
               {% for comment in article.comments limit: 2 %}
                 <li>
@@ -71,8 +79,12 @@
                   </a>
                   <span class="date"># {{ comment.author }}</span>
                 </li>
+                {% assign comments_found = true %}
               {% endfor %}
             {% endfor %}
+            {% unless comments_found %}
+              <li>No comments were posted yet.</li>
+            {% endunless %}
           </ul>
         </div>
         
@@ -111,7 +123,7 @@
 	        </form>
         </div>
         
-        <h4>
+        <h4 class="first">
           {% if settings.locale == "enabled" %}
             {{ settings.locale_share }}
           {% else %}

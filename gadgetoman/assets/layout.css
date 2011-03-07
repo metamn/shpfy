@@ -237,7 +237,7 @@ body {
 .index #featured .nav {
   margin: 1.25em 0;
 }
-.index #featured .read-more {
+.read-more {
   font-size: small;
   font-variant: small-caps;
 }
@@ -605,6 +605,9 @@ blockquote {
 }
 #search.collection #search input.text, #search.notfound input.text {
   width: 60%;
+}
+#sidebar #share {
+  padding-bottom: .62em;
 }
 
 

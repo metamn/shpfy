@@ -82,7 +82,25 @@
 		      <input class="text" type="text" name="q" /> 
 		      <input class="button" type="submit" value="{{ s }}"  />
 	      </form>
-      </div>        
+      </div>  
+      
+      <h4 class="first">
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_share }}
+        {% else %}
+          Share 
+        {% endif %}
+      </h4>
+      <div id="share" class="pane">
+        <div id="icons" class="block">	    
+          <div id="item" class="left twitter">
+            <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
+          </div>
+          <div id="item" class="left facebook">
+            <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="true" width="150"></fb:like>              
+          </div>
+         </div>
+      </div>      
         
     </div>
   </div>   
