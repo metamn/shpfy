@@ -25,32 +25,33 @@
       {% else %}
         {% for item in search.results %}
         <div id="item" class="product">
-          <div class="image">	      
-            {% if item.featured_image %}          
-                <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
-                  <img src="{{ item.featured_image | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" />
-                </a>
-              {% else %}
-                <div class="text">
-                  {{ item.content | truncatewords: 20 }}
-                </div>
-              {% endif %}
-          </div>
-          <div class="title">
-            <a href="{{ item.url | within: collections.all }}">
-              {{ item.title }}              
+          <div class="title block">
+            <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
+              {{ item.title }}
               <div class="meta small">
                 <span class="price rounded">{{ item.price | money }}</span>
+              </div>              
+            </a>
+          </div>          
+          <div class="image block">	 
+            {% if item.featured_image %}     
+              <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
+                <img class="desktop" src="{{ item.featured_image | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" />
+                <img class="mobile" src="{{ item.featured_image | product_img_url: 'large' }}" alt="{{ item.title | escape }}" />
+              </a> 
+            {% else %}
+              <div class="text">
+                {{ item.content | truncatewords: 20 }}
               </div>
-              <div id="add-to-cart" class="meta small">
-                <a class="highlight rounded" href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
-                {% if settings.locale == "enabled" %}
-                  {{ settings.locale_cart_add }}
-                {% else %}
-                  Add to cart
-                {% endif %}
-                </a>
-              </div>
+            {% endif %}
+          </div>
+          <div id="add-to-cart" class="meta small">
+            <a class="highlight rounded" href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
+            {% if settings.locale == "enabled" %}
+              {{ settings.locale_cart_add }}
+            {% else %}
+              Add to cart
+            {% endif %}
             </a>
           </div>
         </div>

@@ -1,11 +1,11 @@
 #item.product, .subscribe-twitter {
-  width: 45%;
+  width: 20%;
   margin-right: 5%;
   float: left;
 }
 
-.collection #items #item {
-  width: 75%;
+.collection #item.product {
+  width: 28%;
   margin: 0 5% 1.25em 0;
   float: left;
   margin-bottom: 3.75em;

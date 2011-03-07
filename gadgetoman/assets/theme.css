@@ -140,9 +140,7 @@ input.text, textarea {
 .menu #item.cart .quantity {
   border-bottom: 1px dotted #f9f9f9;
 }
-.triangle-left {
-  border-color: transparent #3d3d3b transparent transparent;  
-}
+
 
 
 
@@ -202,7 +200,7 @@ input.text, textarea {
   color: #3d3d3b;  
 }
 #item.product {  
-  background: #f3f3f3;
+  background: #fff;
   -moz-box-shadow: 0px 3px 10px #ddd;
   -khtml-box-shadow: 0px 3px 10px #ddd;
   -webkit-box-shadow: 0px 3px 10px #ddd;
@@ -212,8 +210,8 @@ input.text, textarea {
   -khtml-box-shadow: 0px 1px 7px #4c4c4c;
   -webkit-box-shadow: 0px 1px 7px #4c4c4c;
 }
-#item.product .image {
-  background: #fff;  
+#item.product .title {
+  background: #f3f3f3;  
 }
 #more {
   text-shadow: 1px 1px 2px #ddd;

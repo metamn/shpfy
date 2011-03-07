@@ -21,8 +21,8 @@
 }
 
 #item.product, .subscribe-twitter {
-  width: 20%;
-  margin-right: 5%;
+  width: 30%;
+  margin-right: 3%;
   float: left;
 }
 
@@ -72,7 +72,7 @@
   width: 33%;
 }
 .collection #item.product {
-  width: 28%;
+  width: 45%;
   margin: 0 5% 1.25em 0;
   float: left;
   margin-bottom: 3.75em;
@@ -169,11 +169,7 @@ body {
 .menu #item.cart .price {
   text-align: center;
 }
-.triangle-left {
-  border-width: 4px;
-  top: 3.65em;
-  right: -350%;  
-}
+
 
 
 
@@ -275,20 +271,19 @@ body {
 #item.product {  
   text-align: center;
   margin-bottom: 1.25em;
-  height: 18em;  
+  height: 24em;  
 }
 #item.product .image {
   padding: .62em 0;
 }
-#item.product .image img {
-  height: 10em;
-}
 #item.product .title {
-  padding: .32em 0;
+  padding: .62em 0;
 }
 #item.product #add-to-cart {
+  margin: .62em 0;
+  position: relative;
+  top: -12.5em;
   display: none;
-  margin: .32em 1.25em;
 }
 #item.hover #add-to-cart {
   display: block;
@@ -297,7 +292,7 @@ body {
   margin: 1em 5% 0 0;
 }
 #more {
-  margin: 1.25em 5% 1.25em 0;
+  margin: 0 5% 1.25em 0;
   font-variant: small-caps;
   padding: .62em;
 }

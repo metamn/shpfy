@@ -27,10 +27,9 @@
   
   {% if settings.mobile != "disabled" %}  
     <link href="{{ 'mobile.css' | asset_url }}" charset="utf-8" media="screen and (max-width: 480px)" rel="stylesheet" type="text/css" />
-  {% endif %}    
-  
+  {% endif %}   
 	<link href="{{ 'tablet.css' | asset_url }}" charset="utf-8" media="screen and (min-width: 481px) and (max-width: 1024px)" rel="stylesheet" type="text/css" />
-  
+  <link href="{{ 'large.css' | asset_url }}" charset="utf-8" media="screen and (min-width: 1400px)" rel="stylesheet" type="text/css" />
 			
 	{{ 'jquery-1.4.3.min.js' | asset_url | script_tag }}	
   {{ 'jquery.scrollTo-min.js' | asset_url | script_tag }}
@@ -170,9 +169,7 @@
 	          </form>
 			    </div>
 					
-					<div id="item">
-					  <div class="triangle triangle-left"></div>
-					</div>
+					
 			    <div id="item" class="cart last">					  					  		  				  
 			      <a href="/cart"{% if template == "cart" %} class="active highlight"{% else %} class="highlight"{% endif %}>
 			        {% if settings.locale == "enabled" %}
