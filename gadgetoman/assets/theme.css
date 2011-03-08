@@ -244,8 +244,7 @@ input.text, textarea {
   background: #C60017;
 }
 #sales #item.product #add-to-cart .sale {
-  background: none;
-  color: #C60017;
+  color: #f9f9f9;
 }
 
 

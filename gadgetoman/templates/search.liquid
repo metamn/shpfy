@@ -45,15 +45,17 @@
               </div>
             {% endif %}
           </div>
-          <div id="add-to-cart" class="meta small">
-            <a class="highlight rounded" href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_cart_add }}
-            {% else %}
-              Add to cart
-            {% endif %}
-            </a>
-          </div>
+          {% if item.featured_image %} 
+            <div id="add-to-cart" class="meta small">
+              <a class="highlight rounded" href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
+              {% if settings.locale == "enabled" %}
+                {{ settings.locale_cart_add }}
+              {% else %}
+                Add to cart
+              {% endif %}
+              </a>
+            </div>
+          {% endif %}
         </div>
         {% endfor %}
         <div class="clear"></div>
