@@ -1,0 +1,26 @@
+/*
+  - width: auto
+  - grid column width: 64em/9 = 7.112em
+  - grid params:
+  -   witdh: 6 cols = 6x7.112 = 42.667em
+*/
+
+.fullscreen, .container, .container-left, .container-right {
+  width: auto;
+  float: none;
+  margin: 0;
+}
+
+.container {
+  padding: 0 1.25em;
+}
+.image {
+  width: 100%;
+}
+
+
+
+.container {
+  position: none;
+  top: 0;
+}

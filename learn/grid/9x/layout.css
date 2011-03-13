@@ -56,61 +56,69 @@ h2 { font-size:1.33333em; padding:1.25em 0; }
 h3 { font-size:1.16667em; padding:1.51785em 0; }
 
 
-
-
-
-
-
-.fullscreen {
-  width: 100%;
-  max-width: 80em;  /* 1280px */
-  margin: 0 auto;
-}
-
-/*
-  We need a 9x9 grid positioned left or right
-  - grid column width: 80em/9 = 8.889em
-  - grid params:
-  -   witdh: 6 cols = 6x8.889 = 53.334em
-  - grid params, left aligned
-  -   top-left: 1x1
-  - grid params, right aligned
-  -   top-right: 1x1
-*/
-.showgrid-vertical .col {
-  width: 8.889em; 
-  height: 150em;  
-  float: left;
-}
-.showgrid-horizontal .col {
-  width: 100%;
-  height: 19px; /* 20px = 1.25em, 19 px is needed because the cell has a border-bottom */
-}
-.container {
-  width: 53.334em;  
-  height: 119.170em;
-  
-  position: absolute;
-  top: 7.5em;
-}
-.container-left {
-  margin-left: 8.889em;
-  margin-right: auto;
-}
-.container-right {
-  margin-right: 8.889em;
-  margin-left: auto;
-}
-
 /*
   BUG: IN FF THERE ARE 5 IN A ROW, IN CHROME 6 AS PLANNED
   - if width is less with .001em in FF all's fine >>>> dont use cell width to maximum !!!!!!!
 */
 .image {
-  width: 8.888em; /* 1 col */
+  width: 13.333em; /* 1 col */
   height: 7.5em; /* 6 rows */
   float: left;
   margin: 2.5em 0; /* by 2 rows */
   padding: 0;
 }
 
+
+
+
+
+
+
+
+
+
+
+/*
+  Get the full screen with css media queries
+*/
+.fullscreen {
+  width: 100%;
+  max-width: 120em;  /* 1920px */
+  margin: 0 auto;
+}
+
+/*
+  We need a 9x9 grid positioned left or right
+  - screen width: 1920px = 120em (on a 16px font)
+  - grid column width: 120em/9 = 13.334em
+  - grid params:
+  -   witdh: 6 cols = 6x13.334 = 80em
+  - grid params, left aligned
+  -   top-left: 1x1
+  - grid params, right aligned
+  -   top-right: 1x1
+*/
+.showgrid-vertical .col {
+  width: 13.334em; 
+  height: 150em;  
+  float: left;
+}
+.showgrid-horizontal .col {
+  width: 100%;
+  height: 19px;
+}
+.container {
+  width: 80em;  
+  height: 119.170em;
+  
+  position: absolute;
+  top: 7.5em;
+}
+.container-left {
+  margin-left: 13.334em;
+  margin-right: auto;
+}
+.container-right {
+  margin-right: 13.334em;
+  margin-left: auto;
+}
