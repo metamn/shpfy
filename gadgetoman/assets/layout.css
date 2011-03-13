@@ -282,7 +282,7 @@ body {
 #item.product #add-to-cart {
   margin: .62em 0;
   position: relative;
-  top: -12.5em;
+  top: .32em;
   display: none;
 }
 #item.hover #add-to-cart {
