@@ -2,26 +2,75 @@
 */
 
 /*
-  http://retinart.net/graphic-design/secret-law-of-page-harmony/
+  - horizontal tempo: http://retinart.net/graphic-design/secret-law-of-page-harmony/
+  - vertical tempo: http://lamb.cc/typograph/
 */
 
 
 .container {
-  background: #ddd;
+  background: #f9f9f9;
+  opacity: .7
 }
 
+/*
+  BE AWARE OF BORDERS THEY ARE BREAKING THE LAYOUT
+  IF BORDER USED THE GRID WIDTH AND HEIGHT MUST BE ADJUSTED
+*/
 .showgrid-vertical .col {
   border-right: 1px solid #ddd;
 }
 .showgrid-horizontal .col {
   border-bottom: 1px solid #ddd;
 }
+.showgrid-horizontal {
+  display: block;
+}
+
+.image {
+  background: #ddd;
+}
 
 
 
+/* Set Vertical tempo 
+*/
+
+/*
+  - line-height determines the vertical grid size, the grid column height
+  - line-height: 1.25 tells the column height is 16px x 1.25 = 20 px
+*/
 body {
   font: normal 100% Helvetica, Arial, sans-serif;
+  line-height: 1.25; /* grid height = 1.25em for all screen sizes */
 }
+
+/* 
+  - Setting up H1..H3 via lamb.cc is meant to space text and headings
+  - For example with this setting any heading occupies 4 rows.
+  - This means padding/spacing elements is done by 2 rows, or 4 rows 
+*/
+
+h1, h2, h3 { margin-top:0; margin-bottom:0; }
+h1 { font-size:1.5em; padding:1.45833em 0; }
+h2 { font-size:1.33333em; padding:1.25em 0; }
+h3 { font-size:1.16667em; padding:1.51785em 0; }
+
+.image {
+  width: 13.334em; /* 1 col */
+  height: 7.5em; /* 6 rows */
+  float: left;
+  margin: 2.5em 0 0;
+}
+
+
+
+
+
+
+
+
+
+
 
 /*
   Get the full screen with css media queries
@@ -35,14 +84,13 @@ body {
 /*
   We need a 9x9 grid positioned left or right
   - screen width: 1920px = 120em (on a 16px font)
-  - screen height: 1290 x 1.4896 = 120 x 1.4896 = 178.755em
-  -   1.4896 is a ratio taken from the example, measured on screen by the ruler
   - grid column width: 120em/9 = 13.334em
-  - grid column height: 178.755em/9 = 19.861em 
-  - left aligned grid params:
-  -   top-left: 1x1
+  - grid params:
   -   witdh: 6 cols = 6x13.334 = 80em
-  -   height: 6 cols  6x19.861 = 119.170em 
+  - grid params, left aligned
+  -   top-left: 1x1
+  - grid params, right aligned
+  -   top-right: 1x1
 */
 .showgrid-vertical .col {
   width: 13.334em; 
@@ -51,15 +99,14 @@ body {
 }
 .showgrid-horizontal .col {
   width: 100%;
-  height: 19.861em;
+  height: 19px;
 }
 .container {
   width: 80em;  
   height: 119.170em;
   
   position: absolute;
-  top: 19.861em;
-  margin-bottom: 26.668em;
+  top: 7.5em;
 }
 .container-left {
   margin-left: 13.334em;

@@ -1,0 +1,71 @@
+/* The Classic Grid
+*/
+
+/*
+  http://retinart.net/graphic-design/secret-law-of-page-harmony/
+*/
+
+
+.container {
+  background: #ddd;
+}
+
+.showgrid-vertical .col {
+  border-right: 1px solid #ddd;
+}
+.showgrid-horizontal .col {
+  border-bottom: 1px solid #ddd;
+}
+
+
+
+body {
+  font: normal 100% Helvetica, Arial, sans-serif;
+}
+
+/*
+  Get the full screen with css media queries
+*/
+.fullscreen {
+  width: 100%;
+  max-width: 120em;  /* 1920px */
+  margin: 0 auto;
+}
+
+/*
+  We need a 9x9 grid positioned left or right
+  - screen width: 1920px = 120em (on a 16px font)
+  - screen height: 1290 x 1.4896 = 120 x 1.4896 = 178.755em
+  -   1.4896 is a ratio taken from the example, measured on screen by the ruler
+  - grid column width: 120em/9 = 13.334em
+  - grid column height: 178.755em/9 = 19.861em 
+  - left aligned grid params:
+  -   top-left: 1x1
+  -   witdh: 6 cols = 6x13.334 = 80em
+  -   height: 6 cols  6x19.861 = 119.170em 
+*/
+.showgrid-vertical .col {
+  width: 13.334em; 
+  height: 150em;  
+  float: left;
+}
+.showgrid-horizontal .col {
+  width: 100%;
+  height: 19.861em;
+}
+.container {
+  width: 80em;  
+  height: 119.170em;
+  
+  position: absolute;
+  top: 19.861em;
+  margin-bottom: 26.668em;
+}
+.container-left {
+  margin-left: 13.334em;
+  margin-right: auto;
+}
+.container-right {
+  margin-right: 13.334em;
+  margin-left: auto;
+}
