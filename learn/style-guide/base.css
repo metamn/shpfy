@@ -1,8 +1,8 @@
 /*
 # CSS Resets, Hacks, and Common Elements #
 
-* File name: base.css
-* This is a basic stylesheet 
+* File name: [base.css](base.css )
+* This is a basic stylesheet to prepare/reset the browser and the HTML elements
 * Author: [Shopledge](http://shopledge.com "Shopledge")
 * License: none (public domain)
 
@@ -104,7 +104,7 @@ p {
 
 * both `<ul>, <ol>, <dl>` items are indented in the same way
 * items are separated by a blank line
-* cascading lists is also supported
+* cascading lists identation is also supported
 
 */
 
@@ -166,7 +166,7 @@ td {
 * input, select and textarea have equal width
 * input, select, textarea and buttons are padded and rounded equally
 * buttons have hover effect
-* there some general rules of usage:
+* some general rules of usage:
   
   * all text input fields must have a **.text** class associated
   * all form buttons must have a **.button** class associated    
@@ -241,8 +241,9 @@ input[type="radio"], input[type="checkbox"], input[type="file"] {
 /* 
 ## Typography ##
 
-* It is supposed general rules will be set up using [Typograph](http://lamb.cc/typograph/ ) in **layout.css**
-* This section contains just small alignements
+* It is supposed that general typography rules will be set up using [Typograph](http://lamb.cc/typograph/ ) in 
+[layout.css](layout.css )
+* This section contains just small, additional alignments
 
 */
 
@@ -265,7 +266,7 @@ h6 { font-style: italic; }
 ### `<p>` ###
 
 * Every second paragraph is indented
-* After the first paragraph the following paragraphs are all separated with a blank line
+* After the first paragraph all the following paragraphs are separated with a blank line
 
 */
 
@@ -363,7 +364,7 @@ blockquote {
 * **.hidden** - hide an element
 * **ul.inline-list** - displays an `<ul>` inline (like a menu)
 * **.triangle** - ads an arrow like in the [Gadgetoman theme](http://gadgetoman.myshopify.com )
-* **.mobile** - hides an element in desktop displays (it's like .hidden)
+* **.mobile** - hides an element in desktop mode (it's like .hidden)
 
   
 */
