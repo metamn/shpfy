@@ -1,0 +1,313 @@
+
+
+/* Reset and format all basic elements
+*/
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+
+
+/* Hacks
+*/
+
+/* Breaking long lines of text */
+/* http://stackoverflow.com/questions/320184/who-has-solved-the-long-word-breaks-my-div-problem-hint-not-stackoverflow */
+p {
+  word-wrap: break-word;  
+}
+.word-break {
+  /* The following styles prevent unbroken strings from breaking the layout */
+  width: 100%; /* set to whatever width you need */
+  white-space: -moz-pre-wrap; /* Mozilla */
+  white-space: -hp-pre-wrap; /* HP printers */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: pre-wrap; /* CSS 2.1 */
+  white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+  word-wrap: break-word; /* IE */
+  -moz-binding: url('xbl.xml#wordwrap'); /* Firefox (using XBL) */
+}
+
+
+
+
+/* Common 
+*/
+
+
+/* Images
+*/
+
+
+/* Displaying thumbs 
+- example structure:
+  .item         # aligning to grid
+    .inner      # padding, positioning, backgrounding, etc
+      .image    # cropping, sizing etc
+        img
+      .text     # not necessary
+        blabla
+*/
+.item {
+  overflow: hidden;  
+  float: left;
+  width: 0; /* just to make sure these will be overwritten in the layout.css*/
+  height: 0;
+}
+.item .inner {
+  text-align: center;
+  padding: 1.25em;
+}
+.item .image {  
+  overflow: hidden;  
+  height: 0;
+}
+.item img, .item object {
+  max-width: 100%;
+}
+.item .text {
+  padding: 1.25em 0;
+}
+
+
+/* Typo elements
+*/
+
+h4, h5, h6 { padding: 1.25em 0; }
+h4 { font-weight: bold; }
+h5 { font-variant: small-caps; }
+h6 { font-style: italic; }
+
+div + p, h1 + p, h2 + p, h3 + p, p.first, pre + p, p:first-child, ul + p, ol + p,
+fieldset + p, legend + p, form + p {
+  text-indent: 0;
+}
+p {
+  text-indent: 1.25em;
+}
+p + p {
+  margin-top: 1.25em;
+}
+sup {
+  vertical-align: super;
+}
+sub {
+  vertical-align: sub;  
+}
+cite, acronym, abbr, pre {
+  font-style: italic;
+}
+blockquote {
+  margin: 1.25em;
+}
+
+
+/* Lists
+*/
+
+
+ol {
+  list-style-type: decimal;  
+}
+ul {
+  list-style-type: disc;  
+}
+ol, ul {
+  margin-left: 2.5em;
+}
+ol ol, ol ul, ul ul, ul ol, dl, dl dl {
+  margin-top: 1.25em;
+}
+li, dd {
+  margin-bottom: 1.25em;
+}
+dd {
+  margin-left: 1.25em;
+}
+
+
+/* Tables
+*/
+
+table {
+  width: 100%;
+  margin-bottom: 5%;
+}
+td, th, tr {
+  vertical-align: top;
+  text-align: left;
+}
+th {
+  padding-left: 0;
+  font-weight: bold;
+}
+td {
+  padding: 1.25em 1.25em 0 1.25em;
+}
+
+
+
+/* Forms
+*/
+
+fieldset {
+  border: 1px solid green;
+  padding: 1.25em;
+}
+legend {
+  padding: 0 .625em;
+}
+form ul {
+  list-style-type: none;
+  margin-left: 0;
+}
+form ul li {
+  margin-bottom: 0;
+}
+input, textarea, select {
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  
+  -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+	box-shadow: inset 0px 1px 0px 0px #ffffff;
+	
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+	background: -moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color: #ededed;
+	
+	border: 1px solid #dcdcdc;
+	
+	color: #4c4c4c !important;	
+	text-decoration:none !important;
+	text-shadow: 1px 1px 0px #ffffff;	
+}
+input.button:hover, a.button:hover {
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+	background: -moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+	background-color: #dfdfdf;
+}
+.button, button, select, input, textarea {
+  -moz-border-radius: 6px 6px 6px 6px;
+  cursor: pointer;
+  padding: 6px 24px;
+}
+button, textarea, input, select {
+  display: inline-block;
+}
+input.text, input.password, textarea {
+  background: #fff;
+}
+
+input, textarea, select {
+  width: 95%;
+}
+input.button {
+  width: auto;
+}
+input[type="radio"], input[type="checkbox"], input[type="file"] {
+  width: auto;
+}
+
+
+/* Positioning
+*/
+
+
+.link {
+  cursor: pointer;
+}
+.clear {
+  clear: both;
+}
+.block {
+  width: 100%;
+  float: left;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.hidden {
+  display: none;
+}
+.alignright {
+  text-align: right;
+}
+.alignleft {
+  text-align: left;
+}
+.aligncenter {
+  text-align: center;
+}
+ul {
+  list-style-type: disc;
+}
+ul.inline-list {
+  display: block;
+  margin: 0;
+}
+ul.inline-list li {
+  display: inline;
+  list-style-type: none;
+  margin-left: 0;
+  white-space: nowarp;  
+}
+
+
+
+
+

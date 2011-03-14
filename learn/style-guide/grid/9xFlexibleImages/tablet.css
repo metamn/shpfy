@@ -1,0 +1,32 @@
+
+/*
+  - width: 1024px / 16 = 64em
+  - grid column width: 64em/9 = 7.112em
+  - grid params:
+  -   witdh: 6 cols = 6x7.112 = 42.667em
+*/
+
+.fullscreen {
+  max-width: 64em;
+}
+.container {
+  width: 42.667em;   
+}
+.showgrid-vertical .col {
+  width: 7.112em;
+}
+.container-left {
+  margin-left: 7.112em;
+  margin-right: auto;
+}
+.container-right {
+  margin-right: 7.112em;
+  margin-left: auto;
+}
+
+.item, .item1 {
+  width: 21.333em; /* 3 col */  
+}
+
+
+
