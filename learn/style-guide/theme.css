@@ -1,0 +1,17 @@
+
+body {
+  background: #f9f9f9;
+}
+
+.container, .grid9 {
+  background: #f3f3f3;
+}
+.showgrid-vertical .col {
+  border-right: 1px solid #ddd;
+}
+.showgrid-horizontal .col {
+  border-bottom: 1px solid #ddd;
+}
+.showgrid-horizontal {
+  display: block;
+}
