@@ -1,0 +1,29 @@
+pages:
+  frontpage:
+    header:      
+    content:
+      products:
+        featured:
+        latest:
+        sales:
+      navigation:
+        collections:
+        vendors:
+        types:
+    footer:
+  collections:
+    header:
+    content:
+    footer:
+  product:
+    header:
+    content:
+    footer:
+  page:
+    header:
+    content:
+    footer:
+    
+
+
+
