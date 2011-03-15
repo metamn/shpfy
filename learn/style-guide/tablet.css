@@ -21,6 +21,13 @@
   margin-left: auto;
 }
 
+.startpage #featured .col-1, .startpage #featured .col-2  {
+  width: 21.330em;
+}
+.col-3 {
+  width: 49.779em;
+}
+
 
 
 

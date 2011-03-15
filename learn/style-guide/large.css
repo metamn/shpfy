@@ -19,3 +19,10 @@
   margin-right: 13.334em;
 }
 
+.startpage #featured .col-1, .startpage #featured .col-2  {
+  width: 40em;
+}
+.col-3 {
+  width: 93.334em;
+}
+
