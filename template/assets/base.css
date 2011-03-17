@@ -1,27 +1,53 @@
-/* Eric Meyer's CSS reset: 
- - http://meyerweb.com/eric/tools/css/reset/
- - v1.0 | 20080212 
+/*
+# CSS Resets, Hacks, and Common Elements #
+
+* File name: [base.css](base.css )
+* This is a basic stylesheet to prepare/reset the browser and the HTML elements
+* Author: [Shopledge](http://shopledge.com "Shopledge")
+* License: MIT Licence. Copyright 2010 Shopledge www.shopledge.com
+
+---
+*/
+
+
+
+/* 
+## Reset and format all basic elements ##
+
+* CSS Reset by Eric Meyers
+* [Source](http://meyerweb.com/eric/tools/css/reset/ )
+* v2.0 | 20110126
+* License: none (public domain)
+
 */
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
+del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	outline: 0;
 	font-size: 100%;
+	font: inherit;
 	vertical-align: baseline;
-	background: transparent;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
 }
 body {
-	line-height: 1.3;
+	line-height: 1;
 }
 ol, ul {
 	list-style: none;
@@ -34,18 +60,6 @@ q:before, q:after {
 	content: '';
 	content: none;
 }
-/* remember to define focus styles! */
-:focus {
-	outline: 0;
-}
-/* remember to highlight inserts somehow! */
-ins {
-	text-decoration: none;
-}
-del {
-	text-decoration: line-through;
-}
-/* tables still need 'cellspacing="0"' in the markup */
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -53,102 +67,18 @@ table {
 
 
 
-/* W3C basic formatting: http://www.w3.org/TR/CSS2/sample.html */
-html, address,
-blockquote,
-body, dd, div,
-dl, dt, fieldset, form,
-frame, frameset,
-h1, h2, h3, h4,
-h5, h6, noframes,
-ol, p, ul, center,
-dir, hr, menu, pre   { display: block; unicode-bidi: embed }
-li              { display: list-item }
-head            { display: none }
-table           { display: table }
-tr              { display: table-row }
-thead           { display: table-header-group }
-tbody           { display: table-row-group }
-tfoot           { display: table-footer-group }
-col             { display: table-column }
-colgroup        { display: table-column-group }
-td, th          { display: table-cell }
-caption         { display: table-caption }
-th              { font-weight: bolder; text-align: center }
-caption         { text-align: center }
-h1              { font-size: 2em; margin: .67em 0 }
-h2              { font-size: 1.5em; margin: .75em 0 }
-h3              { font-size: 1.17em; margin: .83em 0 }
-h4, p,
-blockquote, ul,
-fieldset, form,
-ol, dl, dir,
-menu            { margin: 1.12em 0 }
-h5              { font-size: .83em; margin: 1.5em 0 }
-h6              { font-size: .75em; margin: 1.67em 0 }
-b,
-strong          { font-weight: bolder }
-blockquote      { margin-left: 40px; margin-right: 40px }
-i, cite, em,
-var, address    { font-style: italic }
-pre, tt, code,
-kbd, samp       { font-family: monospace }
-pre             { white-space: pre }
-button, textarea,
-input, select   { display: inline-block }
-big             { font-size: 1.17em }
-small, sub, sup { font-size: .83em }
-sub             { vertical-align: sub }
-sup             { vertical-align: super }
-table           { border-spacing: 2px; }
-thead, tbody,
-tfoot           { vertical-align: middle }
-td, th, tr      { vertical-align: inherit }
-s, strike, del  { text-decoration: line-through }
-hr              { border: 1px inset }
-ol, ul, dir,
-menu, dd        { margin-left: 40px }
-ol              { list-style-type: decimal }
-ol ul, ul ol,
-ul ul, ol ol    { margin-top: 0; margin-bottom: 0 }
-u, ins          { text-decoration: underline }
-br:before       { content: "\A"; white-space: pre-line }
-center          { text-align: center }
-:link, :visited { text-decoration: underline }
-:focus          { outline: thin dotted invert }
-
-/* Begin bidirectionality settings (do not change) */
-BDO[DIR="ltr"]  { direction: ltr; unicode-bidi: bidi-override }
-BDO[DIR="rtl"]  { direction: rtl; unicode-bidi: bidi-override }
-
-*[DIR="ltr"]    { direction: ltr; unicode-bidi: embed }
-*[DIR="rtl"]    { direction: rtl; unicode-bidi: embed }
-
-@media print {
-  h1            { page-break-before: always }
-  h1, h2, h3,
-  h4, h5, h6    { page-break-after: avoid }
-  ul, ol, dl    { page-break-before: avoid }
-}
 
 
-/* Typo 
+/* 
+## Hacks ##
+
+### Breaking long lines of text ###
+
+* Prevent unbroken strings from breaking the layout
+* [Source](http://stackoverflow.com/questions/320184/who-has-solved-the-long-word-breaks-my-div-problem-hint-not-stackoverflow )
+* add the **word-break** class to a paragraph to apply this hack
+
 */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: normal;
-  line-height: 1.3;
-}
-h4 {
-  font-variant: small-caps;
-}
-
-
-
-/* Hacks
-*/
-
-/* Breaking long lines of text */
-/* http://stackoverflow.com/questions/320184/who-has-solved-the-long-word-breaks-my-div-problem-hint-not-stackoverflow */
 p {
   word-wrap: break-word;  
 }
@@ -166,9 +96,278 @@ p {
 }
 
 
-/* Common 
+
+
+
+/* 
+## Lists ##
+
+* both `<ul>, <ol>, <dl>` items are indented in the same way
+* items are separated by a blank line
+* cascading lists identation is also supported
+
 */
 
+
+ol {
+  list-style-type: decimal;  
+}
+ul {
+  list-style-type: disc;  
+}
+ol, ul {
+  margin-left: 2.5em;
+}
+ol ol, ol ul, ul ul, ul ol, dl, dl dl {
+  margin-top: 1.25em;
+}
+li, dd {
+  margin-bottom: 1.25em;
+}
+dd {
+  margin-left: 1.25em;
+}
+
+
+/* 
+## Tables ##
+
+* table header is bold
+* table rows are separated with a blank line
+* all cells are aligned to top  
+* all cells are padded
+* normal cells are indented related to table header
+* no borders were used
+
+*/
+
+table {
+  width: 100%;
+  margin-bottom: 5em;
+}
+td, th, tr {
+  vertical-align: top;
+  text-align: left;
+}
+th {
+  padding-left: 0;
+  font-weight: bold;
+}
+td {
+  padding: 1.25em 1.25em 0 1.25em;
+}
+
+
+
+/* 
+## Forms ##
+
+* select is left unstyled (it cannot be styled via CSS), in rest all elements are ready to use
+* input, select and textarea have equal width
+* input, select, textarea and buttons are padded and rounded equally
+* buttons have hover effect
+* some general rules of usage:
+  
+  * all text input fields must have a **.text** class associated
+  * all form buttons must have a **.button** class associated    
+  * a link can be styled to look like a button with the **.button** class 
+  * radio and checkbox values must be embedded into an `<ul>` list
+  * form buttons must be embedded into an inline `<ul>` list 
+   
+*/
+
+input, textarea {
+  width: 95%;
+}
+select {
+  width: 99%;
+}
+input, textarea, select, button, .button {
+  -moz-border-radius: 6px 6px 6px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 6px 24px; 
+}
+input, textarea {  
+  -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+	box-shadow: inset 0px 1px 0px 0px #ffffff;
+	
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+	background: -moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color: #ededed;
+	
+	border: 1px solid #dcdcdc;
+	
+	color: #4c4c4c !important;	
+	text-decoration:none !important;
+	text-shadow: 1px 1px 0px #ffffff;	
+}
+input.button:hover, a.button:hover {
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+	background: -moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+	background-color: #dfdfdf;
+}
+input.text, input.password, textarea {
+  background: #fff;
+}
+
+
+fieldset {
+  border: 1px solid;
+  padding: 1.25em;
+}
+legend {
+  padding: 0 .625em;
+}
+form ul {
+  list-style-type: none;
+  margin-left: 0;
+}
+form ul li {
+  margin-bottom: 0;
+}
+
+input.button {
+  width: auto;
+}
+input[type="radio"], input[type="checkbox"], input[type="file"] {
+  width: auto;
+}
+
+
+/* 
+## Typography ##
+
+* It is supposed that general typography rules will be set up using [Typograph](http://lamb.cc/typograph/ ) in 
+[layout.css](layout.css )
+* This section contains just small, additional alignments
+
+*/
+
+/*
+### `<h4>, <h5>, <h6>` ###
+
+* They all have normal sizes like paragraphs
+* `<h4>` is bold
+* `<h5>` is small caps
+* `<h6>` is italic
+
+*/
+h4, h5, h6 { padding: 1.25em 0; }
+h4 { font-weight: bold; }
+h5 { font-variant: small-caps; }
+h6 { font-style: italic; }
+
+
+/*
+### `<p>` ###
+
+* Every second paragraph is indented
+* After the first paragraph all the following paragraphs are separated with a blank line
+
+*/
+
+div + p, h1 + p, h2 + p, h3 + p, p.first, pre + p, p:first-child, ul + p, ol + p,
+fieldset + p, legend + p, form + p {
+  text-indent: 0;
+}
+p {
+  text-indent: 1.25em;
+}
+p + p {
+  margin-top: 1.25em;
+}
+
+
+/*
+### `<sub>, <sup>` ###
+
+* done
+
+### `<cite>, <acronym>, <abbr>, <pre>` ###
+
+* not styled, they've just been set to italic
+
+### `<blockquote>` ###
+
+* not styled, just the left margin set
+
+*/
+sup {
+  vertical-align: super;
+}
+sub {
+  vertical-align: sub;  
+}
+cite, acronym, abbr, pre {
+  font-style: italic;
+}
+blockquote {
+  margin: 1.25em;
+}
+
+
+/* 
+## Images, Thumbs ##
+
+* Displaying thumbs is easy with the following structure:
+  
+      .item         # aligning to grid
+        .inner      # padding, positioning, backgrounding, etc
+          .image    # cropping, sizing etc
+            img
+          .text     # not necessary but looks structured
+            blabla
+          
+* Guidelines for using thumbs / image grids on responsive layout
+  
+  * MAKE SURE the user submits correctly sized images !!!</li>
+  * Choose a grid which supports 6, 4, 3, 2, 1 images / row
+  * Avoid displaying 6 images / row. Do it only of the images are already scaled down
+  * Text / caption under image is breaking the layout / the height. Try putting the caption on top!   
+     
+*/
+.item {
+  overflow: hidden;  
+  float: left;
+  width: 0; /* just to make sure these will be overwritten in the layout.css*/
+  height: 0;
+}
+.item .inner {
+  text-align: center;
+  padding: 1.25em;
+}
+.item .image {  
+  overflow: hidden;  
+  height: 0;
+}
+.item img, .item object {
+  max-width: 100%;
+}
+.item .text {
+  padding: 1.25em 0;
+}
+
+
+
+
+/* 
+## Commonly used classes // CSS Helpers ##
+
+* **.link**  - makes an element looking like a link. On hover the cursor will be a pointer
+* **.block**  - makes sure the element fills the all available space
+* **.left, .right** - floats left or right
+* **.alignright, .alignleft, .aligncenter** - aligns right, left or center
+* **.hidden** - hide an element
+* **ul.inline-list** - displays an `<ul>` inline (like a menu)
+* **.triangle** - ads an arrow like in the [Gadgetoman theme](http://gadgetoman.myshopify.com )
+* **.mobile** - hides an element in desktop mode (it's like .hidden)
+
+  
+*/
 
 .triangle {
   border-style: solid;  
@@ -178,37 +377,8 @@ p {
   line-height: 0;
   position: relative;
 }
-
 .mobile {
   display: none;
-}
-
-table {
-  width: 100%;
-}
-.small {
-  font-size: small;
-}
-.box {
-  padding: 1.25em;
-}
-button, textarea, input, select {
-  padding: .31em 1.25em;
-  margin-bottom: .62em;
-}
-.button a {
-  text-decoration: none;
-}
-input.text {
-  width: 90%;
-}
-.rounded {    
-  -moz-border-radius: .62em;  
-  -webkit-border-radius: .62em;
-}
-img {
-  max-width: 100%;
-  height: auto;
 }
 .link {
   cursor: pointer;
@@ -240,7 +410,6 @@ img {
 }
 ul {
   list-style-type: disc;
-  margin: 1.25em 2.5em;
 }
 ul.inline-list {
   display: block;
@@ -252,5 +421,8 @@ ul.inline-list li {
   margin-left: 0;
   white-space: nowarp;  
 }
+
+
+
 
 

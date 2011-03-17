@@ -1,0 +1,113 @@
+<h1>The Grid and the Elements</h1>
+
+<ul>
+<li>File name: <a href="layout.css">layout.css</a></li>
+<li>Aligning elements both vertically and horizontally</li>
+<li>Author: <a href="http://shopledge.com" title="Shopledge">Shopledge</a></li>
+<li>License: MIT Licence. Copyright 2010 Shopledge <a href="http://shopledge.com" title="Shopledge">www.shopledge.com</a></li>
+</ul>
+
+
+<hr />
+
+<h2>The Layout</h2>
+
+<ul>
+<li>centered, width 80%, 10% margins left and right</li>
+<li>this layout is not changed on large, and tablet screens, only on mobiles</li>
+</ul>
+
+
+<h2>Vertical Rhythm</h2>
+
+<ul>
+<li>the height of the grid is set to <strong>1.25em</strong></li>
+<li>typography is not set yet</li>
+</ul>
+
+
+<h2>The Horizontal Grid</h2>
+
+<h2>Navigation</h2>
+
+<ul>
+<li>Each navigational element is wrapped into a <strong>#nav</strong> div and uses <strong>ul.inline-list</strong> for its elements</li>
+</ul>
+
+
+<h3>Main Menu</h3>
+
+<ul>
+<li>The current page cannot be highlighted due to a Liquid bug <strong>BUG</strong></li>
+<li>Search is added at the end of the Main Menu (<strong>li#search</strong> ). This is not a link, it will be handled by Javascript</li>
+<li>The search form (<strong>#search</strong>)is hidden by default.</li>
+<li>There are two Main Menus, one for <strong>#nav.desktop</strong> and the other for <strong>#nav.mobile</strong>. The logo is wrapped inside these Main Menus</li>
+</ul>
+
+
+<h3>Shopping Menu</h3>
+
+<ul>
+<li>There are three sections <strong>#quantity</strong>, <strong>#price</strong> and <strong>#info</strong></li>
+</ul>
+
+
+<h2>Logo</h2>
+
+<ul>
+<li>The logo is wrapped into a <strong>h2</strong></li>
+</ul>
+
+
+<h2>Frontpage / Index</h2>
+
+<h3>Collections</h3>
+
+<ul>
+<li>displays different collections of products</li>
+<li><p>each collection is wrapped into a following structure:</p>
+
+<pre><code>#section.&lt;collectionname&gt;
+  &lt;h1&gt;Collection title&lt;/h1&gt;
+    #items
+    #item
+    #item ...
+</code></pre></li>
+<li><p>each item is wrapped into the following structure:</p>
+
+<pre><code>#inner
+  #figure
+  #figcaption
+    #title
+    #price
+    #description
+</code></pre></li>
+<li><p><strong>BUG</strong> The featured image is cannot be displayed by Vision ...</p></li>
+<li>if the collection is empty a <strong>.notice</strong> is left how to create the collection</li>
+</ul>
+
+
+<h3>Information and Navigation</h3>
+
+<ul>
+<li><p>displays the Frontpage article</p>
+
+<pre><code>#article
+  &lt;h1&gt;Title
+  #excerpt      **BUG** in Vision
+  #read-more
+</code></pre></li>
+<li><p>Displays the shop data</p></li>
+<li><p>displays the list of all collections, product types, vendors and tags</p></li>
+<li><p>a <strong>BUG</strong> in Vision doesn't displays types, vendors, and tags ....</p>
+
+<pre><code>#nav
+  &lt;h3&gt;Title
+  &lt;ul&gt;
+  ...
+
+  &lt;h3&gt;Title
+  ul.inline-list 
+</code></pre></li>
+</ul>
+
