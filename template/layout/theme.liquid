@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>{{ shop.name }} &#124; {{ page_title }}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	{{ 'base.css' | asset_url | stylesheet_tag }}		
+	{{ 'layout.css' | asset_url | stylesheet_tag }}
+	
+	{{ 'theme.css' | asset_url | stylesheet_tag }}
+	{% if settings.colors == "enabled" %}
+	  {{ 'theme-custom-colors.css' | asset_url | stylesheet_tag }}	
+	{% endif %}	
+	{% if settings.theme == "enabled" %}
+	  {{ settings.color_scheme | asset_url | stylesheet_tag }}
+	{% endif %}	 
+
+	<!--[if IE]>
+  {{ 'ie.css' | asset_url | stylesheet_tag }}  
+  <![endif]-->
+
+  <!--[if lte IE 6]>
+  {{ 'ie6.css' | asset_url | stylesheet_tag }}  
+  <![endif]-->
+  
+  {% if settings.mobile != "disabled" %}  
+    <link href="{{ 'mobile.css' | asset_url }}" charset="utf-8" media="screen and (max-width: 480px)" rel="stylesheet" type="text/css" />
+  {% endif %}   
+	<link href="{{ 'tablet.css' | asset_url }}" charset="utf-8" media="screen and (min-width: 481px) and (max-width: 1024px)" rel="stylesheet" type="text/css" />
+  <link href="{{ 'large.css' | asset_url }}" charset="utf-8" media="screen and (min-width: 1400px)" rel="stylesheet" type="text/css" />
+			
+	{{ 'jquery-1.4.3.min.js' | asset_url | script_tag }}	
+  {{ 'jquery.scrollTo-min.js' | asset_url | script_tag }}
+  {{ 'jquery.localscroll-min.js' | asset_url | script_tag }}
+  {{ 'jquery.init.js' | asset_url | script_tag }}
+  {{ 'jquery.mobile.js' | asset_url | script_tag }}
+	
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+	{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+	{{ content_for_header }}	
+	
+</head>
+
+<body>	
+	<div id="header" class="block">
+	  <div class="container">
+	    <div class="block line-1">		    
+			  <div id="navigation" class="menu desktop right">
+			    {% capture active_url %}
+			      {% if template == "index" %}
+			        /
+			      {% elsif template == "collection" %}
+			        /collections/{{ collection.handle }}
+			      {% elsif template == "product" %}
+			        {% if collection %}
+			          /collections/{{ collection.handle }}
+			        {% endif %}
+			        /products/{{ product.handle }}
+			      {% elsif template == "page" %}
+			        /pages/{{ page.handle }}
+			      {% elsif template == "blog" %}
+			        /blogs/{{ blog.handle }}
+			      {% elsif template == "cart" %}
+			        /cart
+			      {% elsif template == "search" %}
+			        /search
+			      {% endif %}
+			    {% endcapture %}
+			    
+			    
+			    <div id="main-menu" class="menu">
+				    {% if linklists.main-menu.links.size > 0 %}				
+				      {% for link in linklists.main-menu.links %}
+					    <div id="item">
+					      <a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title }}</a>
+					    </div>
+					    {% endfor %}
+					  {% endif %}
+				    <div id="item">
+				      <span class="search link">
+				      {% if settings.locale == "enabled" %}
+				        {{ settings.locale_search }}
+				      {% else %}
+				        Search
+				      {% endif %}
+				      </span>
+				    </div>
+				  </div>			  		
+				</div>	
+				
+				<div id="logo" class="left">
+		      {% if settings.logo == "enabled" %}
+			      <a href="/" title="{{ shop.name }}"><img src="{{ "logo.png" | asset_url }}" alt="{{ shop.name | escape }}" /></a>
+			    {% else %}
+			      <h2 class="logo"><a href="/" title="{{ shop.name }}">{{ shop.name | escape }}</a></h2>
+			    {% endif %}
+			  </div>
+			  
+			  <div id="navigation-m" class="menu mobile left">
+			    {% capture active_url %}
+			      {% if template == "index" %}
+			        /
+			      {% elsif template == "collection" %}
+			        /collections/{{ collection.handle }}
+			      {% elsif template == "product" %}
+			        {% if collection %}
+			          /collections/{{ collection.handle }}
+			        {% endif %}
+			        /products/{{ product.handle }}
+			      {% elsif template == "page" %}
+			        /pages/{{ page.handle }}
+			      {% elsif template == "blog" %}
+			        /blogs/{{ blog.handle }}
+			      {% elsif template == "cart" %}
+			        /cart
+			      {% elsif template == "search" %}
+			        /search
+			      {% endif %}
+			    {% endcapture %}
+			    
+			    
+			    <div id="main-menu" class="menu">
+				    {% if linklists.main-menu.links.size > 0 %}				
+				      {% for link in linklists.main-menu.links %}
+					    <div id="item">
+					      <a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title }}</a>
+					    </div>
+					    {% endfor %}
+					  {% endif %}
+				    <div id="item">
+				      <span class="search link">
+				      {% if settings.locale == "enabled" %}
+				        {{ settings.locale_search }}
+				      {% else %}
+				        Search
+				      {% endif %}
+				      </span>
+				    </div>
+				  </div>			  		
+				</div>
+										
+			</div>	
+						
+			<div class="block line-2">
+		    <div id="shopping-menu" class="menu right">	
+		      {% if linklists.shopping-menu.links.size > 0 %}				
+			      {% for link in linklists.shopping-menu.links %}
+				    <div id="item" class="item"> 
+				      {% if forloop.last %}
+				        {% if cart.item_count == 0 %} class="last"
+				        {% endif %}
+				      {% endif %}>
+				      <a href="{{ link.url }}"{% if link.url == active_url %} class="active"{% endif %}>{{ link.title }}</a>
+				    </div>
+				    {% endfor %}
+				  {% endif %}		
+				  
+				  <div id="item" class="search-menu">
+			      <form action="/search" method="get">
+		          <input class="text" type="text" name="q" /> 
+		          {% if settings.locale == "enabled" %}
+		            <input class="" type="submit" value="{{ settings.locale_search }}"  />
+		          {% else %}
+		            <input class="button" type="submit" value="Search"  />
+		          {% endif %}
+	          </form>
+			    </div>
+					
+					
+			    <div id="item" class="cart last">					  					  		  				  
+			      <a href="/cart"{% if template == "cart" %} class="active highlight"{% else %} class="highlight"{% endif %}>
+			        {% if settings.locale == "enabled" %}
+			          <div class="quantity">{{ settings.locale_cart }}: {{ cart.item_count }} {{ cart.item_count | pluralize: settings.locale_item, settings.locale_items }}</div>				        
+			        {% else %}
+			          <div class="quantity">Cart: {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}</div>				        
+			        {% endif %}
+			        <div class="price">{{ cart.total_price | money }}</div>
+			      </a>			  
+		      </div>		      							  
+			  </div>
+			</div>		
+		</div>
+	</div>
+	
+	
+	{% case template %}
+	  {% when 'collection' or 'search' or 'blog' or 'article' %}
+	    <div id="{{ template }}" class="{{ template }} collection block">
+	  {% when 'page' or 'product' or 'cart' or 'not_found' %}
+	    <div id="{{ template }}" class="{{ template }} page block">
+	  {% else %}
+	    <div id="{{ template }}" class="{{ template }} block">
+	{% endcase %}			      	
+		
+	{{ content_for_layout }}		    
+	
+	</div>
+	
+	
+	<div id="eco" class="{{ template }} block">
+	  <div class="container">
+	    <div id="icons" class="right">	    
+	      <div id="item"><img src="{{ 'rss.png' | asset_url }}" alt="News" /></div>
+	      <div id="item"><img src="{{ 'facebook.png' | asset_url }}" alt="Friends" /></div>
+	      <div id="item"><img src="{{ 'twitter.png' | asset_url }}" alt="Buzz" /></div>	      
+	     </div>	   
+	  </div>  
+	</div>
+	
+	
+	
+	<div id="ecosystem" class="{{ template }} block hidden">
+    <div class="container">
+      <div id="ecosystem-top" class="triangle triangle-top"></div>
+      <div class="left col-1">
+        
+        <div id="blog">  
+          {% if settings.rss_feed != "disabled" %}     
+          
+            {% assign rss_url = settings.rss_feed_url %}
+            {% assign rss_limit = settings.rss_feed_limit %}
+            {% assign rss_title = settings.rss_title %}
+                       
+            {% unless rss_url %}
+              {% assign rss_url = "http://www.shopledge.com/feed/" %}
+            {% endunless %}
+            
+            {% unless rss_limit %}
+              {% assign rss_limit = 5 %}
+            {% endunless %}
+                         
+            <script type="text/javascript">            
+              var api = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q={{ rss_url }}&num={{ rss_limit }}";
+              jQuery.getJSON(api, function(data){				
+			          // Check for error
+			          if (data.responseStatus == 200) {	
+				          // Process the feeds
+				          var feed = data.responseData.feed;
+				          {% unless rss_title %}
+				            var msg = '<h1>' + feed.title + '</h1>';
+				          {% else %}
+				            var msg = '<h1>' + '{{ rss_title }}' + '</h1>';
+				          {% endunless %}
+				          
+				          msg += '<ul class="list">';		
+	                for (var i=0; i<feed.entries.length; i++) {			
+		                var entry = feed.entries[i];			
+		                var entryDate = new Date(entry.publishedDate);
+		                var pubDate = entryDate.toLocaleDateString();
+		
+		                msg += '<li class="title"><a href="'+ entry.link +'" title="View this feed at '+ feed.title +'">';				              
+			              msg += entry.title + '<span class="date"> # ' + pubDate + '</span></a></li>';
+			              //msg += '<div class="summary">'+ entry.content + '</div></li>';
+		              }			
+		              msg += '</ul>';
+		              
+			          } else {
+				          // Handle error if required
+				          if (options.showerror)
+					          if (options.errormsg != '') {
+						          var msg = options.errormsg;
+					          } else {
+						          var msg = data.responseDetails;
+					          };						      
+			          };
+			          jQuery("#feed").replaceWith(msg);
+		          });            
+            </script>
+            <div id="feed">
+              <img src="{{ 'loading.gif' | asset_url }}" alt="Loading feed ..." />
+            </div> 
+          {% endif %}       
+        </div>
+        
+        
+        <div id="follow">
+          <div class="col facebook">
+            <img src="{{ 'facebook.png' | asset_url }}" alt="Facebook" />
+            <div class="counter">
+              <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="true" width="150"></fb:like>
+            </div>
+          </div>
+          <div class="col twitter">            
+            <img src="{{ 'twitter.png' | asset_url }}" alt="Twitter" />
+            <div class="counter">
+              <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
+            </div> 
+          </div>  
+          <div class="col rss">          
+            <img src="{{ 'rss.png' | asset_url }}" alt="News" />
+            <div class="counter">
+              <a href="http://feeds.feedburner.com/Gadgetoman-News"><img src="http://feeds.feedburner.com/~fc/Gadgetoman-News?bg=ffa64b&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+            </div>              
+          </div>                
+        </div>
+        <div class="clear"></div>
+        
+        
+        <div id="twitter">
+          <div id="items">          
+            {% if settings.twitter_followers != "disabled" %}    
+            
+              {% assign twitter_id = settings.twitter_folowers_id %}
+              {% assign twitter_count = settings.twitter_followers_limit %}
+              
+              {% unless twitter_id %}
+                {% assign twitter_id = "shopify" %}
+              {% endunless %}
+              
+              {% unless twitter_count %}
+                {% assign twitter_count = 50 %}
+              {% endunless %}              
+                             
+              <script type="text/javascript">          
+                var counter = 0;
+                var BreakException= {};
+                
+                try {            
+                  var api = 'http://twitter.com/statuses/followers.json?screen_name={{ twitter_id }}&callback=?';
+                  jQuery.getJSON(api, function(data){	
+                    if (data) {
+                      data.forEach(function(datum) {
+                        if (datum.screen_name) {
+                          var str = '<div id="item">';
+                          str += '<a href="http://twitter.com/' + datum.screen_name + '" title="' + datum.screen_name + '">';
+                          str += '<img class="avatar" src="' + datum.profile_image_url + '" alt="' + datum.screen_name + '" /></a>';
+                          str += '</div>';
+                          jQuery('#ecosystem #twitter #items').append(str);                      
+                          counter++;
+                        }  
+                        if (counter === {{ twitter_count }}) throw BreakException; 
+                      });
+                    }
+                  });
+                } catch(e) {
+                    if (e!==BreakException) throw e;
+                }                                 
+              </script>
+            {% endif %}
+          </div>
+        </div> 
+        <div class="clear"></div>     
+      </div>
+      
+      <div id="shopping-info" class="text right col-2">     
+        {% if settings.snippets == "enabled" %}
+          {% include 'shopping_info' %} 
+          {% include 'subscribe' %} 
+        {% else %}
+          <h2>Shopping info</h2>
+          <p>Please describe in a few words how easy is to buy from your store.</p>
+          <p>If there are any additional important information about shopping, payments, shipping etc. please summarise here</p>
+          
+          <h3 id="subscribe">Subscribe</h3>
+          <div class="form">
+            <form action="http://www.feedburner.com/fb/a/emailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=Gadgetoman-News', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">	
+	          <input class="text subscribe" type="text" name="email" value="Enter your email address" autocomplete="off"/>
+            <input type="hidden" value="Gadgetoman-News" name="uri"/>
+            <input type="hidden" name="loc" value="en_US"/>
+            <input class="button" type="submit" value="Subscribe to newsletter" />
+	        </form>
+          </div>              
+        {% endif %}       
+      </div>    
+    </div>
+  </div> 
+  
+
+		
+	<div id="footer" class="block">
+	  <div class="container">
+	    <ul class="menu inline-list right">
+	      <li><a href="/">&copy; {{ "now" | date: "%Y" }} {{ shop.name }}</a></li>
+	      {% if linklists.footer.links.size > 0 %}
+			    {% for link in linklists.footer.links %}
+				    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+				  {% endfor %}
+				{% endif %}
+	    </ul>
+		</div>
+	</div>
+			
+</body>
+</html>

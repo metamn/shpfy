@@ -1,0 +1,148 @@
+body {
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+}
+body {
+    background: url("shopl_stripe.png") repeat scroll 0 0 #B2BAFF;
+    color: #2D3134;
+}
+a, a:visited, a:hover, *:link, *:visited {
+    background: none repeat scroll 0 0 transparent;
+    color: #2D3134;
+    text-decoration: none;
+}
+
+
+input, textarea, a.button {
+    -moz-box-shadow: 0 1px 0 0 #BAB291 inset;
+    background: -moz-linear-gradient(center top , #C0BBAD 5%, #B1AB9A 100%) repeat scroll 0 0 #C0BBAD;
+    border: 1px solid #C0BBAD;
+    color: #4C4C4C !important;
+    text-decoration: none !important;
+    text-shadow: 1px 1px 0 #DDDDDD;
+}
+input.button:hover, a.button:hover {
+    background: -moz-linear-gradient(center top , #B1AB9A 5%, #C0BBAD 100%) repeat scroll 0 0 #B1AB9A;
+}
+input.text, textarea {
+    background: none repeat scroll 0 0 #DEDBD3;
+}
+
+
+#header {
+    background: none repeat scroll 0 #524A6B;
+    border-bottom: 1px solid #524A6B;
+}
+#header a, #header a:visited, #footer a, #footer a:visited, .menu .search {
+    color: #b3a1eb;
+    text-decoration: none;
+}
+.menu #item.cart {
+    background: none repeat scroll 0 0 #EDD467 !important;
+    color: #2D3134;
+}
+.menu #item.cart .quantity {
+    border-bottom: 1px dotted #2D3134;
+}
+.menu #item.cart a {
+    color: #2D3134;
+}
+.triangle-left {
+    border-color: transparent #B8A26C transparent transparent;
+}
+
+
+.index #featured .triangle-bottom {
+    border-color: #BF8326 transparent transparent;
+}
+.index #featured .triangle-top {
+    border-color: transparent transparent #111;
+}
+.index #featured a:hover .triangle-bottom {
+    border-color: #F25E18 transparent transparent;
+}
+.index #featured a:hover .triangle-top {
+    border-color: transparent transparent #F25E18;
+}
+.index #featured .read-more a {
+    color: #4C4C4C;
+}
+
+
+#latest {
+    background: none repeat scroll 0 0 #E0DCBE;
+    color: #111;
+}
+#latest-top.triangle-bottom {
+    border-color: #B8A26C transparent transparent;
+}
+#latest .highlight, .collection .highlight {
+    background: none repeat scroll 0 0 #EDD467;
+}
+#latest #hot {
+    color: #111;
+    text-shadow: 1px 1px 2px none;
+}
+#item.product {
+    -moz-box-shadow: 0 3px 10px none;
+    background: none repeat scroll 0 0 #E5E3C7;
+}
+#item.hover {
+    -moz-box-shadow: 0 0.5em #E4DAD1;
+}
+#item.product .image {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+#more {
+    text-shadow: 1px 1px 2px none;
+}
+
+
+#sales {
+    background: none repeat scroll 0 0 #E0DCBE;
+}
+#sales .sale {
+    background: none repeat scroll 0 0 #852427;
+    color: #e6e2d9;
+}
+#sales .sale a, #sales .sale a:hover {
+    color: #e6e2d9;
+}
+#sales .meta .price {
+}
+#sales #item.hover .meta .price {
+    background: none repeat scroll 0 0 #852427;
+    color: #e6e2d9;
+}
+#sales #item.product #add-to-cart .sale {
+    background: none repeat scroll 0 0 transparent;
+    color: #852427;
+}
+
+
+#eco.product {
+    background: none repeat scroll 0 0 #c4bbab;
+}
+
+#ecosystem {
+    background: none repeat scroll 0 0 #E0DCBE;
+    color: #111;
+}
+#ecosystem .form input.text {
+}
+#ecosystem-top.triangle-top {
+    border-color: transparent transparent #CAC1B2;
+}
+#ecosystem ul.list li {
+    border-bottom: 1px solid #bcb19e;
+}
+#ecosystem .date {
+    color: #c4bbab;
+}
+
+
+#footer {
+    background: none repeat scroll 0 0 #E0DCBE;
+    border-top: 1px solid none;
+}
+
+

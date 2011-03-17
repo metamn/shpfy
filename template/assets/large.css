@@ -1,0 +1,12 @@
+#item.product, .subscribe-twitter {
+  width: 20%;
+  margin-right: 5%;
+  float: left;
+}
+
+.collection #item.product {
+  width: 28%;
+  margin: 0 5% 1.25em 0;
+  float: left;
+  margin-bottom: 3.75em;
+}
