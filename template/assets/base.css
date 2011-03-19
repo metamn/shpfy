@@ -369,21 +369,39 @@ blockquote {
 * **.triangle** - ads an arrow like in the [Gadgetoman theme](http://gadgetoman.myshopify.com )
 * **.mobile** - hides an element in desktop mode (it's like .hidden)
 * **#grid** - inserts a visual grid with JQuery
+* **.col** - to float left grid columns
 
   
 */
 
-#grid {
+/* The visual grid */
+.grid {
   position: absolute;
   top: 0;
   opacity: .1;
   display: block;
   z-index: -1;
 }
-#grid .col {
+#gridh .col {
   border-bottom: 1px solid;
   width: 118em;
-  height: 19px;
+  height: 19px; /* 1.25em = 20px - 1px border */
+}
+#gridv .col {
+  border-right: 1px solid;
+  width: 10%; 
+  height: 250em;
+  float: left;
+}
+
+.col {
+  float: left;
+  overflow: hidden;
+  width: 100%;
+}
+.col img {
+  width: 100%;
+  height: auto;
 }
 
 .triangle {
@@ -403,7 +421,7 @@ blockquote {
 .clear {
   clear: both;
 }
-.block {
+.block, #section, #article {
   width: 100%;
   float: left;
 }

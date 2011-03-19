@@ -18,7 +18,7 @@
 
 */
 .container {
-  width: 80%;
+  width: 80%; 
   max-width: 80em;  /* 80x16px=1280px */
   margin: 0 auto;
 }
@@ -47,7 +47,65 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
 /* 
 ## The Horizontal Grid 
 
+* we have two types of grid:
+
+  * an automatic, given by `em` which resizes itself across all responsive styelsheets
+  * a forced, given by `%` which must be handled responsively
+  * if on a single page both grids are displayed they might not be in harmony (ie. Product page with related products at bottom, like in Gadgetoman)
+
+### The automatic grid
+
+* used in images list (displaying collections)
+* there is no need to float left the images
+* in Shopify's case the grid is given by the image sizes:
+
+  * **small** - 100x100px = 6.75em
+  * **medium** - 240x240px = 15em
+  * **large** - 480x480px = 30em
+  * **grande** - 600x600px = 37.5em
+  * **original** - 1024x1024px = 64em
+  
+* if **medium** sized thumbs are shown a column is 15em + margins, in our case **20em**
+
 */
+
+#article.thumb {
+  width: 20em; /* medium sized image is 15x15em */
+  height: 30em; 
+}
+#article.thumb #figure {
+  height: 15em;
+}
+
+/*
+### The forced grid
+
+* when we are forcing to align elements on a page
+* for example, on the Product page we want two columns, the first with product info the second with operations on Product 
+* in this case we are not thinking in grid columns (ie a column with 20em width) but in percentages
+
+  * our available screen is always 100%;
+  * in lower resolutions if we want to align the right col after the left column we must use the responsive stylesheets
+  * columns must be always floated left
+  
+*/
+
+
+.product .col-1 {
+  width: 50%; /* grande image is 37.5em */
+}
+.product .col-2 {
+  width: 40%;
+  margin-left: 10%;
+}
+.product #thumbs li {
+  width: 10%; /* small image is 6.75em */
+}
+.product #thumbs li img {
+  width: auto;
+  height: auto;
+}
+
 
 
 
@@ -69,6 +127,7 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
   * in any case the page template name is added as a class to #content
   
 * inside #content everything is wrapped into **#section** or **#article**
+* a #section or #article is marked up as **.block** in `base.css`
 
       #content.index
         #section.about
@@ -115,13 +174,7 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
 
 */
 
-#article.thumb {
-  width: 20em; /* medium sized image is 16x16em */
-  height: 40em; 
-}
-#article.thumb #figure {
-  height: 20em;
-}
+
 
 
 
