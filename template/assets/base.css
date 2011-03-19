@@ -173,6 +173,8 @@ td {
   * a link can be styled to look like a button with the **.button** class 
   * radio and checkbox values must be embedded into an `<ul>` list
   * form buttons must be embedded into an inline `<ul>` list 
+  
+* form elements are aligned to the horizontal grid
    
 */
 
@@ -186,7 +188,7 @@ input, textarea, select, button, .button {
   -moz-border-radius: 6px 6px 6px 6px;
   border-radius: 6px;
   cursor: pointer;
-  padding: 6px 24px; 
+  padding: .55em;
 }
 input, textarea {  
   -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
@@ -213,6 +215,7 @@ input.button:hover, a.button:hover {
 input.text, input.password, textarea {
   background: #fff;
 }
+
 
 
 fieldset {
@@ -315,11 +318,11 @@ blockquote {
 
 * Displaying thumbs is easy with the following structure:
   
-      .item         # aligning to grid
-        .inner      # padding, positioning, backgrounding, etc
-          .image    # cropping, sizing etc
+      .thumb              # aligning to grid
+        #details          # padding, positioning, backgrounding, etc
+          #figure         # cropping, sizing etc
             img
-          .text     # not necessary but looks structured
+          #figcaption     # not necessary but looks structured
             blabla
           
 * Guidelines for using thumbs / image grids on responsive layout
@@ -330,24 +333,24 @@ blockquote {
   * Text / caption under image is breaking the layout / the height. Try putting the caption on top!   
      
 */
-.item {
+.thumb {
   overflow: hidden;  
   float: left;
   width: 0; /* just to make sure these will be overwritten in the layout.css*/
   height: 0;
 }
-.item .inner {
+.thumb #details {
   text-align: center;
   padding: 1.25em;
 }
-.item .image {  
+.thumb #figure {  
   overflow: hidden;  
-  height: 0;
+  height: 0; /* just to make sure these will be overwritten in the layout.css*/
 }
-.item img, .item object {
+.thumb img, .thumb object {
   max-width: 100%;
 }
-.item .text {
+.thumb #figcaption {
   padding: 1.25em 0;
 }
 

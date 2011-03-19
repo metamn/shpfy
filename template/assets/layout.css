@@ -115,6 +115,15 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
 
 */
 
+#article.thumb {
+  width: 20em; /* medium sized image is 16x16em */
+  height: 40em; 
+}
+#article.thumb #figure {
+  height: 20em;
+}
+
+
 
 /*
 ## Header
