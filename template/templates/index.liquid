@@ -1,21 +1,23 @@
 <div class="container">
 
   <div id="article">
-    {% assign article = pages.frontpage %}					    					    
-    <h1>
-      <a href="{{ article.url }}" title="{{ article.title }}"> {{ article.title | escape }} </a>
-    </h1>
-    <div id="description" class="text">                
-       {{ article.excerpt }}
-    </div>
-    <div id="read-more">
-      <a href="{{ article.url }}" title="{{ article.title }}">
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_read_more }} &rarr;
-        {% else %}
-          Read more &rarr;
-        {% endif %}
-      </a>
+    <div id="details">
+      {% assign article = pages.frontpage %}					    					    
+      <h1>
+        <a href="{{ article.url }}" title="{{ article.title }}"> {{ article.title | escape }} </a>
+      </h1>
+      <div id="summary" class="text">                
+         {{ article.excerpt }}
+      </div>
+      <div id="read-more">
+        <a href="{{ article.url }}" title="{{ article.title }}">
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_read_more }} &rarr;
+          {% else %}
+            Read more &rarr;
+          {% endif %}
+        </a>
+      </div>
     </div>
   </div>
   
@@ -37,10 +39,10 @@
   <div id="section" class="featured">
 	  <h1>{{ collections.frontpage.title }}</h1>
 	  {% if collections.frontpage.products.size > 0 %}
-	    <div id="items">
+	    <div id="articles">
 	      {% for product in collections.frontpage.products limit : settings.frontpage_featured_count %}
-	        <div id="item">
-	          <div id="inner">
+	        <div id="article">
+	          <div id="details">
 	            <div id="figure">
 	              <!-- <img src="{{ image | product.featured_image : 'medium' }}" alt="{{ product.title | escape }}" /></a> -->
                 {% for image in product.images limit: 1 %}
@@ -89,10 +91,10 @@
     {% endif %}
 	  <h1>{{ title }}</h1>
 	  {% if collections.all.products.size > 0 %}
-	    <div id="items">
+	    <div id="articles">
 	      {% for product in collections.all.products limit : settings.frontpage_all_count %}
-	        <div id="item">
-	          <div id="inner">
+	        <div id="article">
+	          <div id="details">
 	            <div id="figure">
 	              <!-- <img src="{{ image | product.featured_image : 'medium' }}" alt="{{ product.title | escape }}" /></a> -->
                 {% for image in product.images limit: 1 %}
@@ -114,7 +116,7 @@
                   <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
                     {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
 	              </div>
-	              <div id="description" class="text">                
+	              <div id="summary" class="text">                
                   {{ product.description | truncatewords: 40 }}
                 </div>
 	            </div>
@@ -135,10 +137,10 @@
   <div id="section" class="latest">
 	  <h1>{{ collections.sale.title }}</h1>
 	  {% if collections.sale.products.size > 0 %}
-	    <div id="items">
+	    <div id="articles">
 	      {% for product in collections.sale.products limit : settings.frontpage_sales_count %}
-	        <div id="item">
-	          <div id="inner">
+	        <div id="article">
+	          <div id="details">
 	            <div id="figure">
 	              <!-- <img src="{{ image | product.featured_image : 'medium' }}" alt="{{ product.title | escape }}" /></a> -->
                 {% for image in product.images limit: 1 %}
@@ -160,7 +162,7 @@
                   <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
                     {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
 	              </div>
-	              <div id="description" class="text">                
+	              <div id="summary" class="text">                
                   {{ product.description | truncatewords: 40 }}
                 </div>
 	            </div>
@@ -177,7 +179,7 @@
 	</div> <!-- section of products -->
 	{% endif %}
 	
-	<div id="nav">
+	<div id="section" class="navigation">
 	  {% if collections.size > 0 %}
       <h3>
       {% if settings.locale == "enabled" %}

@@ -37,6 +37,11 @@ body {
   line-height: 1.25; 
 }
 
+h1, h2, h3 { margin-top:0; margin-bottom:0; }
+h1 { font-size:1.5em; padding:1.45833em 0; }
+h2 { font-size:1.33333em; padding:1.25em 0; }
+h3 { font-size:1.16667em; padding:1.51785em 0; }
+
 
 
 
@@ -114,18 +119,20 @@ body {
 
       #section.<collectionname>
         <h1>Collection title</h1>
-          #items
-          #item
-          #item ...
+          #articles
+            #article
+            #article 
+            ...
         
 * each item is wrapped into the following structure:
 
-      #inner
-        #figure
-        #figcaption
-          #title
-          #price
-          #description
+      #article
+        #details
+          #figure
+          #figcaption
+            #title
+            #price
+            #summary
         
 * **BUG** The featured image is cannot be displayed by Vision ... 
 * if the collection is empty a **.notice** is left how to create the collection
@@ -135,15 +142,16 @@ body {
 * displays the Frontpage article
 
       #article
-        <h1>Title
-        #excerpt      **BUG** in Vision
-        #read-more
+        #details
+          <h1>Title
+          #summary      **BUG** in Vision for page excerpts
+          #read-more
 
 * Displays the shop data 
 
 * displays the list of all collections, product types, vendors and tags 
 
-      #nav
+      #section.navigation
         <h3>Title
         <ul>
         ...
@@ -154,6 +162,15 @@ body {
 * a **BUG** in Vision doesn't displays types, vendors, and tags ....
 
 */
+
+
+
+
+/*
+## Collections page
+
+*/
+
 
 
 
