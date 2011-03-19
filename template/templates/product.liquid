@@ -1,320 +1,145 @@
-<div id="info" class="block">
-  <div class="container">
-    <div id="images" class="left col-1">
+<div class="container">
+
+  <div id="article">
+    <div id="details">
       <h1>
         <a class="title" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-          {{ product.title | escape }} by {{ product.vendor }} <span>{{ product.price | money }}</span>
-        </a>
+          {{ product.title | escape }} by {{ product.vendor }} <span>{{ product.price | money }}</span></a>
       </h1>
       
-      <div id="product-image">
+      <div id="figure">
 		    <img src="{{ product.featured_image | product_img_url: 'original' }}" alt="{{ product.title | escape }}" />
 	    </div> 
 	    
       {% if product.images.size > 1%}
-      <div id="thumbs" class="mobile block">	          	               
+      <div id="thumbs">	          	               
         {% for image in product.images %}
           <img class="link" src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" rev="{{ image | product_img_url: 'original' }}" />
         {% endfor %}	                
       </div>
       {% endif %} 
 	    
-	    <div id="description" class="block">
-	      <div class="box text">
-          {{ product.description }}
-        </div>
+	    <div id="summary" class="block">
+	      {{ product.description }}
       </div> 
-      <div class="clear"></div>
     </div>
   
-    <div id="sidebar" class="right col-2">
-      <div class="box">
-        <div id="product-select" class="block">
-		      <form action="/cart/add" method="post" name="cartadd">
-            {% if product.available %}
-        			<div id="product-variants">	
-                <select id="variant-select" name='id'>
-                  {% for variant in product.variants %}
-                    {% if variant.available %}
-                      <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+    <div id="aside">
+      <div id="shopping">
+	      <form action="/cart/add" method="post" name="cartadd">
+          {% if product.available %}
+      			<div id="variations">	
+              <select id="variant-select" name='id'>
+                {% for variant in product.variants %}
+                  {% if variant.available %}
+                    <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                  {% else %}
+                    <option value="{{ variant.id }}" disabled="disabled">{{ variant.title }} - 
+                    {% if settings.locale == "enabled" %}
+                      {{ settings.locale_soldout }}
                     {% else %}
-                      <option value="{{ variant.id }}" disabled="disabled">{{ variant.title }} - 
-                      {% if settings.locale == "enabled" %}
-                        {{ settings.locale_soldout }}
-                      {% else %}
-                        SOLD OUT
-                      {% endif %}
-                      </option>
-            				{% endif %}
-                  {% endfor %}
-                </select>
-        			</div>      			
-
-        			<span id="price-field"></span>
-              {% if settings.locale == "enabled" %}
-                <input class="button" type="submit" name="add" value="{{ settings.locale_cart_add }}" id="add-cart">
-              {% else %}
-                <input class="button" type="submit" name="add" value="Add to cart" id="add-cart">
-              {% endif %}
-        			
-			      {% else %}
-			        <h3>
-			        {% if settings.locale == "enabled" %}
-                {{ settings.locale_unavailable }}
-              {% else %}
-                TEMPORARILY UNAVAILABLE
-              {% endif %}
-			        </h3>
-			      {% endif %}
-		      </form>
-	      </div>
-	      
-	      {% if product.images.size > 1%}
-	      <div id="thumbs" class="desktop block">	          	               
-          {% for image in product.images %}
-            <img class="link" src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" rev="{{ image | product_img_url: 'original' }}" />
-          {% endfor %}	                
-        </div>
-        {% endif %} 
-        
-        <div id="meta" class="block">
-          <div class="accordion">
-            {% if product.collections.size > 0 %}
-              <h4>
-              {% if settings.locale == "enabled" %}
-                {{ settings.locale_listedin }}
-              {% else %}
-                Listed in
-              {% endif %}
-              </h4>
-              <div class="pane">        
-                <ul class="list">
-              	  {% for i in product.collections %}      	    
-              		  <li {% if collection.url == i.url %} class="active"{% endif %}>
-              		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title }}</a>
-              		  </li>
-              		{% endfor %}
-              		  <li>
-              		  {% if settings.locale == "enabled" %}
-                      {{ settings.locale_taggedwith }}
-                    {% else %}
-                      Tagged with
+                      SOLD OUT
                     {% endif %}
-                    <em>{{ product.tags | join: ', ' }}</em>
-                    </li>
-              	</ul>
-              </div> 
-            {% endif %} 
-              
-            <h4>
+                    </option>
+          				{% endif %}
+                {% endfor %}
+              </select>
+      			</div>      			
+
+      			<span id="price-field"></span>
             {% if settings.locale == "enabled" %}
-              {{ settings.locale_browsemore }}
+              <input class="button" type="submit" name="add" value="{{ settings.locale_cart_add }}" id="add-cart">
             {% else %}
-              Browse more
-            {% endif %}            
-            </h4>
-            <div class="pane text">
-              {% if settings.locale == "enabled" %}
-                {{ settings.locale_seemore }}
-              {% else %}
-                See more products from 
-              {% endif %} 
-              {{ product.vendor | link_to_vendor }} 
+              <input class="button" type="submit" name="add" value="Add to cart" id="add-cart">
+            {% endif %}
+      			
+		      {% else %}
+		        <h3>
+		        {% if settings.locale == "enabled" %}
+              {{ settings.locale_unavailable }}
+            {% else %}
+              TEMPORARILY UNAVAILABLE
+            {% endif %}
+		        </h3>
+		      {% endif %}
+	      </form>
+      </div> <!-- Shopping -->
+    </div> <! -- aside -->  
+  </div>  <!-- article -- >
+	
+	<div id="section" class="navigation">	  
+    {% if product.collections.size > 0 %}
+      <h3>
+      {% if settings.locale == "enabled" %}
+        {{ settings.locale_listedin }}
+      {% else %}
+        Listed in
+      {% endif %}
+      </h3>
+      <ul>
+    	  {% for i in product.collections %}      	    
+    		  <li {% if collection.url == i.url %} class="active"{% endif %}>
+    		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title }}</a>
+    		  </li>
+    		{% endfor %}
+    		  <li>
+      		  {% if settings.locale == "enabled" %}
+              {{ settings.locale_taggedwith }}
+            {% else %}
+              Tagged with
+            {% endif %}
+            <em>{{ product.tags | join: ', ' }}</em>
+          </li>
+      	</ul>
+      </div> 
+    {% endif %} 
               
-              {% if settings.locale == "enabled" %}
-                {{ settings.locale_and }}
-              {% else %}
-                and 
-              {% endif %}
-              
-              {{ product.type | link_to_type }}
-            </div>
+    <h3>
+    {% if settings.locale == "enabled" %}
+      {{ settings.locale_browsemore }}
+    {% else %}
+      Browse more
+    {% endif %}            
+    </h3>
+    <ul>
+      <li>
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_seemore }}
+        {% else %}
+          See more products from 
+        {% endif %} 
+        {{ product.vendor | link_to_vendor }} 
+        
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_and }}
+        {% else %}
+          and 
+        {% endif %}      
+        {{ product.type | link_to_type }}
+      </li>
+    </ul>
             
                        
-            <h4 class="first">
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_share }}
-            {% else %}
-              Share 
-            {% endif %}            
-            </h4>
-            <div class="pane">
-              <div id="item" class="left twitter">
-                <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
-              </div>
-              <div id="item" class="left facebook">
-                <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="true" width="150"></fb:like>              
-              </div>
-            </div>                
-            
-            
-          </div>
-        </div> 
-      </div>
-      <div class="clear"></div>                
-    </div>
-    <div class="clear"></div>
-    
-  </div>  
-</div>
+    <h3>
+    {% if settings.locale == "enabled" %}
+      {{ settings.locale_share }}
+    {% else %}
+      Share 
+    {% endif %}            
+    </h3>
+    <ul>
+      <li class="twitter">
+        <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
+      </li>
+      <li class="facebook">
+        <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="true" width="150"></fb:like>              
+      </li>
+    </li>    
+	</div> <!-- navigation -->      
+	
+</div> <!-- container -->
 
   
-{% if settings.frontpage_all != "disabled" %}
-<div id="latest" class="block">
-  <div class="container">
-    <div id="latest-top" class="triangle triangle-bottom"></div>
-    {% if collections.all.products.size > 0 %}
-      <div class="block">
-        <div id="hot" class="left">
-          {% if settings.locale == "enabled" %}
-            <h4><span class="highlight">{{ settings.locale_hot }}</span> {{ settings.locale_hot_instore }}</h4>
-          {% else %}
-            <h4><span class="highlight">Hot!</span> in the store now.</h4>          
-          {% endif %}       
-        </div>
-        
-        <div id="call-for-subscribe" class="right">
-          <p class="note">
-            <a href="#subscribe">
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_subscribe_email }}
-            {% else %}
-              To stay updated please subscribe to our newsletter. It's free.
-            {% endif %}         
-            </a>
-          </p>
-        </div>
-      </div>
-      <div class="clear"></div>
-      
-      {% for product in collections.all.products limit:8 %}
-        <div id="item" class="product">	    
-          <div class="title block">
-            <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-              {{ product.title }}
-              <div class="meta small">
-                <span class="price rounded">{{ product.price | money }}</span>
-              </div>              
-            </a>
-          </div>          
-          <div class="image block">	      
-            {% for image in product.images limit: 1 %}
-              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">	                
-                <img class="desktop" src="{{ image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />          
-                <img class="mobile" src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
-              </a>
-            {% endfor %}
-          </div>
-          <div id="add-to-cart" class="meta small">
-            <a class="highlight rounded" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_cart_add }}
-            {% else %}
-              Add to cart
-            {% endif %}
-            </a>
-          </div>
-	      </div>
-      {% endfor %}   
-      
-      <div id="more" class="right alignright">
-        <a href="/collections/all">
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_more_products }} &rarr;
-        {% else %}
-          See all new products &rarr;
-        {% endif %}
-        </a>
-      </div>
-           
-    {% else %}
-      <div class="missing">
-        <p class="note">
-        To see here the list of the latest products please <a class="underline" href="/admin/custom_collections/new">create a new collection</a>
-        and name it's handle to <strong>all</strong> then add products to it.
-        </p>
-      </div>
-    {% endif %} 
-  </div>
-</div> 
-{% endif %}
-
-
-{% if settings.frontpage_sales != "disabled" %} 
-<div id="sales" class="block">
-  <div class="container">
-    {% if collections.sale.products.size > 0 %} 
-      <div id="item" class="product clean">
-        <div class="sale">
-          {% if settings.locale == "enabled" %}
-            <h4>{{ settings.locale_sales }}
-          {% else %}
-            <h4>Sales!</h4>          
-          {% endif %} 
-        </div>
-        
-        <p class="note">
-          <a href="#ecosystem">
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_subscribe_social }}
-          {% else %}
-            We are running periodicaly special sales on Twitter and Facebook. Follow us to get more! 
-          {% endif %} 
-        </a></p> 
-      </div>      
-      
-      {% for product in collections.sale.products limit: 3 %}
-        <div id="item" class="product">	    
-          <div class="title block">
-            <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-              {{ product.title }}
-              <div class="meta small">
-                <span class="price rounded">{{ product.price | money }}</span>
-              </div>              
-            </a>
-          </div>          
-          <div class="image block">	      
-            {% for image in product.images limit: 1 %}
-              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">	                
-                <img class="desktop" src="{{ image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />          
-                <img class="mobile" src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
-              </a>
-            {% endfor %}
-          </div>
-          <div id="add-to-cart" class="meta small">
-            <a class="highlight rounded" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_cart_add }}
-            {% else %}
-              Add to cart
-            {% endif %}
-            </a>
-          </div>
-	      </div>
-      {% endfor %}
-      
-      <div id="more" class="right alignright">
-        <a href="/collections/sale">
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_more_sales }} &rarr;
-        {% else %}
-          See all products on sale &rarr;
-        {% endif %}
-        </a>
-      </div>
-     
-    {% else %}
-      <div class="missing">
-        <p class="note">
-          To see here a list of products on sale please <a class="underline" href="/admin/custom_collections/new">create a new collection</a>
-          and name it's handle to <strong>sale</strong> then add products to it.
-        </p>
-      </div>
-    {% endif %}    
-  </div>
-</div>   
-{% endif %}
-
 
 
 
