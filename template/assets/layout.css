@@ -49,13 +49,13 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
 
 * we have two types of grid:
 
-  * an automatic, given by `em` which resizes itself across all responsive styelsheets
-  * a forced, given by `%` which must be handled responsively
+  * an automatic, given by **em** which resizes itself across all responsive styelsheets
+  * a forced, given by **%** which must be handled responsively
   * if on a single page both grids are displayed they might not be in harmony (ie. Product page with related products at bottom, like in Gadgetoman)
 
 ### The automatic grid
 
-* used in images list (displaying collections)
+* used in listing images (displaying collections)
 * there is no need to float left the images
 * in Shopify's case the grid is given by the image sizes:
 
@@ -82,11 +82,13 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
 
 * when we are forcing to align elements on a page
 * for example, on the Product page we want two columns, the first with product info the second with operations on Product 
-* in this case we are not thinking in grid columns (ie a column with 20em width) but in percentages
+* in this case we are **not** thinking in grid columns (ie a column with 20em width) but in percentages
 
   * our available screen is always 100%;
   * in lower resolutions if we want to align the right col after the left column we must use the responsive stylesheets
   * columns must be always floated left
+  
+* In forced grid images must be adjusted with `max-width`
   
 */
 
@@ -101,10 +103,7 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
 .product #thumbs li {
   width: 10%; /* small image is 6.75em */
 }
-.product #thumbs li img {
-  width: auto;
-  height: auto;
-}
+
 
 
 

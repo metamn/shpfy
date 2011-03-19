@@ -9,7 +9,7 @@ jQuery(document).ready(function(){
   }
   
   var vertical = ""
-  for (i=0; i<1200; i++) {
+  for (i=0; i<500; i++) {
     vertical += '<div class="col">&nbsp;</div>';
   }
   

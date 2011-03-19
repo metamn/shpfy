@@ -183,6 +183,7 @@ input, textarea {
 }
 select {
   width: 99%;
+  height: 2.5em;
 }
 input, textarea, select, button, .button {
   -moz-border-radius: 6px 6px 6px 6px;
@@ -400,8 +401,7 @@ blockquote {
   width: 100%;
 }
 .col img {
-  width: 100%;
-  height: auto;
+  max-width: 100%;
 }
 
 .triangle {

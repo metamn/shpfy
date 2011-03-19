@@ -27,6 +27,53 @@
 
 <h2>The Horizontal Grid</h2>
 
+<ul>
+<li><p>we have two types of grid:</p>
+
+<ul>
+<li>an automatic, given by <strong>em</strong> which resizes itself across all responsive styelsheets</li>
+<li>a forced, given by <strong>%</strong> which must be handled responsively</li>
+<li>if on a single page both grids are displayed they might not be in harmony (ie. Product page with related products at bottom, like in Gadgetoman)</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>The automatic grid</h3>
+
+<ul>
+<li>used in listing images (displaying collections)</li>
+<li>there is no need to float left the images</li>
+<li><p>in Shopify's case the grid is given by the image sizes:</p>
+
+<ul>
+<li><strong>small</strong> - 100x100px = 6.75em</li>
+<li><strong>medium</strong> - 240x240px = 15em</li>
+<li><strong>large</strong> - 480x480px = 30em</li>
+<li><strong>grande</strong> - 600x600px = 37.5em</li>
+<li><strong>original</strong> - 1024x1024px = 64em</li>
+</ul>
+</li>
+<li><p>if <strong>medium</strong> sized thumbs are shown a column is 15em + margins, in our case <strong>20em</strong></p></li>
+</ul>
+
+
+<h3>The forced grid</h3>
+
+<ul>
+<li>when we are forcing to align elements on a page</li>
+<li>for example, on the Product page we want two columns, the first with product info the second with operations on Product</li>
+<li><p>in this case we are <strong>not</strong> thinking in grid columns (ie a column with 20em width) but in percentages</p>
+
+<ul>
+<li>our available screen is always 100%;</li>
+<li>in lower resolutions if we want to align the right col after the left column we must use the responsive stylesheets</li>
+<li>columns must be always floated left</li>
+</ul>
+</li>
+</ul>
+
+
 <h2>Page Structure / Element naming conventions</h2>
 
 <ul>
@@ -45,7 +92,8 @@
 <li>in any case the page template name is added as a class to #content</li>
 </ul>
 </li>
-<li><p>inside #content everything is wrapped into <strong>#section</strong> or <strong>#article</strong></p>
+<li><p>inside #content everything is wrapped into <strong>#section</strong> or <strong>#article</strong></p></li>
+<li><p>a #section or #article is marked up as <strong>.block</strong> in <code>base.css</code></p>
 
 <pre><code>#content.index
   #section.about
