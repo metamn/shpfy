@@ -13,8 +13,8 @@
 <h2>The Layout</h2>
 
 <ul>
-<li>centered, width 80%, 10% margins left and right</li>
-<li>this layout is not changed on large, and tablet screens, only on mobiles</li>
+<li>centered, width <strong>80%</strong>, <strong>10%</strong> margins left and right</li>
+<li>this layout does not change on large, and tablet screens, only on mobiles</li>
 </ul>
 
 
@@ -22,18 +22,82 @@
 
 <ul>
 <li>the height of the grid is set to <strong>1.25em</strong></li>
-<li>typography is not set yet</li>
 </ul>
 
 
 <h2>The Horizontal Grid</h2>
 
-<h2>Navigation</h2>
+<h2>Page Structure / Element naming conventions</h2>
 
 <ul>
-<li>Each navigational element is wrapped into a <strong>#nav</strong> div and uses <strong>ul.inline-list</strong> for its elements</li>
+<li><p>each page has the following structure:</p>
+
+<pre><code>#header
+#content
+#footer
+</code></pre></li>
+<li><p><strong>#content</strong> is marked with one of these page types:</p>
+
+<ul>
+<li><strong>.collection</strong> - for collections page, search page, blog page</li>
+<li><strong>.page</strong> - for product page, article page, not_found, and page</li>
+<li><strong>.index</strong> - for the start page</li>
+<li>in any case the page template name is added as a class to #content</li>
+</ul>
+</li>
+<li><p>inside #content everything is wrapped into <strong>#section</strong> or <strong>#article</strong></p>
+
+<pre><code>#content.index
+  #section.about
+  #section.latest
+  #section.featured
+  ...
+  #section.navigation
+
+#content.product
+  #article
+  #section.navigation
+</code></pre></li>
+<li><p>naming elements is done by following the <a href="http://www.w3schools.com/html5/html5_new_elements.asp">HTML5 specification</a>:</p>
+
+<ul>
+<li><strong>#nav</strong> is used to identify all navigation elements (menus)</li>
+<li><strong>#article</strong> identifies every product or blog post</li>
+<li><p><strong>#article.thumb </strong> displays more then one articles in a collection, and has the following structure:</p>
+
+<pre><code>#article.thumb
+  #details
+  #figure
+  #figcaption
+    #title
+    #price
+    #summary
+</code></pre></li>
+<li><p>in general <strong>#details</strong>, <strong>#figure</strong>, <strong>#figcaption</strong> and <strong>#summary</strong> is used whenever possible</p></li>
+</ul>
+</li>
 </ul>
 
+
+<h3>Other conventions</h3>
+
+<ul>
+<li><p><strong>accordion</strong> like navigation is marked up like:</p>
+
+<pre><code>.navigation
+  &lt;h3&gt;Title
+  &lt;ul&gt; ...
+
+  &lt;h3&gt;Title
+  &lt;ul&gt; ...
+
+  ...
+</code></pre></li>
+<li><p>every navigational element is wrapped into an <code>&lt;ul&gt;</code></p></li>
+</ul>
+
+
+<h2>Header</h2>
 
 <h3>Main Menu</h3>
 
@@ -52,7 +116,7 @@
 </ul>
 
 
-<h2>Logo</h2>
+<h3>Logo</h3>
 
 <ul>
 <li>The logo is wrapped into a <strong>h2</strong></li>
@@ -69,45 +133,49 @@
 
 <pre><code>#section.&lt;collectionname&gt;
   &lt;h1&gt;Collection title&lt;/h1&gt;
-    #items
-    #item
-    #item ...
+    #articles
+      #article
+      #article 
+      ...
 </code></pre></li>
 <li><p>each item is wrapped into the following structure:</p>
 
-<pre><code>#inner
-  #figure
-  #figcaption
-    #title
-    #price
-    #description
+<pre><code>#article.thumb
+  #details
+    #figure
+    #figcaption
+      #title
+      #price
+      #summary
 </code></pre></li>
-<li><p><strong>BUG</strong> The featured image is cannot be displayed by Vision ...</p></li>
-<li>if the collection is empty a <strong>.notice</strong> is left how to create the collection</li>
+<li><p>if the collection is empty a <strong>.notice</strong> is left how to create the collection</p></li>
 </ul>
 
 
 <h3>Information and Navigation</h3>
 
 <ul>
-<li><p>displays the Frontpage article</p>
+<li>displays the Frontpage article</li>
+<li>Displays the shop data</li>
+<li>displays the list of all collections, product types, vendors and tags</li>
+</ul>
+
+
+<h2>Collections page</h2>
+
+<h2>Product page</h2>
+
+<ul>
+<li><p>the structure of a product is like:</p>
 
 <pre><code>#article
-  &lt;h1&gt;Title
-  #excerpt      **BUG** in Vision
-  #read-more
-</code></pre></li>
-<li><p>Displays the shop data</p></li>
-<li><p>displays the list of all collections, product types, vendors and tags</p></li>
-<li><p>a <strong>BUG</strong> in Vision doesn't displays types, vendors, and tags ....</p>
-
-<pre><code>#nav
-  &lt;h3&gt;Title
-  &lt;ul&gt;
-  ...
-
-  &lt;h3&gt;Title
-  ul.inline-list 
+  #details
+    &lt;h1&gt;Title
+    #figure
+    #thumbs
+    #summary
+  #aside
+    #shopping
 </code></pre></li>
 </ul>
 

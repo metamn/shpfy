@@ -28,7 +28,6 @@
 ## Vertical Rhythm 
 
 * the height of the grid is set to **1.25em**
-* typography is not set yet
 
 */
 
@@ -52,10 +51,73 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
 
 
 
-/*
-## Navigation
 
-* Each navigational element is wrapped into a **#nav** div and uses **ul.inline-list** for its elements
+/* 
+## Page Structure / Element naming conventions
+
+* each page has the following structure:
+
+      #header
+      #content
+      #footer
+
+* **#content** is marked with one of these page types:
+
+  * **.collection** - for collections page, search page, blog page
+  * **.page** - for product page, article page, not_found, and page
+  * **.index** - for the start page
+  * in any case the page template name is added as a class to #content
+  
+* inside #content everything is wrapped into **#section** or **#article**
+
+      #content.index
+        #section.about
+        #section.latest
+        #section.featured
+        ...
+        #section.navigation
+
+      #content.product
+        #article
+        #section.navigation
+        
+* naming elements is done by following the [HTML5 specification](http://www.w3schools.com/html5/html5_new_elements.asp ):
+
+  * **#nav** is used to identify all navigation elements (menus)
+  * **#article** identifies every product or blog post
+  * **#article.thumb ** displays more then one articles in a collection, and has the following structure:
+  
+        #article.thumb
+          #details
+          #figure
+          #figcaption
+            #title
+            #price
+            #summary
+            
+  * in general **#details**, **#figure**, **#figcaption** and **#summary** is used whenever possible
+
+
+### Other conventions
+
+* **accordion** like navigation is marked up like:
+
+      .navigation
+        <h3>Title
+        <ul> ...
+        
+        <h3>Title
+        <ul> ...
+        
+        ...
+        
+* every navigational element is wrapped into an `<ul>`
+
+*/
+
+
+/*
+## Header
 
 ### Main Menu
 
@@ -66,18 +128,7 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
 
 */
 
-#header #nav {
 
-}
-#header #nav ul {
-
-}
-#header #nav ul.search {
-
-}
-#header #search {
-  display: none;
-}
 
 
 /*
@@ -87,26 +138,17 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
 
 */
 
-#shopping {
 
-}
-#shopping #quantity {
-
-}
-#shopping #price {
-
-}
-#shopping #info {
-
-}
 
 
 /*
-## Logo
+### Logo
 
 * The logo is wrapped into a **h2**
 
 */
+
+
 
 
 /*
@@ -126,7 +168,7 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
         
 * each item is wrapped into the following structure:
 
-      #article
+      #article.thumb
         #details
           #figure
           #figcaption
@@ -134,32 +176,13 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
             #price
             #summary
         
-* **BUG** The featured image is cannot be displayed by Vision ... 
 * if the collection is empty a **.notice** is left how to create the collection
 
 ### Information and Navigation
 
 * displays the Frontpage article
-
-      #article
-        #details
-          <h1>Title
-          #summary      **BUG** in Vision for page excerpts
-          #read-more
-
 * Displays the shop data 
-
 * displays the list of all collections, product types, vendors and tags 
-
-      #section.navigation
-        <h3>Title
-        <ul>
-        ...
-        
-        <h3>Title
-        ul.inline-list 
-
-* a **BUG** in Vision doesn't displays types, vendors, and tags ....
 
 */
 

@@ -365,9 +365,23 @@ blockquote {
 * **ul.inline-list** - displays an `<ul>` inline (like a menu)
 * **.triangle** - ads an arrow like in the [Gadgetoman theme](http://gadgetoman.myshopify.com )
 * **.mobile** - hides an element in desktop mode (it's like .hidden)
+* **#grid** - inserts a visual grid with JQuery
 
   
 */
+
+#grid {
+  position: absolute;
+  top: 0;
+  opacity: .1;
+  display: block;
+  z-index: -1;
+}
+#grid .col {
+  border-bottom: 1px solid;
+  width: 118em;
+  height: 19px;
+}
 
 .triangle {
   border-style: solid;  

@@ -54,7 +54,7 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
 .showgrid {
   position: absolute;
   top: 0;
-  display: none;
+  display: block;
 }
 .showgrid-vertical .col {
   width: 8.889em; 
