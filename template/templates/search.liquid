@@ -22,16 +22,14 @@
 {% else %}
     
   <div id="section" class="products">
-    <div id="title">
-      <h1>
-        {% if settings.locale == "enabled" %}
-          {% assign s = settings.locale_search_results %}
-        {% else %}
-          {% assign s = "Search results for" %}
-        {% endif %} 
-        {{ s }}:
-      </h1>
-    </div>
+    <h1>
+      {% if settings.locale == "enabled" %}
+        {% assign s = settings.locale_search_results %}
+      {% else %}
+        {% assign s = "Search results for" %}
+      {% endif %} 
+      {{ s }}:
+    </h1>
     <div id="articles" class="col col-1">    
       {% for item in search.results %}
         <div id="article" class="thumb">

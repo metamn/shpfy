@@ -276,13 +276,90 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
 
 
 /*
-## Simple pages
-  
+## Pages
+
+* Pages can have two types: **.page** and **.collection**
+* Simple presentational pages (About Us, 404, etc) have the following structure:
+
+      #article
+        #details
+          <h1>Title
+          #summary
+          
+* Pages presenting collections (Search results) have the following structure:
+
+      #section.products
+        <h1>Title
+        #articles.col-1
+          #article
+          #article
+          ...
+        #aside.col-2
+            
+* Blog is:
+
+      #articles.col-1
+        #article
+          #details
+            <h2>Title
+            #summary
+            #read-more
+        #article 
+        ...
+      #aside.col-2
+
 */
 
 #aside {
   min-height: 20em;
   background: #f3f3f3;
+}
+
+
+/* 
+## Shopping cart
+
+*/
+
+.cart ul {
+  margin: 0;
+  margin-bottom: 1.25em;
+  padding-bottom: 1.25em;
+}
+.cart li {
+  margin-right: 2%;
+  display: inline-block !important;  
+}
+.cart #image {
+  width: 10%;
+}
+.cart #info, .cart #update, .cart #lineprice, .cart #remove {
+  position: relative;
+  top: -2.5em;
+}
+.cart #info {
+  width: 23%;
+  margin: 0 4%;
+}
+.cart #update {
+  width: 24%;
+}
+.cart #lineprice {
+  width: 10%;
+}
+.cart #remove {
+  width: 16%;
+  margin-right: 0;
+}
+.cart input.quantity {
+  width: 3em;
+}
+.cart img {
+  max-width: 100px;
+  max-height: 100px;
+}
+.cart #checkout input {
+  float: right;
 }
 
 

@@ -13,18 +13,16 @@
   
   {% else %}
   
-    <div id="title">
-      <h1>
-        {{ collection.title }}
-        <span class="tag-title"></span>
-        // {{ collection.products_count }} 
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_items }}
-        {% else %}
-          items
-        {% endif %}
-      </h1>
-    </div>
+    <h1>
+      {{ collection.title }}
+      <span class="tag-title"></span>
+      // {{ collection.products_count }} 
+      {% if settings.locale == "enabled" %}
+        {{ settings.locale_items }}
+      {% else %}
+        items
+      {% endif %}
+    </h1>
     <!-- Hack: getting the tag title, if any -->
     <div id="current-tags-hidden" class="hidden">
       <ul class="inline-list">

@@ -1,269 +1,178 @@
-<div id="info" class="block">
-  <div class="container">
-    
-    <div id="content" class="col-1 left">      
-      <div class="box">
-        <h1 class="title"><a href="{{ article.url }}" title="Permanent link to {{ article.title }}">{{ article.title }}</a></h1> 
-        <div class="meta text">
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_by }}
-          {% else %}
-            By  
-          {% endif %}
-		       {{ article.author }}  
-		      
-		      {% if settings.locale == "enabled" %}
-            {{ settings.locale_on }}
-          {% else %}
-            on  
-          {% endif %} 
-		       
-		       {{ article.created_at | date: "%B %d, %Y" }}
-		      {% if blog.comments_enabled? %}
-            &mdash; 
-            <a href="{{article.url}}#comments">{{ article.comments.size }} 
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_comments }}
-            {% else %}
-              comments  
-            {% endif %}           
-            </a>
-          {% endif %}
-		    </div>
-        
-        <div class="text body">    
-          {{ article.content }}
-        </div>
-        
-        {% if blog.comments_enabled? %}
-        <div class="comments">
-          <h2>
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_comments }}
-          {% else %}
-            Comments  
-          {% endif %} 
-           ({{ article.comments.size }})
-          </h2>
-          {% if article.comments.size > 0 %}
-          <ul id="comments" class="list">
-            {% for comment in article.comments %}
-              <li>              
-                <blockquote>&ldquo;{{ comment.content | strip_html  }}&rdquo;</blockquote>                              
-                <span class="date"># 
-                {% if settings.locale == "enabled" %}
-                  {{ settings.locale_by }}
-                {% else %}
-                  By  
-                {% endif %}              
-                 {{ comment.author }} 
-                
-                {% if settings.locale == "enabled" %}
-                  {{ settings.locale_on }}
-                {% else %}
-                  on  
-                {% endif %}               
-                  {{ comment.created_at | date: "%B %d, %Y" }}</span>
-              </li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-          
-          <!-- Comment Form -->
-          {% form article %}    
-          
-          <!-- Check if a comment has been submitted in the last request, and if yes display an appropriate message -->
-          {% if form.posted_successfully? %}
-            {% if blog.moderated? %}
-              <div class="notice">
-                {% if settings.snippets == "enabled" %}
-                  {% include 'comment_posted' %}        
-                {% else %}
-                  Successfully posted your comment.<br />
-                  It will have to be approved by the blog owner first before showing up.
-                {% endif %}              
-              </div>
-            {% else %}
-              <div class="notice">
-              {% if settings.locale == "enabled" %}
-                {{ settings.locale_commentposted }}
-              {% else %}
-                Successfully posted your comment.  
-              {% endif %} 
-              </div>
-            {% endif %}
-          {% endif %}    
-          {% if form.errors %}
-            <div class="notice error">
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_commenterror }}
-            {% else %}
-              Not all the fields have been filled out correctly!
-            {% endif %}            
-            </div>
-          {% endif %}
-          
-          <h2>
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_commentleave }}
-          {% else %}
-            Leave a comment
-          {% endif %}
-          </h2>
-          
-          <dl>
-            <dt class="{% if form.errors contains 'author' %}error{% endif %}"><label for="comment_author">
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_commentname }}
-            {% else %}
-              Your name
-            {% endif %}
-            </label></dt>
-            <dd><input type="text" id="comment_author" name="comment[author]" size="40" value="{{form.author}}" class="text {% if form.errors contains 'author' %}input-error{% endif %}" /></dd>
-
-            <dt class="{% if form.errors contains 'email' %}error{% endif %}"><label for="comment_email">
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_commentemail }}
-            {% else %}
-              Your email
-            {% endif %}
-            </label></dt>
-            <dd><input type="text" id="comment_email" name="comment[email]" size="40" value="{{form.email}}" class="text {% if form.errors contains 'email' %}input-error{% endif %}" /></dd>
-
-            <dt class="{% if form.errors contains 'body' %}error{% endif %}"><label for="comment_body">
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_commentcomment }}
-            {% else %}
-              Your comment
-            {% endif %}
-            </label></dt>
-            <dd><textarea id="comment_body" name="comment[body]" cols="40" rows="5" class="{% if form.errors contains 'body' %}input-error{% endif %}">{{form.body}}</textarea></dd>
-            
-            <dt>&nbsp;</dt>
-            <dd>
-            {% if settings.locale == "enabled" %}
-              <input class="button" type="submit" value="{{ settings.locale_commentsubmit }}" />
-            {% else %}
-              <input class="button" type="submit" value="Post comment" />     
-            {% endif %}
-            </dd>
-            
-            {% if blog.moderated? %}  
-            <dt>&nbsp;</dt>
-            <dd class="comment-meta">
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_commentnote }}
-            {% else %}
-              Comments have to be approved before showing up
-            {% endif %}
-            </dd>      
-            {% endif %}
-          </dl>
-          
-          {% endform %}
-        </div>
-        {% endif %}
-      </div>
+<div id="article">
+  <div id="details" class="col col-1">      
+    <h1>
+      <a href="{{ article.url }}" title="Permanent link to {{ article.title | escape }}">{{ article.title | escape }}</a>
+    </h1> 
+    <div id="meta">
+      {% if settings.locale == "enabled" %}
+        {{ settings.locale_by }}
+      {% else %}
+        By  
+      {% endif %}
+       {{ article.author }}  
+      
+      {% if settings.locale == "enabled" %}
+        {{ settings.locale_on }}
+      {% else %}
+        on  
+      {% endif %} 
+       
+       {{ article.created_at | date: "%B %d, %Y" }}
+      {% if blog.comments_enabled? %}
+        &mdash; 
+        <a href="{{article.url}}#comments">{{ article.comments.size }} 
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_comments }}
+        {% else %}
+          comments  
+        {% endif %}           
+        </a>
+      {% endif %}
     </div>
     
-    <div id="sidebar" class="right col-2">           
-      <div class="box accordion">
-        <h4 class="first">
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_article_posts }}
-        {% else %}
-          Latest blog posts
-        {% endif %}
-        </h4>
-        <div class="pane">
-          <ul class="list">
-            {% for article in blog.articles limt: 3%}
-              <li>
-                  <a href="{{ article.url }}" title="{{ article.title }}">
-                    {{ article.title }}
-                    <span class="date"># {{ article.created_at | date: "%B %d, %Y" }}</span>
-                  </a>
-                </li>
-              {% endfor %}
-          </ul>
-        </div>
+    <div id="summary">    
+      {{ article.content }}
+    </div>
+      
+    {% if blog.comments_enabled? %}
+    <div id="comments">
+      <h2>
+      {% if settings.locale == "enabled" %}
+        {{ settings.locale_comments }}
+      {% else %}
+        Comments  
+      {% endif %} 
+       ({{ article.comments.size }})
+      </h2>
+      {% if article.comments.size > 0 %}
+      <ul id="comments" class="list">
+        {% for comment in article.comments %}
+          <li>              
+            <blockquote>&ldquo;{{ comment.content | strip_html  }}&rdquo;</blockquote>                              
+            <span class="date"># 
+            {% if settings.locale == "enabled" %}
+              {{ settings.locale_by }}
+            {% else %}
+              By  
+            {% endif %}              
+             {{ comment.author }} 
+            
+            {% if settings.locale == "enabled" %}
+              {{ settings.locale_on }}
+            {% else %}
+              on  
+            {% endif %}               
+              {{ comment.created_at | date: "%B %d, %Y" }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
         
-        <h4>
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_article_comments }}
-        {% else %}
-          Recent comments
-        {% endif %}
-        </h4>
-        <div class="pane">
-          <ul id="comments" class="list">
-            {% for article in blog.articles limt: 3%}		   
-              {% for comment in article.comments limit: 2 %}
-                <li>
-                  <a href="{{ comment.url }}" title="Comment on {{ article.title }}">
-                    <blockquote>&ldquo;{{ comment.content | strip_html | truncate: 250 }}&rdquo;</blockquote>                
-                  </a>
-                  <span class="date"># {{ comment.author }}</span>
-                </li>
-              {% endfor %}
-            {% endfor %}
-          </ul>
-        </div>
+      <!-- Comment Form -->
+      {% form article %}    
         
-        {% if collections.size > 0 %}
-          <h4>
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_article_collections }}
-          {% else %}
-            Product collections
-          {% endif %}
-          </h4>
-          <div class="pane">        
-            <ul class="list">
-          	  {% for i in collections %}      	    
-          		  <li {% if collection.url == i.url %} class="active"{% endif %}>
-          		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title }}</a>
-          		  </li>
-          		{% endfor %}
-          	</ul>
-          </div> 
-        {% endif %}  
-        
-        <h4>
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_search }}
-          {% assign s = settings.locale_search %}
-        {% else %}
-          Search
-          {% assign s = "Search" %}
-        {% endif %} 
-        </h4>
-        <div id="search" class="pane">        
-	        <form action="/search" method="get">
-		        <input class="text" type="text" name="q" /> 
-		        <input class="button" type="submit" value="{{ s }}"  />
-	        </form>
-        </div>
-        
-        <h4 class="first">
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_share }}
-          {% else %}
-            Share 
-          {% endif %}
-        </h4>
-        <div id="share" class="pane">
-          <div id="icons" class="block">	    
-            <div id="item" class="left twitter">
-              <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
+        <!-- Check if a comment has been submitted in the last request, and if yes display an appropriate message -->
+        {% if form.posted_successfully? %}
+          {% if blog.moderated? %}
+            <div class="notice">
+              {% if settings.snippets == "enabled" %}
+                {% include 'comment_posted' %}        
+              {% else %}
+                Successfully posted your comment.<br />
+                It will have to be approved by the blog owner first before showing up.
+              {% endif %}              
             </div>
-            <div id="item" class="left facebook">
-              <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="true" width="150"></fb:like>              
+          {% else %}
+            <div class="notice">
+            {% if settings.locale == "enabled" %}
+              {{ settings.locale_commentposted }}
+            {% else %}
+              Successfully posted your comment.  
+            {% endif %} 
             </div>
-           </div>
-        </div>
-      </div>
-    </div>   
+          {% endif %}
+        {% endif %}    
+        
+        
+        {% if form.errors %}
+          <div class="notice error">
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_commenterror }}
+          {% else %}
+            Not all the fields have been filled out correctly!
+          {% endif %}            
+          </div>
+        {% endif %}
+          
+        <h2>
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_commentleave }}
+        {% else %}
+          Leave a comment
+        {% endif %}
+        </h2>
+          
+        <dl>
+          <dt class="{% if form.errors contains 'author' %}error{% endif %}"><label for="comment_author">
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_commentname }}
+          {% else %}
+            Your name
+          {% endif %}
+          </label></dt>
+          <dd><input type="text" id="comment_author" name="comment[author]" size="40" value="{{form.author}}" class="text {% if form.errors contains 'author' %}input-error{% endif %}" /></dd>
+
+          <dt class="{% if form.errors contains 'email' %}error{% endif %}"><label for="comment_email">
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_commentemail }}
+          {% else %}
+            Your email
+          {% endif %}
+          </label></dt>
+          <dd><input type="text" id="comment_email" name="comment[email]" size="40" value="{{form.email}}" class="text {% if form.errors contains 'email' %}input-error{% endif %}" /></dd>
+
+          <dt class="{% if form.errors contains 'body' %}error{% endif %}"><label for="comment_body">
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_commentcomment }}
+          {% else %}
+            Your comment
+          {% endif %}
+          </label></dt>
+          <dd><textarea id="comment_body" name="comment[body]" cols="40" rows="5" class="{% if form.errors contains 'body' %}input-error{% endif %}">{{form.body}}</textarea></dd>
+          
+          <dt>&nbsp;</dt>
+          <dd>
+          {% if settings.locale == "enabled" %}
+            <input class="button" type="submit" value="{{ settings.locale_commentsubmit }}" />
+          {% else %}
+            <input class="button" type="submit" value="Post comment" />     
+          {% endif %}
+          </dd>
+          
+          {% if blog.moderated? %}  
+          <dt>&nbsp;</dt>
+          <dd class="comment-meta">
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_commentnote }}
+          {% else %}
+            Comments have to be approved before showing up
+          {% endif %}
+          </dd>      
+          {% endif %}
+        </dl>          
+      {% endform %}
+      
+    </div> <!-- comments -->
+    {% endif %}
+  </div> <!-- details -->
+  
+  <div id="aside" class="col col-2">
+    blog sidebar here ...
+  </div>
+  
+</div><!-- article -->
+    
+    
     
       
   </div>   
