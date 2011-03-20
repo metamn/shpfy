@@ -1,0 +1,19 @@
+{% assign article = pages.frontpage %}
+include post.thumb frontpage
+
+{% if settings.frontpage_featured != "disabled" %}
+include product.list featured
+{% endif %}
+
+{% if settings.frontpage_all != "disabled" %}
+include product.list all
+{% endif %}
+
+{% if settings.frontpage_sales != "disabled" %}
+include product.list sales
+{% endif %}
+
+
+
+
+

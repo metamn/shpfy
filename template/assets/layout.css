@@ -14,7 +14,7 @@
 ## The Layout
 
 * centered, width **80%**, **10%** margins left and right
-* this layout does not change on large, and tablet screens, only on mobiles
+* this layout does not change on large, and tablet screens, not even on mobile screens
 
 */
 .container {
@@ -51,7 +51,7 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
 
   * an automatic, given by **em** which resizes itself across all responsive styelsheets
   * a forced, given by **%** which must be handled responsively
-  * if on a single page both grids are displayed they might not be in harmony (ie. Product page with related products at bottom, like in Gadgetoman)
+  * if on a single page both grids are displayed they might not be in harmony 
 
 ### The automatic grid
 
@@ -80,12 +80,13 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
 /*
 ### The forced grid
 
-* when we are forcing to align elements on a page
+* used when we are forcing to align elements on a page
 * for example, on the Product page we want two columns, the first with product info the second with operations on Product 
 * in this case we are **not** thinking in grid columns (ie a column with 20em width) but in percentages
 
   * our available screen is always 100%;
-  * in lower resolutions if we want to align the right col after the left column we must use the responsive stylesheets
+  * we say column-1 is 50%, and column-2 is 40% with a 10% left margin. And that's all
+  * in responsive stylesheets these ratios must be adapted.
   * columns must be always floated left
   
 * In forced grid images must be adjusted with `max-width`
@@ -94,16 +95,12 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
 
 
 .col-1 {
-  width: 50%; /* grande image is 37.5em */
+  width: 50%; 
 }
 .col-2 {
   width: 40%;
   margin-left: 10%;
 }
-.product #thumbs li {
-  width: 10%; /* small image is 6.75em */
-}
-
 
 
 
@@ -124,36 +121,70 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
   * **.page** - for product page, article page, not_found, and page
   * **.index** - for the start page
   * in any case the page template name is added as a class to #content
-  
+  * search_page can turn into a `page` instead of `collection` when there are no search results.
+  * in fact any collection can turn into a page when empty
+
+* naming elements is done by *trying* to follow the [HTML5 specification](http://www.w3schools.com/html5/html5_new_elements.asp )
+* however there is no consensus on how to use correctly the new HTML5 tags
+* so we won't think in HTML5 terms, just trying to create a common sense for us:
+
+  * **#section** is used to collect similar items into a whole
+  * **#article** is used to mark up a product or a blog post 
+  * **#aside** is marking sidebars  
+  * **#nav** is used to identify menus
+    
 * inside #content everything is wrapped into **#section** or **#article**
-* a #section or #article is marked up as **.block** in `base.css`
+* #section and #article is to align elements to the grid. They are marked up like a **.block** in `base.css`
 
       #content.index
         #section.about
         #section.latest
         #section.featured
         ...
-        #section.navigation
+        #section.navigation             
 
       #content.product
         #article
-        #section.navigation
-        
-* naming elements is done by following the [HTML5 specification](http://www.w3schools.com/html5/html5_new_elements.asp ):
+        #aside
 
-  * **#nav** is used to identify all navigation elements (menus)
-  * **#article** identifies every product or blog post
-  * **#article.thumb ** displays more then one articles in a collection, and has the following structure:
+* #section and #article is immediately followed by a new div, **#details** for padding and styling        
+* **#section** has the following structure:
+
+      #section.name
+        #details        #=> used for spacing, padding, styling etc.
+          <h1>Title
+          #articles
+            #article
+            #article
+            ...
+          
+* **#article** has the following structure:
+
+  * for product thumbs:
   
         #article.thumb
           #details
-          #figure
-          #figcaption
-            #title
-            #price
+            #figcaption
+              #title
+              #price    #=> Add to cart
+            #figure
+            #summary (optional)
+          
+  * for blog posts:
+  
+        #article.post
+          #details
+            <h2>Title
             #summary
-            
-  * in general **#details**, **#figure**, **#figcaption** and **#summary** is used whenever possible
+            #read-more
+  
+  * for pages:
+  
+        #article.page
+          #details
+            <h1>Title
+            #summary
+                   
 
 
 ### Other conventions
@@ -169,7 +200,6 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
         
         ...
         
-* every navigational element is wrapped into an `<ul>`
 
 */
 
@@ -190,16 +220,12 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
 */
 
 
-
-
 /*
 ### Shopping Menu
 
 * There are three sections **#quantity**, **#price** and **#info**
 
 */
-
-
 
 
 /*
@@ -217,26 +243,7 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
 
 ### Collections
 
-* displays different collections of products
-* each collection is wrapped into a following structure:
-
-      #section.<collectionname>
-        <h1>Collection title</h1>
-          #articles
-            #article
-            #article 
-            ...
-        
-* each item is wrapped into the following structure:
-
-      #article.thumb
-        #details
-          #figure
-          #figcaption
-            #title
-            #price
-            #summary
-        
+* displays different collections of products        
 * if the collection is empty a **.notice** is left how to create the collection
 
 ### Information and Navigation
@@ -260,53 +267,14 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
 /*
 ## Product page
 
-* the structure of a product is like:
-
-      #article
-        #details
-          <h1>Title
-          #figure
-          #thumbs
-          #summary
-        #aside
-          #shopping
-
-
 */
-
+.product #thumbs li {
+  width: 10%; /* small image is 6.75em */
+}
 
 /*
 ## Pages
 
-* Pages can have two types: **.page** and **.collection**
-* Simple presentational pages (About Us, 404, etc) have the following structure:
-
-      #article
-        #details
-          <h1>Title
-          #summary
-          
-* Pages presenting collections (Search results) have the following structure:
-
-      #section.products
-        <h1>Title
-        #articles.col-1
-          #article
-          #article
-          ...
-        #aside.col-2
-            
-* Blog is:
-
-      #articles.col-1
-        #article
-          #details
-            <h2>Title
-            #summary
-            #read-more
-        #article 
-        ...
-      #aside.col-2
 
 */
 
