@@ -1,7 +1,7 @@
 <div id="article">
   <div id="details" class="col col-1">
     <h1>
-      <a class="title" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+      <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
         {{ product.title | escape }} by {{ product.vendor }} <span>{{ product.price | money }}</span></a>
     </h1>
     

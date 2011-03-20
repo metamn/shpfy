@@ -1,110 +1,15 @@
-<div id="info" class="block">
-  <div class="container">    
-    <div id="content" class="text col-1 left">
-      <div class="box">
-        <h1>{{ page.title }}</h1>    
-        {{ page.content }}
-      </div>
+<div id="article">
+  <div id="details" class="col col-1">
+    <h1>
+      <a href="{{ page.url }}" title="{{ page.title | escape }}">{{ page.title | escape }}</a>
+    </h1>    
+    <div id="summary">
+      {{ page.content }}
     </div>
+  </div>
+  
+  <div id="aside" class="col col-2">
+  sidebar ...
+  </div>
+</div>  
     
-    <div id="sidebar" class="right col-2">           
-      <div class="box accordion">
-                    
-        {% if collections.size > 0 %}
-        <h4 class="first">
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_allcollections }}
-        {% else %}
-          All collections
-        {% endif %}
-        </h4>
-        <div class="pane">        
-          <ul class="list">
-        	  {% for i in collections %}      	    
-        		  <li {% if collection.url == i.url %} class="active"{% endif %}>
-        		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title }}</a>
-        		  </li>
-        		{% endfor %}
-        	</ul>
-        </div> 
-      {% endif %}           
-    
-            
-      {% if shop.types.size > 0 %}
-        <h4>
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_alltypes }}
-        {% else %}
-          All product types
-        {% endif %}          
-        </h4>
-        <div class="pane">   
-          <ul class="list">
-          	{% for product_type in shop.types %}
-              <li>
-                {{ product_type | link_to_type  }}
-              </li>
-            {% endfor %}
-          	</ul>
-        </div>
-      {% endif %}
-      
-      {% if shop.vendors.size > 0 %}
-        <h4>
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_allvendors }}
-        {% else %}
-          All vendors
-        {% endif %}
-        </h4>
-        <div class="pane">   
-          <ul class="list">
-          	{% for product_vendor in shop.vendors %}
-              <li>
-                {{ product_vendor | link_to_vendor  }}
-              </li>
-            {% endfor %}
-          	</ul>
-        </div>
-      {% endif %}
-      
-      <h4>
-      {% if settings.locale == "enabled" %}
-        {{ settings.locale_search }}
-        {% assign s = settings.locale_search %}
-      {% else %}
-        Search
-        {% assign s = "Search" %}
-      {% endif %} 
-      </h4>
-      <div id="search" class="pane">        
-	      <form action="/search" method="get">
-		      <input class="text" type="text" name="q" /> 
-		      <input class="button" type="submit" value="{{ s }}"  />
-	      </form>
-      </div>  
-      
-      <h4 class="first">
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_share }}
-        {% else %}
-          Share 
-        {% endif %}
-      </h4>
-      <div id="share" class="pane">
-        <div id="icons" class="block">	    
-          <div id="item" class="left twitter">
-            <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
-          </div>
-          <div id="item" class="left facebook">
-            <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="true" width="150"></fb:like>              
-          </div>
-         </div>
-      </div>      
-        
-    </div>
-  </div>   
-
-    
-  </div>  
-</div>

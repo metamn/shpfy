@@ -2,7 +2,7 @@
 # The Grid and the Elements
 
 * File name: [layout.css](layout.css )
-* Aligning elements both vertically and horizontally
+* Defining and aligning all elements both vertically and horizontally
 * Author: [Shopledge](http://shopledge.com "Shopledge")
 * License: MIT Licence. Copyright 2010 Shopledge [www.shopledge.com](http://shopledge.com "Shopledge")
 
@@ -93,10 +93,10 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
 */
 
 
-.product .col-1 {
+.col-1 {
   width: 50%; /* grande image is 37.5em */
 }
-.product .col-2 {
+.col-2 {
   width: 40%;
   margin-left: 10%;
 }
@@ -275,6 +275,15 @@ h3 { font-size:1.16667em; padding:1.51785em 0; }
 */
 
 
+/*
+## Simple pages
+  
+*/
+
+#aside {
+  min-height: 20em;
+  background: #f3f3f3;
+}
 
 
 

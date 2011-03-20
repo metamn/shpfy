@@ -1,186 +1,87 @@
-<div id="navigation" class="block">
-  <div class="container"> 
-    <div id="items" class="left col-1">  
-      {% paginate search.results by 9 %}
-      {% if search.results.size == 0 %}
-        {% if settings.snippets == "enabled" %}
-          {% include 'search_not_found' %}        
-        {% else %}
-          <h2>We did not found any products for you.</h2>
-          <p>Please try searching <strong>again</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p> 
-        {% endif %} 
-        <br/>
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_search }}
-          {% assign s = settings.locale_search %}
-        {% else %}
-          {% assign s = "Search" %}
-        {% endif %} 
-        <div id="search" class="notfound">        
-          <form action="/search" method="get">
-	          <input class="text" type="text" name="q" /> 
-	          <input class="button" type="submit" value="{{ s }}"  />
-          </form>
-        </div>  
+{% paginate search.results by 9 %}
+{% if search.results.size == 0 %}
+  <div id="article">
+    <div id="details" class="col col-1">
+      {% if settings.snippets == "enabled" %}
+        {% include 'search_not_found' %}        
       {% else %}
-        {% for item in search.results %}
-        <div id="item" class="product">
-          <div class="title block">
-            <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
-              {{ item.title }}
-              <div class="meta small">
-                <span class="price rounded">{{ item.price | money }}</span>
-              </div>              
-            </a>
-          </div>          
-          <div class="image block">	 
-            {% if item.featured_image %}     
-              <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
-                <img class="desktop" src="{{ item.featured_image | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" />
-                <img class="mobile" src="{{ item.featured_image | product_img_url: 'large' }}" alt="{{ item.title | escape }}" />
-              </a> 
+        <h1>We did not found any products for you.</h1>
+        <div id="summary">
+          <p>Please try searching <strong>again</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p> 
+        </div>
+      {% endif %}
+      
+      search form here ...
+    </div>
+    
+    <div id="aside" class="col col-2">
+    sidebar ...
+    </div>
+  </div>
+  
+{% else %}
+    
+  <div id="section" class="products">
+    <div id="title">
+      <h1>
+        {% if settings.locale == "enabled" %}
+          {% assign s = settings.locale_search_results %}
+        {% else %}
+          {% assign s = "Search results for" %}
+        {% endif %} 
+        {{ s }}:
+      </h1>
+    </div>
+    <div id="articles" class="col col-1">    
+      {% for item in search.results %}
+        <div id="article" class="thumb">
+          <div id="details">
+            {% if item.featured_image %} 
+              <div id="figure">
+                <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
+                  <img src="{{ item.featured_image | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" /></a>
+              </div>
+              <div id="figcaption">
+                <div id="title">
+                  <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
+                  <h3>{{ item.title | escape }}</h3></a>
+                </div>
+                <div id="price">
+                  {% if settings.locale == "enabled" %}
+                    {% assign add = settings.locale_cart_add %}
+                  {% else %}
+                    {% assign add = "Add to cart" %}
+                  {% endif %}
+                  <a class="button" href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
+                    {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
+                </div>
+                <div id="summary" class="text">                
+                  {{ item.description | truncatewords: 40 }}
+                </div>
+              </div>
             {% else %}
-              <div class="text">
+              <div id="summary" class="text">
                 {{ item.content | truncatewords: 20 }}
               </div>
             {% endif %}
-          </div>
-          {% if item.featured_image %} 
-            <div id="add-to-cart" class="meta small">
-              <a class="highlight rounded" href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
-              {% if settings.locale == "enabled" %}
-                {{ settings.locale_cart_add }}
-              {% else %}
-                Add to cart
-              {% endif %}
-              </a>
-            </div>
-          {% endif %}
-        </div>
-        {% endfor %}
-        <div class="clear"></div>
-        
-        {% if paginate.pages > 1 %}
-        <div id="paginate" class="right alignright">
+          </div> <!-- details -- >
+        </div> <!-- article -->
+      {% endfor %}
+      
+      {% if paginate.pages > 1 %}
+        <div id="paginate">
           {{ paginate | default_pagination }}
         </div>
-        {% endif %}	  
-      {% endif %}
-      {% endpaginate %}
-    </div>  
+      {% endif %}	      
+    </div> <!-- articles -->     
+    
+    <div id="aside" class="col col-2">
+    sidebar ...
+    </div>            
+    
+  </div> <!-- section -->  
+
+{% endif %}
+{% endpaginate %}
+
   
-    <div id="sidebar" class="right col-2">      
-      <div class="box">
-        <h2>
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_search_title }}
-          {% else %}
-            Search results for:
-          {% endif %}
-           {{ search.terms }}
-        </h2>
-      
-    
-        <div id="taxonomies" class="accordion"> 
-          {% if collections.size > 0 %}
-            <h4 class="first">
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_allcollections }}
-            {% else %}
-              All collections
-            {% endif %}
-            </h4>
-            <div class="pane">        
-              <ul class="list">
-            	  {% for i in collections %}      	    
-            		  <li {% if collection.url == i.url %} class="active"{% endif %}>
-            		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title }}</a>
-            		  </li>
-            		{% endfor %}
-            	</ul>
-            </div> 
-          {% endif %}           
-        
-                    
-          {% if shop.types.size > 0 %}
-            <h4>
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_alltypes }}
-            {% else %}
-              All product types
-            {% endif %}          
-            </h4>
-            <div class="pane">   
-              <ul class="list">
-              	{% for product_type in shop.types %}
-                  <li>
-                    {{ product_type | link_to_type  }}
-                  </li>
-                {% endfor %}
-              	</ul>
-            </div>
-          {% endif %}
-          
-          {% if shop.vendors.size > 0 %}
-            <h4>
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_allvendors }}
-            {% else %}
-              All vendors
-            {% endif %}
-            </h4>
-            <div class="pane">   
-              <ul class="list">
-              	{% for product_vendor in shop.vendors %}
-                  <li>
-                    {{ product_vendor | link_to_vendor  }}
-                  </li>
-                {% endfor %}
-              	</ul>
-            </div>
-          {% endif %}
-          
-          <h4>
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_search }}
-            {% assign s = settings.locale_search %}
-          {% else %}
-            Search
-            {% assign s = "Search" %}
-          {% endif %} 
-          </h4>
-          <div id="search" class="pane">        
-		        <form action="/search" method="get">
-			        <input class="text" type="text" name="q" /> 
-			        <input class="button" type="submit" value="{{ s }}"  />
-		        </form>
-          </div>
-          
-          <h4 class="first">
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_share }}
-            {% else %}
-              Share 
-            {% endif %}
-          </h4>
-          <div id="share" class="pane">
-            <div id="icons" class="block">	    
-              <div id="item" class="left twitter">
-                <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
-              </div>
-              <div id="item" class="left facebook">
-                <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="true" width="150"></fb:like>              
-              </div>
-             </div>
-          </div>
-        </div>
-      </div>      
-    </div>	 
-     	
-  </div>
-</div>  
-
-
-
-    
-

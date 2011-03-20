@@ -4,21 +4,11 @@
     {% if settings.snippets == "enabled" %}
       {% include 'collection_empty' %}        
     {% else %}
-      <h2>No Items Found In This Collection</h2>
+      <h1>No Items Found In This Collection</h1>
       <p>Please try the <strong>search</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p> 
     {% endif %} 
   
-    {% if settings.locale == "enabled" %}
-      {{ settings.locale_search }}
-      {% assign s = settings.locale_search %}
-    {% else %}
-      {% assign s = "Search" %}
-    {% endif %} 
-    <div id="search" class="notfound">        
-      <form action="/search" method="get">
-        <input class="text" type="text" name="q" /> 
-        <input class="button" type="submit" value="{{ s }}"  />
-      </form>
+    search form here ....
     </div>
   
   {% else %}
