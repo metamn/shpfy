@@ -1,5 +1,5 @@
 {% assign article = pages.frontpage %}
-<div id="section" class="frontpage">
+<div id="article" class="frontpage">
   <div id="details">    
     <h1>
         <a href="{{ article.url }}" title="{{ article.title }}"> {{ article.title | escape }} </a>
@@ -19,233 +19,216 @@
   </div>
 </div> 
 
-<div id="section" class="about">
-  <div id="details">
-    <h1>About our shop</h1>
-    <ul id="summary">
-      <li>{{ shop.name }}</li>
-      <li>{{ shop.currency }}</li>
-      <li>{{ shop.url }}</li>
-      <li>{{ shop.domain }}</li>
-      <li>{{ shop.products_count }}</li>
-      <li>{{ shop.collections_count }}</li>
-      <li>{{ shop.vendors }}</li>
-      <li>{{ shop.types }}</li>
-    </ul>
-  </div>
-</div>
 
-{% if settings.frontpage_featured != "disabled" %}													
-<div id="section" class="featured">
+
+{% if settings.frontpage_frontpage != "disabled" %}	
+<div id="section" class="frontpage">
   <div id="details">
     <h1>{{ collections.frontpage.title }}</h1>
     {% if collections.frontpage.products.size > 0 %}
     <div id="articles">
-      {% for product in collections.frontpage.products limit : settings.frontpage_featured_count %}
-        <div id="article" class="thumb">
-          <div id="details">
-            <div id="figcaption">
-              <div id="title">
-                <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                <h3>{{ product.title | escape }}</h3></a>
-              </div>
-              <div id="price">
-                {% if settings.locale == "enabled" %}
-                  {% assign add = settings.locale_cart_add %}
-                {% else %}
-                  {% assign add = "Add to cart" %}
-                {% endif %}
-                <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                  {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
-              </div>
-            </div>
-            <div id="figure">
-              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
-            </div>
-            <div id="summary">                
-                {{ product.description | truncatewords: 40 }}
-            </div>
-          </div> <!-- details -->
-        </div> <!-- article -->        
+      {% for product in collections.frontpage.products limit : settings.frontpage_frontpage_count %}
+<div id="article" class="thumb">
+  <div id="details">
+    <div id="figcaption">
+      <div id="title">
+        <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+        <h3>{{ product.title | escape }}</h3></a>
+      </div>
+      <div id="price">
+        {% if settings.locale == "enabled" %}
+          {% assign add = settings.locale_cart_add %}
+        {% else %}
+          {% assign add = "Add to cart" %}
+        {% endif %}
+        <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+          {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
+      </div>
+    </div>
+    <div id="figure">
+      <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+        <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
+    </div>
+    <div id="summary">                
+        {{ product.description | truncatewords: 40 }}
+    </div>
+  </div> <!-- details -->
+</div> <!-- article --> 
       {% endfor %}
     </div> <!-- articles -->
     {% else %}
       <div class="notice">        
         To see here a list of featured products please <a href="/admin/custom_collections/new">create a new collection</a>
-        and name it's handle to <strong>featured</strong> then add products to it.
+        and name it's handle to <strong>frontpage</strong> then add products to it.
       </div>
     {% endif %}
   </div> 
-</div> <!-- section of products -->
+</div> 
 {% endif %}
 
-
-{% if settings.frontpage_all != "disabled" %}													
-<div id="section" class="latest">
-  {% if settings.locale == "enabled" %}
-    {% assign title = settings.frontpage_all_title %}
-  {% else %}
-    {% assign title = collections.all.title %}
-  {% endif %}
-  <h1>{{ title }}</h1>
-  {% if collections.all.products.size > 0 %}
+{% if settings.frontpage_all != "disabled" %}	
+<div id="section" class="all">
+  <div id="details">
+    <h1>{{ collections.all.title }}</h1>
+    {% if collections.all.products.size > 0 %}
     <div id="articles">
       {% for product in collections.all.products limit : settings.frontpage_all_count %}
-        <div id="article" class="thumb">
-          <div id="details">
-            <div id="figure">
-              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>
-            </div>
-            <div id="figcaption">
-              <div id="title">
-                <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                <h3>{{ product.title | escape }}</h3></a>
-              </div>
-              <div id="price">
-                {% if settings.locale == "enabled" %}
-                  {% assign add = settings.locale_cart_add %}
-                {% else %}
-                  {% assign add = "Add to cart" %}
-                {% endif %}
-                <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                  {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
-              </div>
-              <div id="summary" class="text">                
-                {{ product.description | truncatewords: 40 }}
-              </div>
-            </div>
-          </div>
-        </div>
+<div id="article" class="thumb">
+  <div id="details">
+    <div id="figcaption">
+      <div id="title">
+        <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+        <h3>{{ product.title | escape }}</h3></a>
+      </div>
+      <div id="price">
+        {% if settings.locale == "enabled" %}
+          {% assign add = settings.locale_cart_add %}
+        {% else %}
+          {% assign add = "Add to cart" %}
+        {% endif %}
+        <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+          {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
+      </div>
+    </div>
+    <div id="figure">
+      <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+        <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
+    </div>
+    <div id="summary">                
+        {{ product.description | truncatewords: 40 }}
+    </div>
+  </div> <!-- details -->
+</div> <!-- article --> 
       {% endfor %}
-    </div>
-  {% else %}
-    <div class="notice">        
-      To see here a list of all products please <a href="/admin/custom_collections/new">create a new collection</a>
-      and name it's handle to <strong>all</strong> then add products to it.
-    </div>
-  {% endif %} 
-</div> <!-- section of products -->
+    </div> <!-- articles -->
+    {% else %}
+      <div class="notice">        
+        To see here a list of featured products please <a href="/admin/custom_collections/new">create a new collection</a>
+        and name it's handle to <strong>all</strong> then add products to it.
+      </div>
+    {% endif %}
+  </div> 
+</div> 
 {% endif %}
 
-{% if settings.frontpage_sales != "disabled" %}													
-<div id="section" class="sales">
-  <h1>{{ collections.sale.title }}</h1>
-  {% if collections.sale.products.size > 0 %}
+{% if settings.frontpage_sale != "disabled" %}	
+<div id="section" class="sale">
+  <div id="details">
+    <h1>{{ collections.sale.title }}</h1>
+    {% if collections.sale.products.size > 0 %}
     <div id="articles">
-      {% for product in collections.sale.products limit : settings.frontpage_sales_count %}
-        <div id="article" class="thumb">
-          <div id="details">
-            <div id="figure">
-              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
-            </div>
-            <div id="figcaption">
-              <div id="title">
-                <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                <h3>{{ product.title | escape }}</h3></a>
-              </div>
-              <div id="price">
-                {% if settings.locale == "enabled" %}
-                  {% assign add = settings.locale_cart_add %}
-                {% else %}
-                  {% assign add = "Add to cart" %}
-                {% endif %}
-                <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                  {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
-              </div>
-              <div id="summary" class="text">                
-                {{ product.description | truncatewords: 40 }}
-              </div>
-            </div>
-          </div>
-        </div>
+      {% for product in collections.sale.products limit : settings.frontpage_sale_count %}
+<div id="article" class="thumb">
+  <div id="details">
+    <div id="figcaption">
+      <div id="title">
+        <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+        <h3>{{ product.title | escape }}</h3></a>
+      </div>
+      <div id="price">
+        {% if settings.locale == "enabled" %}
+          {% assign add = settings.locale_cart_add %}
+        {% else %}
+          {% assign add = "Add to cart" %}
+        {% endif %}
+        <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+          {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
+      </div>
+    </div>
+    <div id="figure">
+      <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+        <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
+    </div>
+    <div id="summary">                
+        {{ product.description | truncatewords: 40 }}
+    </div>
+  </div> <!-- details -->
+</div> <!-- article --> 
       {% endfor %}
-    </div>
-  {% else %}
-    <div class="notice">        
-      To see here a list of all products on sale please <a href="/admin/custom_collections/new">create a new collection</a>
-      and name it's handle to <strong>sale</strong> then add products to it.
-    </div>
-  {% endif %} 
-</div> <!-- section of products -->
+    </div> <!-- articles -->
+    {% else %}
+      <div class="notice">        
+        To see here a list of featured products please <a href="/admin/custom_collections/new">create a new collection</a>
+        and name it's handle to <strong>sale</strong> then add products to it.
+      </div>
+    {% endif %}
+  </div> 
+</div> 
 {% endif %}
 
 <div id="section" class="navigation">
   <div id="details">
-    {% if collections.size > 0 %}
-      <h3>
-      {% if settings.locale == "enabled" %}
-        {{ settings.locale_allcollections }}
-      {% else %}
-        All collections
-      {% endif %}
-      </h3>
-      <ul>
-    	  {% for i in collections %}      	    
-    		  <li {% if collection.url == i.url %} class="active"{% endif %}>
-    		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title }}</a>
-    		  </li>
-    		{% endfor %}
-    	</ul>
-    {% endif %}    
-            
-    {% if shop.types.size > 0 %}
-      <h3>
-      {% if settings.locale == "enabled" %}
-        {{ settings.locale_alltypes }}
-      {% else %}
-        All product types
-      {% endif %}          
-      </h3>        
-      <ul>
-      	{% for product_type in shop.types %}
-          <li>
-            {{ product_type | link_to_type  }}
-          </li>
-        {% endfor %}
-    	</ul>      
-    {% endif %}
-    
-    {% if shop.vendors.size > 0 %}
-      <h3>
-      {% if settings.locale == "enabled" %}
-        {{ settings.locale_allvendors }}
-      {% else %}
-        All vendors
-      {% endif %}
-      </h3>
-      <ul>
-      	{% for product_vendor in shop.vendors %}
-          <li {% if collection.url == url_for_vendor %} class="active"{% endif %}>
-            {{ product_vendor | link_to_vendor  }}
-          </li>
-        {% endfor %}
-      </ul>      
-    {% endif %}
-    
-    {% if collection.all_tags.size > 0 %}
-      <h3>
-      {% if settings.locale == "enabled" %}
-        {{ settings.locale_coll_tags }}
-      {% else %}
-        Tags for
-      {% endif %}
-       <em>{{ collection.title }}</em>
-      </h3>
-      <ul class="inline-list">
-        {% for tag in collection.all_tags %}
-          <li>
-            {{ tag | highlight_active_tag | link_to_tag: tag }}
-          </li>
-        {% endfor %}
-      </ul>      
-    {% endif %} 
+{% if collections.size > 0 %}
+  <h3>
+  {% if settings.locale == "enabled" %}
+    {{ settings.locale_allcollections }}
+  {% else %}
+    All collections
+  {% endif %}
+  </h3>
+  <ul>
+	  {% for i in collections %}      	    
+		  <li {% if collection.url == i.url %} class="active"{% endif %}>
+		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title }}</a>
+		  </li>
+		{% endfor %}
+	</ul>
+{% endif %}    
+        
+{% if shop.types.size > 0 %}
+  <h3>
+  {% if settings.locale == "enabled" %}
+    {{ settings.locale_alltypes }}
+  {% else %}
+    All product types
+  {% endif %}          
+  </h3>        
+  <ul>
+  	{% for product_type in shop.types %}
+      <li>
+        {{ product_type | link_to_type  }}
+      </li>
+    {% endfor %}
+	</ul>      
+{% endif %}
+
+{% if shop.vendors.size > 0 %}
+  <h3>
+  {% if settings.locale == "enabled" %}
+    {{ settings.locale_allvendors }}
+  {% else %}
+    All vendors
+  {% endif %}
+  </h3>
+  <ul>
+  	{% for product_vendor in shop.vendors %}
+      <li {% if collection.url == url_for_vendor %} class="active"{% endif %}>
+        {{ product_vendor | link_to_vendor  }}
+      </li>
+    {% endfor %}
+  </ul>      
+{% endif %}
+
+{% if collection.all_tags.size > 0 %}
+  <h3>
+  {% if settings.locale == "enabled" %}
+    {{ settings.locale_coll_tags }}
+  {% else %}
+    Tags
+  {% endif %}
+   <em>{{ collection.title }}</em>
+  </h3>
+  <ul class="inline-list">
+    {% for tag in collection.all_tags %}
+      <li>
+        {{ tag | highlight_active_tag | link_to_tag: tag }}
+      </li>
+    {% endfor %}
+  </ul>      
+{% endif %} 
+
   </div>
 </div>
 
-
-	
 
 

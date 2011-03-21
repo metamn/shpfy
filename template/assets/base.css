@@ -421,7 +421,7 @@ blockquote {
 .clear {
   clear: both;
 }
-.block, #section, #article {
+.block {
   width: 100%;
   float: left;
 }

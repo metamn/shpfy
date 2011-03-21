@@ -1,0 +1,17 @@
+<h3>
+{% if settings.locale == "enabled" %}
+  {{ settings.locale_search }}
+  {% assign s = settings.locale_search %}
+{% else %}
+  Search
+  {% assign s = "Search" %}
+{% endif %} 
+</h3>
+<ul class="search">        
+  <li>
+    <form action="/search" method="get">
+      <input class="text" type="text" name="q" /> 
+      <input class="button" type="submit" value="{{ s }}"  />
+    </form>
+  </li>
+</ul> 

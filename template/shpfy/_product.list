@@ -1,10 +1,11 @@
+{% if settings.frontpage_@arg != "disabled" %}	
 <div id="section" class="@arg">
   <div id="details">
     <h1>{{ collections.@arg.title }}</h1>
     {% if collections.@arg.products.size > 0 %}
     <div id="articles">
       {% for product in collections.@arg.products limit : settings.frontpage_@arg_count %}
-        include product.thumb
+        include _product.thumb
       {% endfor %}
     </div> <!-- articles -->
     {% else %}
@@ -15,4 +16,4 @@
     {% endif %}
   </div> 
 </div> 
-
+{% endif %}
