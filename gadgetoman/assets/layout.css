@@ -86,9 +86,7 @@ body {
   /* setting the rhythm */
   line-height: 1.25em;
 }
-.text h1, .text h2, .text h3 {
-  margin: 1.25em 0;
-}
+
 
 
 
@@ -111,26 +109,12 @@ body {
 }
 
 
-/* Forms */
-
-.button, button, select, input, textarea {
-	-moz-border-radius: 6px;
-	-webkit-border-radius: 6px;
-	border-radius: 6px;	
-	padding: 6px 24px;
-	cursor: pointer;
-}
-.button:active  {
-	position: relative;
-	top: 1px;
-}
-
 
 
 /* Header */
 
 #header .logo {
-  margin-bottom: 0;
+  padding-bottom: 0;
 } 
 .menu #item { 
   float: left;
@@ -261,6 +245,9 @@ body {
   border-width: 15px;
   top: -1.9em;
 }
+.read-more {
+  margin-top: 1.25em;
+}
 
 
 /* Latest */
@@ -281,26 +268,28 @@ body {
   font-style: italic;
   margin: 1.25em 0;
 }
-#item.product {  
-  text-align: center;
+
+#item.product {
+  overflow: hidden;  
+  float: left;
+  height: 23.75em;
   margin-bottom: 2.5em;
-  height: 22.5em;  
 }
-#item.product .image {
-  padding: .62em 0;
+#item.product #details {
+  text-align: center;
 }
-#item.product .title {
-  padding: .62em 0;
+#item.product #figure {  
+  overflow: hidden;  
+  height: 15em;   
+  padding: 1.25em;
 }
-#item.product #add-to-cart {
-  margin: .62em 0;
-  position: relative;
-  top: .32em;
-  display: none;
+#item.product img {
+  max-width: 100%;
 }
-#item.hover #add-to-cart {
-  display: block;
+#item.product #figcaption {
+  padding: 1.25em 0;
 }
+
 #call-for-subscribe {
   margin: 1em 5% 0 0;
 }
@@ -528,9 +517,6 @@ ul.list {
   list-style-type: none;
   margin: 0;
 }
-ul.list li {
-  padding: .62em 0.31em;
-}
 .article-title {
   padding: 0;
   margin: .31em 0;
@@ -579,9 +565,6 @@ ul.list li {
 }
 #articles #article {
   margin-bottom: 3.75em;
-}
-#articles #article .title, #articles #article .title a {
-  padding: 0;
 }
 .blog ul.comments li {
   padding: .62em 0;

@@ -24,19 +24,23 @@
     {% else %}
       {% for product in collection.products %}  
       <div id="item" class="product">	    
-        <div class="title block">
+        <div id="details">
+          <div id="figcaption">
             <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-              {{ product.title }}
-              <div class="meta small">
-                <span class="price rounded">{{ product.price | money }}</span>
+              <div id="title">
+                {{ product.title }}
+              </div>
+              <div id="price">
+                {{ product.price | money }}
               </div>              
             </a>
           </div>          
-          <div class="image block">	      
+          <div id="figure">	      
             <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">	                
               <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />                        
             </a>            
           </div>
+        </div>
 	    </div>
       {% endfor %}
       <div class="clear"></div>

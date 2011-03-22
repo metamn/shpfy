@@ -24,27 +24,33 @@
         </div>  
       {% else %}
         {% for item in search.results %}
-        <div id="item" class="product">
-          <div class="title block">
-            <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
-              {{ item.title }}
-              <div class="meta small">
-                <span class="price rounded">{{ item.price | money }}</span>
-              </div>              
-            </a>
-          </div>          
-          <div class="image block">	 
-            {% if item.featured_image %}     
-              <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">	                
-                <img src="{{ item.featured_image | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" />                        
+        <div id="item" class="product">	    
+          <div id="details">
+            <div id="figcaption">
+              <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
+                <div id="title">
+                  {{ item.title }}
+                </div>
+                {% if item.featured_image %} 
+                  <div id="price">
+                    {{ product.price | money }}
+                  </div>              
+                {% endif %}
               </a>
-            {% else %}
-              <div class="text">
-                {{ item.content | truncatewords: 20 }}
-              </div>
-            {% endif %}
+            </div>          
+            <div id="figure">	  
+              {% if item.featured_image %}    
+                <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">                
+                  <img src="{{ item.featured_image | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" />                        
+                </a>            
+              {% else %}
+                <div class="text">
+                  {{ item.content | truncatewords: 20 }}
+                </div>
+              {% endif %}
+            </div>
           </div>
-        </div>
+	      </div>
         {% endfor %}
         <div class="clear"></div>
         
