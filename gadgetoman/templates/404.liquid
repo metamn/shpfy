@@ -1,29 +1,27 @@
 <div id="info" class="block">
   <div class="container">    
     <div id="content" class="text col-1 left">
-      <div class="box">
-        {% if settings.snippets == "enabled" %}
-          {% include 'page_not_found' %}        
-        {% else %}
-          <h2>Page Not Found</h2>
-          <p>The page you are looking for is not found.</p>
-          <p>Either the page address was wrong, or, the page itself was moved / removed by the site administrator.</p>
-          <p>Please try the <strong>search</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p> 
-        {% endif %} 
-        <br/>
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_search }}
-          {% assign s = settings.locale_search %}
-        {% else %}
-          {% assign s = "Search" %}
-        {% endif %} 
-        <div id="search" class="notfound">        
-          <form action="/search" method="get">
-	          <input class="text" type="text" name="q" /> 
-	          <input class="button" type="submit" value="{{ s }}"  />
-          </form>
-        </div>             
-      </div>
+      {% if settings.snippets == "enabled" %}
+        {% include 'page_not_found' %}        
+      {% else %}
+        <h2>Page Not Found</h2>
+        <p>The page you are looking for is not found.</p>
+        <p>Either the page address was wrong, or, the page itself was moved / removed by the site administrator.</p>
+        <p>Please try the <strong>search</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p> 
+      {% endif %} 
+      <br/>
+      {% if settings.locale == "enabled" %}
+        {{ settings.locale_search }}
+        {% assign s = settings.locale_search %}
+      {% else %}
+        {% assign s = "Search" %}
+      {% endif %} 
+      <div id="search" class="notfound">        
+        <form action="/search" method="get">
+          <input class="text" type="text" name="q" /> 
+          <input class="button" type="submit" value="{{ s }}"  />
+        </form>
+      </div> 
     </div>
 
     <div id="sidebar" class="right col-2">      

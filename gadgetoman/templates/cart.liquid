@@ -1,96 +1,93 @@
 <div id="info" class="block">
   <div class="container">    
     <div id="content">
-      <div class="box">
-        {% if cart.item_count == 0 %}
-          <h1>
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_cart_empty }}
-          {% else %}
-            Your cart is empty 
-          {% endif %}
-          </h1>
-          <p><a class="underline" href="/">
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_cart_visit }}
-          {% else %}
-            Please visit our shop
-          {% endif %}        
-          .</a></p>  
+      {% if cart.item_count == 0 %}
+        <h1>
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_cart_empty }}
         {% else %}
-        
-          <h1>
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_cart_title }}
-          {% else %}
-            Your Shopping Cart
-          {% endif %}  
-          </h1>
-                
-          <form action="/cart" method="post" id="cartform" name="cartform">          
-            {% for item in cart.items %}
-              <ul>
-                <li id="item" class="image">
-                  <a href="{{ item.product.url | within: collections.all }}">
-	                  <img src="{{ item.product.images.last | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" />
-	                </a>
-                </li>
-                <li id="item" class="info">
-                  <a href="{{ item.product.url | within: collections.all }}">
-		                {{ item.title }} <span>{{ item.price | money }}
-		              </a>	
-                </li>
-                <li id="item" class="update">
-                  <input type="text" class="text update quantity" name="updates[]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();" />
-			            <input type="hidden" name="id" value="{{ item.variant.id }}" />
-			            {% if settings.locale == "enabled" %}
-                    {% assign u = settings.locale_cart_update %}
-                  {% else %}
-                    {% assign u = "Update" %}
-                  {% endif %}  
-			            <input type="submit" class="button update" name="update" value="{{ u }}" id="update-cart" />
-                </li>
-                <li id="item" class="lineprice">
-                  {{ item.line_price | money }}
-                </li>
-                <li id="item" class="remove">
-                  <a class="button" href="/cart/change/{{ item.variant.id }}?quantity=0">
-                  {% if settings.locale == "enabled" %}
-                    {{ settings.locale_cart_remove }}
-                  {% else %}
-                    Remove
-                  {% endif %} 
-                  </a>
-                </li>
-              </ul>
-            {% endfor %}
-          </form>
+          Your cart is empty 
+        {% endif %}
+        </h1>
+        <p><a class="underline" href="/">
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_cart_visit }}
+        {% else %}
+          Please visit our shop
+        {% endif %}        
+        .</a></p>  
+      
+      {% else %}
+      
+        <h1>
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_cart_title }}
+        {% else %}
+          Your Shopping Cart
+        {% endif %}  
+        </h1>
+              
+        <form action="/cart" method="post" id="cartform" name="cartform">          
+          {% for item in cart.items %}
+            <ul>
+              <li id="item" class="image">
+                <a href="{{ item.product.url | within: collections.all }}">
+                  <img src="{{ item.product.images.last | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" />
+                </a>
+              </li>
+              <li id="item" class="info">
+                <a href="{{ item.product.url | within: collections.all }}">
+	                {{ item.title }} <span>{{ item.price | money }}
+	              </a>	
+              </li>
+              <li id="item" class="update">
+                <input type="text" class="text update quantity" name="updates[]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();" />
+		            <input type="hidden" name="id" value="{{ item.variant.id }}" />
+		            {% if settings.locale == "enabled" %}
+                  {% assign u = settings.locale_cart_update %}
+                {% else %}
+                  {% assign u = "Update" %}
+                {% endif %}  
+		            <input type="submit" class="button update" name="update" value="{{ u }}" id="update-cart" />
+              </li>
+              <li id="item" class="lineprice">
+                {{ item.line_price | money }}
+              </li>
+              <li id="item" class="remove">
+                <a class="button" href="/cart/change/{{ item.variant.id }}?quantity=0">
+                {% if settings.locale == "enabled" %}
+                  {{ settings.locale_cart_remove }}
+                {% else %}
+                  Remove
+                {% endif %} 
+                </a>
+              </li>
+            </ul>
+          {% endfor %}
                     
           <div id="checkout" class="block">
             <div id="total" class="left">
-		          <h3>
-		            {% if settings.locale == "enabled" %}
+	            <h3>
+	              {% if settings.locale == "enabled" %}
                   {{ settings.locale_cart_total }}
                 {% else %}
                   TOTAL:
                 {% endif %} 
-		             <span>{{ cart.total_price | money }} {{ shop.currency }}</span>		          
-		          </h3>
-		        </div>
-		        <div id="gotocheckout" class="right">		          
-	            {% if settings.locale == "enabled" %}
+	               <span>{{ cart.total_price | money }} {{ shop.currency }}</span>		          
+	            </h3>
+	          </div>
+	          <div id="gotocheckout" class="right">		          
+              {% if settings.locale == "enabled" %}
                 {% assign p = settings.locale_cart_checkout %}
               {% else %}
                 {% assign p = "Proceed to checkout" %}
               {% endif %} 
-	            <input class="button" type="submit" id="getout" name="checkout" value="{{ p }}" />		          
-		        </div>
-	        </div>	
-          </form>
-        {% endif %}
-      </div>
+              <input class="button" type="submit" id="getout" name="checkout" value="{{ p }}" />		          
+	          </div>          
+	         </div>
+        </form>
+      {% endif %}
     </div>
- 	
-    
+ 	</div>    
 </div>
 
