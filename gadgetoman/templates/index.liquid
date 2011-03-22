@@ -6,12 +6,14 @@
 			  <ul class="subs">
 				  <li class="sub" id="featured0">
 				    <div class="image col-2 right">
-					    {% for product in collections.frontpage.products limit: 1%}
-					      {% for image in product.images limit: 1 %}
-					        <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                    <img src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" /></a>
-					      {% endfor %}
-					    {% endfor %}
+				      <div class="inside">
+				        <div class="img">				
+				          {% for product in collections.frontpage.products limit: 1%}          
+		              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                    <img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" /></a> 
+                  {% endfor %}
+				        </div>
+				      </div>
 					  </div>
 				    <div id="text" class="col-1 left">
 				      {% assign article = pages.frontpage %}					    					    
@@ -21,21 +23,17 @@
               </h1>
 				      <div id="description" class="text">                
                  {{ article.content | truncatewords: 40 }}	
-              </div>             
-				     	<div id="links" class="block">
-                <div id="add-to-cart" class="right">  
-                  <ul>                       
-                    <li class="read-more">
-                      <a href="{{ article.url }}" title="{{ article.title }}">
-                      {% if settings.locale == "enabled" %}
-                        {{ settings.locale_read_more }} &rarr;
-                      {% else %}
-                        Read more &rarr;
-                      {% endif %}
-                      </a>
-                    </li>
-                  </ul>
-                </div>	
+                 <div class="read-more">
+                  <a class="title" href="{{ article.url }}" title="{{ article.title }}">
+                    {% if settings.locale == "enabled" %}
+                      {{ settings.locale_read_more }} &rarr;
+                    {% else %}
+                      Read more &rarr;
+                    {% endif %}
+                    </a>
+                </div>   
+              </div>                        
+				     	<div id="links" class="block">                
                 <div class="nav left">
                   &nbsp;				      
 				          <a href="#featured1" class="next"><div class="triangle triangle-bottom"></div></a>
@@ -46,10 +44,12 @@
 				  {% for product in collections.frontpage.products %}
 				    <li class="sub" id="featured{{ forloop.index }}">
 				      <div class="image col-2 right">
-					      {% for image in product.images limit: 1 %}
-					        <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                    <img src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" /></a>
-					      {% endfor %}					    
+				        <div class="inside">
+				          <div class="img">					          
+				            <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                      <img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" /></a> 					          			    
+					        </div>
+					       </div>
 					    </div>
 				      <div id="text" class="col-1 left">
                 <h1>
@@ -58,8 +58,16 @@
                 </h1>
                 <div id="description" class="text">                
                   {{ product.description | truncatewords: 40 }}
-                </div>
-                
+                  <div class="read-more">
+                    <a class="title" href="{{ article.url }}" title="{{ article.title }}">
+                      {% if settings.locale == "enabled" %}
+                        {{ settings.locale_read_more }} &rarr;
+                      {% else %}
+                        Read more &rarr;
+                      {% endif %}
+                      </a>
+                  </div> 
+                </div>                  
                 <div id="links" class="block">
                   <div id="add-to-cart" class="right">  
                     <ul>   
@@ -73,16 +81,7 @@
                         <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
                           {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
                       </li>
-                      {% endif %}
-                      <li class="read-more">
-                        <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                        {% if settings.locale == "enabled" %}
-                          {{ settings.locale_read_more }} &rarr;
-                        {% else %}
-                          Read more &rarr;
-                        {% endif %}
-                        </a>
-                      </li>
+                      {% endif %}                      
                     </ul>
                   </div>  
                   <div class="nav left">
@@ -146,21 +145,9 @@
             </a>
           </div>          
           <div class="image block">	      
-            {% for image in product.images limit: 1 %}
-              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">	                
-                <img class="desktop" src="{{ image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />          
-                <img class="mobile" src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
-              </a>
-            {% endfor %}
-          </div>
-          <div id="add-to-cart" class="meta small">
-            <a class="highlight rounded" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_cart_add }}
-            {% else %}
-              Add to cart
-            {% endif %}
-            </a>
+            <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">	                
+              <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />                        
+            </a>            
           </div>
 	      </div>
       {% endfor %}   
@@ -224,23 +211,11 @@
               </div>              
             </a>
           </div>          
-          <div class="image block">	      
-            {% for image in product.images limit: 1 %}
-              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">	                
-                <img class="desktop" src="{{ image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />          
-                <img class="mobile" src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
-              </a>
-            {% endfor %}
-          </div>
-          <div id="add-to-cart" class="meta small">
-            <a class="sale rounded" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-            {% if settings.locale == "enabled" %}
-              {{ settings.locale_cart_add }}
-            {% else %}
-              Add to cart
-            {% endif %}
-            </a>
-          </div>       
+          <div class="image block">	                  
+            <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">	                
+              <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
+            </a>            
+          </div>               
 	      </div>
       {% endfor %}
       

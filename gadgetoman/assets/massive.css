@@ -36,7 +36,10 @@ a.title {
 }
 input, textarea, a.button {
     -moz-box-shadow: 0 1px 0 0 #BAB291 inset;
-    background: -moz-linear-gradient(center top , #C0BBAD 5%, #B1AB9A 100%) repeat scroll 0 0 #C0BBAD;
+    -webkit-box-shadow: 0 1px 0 0 #BAB291 inset;
+    box-shadow: 0 1px 0 0 #BAB291 inset;
+    background-color: #c0bbad; 
+    background: -moz-linear-gradient(center top , #C0BBAD 5%, #B1AB9A 100%) repeat scroll 0 0 #c0bbad;   
     border: 1px solid #C0BBAD;
     color: #4C4C4C !important;
     text-decoration: none !important;
@@ -69,6 +72,12 @@ input.text, textarea {
     background: none repeat scroll 0 0 #ABF205 !important;
     color: #4F4442;
 }
+.cart #info li.image {
+  background: #fff;
+  -moz-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
 .menu #item.cart .quantity {
     border-bottom: 1px dotted #4F4442;
 }
@@ -99,6 +108,13 @@ input.text, textarea {
 .index #featured .read-more a {
     color: #4C4C4C;
 }
+.index #featured .image img {
+  -moz-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  background: #fff;
+}
+
 #latest {
     background: none repeat scroll 0 0 #C0BBAD;
     color: #3D3D3B;
@@ -115,10 +131,17 @@ input.text, textarea {
 }
 #item.product {
     -moz-box-shadow: 0 3px 10px #A39B88;
-    background: none repeat scroll 0 0 #CDC7B8;
+    -webkit-box-shadow: 0 3px 10px #A39B88;
+    box-shadow: 0 3px 10px #A39B88;
+    background: none repeat scroll 0 0 #fff;
 }
 #item.hover {
     -moz-box-shadow: 0 1px 7px #4C4C4C;
+    -webkit-box-shadow: 0 1px 7px #4C4C4C;
+    box-shadow: 0 1px 7px #4C4C4C;
+}
+#item.product .title {
+  background: #CDC7B8;
 }
 #item.product .image {
     background: none repeat scroll 0 0 #FFFFFF;
@@ -174,6 +197,9 @@ input.text, textarea {
 }
 #sidebar img, .product #product-image img {
     border: 1px solid #BAB291;
+    -moz-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -webkit-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 #sidebar .accordion h4 {
     border-bottom: 1px solid #BAB291;
