@@ -1,7 +1,14 @@
 #item.product, .subscribe-twitter {
   width: 45%;
-  margin-right: 5%;
+  margin-right: 10%;
   float: left;
+}
+.index #item.c-2, .index #item.c-4, .index #item.c-6, .index #item.c-8,
+.product #item.c-2, .product #item.c-4, .product #item.c-6, .product #item.c-8 {
+  margin-right: 0;
+} 
+.index #item.c-3, .product #item.c-3 {
+  margin-right: 10%; /* to overwrite layout.css */
 }
 
 #item.product #add-to-cart {

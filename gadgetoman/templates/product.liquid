@@ -186,7 +186,7 @@
       <div class="clear"></div>
       
       {% for product in collections.all.products limit:8 %}
-        <div id="item" class="product">	    
+        <div id="item" class="product c-{{ forloop.index }}">	    
           <div id="details">
             <div id="figcaption">
               <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
@@ -234,7 +234,7 @@
 <div id="sales" class="block">
   <div class="container">
     {% if collections.sale.products.size > 0 %} 
-      <div id="item" class="product clean">
+      <div id="item" class="product clean c-1">
         <div class="sale">
           {% if settings.locale == "enabled" %}
             <h4>{{ settings.locale_sales }}
@@ -254,7 +254,7 @@
       </div>      
       
       {% for product in collections.sale.products limit: 3 %}
-        <div id="item" class="product">	    
+        <div id="item" class="product c-{{ forloop.index | plus : 1}}">	    
           <div id="details">
             <div id="figcaption">
               <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">

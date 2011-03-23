@@ -276,6 +276,9 @@ a.button {
 
 */
 
+#product-image {
+  background: #fff;
+}
 #sidebar {
   background: #f3f3f3;
 }

@@ -191,11 +191,14 @@ input.text, textarea {
     background: none repeat scroll 0 0 #4F4442;
     border-top: 1px solid #4F4442;
 }
+#product-image {
+  background: #fff;
+}
 #sidebar {
     background: none repeat scroll 0 0 #B0A792;
     color: #3D3D3B;
 }
-#sidebar img, .product #product-image img {
+#sidebar img, .product #product-image {
     border: 1px solid #BAB291;
     -moz-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     -webkit-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;

@@ -22,9 +22,10 @@
 
 #item.product, .subscribe-twitter {
   width: 30%;
-  margin-right: 3%;
+  margin-right: 5%;
   float: left;
 }
+
 
 
 #ecosystem .col-1 {
@@ -226,7 +227,7 @@ body {
   height: 30em;
 }
 .index #featured .image .inside {
-  text-align: center;
+  text-align: right;
 }
 .index #featured .image .inside .img {
   overflow: hidden;
@@ -266,7 +267,7 @@ body {
 }
 #latest #hot {
   font-style: italic;
-  margin: 1.25em 0;
+  margin: .9em 0; /* to re-align to grid / on the bottom of the triangle */
 }
 
 #item.product {
@@ -291,12 +292,10 @@ body {
 }
 
 #call-for-subscribe {
-  margin: 1em 5% 0 0;
+  margin-top: 2.25em; /*to re-align to grid, in line with "Hot" */
 }
 #more {
-  margin: 0 5% 1.25em 0;
   font-variant: small-caps;
-  padding: .62em;
 }
 
 
@@ -315,6 +314,7 @@ body {
   -moz-box-shadow: none;
   -khtml-box-shadow: none;
   -webkit-box-shadow: none;
+  text-align: center;
 }
 #sales .meta {
   margin: .62em 0;
@@ -389,12 +389,13 @@ img.avatar {
   width: 48px;
   height: 48px;
 }
-
-
 #ecosystem-top.triangle-top {
   border-width: 30px;
   top: -2.4em;
   left: 30%;
+}
+#ecosystem #shopping-info input.button, .product #sidebar input.button {
+  margin: .625em 0;
 }
 
 
@@ -415,6 +416,9 @@ img.avatar {
 /* Product */
 
 
+.product #product-image {
+  padding: 1.25em;
+}
 .product #product-image img {
   max-width: 100%;
   max-height: 100%;
@@ -507,9 +511,7 @@ li.facebook {
   max-width: 100px;
   max-height: 100px;
 }
-.cart #info #checkout input {
-  float: right;
-}
+
 
 
 

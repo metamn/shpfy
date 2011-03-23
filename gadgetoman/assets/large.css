@@ -1,7 +1,11 @@
 #item.product, .subscribe-twitter {
   width: 20%;
-  margin-right: 5%;
+  margin-right: 6.66%;
   float: left;
+}
+.index #item.c-4, .index #item.c-8,
+.product #item.c-4, .product #item.c-8  {
+  margin-right: 0;
 }
 
 .collection #item.product {
