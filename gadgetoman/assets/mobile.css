@@ -63,18 +63,23 @@
 
 /* Frontpage */
 
-.index #featured, .index .section .sub {
-  height: 47em;
-}
-.index #featured .image  {
-  height: 20em;
-}
-.index #featured .image .inside .img img {
-  padding: 0;
+.index #featured, .index .section .sub, .index #featured .image, .index #featured #text #description, 
+.index #featured .image .inside .img img, .index #featured .image .inside .img {
+  height: auto;
 }
 .index #featured .image .inside {
   text-align: left;
 }
+.index #featured .image .inside .img img {
+  padding: 0;
+}
+.index #featured #text #description {
+  padding-bottom: 0;
+}
+.index #featured #links {
+  margin-top: 0;
+}
+
 .index #featured #add-to-cart {
   float: left;
   width: 100%;
@@ -84,9 +89,6 @@
   float: left;
   width: 100%;
   margin: 1.25em 0;
-}
-.index #featured #links {
-  margin-top: 2.5em;
 }
 
 
