@@ -9,7 +9,7 @@
 	{{ 'base.css' | asset_url | stylesheet_tag }}		
 	{{ 'layout.css' | asset_url | stylesheet_tag }}
 	
-	{{ 'theme.css' | asset_url | stylesheet_tag }}
+	{{ 'smart.css' | asset_url | stylesheet_tag }}
 	{% if settings.colors == "enabled" %}
 	  {{ 'theme-custom-colors.css' | asset_url | stylesheet_tag }}	
 	{% endif %}	
@@ -287,14 +287,19 @@
           </div>
           <div class="col twitter">            
             <img src="{{ 'twitter.png' | asset_url }}" alt="Twitter" />
-            <div class="counter">
-              <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
+            <div class="counter">              
+              <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+              <a href="http://twitter.com/share" class="twitter-share-button">Tweet</a>
             </div> 
           </div>  
           <div class="col rss">          
             <img src="{{ 'rss.png' | asset_url }}" alt="News" />
             <div class="counter">
-              <a href="http://feeds.feedburner.com/Gadgetoman-News"><img src="http://feeds.feedburner.com/~fc/Gadgetoman-News?bg=ffa64b&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+              {% if settings.snippets == "enabled" %}
+                {% include 'rss_feed' %} 
+              {% else %}
+                <a href="http://feeds.feedburner.com/Gadgetoman-News"><img src="http://feeds.feedburner.com/~fc/Gadgetoman-News?bg=ffa64b&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+              {% endif %}
             </div>              
           </div>                
         </div>

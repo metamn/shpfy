@@ -219,10 +219,10 @@ a.button {
 #sales .sale a, #sales .sale a:hover {
   color: #f9f9f9;
 }
-#sales .meta .price {
+#sales #price {
   color: #C60017;
 }
-#sales #item.hover .meta .price {
+#sales #item.hover #price {
   color: #fff;
   background: #C60017;
 }

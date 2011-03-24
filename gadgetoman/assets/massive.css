@@ -135,6 +135,9 @@ input.text, textarea {
     box-shadow: 0 3px 10px #A39B88;
     background: none repeat scroll 0 0 #fff;
 }
+#item.product #figcaption {
+  background: #CDC7B8;  
+}
 #item.hover {
     -moz-box-shadow: 0 1px 7px #4C4C4C;
     -webkit-box-shadow: 0 1px 7px #4C4C4C;
@@ -147,7 +150,7 @@ input.text, textarea {
     background: none repeat scroll 0 0 #FFFFFF;
 }
 #more {
-    text-shadow: 1px 1px 2px #DDDDDD;
+    text-shadow: 1px 1px 2px #bbb;
 }
 #sales {
     background: none repeat scroll 0 0 #C0BBAD;
@@ -159,12 +162,10 @@ input.text, textarea {
 #sales .sale a, #sales .sale a:hover {
     color: #FCF3FB;
 }
-#sales .meta .price {
+#sales #price {
+  color: #BF2F17;
 }
-#sales #item.hover .meta .price {
-    background: none repeat scroll 0 0 #BF2F17;
-    color: #FCF3FB;
-}
+
 #sales #item.product #add-to-cart .sale {
     background: none repeat scroll 0 0 transparent;
     color: #BF2F17;
@@ -221,7 +222,7 @@ input.text, textarea {
     color: #3D3D3B;
 }
 .cart #info ul {
-    border-bottom: 1px solid;
+    border-bottom: 1px solid #B0A792;
 }
 .collection #navigation #tags a, .collection #navigation #tags a:visited {
     text-decoration: none;
