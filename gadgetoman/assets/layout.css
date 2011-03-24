@@ -85,7 +85,7 @@
 
 body {  
   /* setting the rhythm */
-  line-height: 1.25em;
+  line-height: 1.25;
 }
 
 
@@ -167,7 +167,7 @@ body {
 	padding: 0;
 	margin: 0;
 }
-.index #navigation ul, .index #featured ul {
+.index #featured ul.subs {
   list-style-type: none;
   padding: 0;
 	margin: 0;
@@ -296,6 +296,7 @@ body {
 }
 #more {
   font-variant: small-caps;
+  padding: .625em;
 }
 
 
@@ -331,6 +332,8 @@ body {
 #sales #item.product #add-to-cart {
   margin: 0 1.25em;
 }
+
+
 
 /* Eco */
 
@@ -394,7 +397,7 @@ img.avatar {
   top: -2.4em;
   left: 30%;
 }
-#ecosystem #shopping-info input.button, .product #sidebar input.button {
+#ecosystem #shopping-info input.button, .product #sidebar input.button, #search input.button {
   margin: .625em 0;
 }
 
@@ -522,6 +525,12 @@ ul.list {
   list-style-type: none;
   margin: 0;
 }
+ul#comments {
+  margin-left: 1.25em;
+}
+ul.list li.active {
+  padding: .625em .312em;
+}
 .article-title {
   padding: 0;
   margin: .31em 0;
@@ -606,7 +615,6 @@ blockquote {
 #sidebar #share {
   padding-bottom: .62em;
 }
-
 
 
 

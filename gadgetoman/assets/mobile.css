@@ -63,11 +63,17 @@
 
 /* Frontpage */
 
-.index #featured {
-  height: auto;
+.index #featured, .index .section .sub {
+  height: 47em;
 }
-.index .section .sub  {
-  height: auto;
+.index #featured .image  {
+  height: 20em;
+}
+.index #featured .image .inside .img img {
+  padding: 0;
+}
+.index #featured .image .inside {
+  text-align: left;
 }
 .index #featured #add-to-cart {
   float: left;
@@ -178,6 +184,12 @@
 .product #sidebar input, .product #sidebar select {
   width: 100%;
 }
+#sidebar #share {
+  min-height: 4.25em;
+}
+#sidebar #share .twitter {
+  margin-bottom: 1.25em;
+}
 
 
 /* Cart */
@@ -204,10 +216,12 @@
 .cart #info li.lineprice {
   display: none !important;
 }
-
 .cart #info img {
   max-width: none;
   max-height: none;
+}
+.cart #info li.image {
+  text-align: left;
 }
 
 
