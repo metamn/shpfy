@@ -16,7 +16,6 @@ a.underline {
 }
 .text a, .text a:visited, .text *:link, .text *:visited {
     color: #3D3D3B;
-    padding: 0 0.32em;
     text-decoration: underline;
 }
 .text a:hover, .text a:focus, .text a:active {
@@ -109,10 +108,15 @@ input.text, textarea {
     color: #4C4C4C;
 }
 .index #featured .image img {
-  -moz-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  -webkit-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   background: #fff;
+}
+.index #featured .image .inside .img img {
+  max-width: 90%;  
+  max-height: 90%;
+  padding: 1.25em;
 }
 
 #latest {
@@ -201,9 +205,9 @@ input.text, textarea {
 }
 #sidebar img, .product #product-image {
     border: 1px solid #BAB291;
-    -moz-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    -webkit-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -webkit-box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 #sidebar .accordion h4 {
     border-bottom: 1px solid #BAB291;

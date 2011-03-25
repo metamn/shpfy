@@ -22,7 +22,6 @@ a.underline {
 }
 .text a, .text a:visited, .text *:link, .text *:visited {
     color: #111;
-    padding: 0 0.32em;
     text-decoration: underline;
 }
 .text a:hover, .text a:focus, .text a:active {
@@ -102,7 +101,11 @@ input.text, textarea {
   box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   background: #fff;
 }
-
+.index #featured .image .inside .img img {
+  max-width: 90%;  
+  max-height: 90%;
+  padding: 1.25em;
+}
 
 
 #latest {
@@ -158,6 +161,11 @@ input.text, textarea {
 #sales #item.product #add-to-cart .sale {
     background: none repeat scroll 0 0 transparent;
     color: #F25E18;
+}
+
+
+#product-image {
+  background: #fff;
 }
 
 #sidebar {

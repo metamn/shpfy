@@ -73,13 +73,9 @@
 .index #featured .image .inside .img img {
   padding: 0;
 }
-.index #featured #text #description {
-  padding-bottom: 0;
-}
 .index #featured #links {
   margin-top: 0;
 }
-
 .index #featured #add-to-cart {
   float: left;
   width: 100%;

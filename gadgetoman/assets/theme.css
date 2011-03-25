@@ -48,7 +48,6 @@ a.underline {
 .text a, .text a:visited, .text :link, .text :visited {
   color: #3d3d3b;
   text-decoration: underline;
-  padding: 0 .32em;
 }
 /*
   * hover: inverted colors 
@@ -173,7 +172,7 @@ a.button {
   background: #eee;
 }
 #latest-top.triangle-bottom {
-  border-color: #fff transparent transparent;  
+  border-color: #f8f8f8 transparent transparent;  
 }
 #latest .highlight, .collection .highlight {
   background: #ffb200;
@@ -221,10 +220,6 @@ a.button {
 }
 #sales #price {
   color: #C60017;
-}
-#sales #item.hover #price {
-  color: #fff;
-  background: #C60017;
 }
 #sales #item.product #add-to-cart .sale {
   color: #f9f9f9;
