@@ -167,6 +167,9 @@ input.text, textarea {
 #product-image {
   background: #fff;
 }
+.product #product-image {
+  padding: 1.25em;
+}
 
 #sidebar {
   background: #cac1b2;

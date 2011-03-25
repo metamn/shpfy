@@ -9,12 +9,14 @@
 	{{ 'base.css' | asset_url | stylesheet_tag }}		
 	{{ 'layout.css' | asset_url | stylesheet_tag }}
 	
+	<!--[if ! IE]>
   {% if settings.mobile != "disabled" %}  
     <link href="{{ 'mobile.css' | asset_url }}" charset="utf-8" media="screen and (max-width: 480px)" rel="stylesheet" type="text/css" />
   {% endif %}   
 	<link href="{{ 'tablet.css' | asset_url }}" charset="utf-8" media="screen and (min-width: 481px) and (max-width: 1024px)" rel="stylesheet" type="text/css" />
 	<link href="{{ 'wide.css' | asset_url }}" charset="utf-8" media="screen and (min-width: 1025px) and (max-width: 1399px)" rel="stylesheet" type="text/css" />
   <link href="{{ 'large.css' | asset_url }}" charset="utf-8" media="screen and (min-width: 1400px)" rel="stylesheet" type="text/css" />
+	<![endif]-->
 	
 	{{ 'massive.css' | asset_url | stylesheet_tag }}
 	{% if settings.colors == "enabled" %}

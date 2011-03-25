@@ -196,9 +196,15 @@ input.text, textarea {
     background: none repeat scroll 0 0 #4F4442;
     border-top: 1px solid #4F4442;
 }
+
+
 #product-image {
   background: #fff;
 }
+.product #product-image {
+  padding: 1.25em;
+}
+
 #sidebar {
     background: none repeat scroll 0 0 #B0A792;
     color: #3D3D3B;

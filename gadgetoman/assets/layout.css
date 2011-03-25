@@ -416,9 +416,7 @@ img.avatar {
 /* Product */
 
 
-.product #product-image {
-  padding: 1.25em;
-}
+
 .product #product-image img {
   max-width: 100%;
   max-height: 100%;

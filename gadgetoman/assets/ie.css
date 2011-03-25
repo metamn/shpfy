@@ -1,0 +1,6 @@
+.menu #item.cart {
+  padding-top: 0;
+}
+#latest #item.product, #sales #item.product {
+  margin-right: 3%;
+}

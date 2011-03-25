@@ -16,7 +16,7 @@ jQuery(document).ready(function(){
       if (jQuery(this).attr('class') == "next") {
         jQuery(target).removeClass('hidden');
       } else {
-        jQuery(this).parent().parent().parent().addClass('hidden');
+        jQuery(this).parent().parent().parent().parent().addClass('hidden');
       }   
     });
   
