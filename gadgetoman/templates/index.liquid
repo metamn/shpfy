@@ -22,17 +22,17 @@
                 {{ article.title }} </a>
               </h1>
 				      <div id="description" class="text">                
-                 {{ article.content | truncatewords: 40 }}	
-                 <div class="read-more">
-                  <a class="title" href="{{ article.url }}" title="{{ article.title }}">
-                    {% if settings.locale == "enabled" %}
-                      {{ settings.locale_read_more }} &rarr;
-                    {% else %}
-                      Read more &rarr;
-                    {% endif %}
-                    </a>
-                </div>   
-              </div>                        
+                 {{ article.content  }}	                    
+              </div>                    
+              <div class="read-more">
+                <a class="title" href="{{ article.url }}" title="{{ article.title }}">
+                  {% if settings.locale == "enabled" %}
+                    {{ settings.locale_read_more }} &rarr;
+                  {% else %}
+                    Read more &rarr;
+                  {% endif %}
+                  </a>
+              </div>    
 				     	<div id="links" class="block">                
                 <div class="nav left">
                   &nbsp;				      
@@ -57,16 +57,16 @@
                   {{ product.title | escape }} </a>
                 </h1>
                 <div id="description" class="text">                
-                  {{ product.description | truncatewords: 40 }}
-                  <div class="read-more">
-                    <a class="title" href="{{ article.url }}" title="{{ article.title }}">
-                      {% if settings.locale == "enabled" %}
-                        {{ settings.locale_read_more }} &rarr;
-                      {% else %}
-                        Read more &rarr;
-                      {% endif %}
-                      </a>
-                  </div> 
+                  {{ product.description  }}
+                </div> 
+                <div class="read-more">
+                  <a class="title" href="{{ product.url }}" title="{{ product.title }}">
+                    {% if settings.locale == "enabled" %}
+                      {{ settings.locale_read_more }} &rarr;
+                    {% else %}
+                      Read more &rarr;
+                    {% endif %}
+                    </a>
                 </div>                  
                 <div id="links" class="block">
                   <div id="add-to-cart" class="right">  

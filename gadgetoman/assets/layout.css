@@ -215,10 +215,10 @@ body {
 .index #featured #text .nav {
   margin-top: .625em;
 }
-
 .read-more {
   font-size: small;
   font-variant: small-caps;
+  margin-bottom: 1.25em;
 }
 .index #featured .image {
   overflow: hidden;
