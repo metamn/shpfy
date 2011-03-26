@@ -1,0 +1,34 @@
+.col-1, .col-2 {
+  width: 100%; 
+  margin-left: 0;
+  margin-right: 0;
+}
+
+
+.cart li {
+  margin: 5% 0;
+  display: block !important;  
+}
+.cart #image, .cart #info, .cart #update, .cart #lineprice, .cart #remove, .cart #checkout #total {
+  width: 100%;
+  top: 0;
+}
+.cart #update, .cart #remove {
+  margin-left: 5%;
+}
+.cart #lineprice {
+  display: none !important;
+}
+.cart #checkout input {
+  float: left;
+  margin-top: 1.25em; 
+}
+.cart #gotocheckout {
+  float: left;
+  width: 100%;
+}
+.cart img {
+  max-width: none;
+  max-height: none;
+}
+

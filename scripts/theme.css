@@ -1,0 +1,375 @@
+body {
+  -webkit-text-size-adjust: none; 
+  font-family: 'Ubuntu', arial, serif;  
+}
+
+
+
+/*
+## Color scheme
+
+* basic color / background: #eee;
+  * grays, from light to dark: #f9f9f9, #f3f3f3, #dadada, #ddd, #ccc, #a3a3a0, #777, #4c4c4c
+* black: #3d3d3b  > 2d2d2d   
+* highlight / orange: #ffb300
+* highlight / yellow: #C60017
+
+*/
+
+body {
+  background: #eee url(stripe.png);
+  color: #3d3d3b;
+}
+
+
+/* 
+
+## Links
+
+* The *default* style is simple, no underline, no hover
+*/
+a, a:visited, a:hover, :link, :visited {
+  text-decoration: none; 
+  color: #3d3d3b;
+  background: none;
+}
+/* 
+  * **a.underline** forces text decoration (!important)
+*/
+a.underline {
+  text-decoration: underline !important;
+}
+
+/* 
+* Plain text style for post body, product description, pages etc. 
+  * class name: **.text**
+  * default style: underlined
+*/
+.text a, .text a:visited, .text :link, .text :visited {
+  color: #3d3d3b;
+  text-decoration: underline;
+  padding: 0 .32em;
+}
+/*
+  * hover: inverted colors 
+*/
+.text a:hover, .text a:focus, .text a:active {
+  color: #f9f9f9 !important;
+  background: #3d3d3b;
+  text-decoration: none;
+}
+/*
+  * headings are unstyled using **a.title**
+*/
+a.title {
+  text-decoration: none !important;
+}
+
+/* 
+* Notes, highlighting texts
+  * class name: **.note**
+  * default style: gray with shadow, changing color on hover, no decoration 
+*/
+.note, .note a {
+  color: #a3a3a0;
+  text-decoration: none;  
+}
+.note a:hover {
+  color: #3d3d3b; 
+}
+
+
+/* 
+
+## Forms 
+Forms are completely re-styled
+* 
+*/
+input, textarea, a.button {
+	-moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+	box-shadow: inset 0px 1px 0px 0px #ffffff;
+	
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+	background: -moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color: #ededed;
+	
+	border: 1px solid #dcdcdc;
+	
+	color: #4c4c4c !important;	
+	text-decoration:none !important;
+	text-shadow: 1px 1px 0px #ffffff;	
+}
+input.button:hover, a.button:hover {
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+	background: -moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+	background-color: #dfdfdf;
+}
+input.text, textarea {
+  background: #fff;
+}
+
+
+
+.missing {
+  background: lightyellow;
+}
+
+
+/* 
+
+## Header 
+
+*/
+
+
+#header {
+  background: #3d3d3b;
+  border-bottom: 1px solid #2d2d2d;
+}
+#header a, #header a:visited, #footer a, #footer a:visited, .menu .search {
+  color: #f9f9f9;
+  text-decoration: none;
+}
+.menu #item.cart {
+  background: #C60017 !important;
+  color: #f9f9f9;    
+}
+.menu #item.cart .quantity {
+  border-bottom: 1px dotted #f9f9f9;
+}
+
+
+
+
+/* 
+
+## Index 
+
+*/
+
+
+.index #featured .triangle-bottom {
+  border-color: #DDDDDD transparent transparent;  
+}
+.index #featured .triangle-top {
+  border-color: transparent transparent #DDDDDD;  
+}
+.index #featured a .triangle-bottom {
+  border-color: #bbb transparent transparent;
+}
+.index #featured a .triangle-top {
+  border-color: transparent transparent #bbb;
+}
+.index #featured a:hover .triangle-bottom {
+  border-color: #3d3d3b transparent transparent;
+}
+.index #featured a:hover .triangle-top {
+  border-color: transparent transparent #3d3d3b;
+}
+.read-more a {
+  color: #a3a3a0;
+}
+.index #featured .image img {
+  -moz-box-shadow: none;
+  -khtml-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+
+
+/* 
+
+## Latest Products 
+
+*/
+
+#latest {
+  background: #eee;
+}
+#latest-top.triangle-bottom {
+  border-color: #fff transparent transparent;  
+}
+#latest .highlight, .collection .highlight {
+  background: #ffb200;
+}
+#latest #hot {
+  text-shadow: 1px 1px 2px #ddd;
+  color: #3d3d3b;  
+}
+#item.product {  
+  background: #fff;
+  -moz-box-shadow: 0px 3px 10px #ddd;
+  -khtml-box-shadow: 0px 3px 10px #ddd;
+  -webkit-box-shadow: 0px 3px 10px #ddd;
+}
+#item.hover {  
+  -moz-box-shadow: 0px 1px 7px #4c4c4c;
+  -khtml-box-shadow: 0px 1px 7px #4c4c4c;
+  -webkit-box-shadow: 0px 1px 7px #4c4c4c;
+}
+#item.product .title {
+  background: #f3f3f3;  
+}
+#more {
+  text-shadow: 1px 1px 2px #ddd;
+}
+
+
+
+/* 
+
+## Products on Sale 
+
+*/
+
+#sales {
+  background: #eee;
+}
+#sales .sale  {
+  color: #f9f9f9;  
+  background: #C60017;
+  text-shadow: none;
+}
+#sales .sale a, #sales .sale a:hover {
+  color: #f9f9f9;
+}
+#sales .meta .price {
+  color: #C60017;
+}
+#sales #item.hover .meta .price {
+  color: #fff;
+  background: #C60017;
+}
+#sales #item.product #add-to-cart .sale {
+  color: #f9f9f9;
+}
+
+
+/* 
+
+## Ecosystem + Footer 
+
+*/
+
+
+#eco.product {
+  background: #eee;
+}
+#eco .triangle-left {
+  border-color: transparent #3d3d3b transparent transparent;  
+}
+
+
+#ecosystem {
+  background: #dadada;
+}
+#ecosystem .form input.text {
+  color: #4c4c4c;
+}
+#ecosystem-top.triangle-top {
+  border-color: transparent transparent #dadada;  
+}
+#ecosystem ul.list li {
+  border-bottom: 1px solid #ccc;
+}
+#ecosystem .date {
+  color: #777;
+}
+
+#footer {
+  background: #3d3d3b;
+  border-top: 1px solid #2d2d2d; 
+}
+
+
+
+
+/* 
+
+## Single Product 
+
+*/
+
+#sidebar {
+  background: #f3f3f3;
+}
+#sidebar h2 {
+  color: #C60017;
+}
+#sidebar img, .product #product-image img  {
+  border: 1px solid #ededed; 
+}
+#sidebar .accordion h4 {
+  border-bottom: 1px solid #ccc;
+}
+#sidebar ul.list li {
+  border-bottom: 1px solid #ededed;
+}
+#sidebar ul.list li a, #sidebar ul.list li a:visited {
+  text-decoration: none;
+  color: #3d3d3b;
+}
+#sidebar ul.list li.active, #sidebar #tags .active {
+  background: #dadada;
+}
+#sidebar .date {
+  color: #9d9d9d;
+}
+
+
+/* 
+
+### Checkout 
+
+*/
+
+.cart #info ul {
+  border-bottom: 1px solid #ededed;
+}
+
+
+/* 
+
+## Product collections 
+
+*/
+
+
+.collection #navigation #tags a, .collection #navigation #tags a:visited {
+  text-decoration: none;
+}
+.collection #navigation #tags a {
+  color: #4c4c4c;
+}
+.collection #navigation #tags a:visited {
+  color: #9d9d9d;
+}
+
+#paginate a, #paginate a:visited {
+  text-decoration: none;
+  color: #4c4c4c;
+}
+#paginate .current, #paginate .deco {
+  background: #a3a3a0;
+  color: #f9f9f9;
+}
+
+
+
+
+/* 
+
+## Blog 
+
+*/
+
+.article .meta {
+  background: #f9f9f9;
+}
+#comments li {
+  border-bottom: 1px solid #ededed;
+}
+

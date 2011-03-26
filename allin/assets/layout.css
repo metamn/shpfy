@@ -1,0 +1,338 @@
+/*
+# The Grid and the Elements
+
+* File name: [layout.css](layout.css )
+* Defining and aligning all elements both vertically and horizontally
+* Author: [Shopledge](http://shopledge.com "Shopledge")
+* License: MIT Licence. Copyright 2010 Shopledge [www.shopledge.com](http://shopledge.com "Shopledge")
+
+---
+*/
+
+
+/*
+## The Layout
+
+* centered, width **80%**, **10%** margins left and right
+* this layout does not change on large, and tablet screens, not even on mobile screens
+
+*/
+.container {
+  width: 80%; 
+  max-width: 80em;  /* 80x16px=1280px */
+  margin: 0 auto;
+}
+
+
+/*
+## Vertical Rhythm 
+
+* the height of the grid is set to **1.25em**
+
+*/
+
+body {
+  font: normal 100% Helvetica, Arial, sans-serif;
+  line-height: 1.25; 
+}
+
+h1, h2, h3 { margin-top:0; margin-bottom:0; }
+h1 { font-size:1.5em; padding:1.45833em 0; }
+h2 { font-size:1.33333em; padding:1.25em 0; }
+h3 { font-size:1.16667em; padding:1.51785em 0; }
+
+
+
+
+/* 
+## The Horizontal Grid 
+
+* we have two types of grid:
+
+  * an automatic, given by **em** which resizes itself across all responsive styelsheets
+  * a forced, given by **%** which must be handled responsively
+  * if on a single page both grids are displayed they might not be in harmony 
+
+### The automatic grid
+
+* used in listing images (displaying collections)
+* there is no need to float left the images
+* in Shopify's case the grid is given by the image sizes:
+
+  * **small** - 100x100px = 6.75em
+  * **medium** - 240x240px = 15em
+  * **large** - 480x480px = 30em
+  * **grande** - 600x600px = 37.5em
+  * **original** - 1024x1024px = 64em
+  
+* if **medium** sized thumbs are shown a column is 15em + margins, in our case **20em**
+
+*/
+
+#article.thumb {
+  width: 20em; /* medium sized image is 15x15em */
+  height: 30em; 
+}
+#article.thumb #figure {
+  height: 15em;
+}
+
+/*
+### The forced grid
+
+* used when we are forcing to align elements on a page
+* for example, on the Product page we want two columns, the first with product info the second with operations on Product 
+* in this case we are **not** thinking in grid columns (ie a column with 20em width) but in percentages
+
+  * our available screen is always 100%;
+  * we say column-1 is 50%, and column-2 is 40% with a 10% left margin. And that's all
+  * in responsive stylesheets these ratios must be adapted.
+  * columns must be always floated left
+  
+* In forced grid images must be adjusted with `max-width`
+  
+*/
+
+
+.col-1 {
+  width: 50%; 
+}
+.col-2 {
+  width: 40%;
+  margin-left: 10%;
+}
+
+
+
+
+
+/* 
+## Page Structure / Element naming conventions
+
+* each page has the following structure:
+
+      #header
+      #content
+      #footer
+
+* **#content** is marked with one of these page types:
+
+  * **.collection** - for collections page, search page, blog page
+  * **.page** - for product page, article page, not_found, and page
+  * **.index** - for the start page
+  * in any case the page template name is added as a class to #content
+  * search_page can turn into a `page` instead of `collection` when there are no search results.
+  * in fact any collection can turn into a page when empty
+
+* naming elements is done by *trying* to follow the [HTML5 specification](http://www.w3schools.com/html5/html5_new_elements.asp )
+* however there is no consensus on how to use correctly the new HTML5 tags
+* so we won't think in HTML5 terms, just trying to create a common sense for us:
+
+  * **#section** is used to collect similar items into a whole
+  * **#article** is used to mark up a product or a blog post 
+  * **#aside** is marking sidebars  
+  * **#nav** is used to identify menus
+    
+* inside #content everything is wrapped into **#section** or **#article**
+
+      #content.index
+        #section.about
+        #section.latest
+        #section.featured
+        ...
+        #section.navigation             
+
+      #content.product
+        #article
+        #aside
+
+* #section and #article is immediately followed by a new div, **#details** for padding and styling        
+* **#section** has the following structure:
+
+      #section.name
+        #details        #=> used for spacing, padding, styling etc.
+          <h1>Title
+          #articles
+            #article
+            #article
+            ...
+          
+* **#article** has the following structure:
+
+  * for product thumbs:
+  
+        #article.thumb
+          #details
+            #figcaption
+              #title
+              #price    #=> Add to cart
+            #figure
+            #summary (optional)
+          
+  * for blog posts:
+  
+        #article.post
+          #details
+            <h2>Title
+            #summary
+            #read-more
+  
+  * for pages:
+  
+        #article.page
+          #details
+            <h1>Title
+            #summary
+                   
+
+
+### Other conventions
+
+* **accordion** like navigation is marked up like:
+
+      .navigation
+        #details
+          <h3>Title
+          <ul> ...
+          
+          <h3>Title
+          <ul> ...
+          
+          ...
+        
+
+*/
+
+
+
+
+
+/*
+## Header
+
+### Main Menu
+
+* The current page cannot be highlighted due to a Liquid bug **BUG**
+* Search is added at the end of the Main Menu (**li#search** ). This is not a link, it will be handled by Javascript
+* The search form (**#search**)is hidden by default.
+* There are two Main Menus, one for **#nav.desktop** and the other for **#nav.mobile**. The logo is wrapped inside these Main Menus
+
+*/
+
+
+/*
+### Shopping Menu
+
+* There are three sections **#quantity**, **#price** and **#info**
+
+*/
+
+
+/*
+### Logo
+
+* The logo is wrapped into a **h2**
+
+*/
+
+
+
+
+/*
+## Frontpage / Index
+
+### Collections
+
+* displays different collections of products        
+* if the collection is empty a **.notice** is left how to create the collection
+
+### Information and Navigation
+
+* displays the Frontpage article
+* Displays the shop data 
+* displays the list of all collections, product types, vendors and tags 
+
+*/
+
+
+
+
+/*
+## Collections page
+
+*/
+
+
+
+/*
+## Product page
+
+*/
+.product #thumbs li {
+  width: 10%; /* small image is 6.75em */
+}
+
+/*
+## Pages
+
+
+*/
+
+#aside {
+  min-height: 20em;
+  background: #f3f3f3;
+}
+
+
+/* 
+## Shopping cart
+
+*/
+
+.cart ul {
+  margin: 0;
+  margin-bottom: 1.25em;
+  padding-bottom: 1.25em;
+}
+.cart li {
+  margin-right: 2%;
+  display: inline-block !important;  
+}
+.cart #image {
+  width: 10%;
+}
+.cart #info, .cart #update, .cart #lineprice, .cart #remove {
+  position: relative;
+  top: -2.5em;
+}
+.cart #info {
+  width: 23%;
+  margin: 0 4%;
+}
+.cart #update {
+  width: 24%;
+}
+.cart #lineprice {
+  width: 10%;
+}
+.cart #remove {
+  width: 16%;
+  margin-right: 0;
+}
+.cart input.quantity {
+  width: 3em;
+}
+.cart img {
+  max-width: 100px;
+  max-height: 100px;
+}
+.cart #checkout input {
+  float: right;
+}
+
+
+
+
+
+
+

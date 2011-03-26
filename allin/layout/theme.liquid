@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>{{ shop.name }} &mdash; {{ page_title }}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	{{ 'base.css' | asset_url | stylesheet_tag }}		
+	{{ 'layout.css' | asset_url | stylesheet_tag }}
+	
+	{{ 'theme.css' | asset_url | stylesheet_tag }}
+	{% if settings.colors == "enabled" %}
+	  {{ 'theme-custom-colors.css' | asset_url | stylesheet_tag }}	
+	{% endif %}	
+	{% if settings.theme == "enabled" %}
+	  {{ settings.color_scheme | asset_url | stylesheet_tag }}
+	{% endif %}	 
+
+	<!--[if IE]>
+  {{ 'ie.css' | asset_url | stylesheet_tag }}  
+  <![endif]-->
+
+  <!--[if lte IE 6]>
+  {{ 'ie6.css' | asset_url | stylesheet_tag }}  
+  <![endif]-->
+  
+  {% if settings.mobile != "disabled" %}  
+    <link href="{{ 'mobile.css' | asset_url }}" charset="utf-8" media="screen and (max-width: 480px)" rel="stylesheet" type="text/css" />
+  {% endif %}   
+	<link href="{{ 'tablet.css' | asset_url }}" charset="utf-8" media="screen and (min-width: 481px) and (max-width: 1024px)" rel="stylesheet" type="text/css" />
+  <link href="{{ 'large.css' | asset_url }}" charset="utf-8" media="screen and (min-width: 1400px)" rel="stylesheet" type="text/css" />
+			
+	{{ 'jquery-1.4.3.min.js' | asset_url | script_tag }}	
+  {{ 'jquery.init.js' | asset_url | script_tag }}
+  {{ 'jquery.mobile.js' | asset_url | script_tag }}
+	
+	{{ 'jquery.grid.js' | asset_url | script_tag }}
+	
+	{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+	{{ content_for_header }}	
+	
+</head>
+
+<body>	
+	<div id="header" class="block">
+	  <div class="container">
+	    <div id="nav" class="desktop">	
+	      {% capture active_url %}
+		      {% if template == "index" %}
+		        "/"
+		      {% elsif template == "collection" %}
+		        "/collections/{{ collection.handle }}"
+		      {% elsif template == "product" %}
+		        {% if collection %}
+		          /collections/{{ collection.handle }}
+		        {% endif %}
+		        /products/{{ product.handle }}
+		      {% elsif template == "page" %}
+		        "/pages/{{ page.handle }}"
+		      {% elsif template == "blog" %}
+		        /blogs/{{ blog.handle }}
+		      {% elsif template == "cart" %}
+		        "/cart"
+		      {% elsif template == "search" %}
+		        /search
+		      {% endif %}
+		    {% endcapture %}
+		    
+		    <ul id="main-menu" class="inline-list">
+		      {% if linklists.main-menu.links.size > 0 %}				
+			      {% for link in linklists.main-menu.links %}
+			        <li>
+				        <a href="{{ link.url }}" class="{{ active }}">{{ link.title }}</a>
+				      </li>
+				    {% endfor %}
+				  {% endif %}
+				  
+				  <li class="search">
+				    <span class="link">  
+				    {% if settings.locale == "enabled" %}
+		          {{ settings.locale_search }}
+		        {% else %}
+		          Search
+		        {% endif %}
+		        </span>
+		      </li>
+		    </ul>	
+			</div>	 <!-- nav -->
+				
+			<div id="logo">
+	      {% if settings.logo == "enabled" %}
+		      <a href="/" title="{{ shop.name }}"><img src="{{ "logo.png" | asset_url }}" alt="{{ shop.name | escape }}" /></a>
+		    {% else %}
+		      <h2><a href="/" title="{{ shop.name }}">{{ shop.name | escape }}</a></h2>
+		    {% endif %}
+		  </div>
+			  
+		  <div id="nav" class="mobile">
+		    <ul id="main-menu" class="inline-list">
+	        {% if linklists.main-menu.links.size > 0 %}				
+		        {% for link in linklists.main-menu.links %}
+		          <li>
+			          <a href="{{ link.url }}" class="{{ active }}">{{ link.title }}</a>
+			        </li>
+			      {% endfor %}
+			    {% endif %}
+			    
+			    <li class="search">
+				    <span class="link">  
+				    {% if settings.locale == "enabled" %}
+		          {{ settings.locale_search }}
+		        {% else %}
+		          Search
+		        {% endif %}
+		        </span>
+		      </li>
+	      </ul>	
+	    </div>
+	    
+	    <div id="search" class="hidden">
+	      <form action="/search" method="get">
+          <input class="text" type="text" name="q" /> 
+          {% if settings.locale == "enabled" %}
+            <input class="" type="submit" value="{{ settings.locale_search }}"  />
+          {% else %}
+            <input class="button" type="submit" value="Search"  />
+          {% endif %}
+        </form>
+	    </div>
+					
+      <div id="shopping">
+        <div id="quantity">
+          <a href="/cart">  
+            {% if settings.locale == "enabled" %}
+              {{ settings.locale_cart }}: {{ cart.item_count }} {{ cart.item_count | pluralize: settings.locale_item, settings.locale_items }}
+            {% else %}
+              Cart: {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}
+            {% endif %}
+          </a>
+        </div>
+        <div id="price">
+          <a href="/cart">{{ cart.total_price | money }}</a>
+        </div>
+        <div id="info">
+          <a href="">Shopping info here ...</a>
+        </div>
+      </div>	
+      	
+		</div> <!-- container -->
+	</div> <!-- header -->
+	
+	{% case template %}
+  {% when 'collection' or 'search' or 'blog' or 'article' %}
+	  <div id="content" class="{{ template }} collection block">
+  {% when 'page' or 'product' or 'cart' or 'not_found' %}
+    <div id="content" class="{{ template }} page block">
+  {% else %}
+    <div id="content" class="{{ template }} block">
+  {% endcase %}			      	
+	    <div class="container">	
+	      {{ content_for_layout }}		    
+	    </div> <!-- container -->	
+	  </div> <!-- content -->
+	
+				
+	<div id="footer" class="block">
+	  <div class="container">
+	    <div id="nav">
+	      <ul class="inline-list">
+	        <li><a href="/">&copy; {{ "now" | date: "%Y" }} {{ shop.name }}</a></li>
+	        {% if linklists.footer.links.size > 0 %}
+			      {% for link in linklists.footer.links %}
+				      <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+				    {% endfor %}
+				  {% endif %}
+	      </ul>
+	    </div>
+		</div> <!-- container -->
+	</div> <!-- footer -->
+			
+</body>
+</html>
