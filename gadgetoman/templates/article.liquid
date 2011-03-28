@@ -14,9 +14,9 @@
           {{ settings.locale_on }}
         {% else %}
           on  
-        {% endif %} 
-	       
+        {% endif %} 	       
 	       {{ article.created_at | date: "%B %d, %Y" }}
+	      
 	      {% if blog.comments_enabled? %}
           &mdash; 
           <a href="{{article.url}}#comments">{{ article.comments.size }} 
@@ -27,6 +27,18 @@
           {% endif %}           
           </a>
         {% endif %}
+        
+        <br/>        
+        {% if article.tags %}
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_tagged }}: 
+          {% else %}
+            Tags:   
+          {% endif %}
+          {% for tag in article.tags %}
+            <a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a>
+          {% endfor %}
+        {% endif %}
 	    </div>
       
       <div class="text body">    
@@ -34,7 +46,7 @@
       </div>
       
       {% if blog.comments_enabled? %}
-      <div class="comments">
+      <div id="comments">
         <h2>
         {% if settings.locale == "enabled" %}
           {{ settings.locale_comments }}
@@ -44,7 +56,7 @@
          ({{ article.comments.size }})
         </h2>
         {% if article.comments.size > 0 %}
-        <ul id="comments" class="list">
+        <ul class="comments list">
           {% for comment in article.comments %}
             <li>              
               <blockquote>&ldquo;{{ comment.content | strip_html  }}&rdquo;</blockquote>                              
@@ -218,6 +230,37 @@
             {% endunless %}
           </ul>
         </div>
+        
+        {% if blog.all_tags != blank %}
+          <h4>
+            {% if settings.locale == "enabled" %}
+              {{ settings.locale_tagged }}
+            {% else %}
+              Tags   
+            {% endif %}
+          </h4>
+          <div class="pane">
+            <ul class="inline-list">
+            {% for tag in blog.all_tags %}
+              <li>
+              <a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %} 
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+        
+        
+        {% if article.tags %}
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_tagged }}: 
+          {% else %}
+            Tags:   
+          {% endif %}
+          {% for tag in article.tags %}
+            <a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a>
+          {% endfor %}
+        {% endif %}
         
         {% if collections.size > 0 %}
           <h4>

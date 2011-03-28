@@ -1,7 +1,24 @@
 <div id="info" class="block">
   <div class="container">        
     <div id="content" class="col-1 left">
-      <h1>{{ blog.title }}</h1>      
+      {% assign tags = "" %}
+      {% for tag in blog.all_tags %}
+        {% if current_tags contains tag %}
+          {% capture tags %}
+            {{ tag }}
+          {% endcapture %}
+        {% endif %}
+      {% endfor %}
+      
+      <h1>
+        <a href="{{ shop.url}}/{{ blog.url }}">
+          {{ blog.title }}
+          {% if tags != blank %}
+            // {{ tags }}
+          {% endif %}
+        </a>
+      </h1>
+            
       {% if blog.articles.size > 0 %}
         {% paginate blog.articles by 10 %}        
           <div id="articles">
@@ -14,7 +31,7 @@
 	                </a>
 	              </h2>
 	              <div class="excerpt text">
-	                {{ article.content | truncatewords: 40 }}
+	                {{ article.excerpt_or_content  }}
 	              </div>
                 <div class="read-more">
                   <a href="{{ article.url }}" title="{{ article.title }}">
@@ -94,6 +111,26 @@
             {% endunless %}
           </ul>
         </div>
+        
+        {% if blog.all_tags != blank %}
+          <h4>
+            {% if settings.locale == "enabled" %}
+              {{ settings.locale_tagged }}
+            {% else %}
+              Tags   
+            {% endif %}
+          </h4>
+          <div class="pane">
+            <ul class="inline-list">
+            {% for tag in blog.all_tags %}
+              <li>
+              <a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %} 
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+        
         
         {% if collections.size > 0 %}
           <h4>

@@ -1,15 +1,8 @@
 <div id="navigation" class="block">
   <div class="container"> 
     <div id="items" class="left col-1">  
-      {% paginate search.results by 9 %}
-      {% if search.results.size == 0 %}
-        {% if settings.snippets == "enabled" %}
-          {% include 'search_not_found' %}        
-        {% else %}
-          <h2>We did not found any products for you.</h2>
-          <p>Please try searching <strong>again</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p> 
-        {% endif %} 
-        <br/>
+      
+      {% if search.terms == blank %}
         {% if settings.locale == "enabled" %}
           {{ settings.locale_search }}
           {% assign s = settings.locale_search %}
@@ -22,45 +15,70 @@
 	          <input class="button" type="submit" value="{{ s }}"  />
           </form>
         </div>  
+      
       {% else %}
-        {% for item in search.results %}
-        <div id="item" class="product">	    
-          <div id="details">
-            <div id="figcaption">
-              <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
-                <div id="title">
-                  {{ item.title }}
-                </div>
-                {% if item.featured_image %} 
-                  <div id="price">
-                    {{ product.price | money }}
-                  </div>              
+      
+        {% if search.results.size == 0 %}
+          {% if settings.snippets == "enabled" %}
+            {% include 'search_not_found' %}        
+          {% else %}
+            <h2>We did not found any products for you.</h2>
+            <p>Please try searching <strong>again</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p> 
+          {% endif %} 
+          <br/>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_search }}
+            {% assign s = settings.locale_search %}
+          {% else %}
+            {% assign s = "Search" %}
+          {% endif %} 
+          <div id="search" class="notfound">        
+            <form action="/search" method="get">
+	            <input class="text" type="text" name="q" /> 
+	            <input class="button" type="submit" value="{{ s }}"  />
+            </form>
+          </div>  
+        {% else %}
+          {% paginate search.results by 9 %}
+          {% for item in search.results %}
+          <div id="item" class="product">	    
+            <div id="details">
+              <div id="figcaption">
+                <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
+                  <div id="title">
+                    {{ item.title }}
+                  </div>
+                  {% if item.featured_image %} 
+                    <div id="price">
+                      {{ product.price | money }}
+                    </div>              
+                  {% endif %}
+                </a>
+              </div>          
+              <div id="figure">	  
+                {% if item.featured_image %}    
+                  <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">                
+                    <img src="{{ item.featured_image | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" />                        
+                  </a>            
+                {% else %}
+                  <div class="text">
+                    {{ item.content | truncatewords: 20 }}
+                  </div>
                 {% endif %}
-              </a>
-            </div>          
-            <div id="figure">	  
-              {% if item.featured_image %}    
-                <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">                
-                  <img src="{{ item.featured_image | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" />                        
-                </a>            
-              {% else %}
-                <div class="text">
-                  {{ item.content | truncatewords: 20 }}
-                </div>
-              {% endif %}
+              </div>
             </div>
+	        </div>
+          {% endfor %}
+          <div class="clear"></div>
+          
+          {% if paginate.pages > 1 %}
+          <div id="paginate" class="right alignright">
+            {{ paginate | default_pagination }}
           </div>
-	      </div>
-        {% endfor %}
-        <div class="clear"></div>
-        
-        {% if paginate.pages > 1 %}
-        <div id="paginate" class="right alignright">
-          {{ paginate | default_pagination }}
-        </div>
-        {% endif %}	  
-      {% endif %}
-      {% endpaginate %}
+          {% endif %}
+          {% endpaginate %}	  
+        {% endif %}        
+      {% endif %}    
     </div>  
   
     <div id="sidebar" class="right col-2">      

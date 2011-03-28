@@ -20,18 +20,16 @@
 	<!--[if IE]>
   {{ 'ie.css' | asset_url | stylesheet_tag }}  
   <![endif]-->
-
-  <!--[if lte IE 6]>
-  {{ 'ie6.css' | asset_url | stylesheet_tag }}  
-  <![endif]-->
   
   {% if settings.mobile != "disabled" %}  
     <link href="{{ 'mobile.css' | asset_url }}" charset="utf-8" media="screen and (max-width: 480px)" rel="stylesheet" type="text/css" />
   {% endif %}   
 	<link href="{{ 'tablet.css' | asset_url }}" charset="utf-8" media="screen and (min-width: 481px) and (max-width: 1024px)" rel="stylesheet" type="text/css" />
   <link href="{{ 'large.css' | asset_url }}" charset="utf-8" media="screen and (min-width: 1400px)" rel="stylesheet" type="text/css" />
-			
+				
 	{{ 'jquery-1.4.3.min.js' | asset_url | script_tag }}	
+	{{ 'jquery.scrollTo-min.js' | asset_url | script_tag }}
+  {{ 'jquery.localscroll-min.js' | asset_url | script_tag }}
   {{ 'jquery.init.js' | asset_url | script_tag }}
   {{ 'jquery.mobile.js' | asset_url | script_tag }}
 	
@@ -45,7 +43,7 @@
 <body>	
 	<div id="header" class="block">
 	  <div class="container">
-	    <div id="nav" class="desktop">	
+	    <div id="nav" class="desktop right alignright block">	
 	      {% capture active_url %}
 		      {% if template == "index" %}
 		        "/"
@@ -88,7 +86,7 @@
 		    </ul>	
 			</div>	 <!-- nav -->
 				
-			<div id="logo">
+			<div id="logo" class="left block">
 	      {% if settings.logo == "enabled" %}
 		      <a href="/" title="{{ shop.name }}"><img src="{{ "logo.png" | asset_url }}" alt="{{ shop.name | escape }}" /></a>
 		    {% else %}
@@ -129,7 +127,7 @@
         </form>
 	    </div>
 					
-      <div id="shopping">
+      <div id="shopping" class="right alignright block">
         <div id="quantity">
           <a href="/cart">  
             {% if settings.locale == "enabled" %}

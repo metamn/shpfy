@@ -98,6 +98,13 @@ a.button {
 .missing {
   background: lightyellow;
 }
+.error {
+  color: #f9f9f9;  
+  background: #C60017;
+}
+.notice {
+  background: lightgreen;
+}
 
 
 /* 

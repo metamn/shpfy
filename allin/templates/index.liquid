@@ -1,5 +1,147 @@
+{% if settings.frontpage_all != "disabled" %}	
+<div id="section" class="all col-1">
+  <div id="details" class="block">
+    <h1>{{ collections.all.title }}</h1>
+    {% if collections.all.products.size > 0 %}
+    <div id="articles">
+      <ul class="subs">
+      {% for product in collections.all.products limit : settings.frontpage_all_count %}
+        <li class="sub" id="latest{{ forloop.index }}">
+        <div id="article" class="thumb {{forloop.index }}">
+          <div id="details">
+            <div id="figure">
+              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
+            </div>
+            <div id="figcaption">
+              <div id="title">
+                <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                <h3>{{ product.title | escape }}</h3></a>
+              </div>
+              <div id="price">
+                {% if settings.locale == "enabled" %}
+                  {% assign add = settings.locale_cart_add %}
+                {% else %}
+                  {% assign add = "Add to cart" %}
+                {% endif %}
+                <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                  {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
+              </div>
+            </div>
+            <div id="summary">                
+                {{ product.description | truncatewords: 40 }}
+            </div>
+          </div> <!-- details -->
+        </div> <!-- article --> 
+        </li>
+      {% endfor %}
+      </ul>
+    </div> <!-- articles -->
+    {% else %}
+      <div class="notice">        
+        To see here a list of featured products please <a href="/admin/custom_collections/new">create a new collection</a>
+        and name it's handle to <strong>all</strong> then add products to it.
+      </div>
+    {% endif %}
+  </div> 
+</div> 
+{% endif %}
+
+
+{% if settings.frontpage_frontpage != "disabled" %}	
+<div id="section" class="frontpage col-2">
+  <div id="details">
+    <h1>{{ collections.frontpage.title }}</h1>
+    {% if collections.frontpage.products.size > 0 %}
+    <div id="articles">
+      {% for product in collections.frontpage.products limit : settings.frontpage_frontpage_count %}
+        <div id="article" class="thumb">
+          <div id="details">
+            <div id="figcaption">
+              <div id="title">
+                <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                <h3>{{ product.title | escape }}</h3></a>
+              </div>
+              <div id="price">
+                {% if settings.locale == "enabled" %}
+                  {% assign add = settings.locale_cart_add %}
+                {% else %}
+                  {% assign add = "Add to cart" %}
+                {% endif %}
+                <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                  {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
+              </div>
+            </div>
+            <div id="figure">
+              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
+            </div>
+            <div id="summary">                
+                {{ product.description | truncatewords: 40 }}
+            </div>
+          </div> <!-- details -->
+        </div> <!-- article --> 
+      {% endfor %}
+    </div> <!-- articles -->
+    {% else %}
+      <div class="notice">        
+        To see here a list of featured products please <a href="/admin/custom_collections/new">create a new collection</a>
+        and name it's handle to <strong>frontpage</strong> then add products to it.
+      </div>
+    {% endif %}
+  </div> 
+</div> 
+{% endif %}
+
+
+{% if settings.frontpage_sale != "disabled" %}	
+<div id="section" class="sale col-1">
+  <div id="details">
+    <h1>{{ collections.sale.title }}</h1>
+    {% if collections.sale.products.size > 0 %}
+    <div id="articles">
+      {% for product in collections.sale.products limit : settings.frontpage_sale_count %}
+        <div id="article" class="thumb">
+          <div id="details">
+            <div id="figcaption">
+              <div id="title">
+                <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                <h3>{{ product.title | escape }}</h3></a>
+              </div>
+              <div id="price">
+                {% if settings.locale == "enabled" %}
+                  {% assign add = settings.locale_cart_add %}
+                {% else %}
+                  {% assign add = "Add to cart" %}
+                {% endif %}
+                <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                  {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
+              </div>
+            </div>
+            <div id="figure">
+              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
+            </div>
+            <div id="summary">                
+                {{ product.description | truncatewords: 40 }}
+            </div>
+          </div> <!-- details -->
+        </div> <!-- article --> 
+      {% endfor %}
+    </div> <!-- articles -->
+    {% else %}
+      <div class="notice">        
+        To see here a list of featured products please <a href="/admin/custom_collections/new">create a new collection</a>
+        and name it's handle to <strong>sale</strong> then add products to it.
+      </div>
+    {% endif %}
+  </div> 
+</div> 
+{% endif %}
+
+
 {% assign article = pages.frontpage %}
-<div id="article" class="frontpage">
+<div id="article" class="frontpage col-2">
   <div id="details">    
     <h1>
         <a href="{{ article.url }}" title="{{ article.title }}"> {{ article.title | escape }} </a>
@@ -20,143 +162,7 @@
 </div> 
 
 
-
-{% if settings.frontpage_frontpage != "disabled" %}	
-<div id="section" class="frontpage">
-  <div id="details">
-    <h1>{{ collections.frontpage.title }}</h1>
-    {% if collections.frontpage.products.size > 0 %}
-    <div id="articles">
-      {% for product in collections.frontpage.products limit : settings.frontpage_frontpage_count %}
-<div id="article" class="thumb">
-  <div id="details">
-    <div id="figcaption">
-      <div id="title">
-        <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-        <h3>{{ product.title | escape }}</h3></a>
-      </div>
-      <div id="price">
-        {% if settings.locale == "enabled" %}
-          {% assign add = settings.locale_cart_add %}
-        {% else %}
-          {% assign add = "Add to cart" %}
-        {% endif %}
-        <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-          {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
-      </div>
-    </div>
-    <div id="figure">
-      <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-        <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
-    </div>
-    <div id="summary">                
-        {{ product.description | truncatewords: 40 }}
-    </div>
-  </div> <!-- details -->
-</div> <!-- article --> 
-      {% endfor %}
-    </div> <!-- articles -->
-    {% else %}
-      <div class="notice">        
-        To see here a list of featured products please <a href="/admin/custom_collections/new">create a new collection</a>
-        and name it's handle to <strong>frontpage</strong> then add products to it.
-      </div>
-    {% endif %}
-  </div> 
-</div> 
-{% endif %}
-
-{% if settings.frontpage_all != "disabled" %}	
-<div id="section" class="all">
-  <div id="details">
-    <h1>{{ collections.all.title }}</h1>
-    {% if collections.all.products.size > 0 %}
-    <div id="articles">
-      {% for product in collections.all.products limit : settings.frontpage_all_count %}
-<div id="article" class="thumb">
-  <div id="details">
-    <div id="figcaption">
-      <div id="title">
-        <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-        <h3>{{ product.title | escape }}</h3></a>
-      </div>
-      <div id="price">
-        {% if settings.locale == "enabled" %}
-          {% assign add = settings.locale_cart_add %}
-        {% else %}
-          {% assign add = "Add to cart" %}
-        {% endif %}
-        <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-          {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
-      </div>
-    </div>
-    <div id="figure">
-      <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-        <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
-    </div>
-    <div id="summary">                
-        {{ product.description | truncatewords: 40 }}
-    </div>
-  </div> <!-- details -->
-</div> <!-- article --> 
-      {% endfor %}
-    </div> <!-- articles -->
-    {% else %}
-      <div class="notice">        
-        To see here a list of featured products please <a href="/admin/custom_collections/new">create a new collection</a>
-        and name it's handle to <strong>all</strong> then add products to it.
-      </div>
-    {% endif %}
-  </div> 
-</div> 
-{% endif %}
-
-{% if settings.frontpage_sale != "disabled" %}	
-<div id="section" class="sale">
-  <div id="details">
-    <h1>{{ collections.sale.title }}</h1>
-    {% if collections.sale.products.size > 0 %}
-    <div id="articles">
-      {% for product in collections.sale.products limit : settings.frontpage_sale_count %}
-<div id="article" class="thumb">
-  <div id="details">
-    <div id="figcaption">
-      <div id="title">
-        <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-        <h3>{{ product.title | escape }}</h3></a>
-      </div>
-      <div id="price">
-        {% if settings.locale == "enabled" %}
-          {% assign add = settings.locale_cart_add %}
-        {% else %}
-          {% assign add = "Add to cart" %}
-        {% endif %}
-        <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-          {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
-      </div>
-    </div>
-    <div id="figure">
-      <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-        <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
-    </div>
-    <div id="summary">                
-        {{ product.description | truncatewords: 40 }}
-    </div>
-  </div> <!-- details -->
-</div> <!-- article --> 
-      {% endfor %}
-    </div> <!-- articles -->
-    {% else %}
-      <div class="notice">        
-        To see here a list of featured products please <a href="/admin/custom_collections/new">create a new collection</a>
-        and name it's handle to <strong>sale</strong> then add products to it.
-      </div>
-    {% endif %}
-  </div> 
-</div> 
-{% endif %}
-
-<div id="section" class="navigation">
+<div id="section" class="navigation col-1">
   <div id="details">
 {% if collections.size > 0 %}
   <h3>

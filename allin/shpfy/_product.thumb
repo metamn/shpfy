@@ -1,4 +1,4 @@
-<div id="article" class="thumb">
+<div id="article" class="thumb {{ forloop.index }}">
   <div id="details">
     <div id="figcaption">
       <div id="title">
