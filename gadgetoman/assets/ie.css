@@ -4,3 +4,10 @@
 #latest #item.product, #sales #item.product {
   margin-right: 3%;
 }
+.collection #item.product {
+  border: 1px solid #f3f3f3;
+  margin: 0 4% 3.75em 0;
+}
+#latest-top.triangle-bottom {
+  border-width: 0;
+}
