@@ -1,42 +1,51 @@
+
 {% if settings.frontpage_all != "disabled" %}	
 <div id="section" class="all col-1">
+  <ul id="navigation" class="inline-list">
+    {% for product in collections.all.products limit : settings.frontpage_all_count %}
+      <li><a href="#latest{{ forloop.index }}" class="sup">&bull;</a></li>
+    {% endfor %}
+  </ul>
   <div id="details" class="block">
-    <h1>{{ collections.all.title }}</h1>
+    <h1>{{ collections.all.title }}</h1>    
     {% if collections.all.products.size > 0 %}
-    <div id="articles">
+    <div id="articles">      
       <ul class="subs">
-      {% for product in collections.all.products limit : settings.frontpage_all_count %}
-        <li class="sub" id="latest{{ forloop.index }}">
-        <div id="article" class="thumb {{forloop.index }}">
-          <div id="details">
-            <div id="figure">
-              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
-            </div>
-            <div id="figcaption">
-              <div id="title">
-                <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                <h3>{{ product.title | escape }}</h3></a>
-              </div>
-              <div id="price">
-                {% if settings.locale == "enabled" %}
-                  {% assign add = settings.locale_cart_add %}
-                {% else %}
-                  {% assign add = "Add to cart" %}
-                {% endif %}
-                <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                  {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
-              </div>
-            </div>
-            <div id="summary">                
-                {{ product.description | truncatewords: 40 }}
-            </div>
-          </div> <!-- details -->
-        </div> <!-- article --> 
-        </li>
-      {% endfor %}
-      </ul>
-    </div> <!-- articles -->
+        {% for product in collections.all.products limit : settings.frontpage_all_count %}
+          <li class="sub" id="latest{{ forloop.index }}">
+            <div id="article" class="thumb">
+              <div id="details">                    
+                <div id="figcaption">
+                  <div id="title">
+                    <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                    <h3>{{ product.title | escape }}</h3></a>
+                  </div>
+                  <div id="price">
+                    {% if settings.locale == "enabled" %}
+                      {% assign add = settings.locale_cart_add %}
+                    {% else %}
+                      {% assign add = "Add to cart" %}
+                    {% endif %}
+                    <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                      {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
+                  </div>
+                </div>
+                
+                <div id="figure">
+                  <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                    <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
+                </div>
+                
+                <div id="summary">                
+                    {{ product.description | truncatewords: 40 }}
+                </div>  
+                             
+              </div> <!-- details -->
+            </div> <!-- article --> 
+          </li>
+        {% endfor %}
+      </ul>         
+    </div> <!-- articles -->    
     {% else %}
       <div class="notice">        
         To see here a list of featured products please <a href="/admin/custom_collections/new">create a new collection</a>

@@ -36,6 +36,12 @@ body {
   line-height: 1.25; 
 }
 
+
+/*
+* h1 ... h6 margin and padding is adjusted to this vertical rhythm
+
+*/
+
 h1, h2, h3 { margin-top:0; margin-bottom:0; }
 h1 { font-size:3.23077em; padding:1.30935em 0; }
 h2 { font-size:2.61538em; padding:1.28666em 0; }
@@ -75,122 +81,26 @@ h3 { font-size:2em; padding:1.25em 0; }
   height: 15em;
 }
 
+
 /*
 ### The forced grid
 
-* used when we are forcing to align elements on a page
-* for example, on the Product page we want two columns, the first with product info the second with operations on Product 
-* in this case we are **not** thinking in grid columns (ie a column with 20em width) but in percentages
-
-  * our available screen is always 100%;
-  * we say column-1 is 50%, and column-2 is 40% with a 10% left margin. And that's all
-  * in responsive stylesheets these ratios must be adapted.
-  * columns must be always floated left
-  
-* In forced grid images must be adjusted with `max-width`
+* columns have both **45%** width 
+* the left column is aligned left, the right is aligned to right to fit the grid
   
 */
 
-
-
-
-/* 
-## Page Structure / Element naming conventions
-
-* each page has the following structure:
-
-      #header
-      #content
-      #footer
-
-* **#content** is marked with one of these page types:
-
-  * **.collection** - for collections page, search page, blog page
-  * **.page** - for product page, article page, not_found, and page
-  * **.index** - for the start page
-  * in any case the page template name is added as a class to #content
-  * search_page can turn into a `page` instead of `collection` when there are no search results.
-  * in fact any collection can turn into a page when empty
-
-* naming elements is done by *trying* to follow the [HTML5 specification](http://www.w3schools.com/html5/html5_new_elements.asp )
-* however there is no consensus on how to use correctly the new HTML5 tags
-* so we won't think in HTML5 terms, just trying to create a common sense for us:
-
-  * **#section** is used to collect similar items into a whole
-  * **#article** is used to mark up a product or a blog post 
-  * **#aside** is marking sidebars  
-  * **#nav** is used to identify menus
-    
-* inside #content everything is wrapped into **#section** or **#article**
-
-      #content.index
-        #section.about
-        #section.latest
-        #section.featured
-        ...
-        #section.navigation             
-
-      #content.product
-        #article
-        #aside
-
-* #section and #article is immediately followed by a new div, **#details** for padding and styling        
-* **#section** has the following structure:
-
-      #section.name
-        #details        #=> used for spacing, padding, styling etc.
-          <h1>Title
-          #articles
-            #article
-            #article
-            ...
-          
-* **#article** has the following structure:
-
-  * for product thumbs:
-  
-        #article.thumb
-          #details
-            #figcaption
-              #title
-              #price    #=> Add to cart
-            #figure
-            #summary (optional)
-          
-  * for blog posts:
-  
-        #article.post
-          #details
-            <h2>Title
-            #summary
-            #read-more
-  
-  * for pages:
-  
-        #article.page
-          #details
-            <h1>Title
-            #summary
-                   
-
-
-### Other conventions
-
-* **accordion** like navigation is marked up like:
-
-      .navigation
-        #details
-          <h3>Title
-          <ul> ...
-          
-          <h3>Title
-          <ul> ...
-          
-          ...
-        
-
-*/
-
+.col-1, .col-2 {
+  width: 45%;
+  float: left;
+  overflow: hidden;
+}
+.col-1 {
+  margin-right: 5%;
+}
+.col-2 {
+  margin-left: 5%;
+}
 
 
 
@@ -236,51 +146,39 @@ h3 { font-size:2em; padding:1.25em 0; }
 /*
 ## Frontpage / Index
 
-### Collections
+* each section has **20em** height where the image thumb is **15x15em** 
+* each item in the section is embedded into a jquery scroller (**ul.subs**, **li.sub**)
+* each item is divided in two columns, the left for the image and the right for the title
 
-* displays different collections of products        
-* if the collection is empty a **.notice** is left how to create the collection
-
-### Information and Navigation
-
-* displays the Frontpage article
-* Displays the shop data 
-* displays the list of all collections, product types, vendors and tags 
 
 */
 
-.col-1, .col-2 {
-  width: 45%;
+#section, #article.frontpage {
   height: 20em;
-  float: left;
-  overflow: hidden;
   margin-bottom: 2.5em;
-}
-.col-1 {
-  margin-right: 5%;
-}
-.col-2 {
-  margin-left: 5%;
-}
-
-#section #articles {
-  position: relative;
-  top: -12em;
 }
 #section #article.thumb {
   width: 100%;
   height: auto;
 }
-#section #article.thumb #figcaption, #section #article.thumb #summary {
-  float: right;
+#section #articles {
+  position: relative;
+  top: -12em;
 }
 #section #article.thumb #figure {
   float: left;
+  width: 45%;
+  margin-right: 5%;
+}
+#section #article.thumb #figcaption {
+  float: right;
+  width: 50%;
 }
 #section #article.thumb #summary {
   position: relative;
-  top: -5em;
+  top: -3.75em;
   display: none;
+  clear: both;
 }
 
 ul.subs {
@@ -297,6 +195,16 @@ ul.subs li {
 	width: 100%;
 	height: 20em;
 }
+#section #navigation li.inactive a {
+  color: gray;
+}
+#section #navigation {
+  position: fixed;
+  top: 33em;
+  left: 40%;
+  z-index: 1;
+}
+
 
 /*
 ## Collections page
