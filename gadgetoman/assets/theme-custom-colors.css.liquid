@@ -1,7 +1,3 @@
-body {
-  -webkit-text-size-adjust: none; 
-  font-family: 'Ubuntu', arial, serif;  
-}
 
 
 body {
@@ -17,16 +13,9 @@ body {
 * The *default* style is simple, no underline, no hover
 */
 a, a:visited, a:hover, :link, :visited {
-  text-decoration: none; 
   color: {{ settings.c_latest_t }};
-  background: none;
 }
-/* 
-  * **a.underline** forces text decoration (!important)
-*/
-a.underline {
-  text-decoration: underline !important;
-}
+
 
 /* 
 * Plain text style for post body, product description, pages etc. 
@@ -36,8 +25,6 @@ a.underline {
 .text a, .text a:visited, .text :link, .text :visited {
   color: {{ settings.c_latest_t }};
   background: {{ settings.c_a_b }};
-  text-decoration: underline;
-  padding: 0 .32em;
 }
 /*
   * hover: inverted colors 
@@ -45,14 +32,8 @@ a.underline {
 .text a:hover, .text a:focus, .text a:active {
   color: {{ settings.c_a_h }} !important;
   background: {{ settings.c_a_h_b }};
-  text-decoration: none;
 }
-/*
-  * headings are unstyled using **a.title**
-*/
-a.title {
-  text-decoration: none !important;
-}
+
 
 /* 
 * Notes, highlighting texts
@@ -61,7 +42,6 @@ a.title {
 */
 .note, .note a {
   color: {{ settings.c_latest_n }};
-  text-decoration: none;  
 }
 .note a:hover {
   color: {{ settings.c_latest_n_hover }}; 
@@ -72,38 +52,31 @@ a.title {
 
 ## Forms 
 Forms are completely re-styled
-* 
+
 */
 input, textarea, a.button {
-	-moz-box-shadow: inset 0px 1px 0px 0px {{ settings.c_button_shadow }};
-	-webkit-box-shadow: inset 0px 1px 0px 0px {{ settings.c_button_shadow }};
-	box-shadow: inset 0px 1px 0px 0px {{ settings.c_button_shadow }};
-	
-	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, {{ settings.c_button_b }}), color-stop(1, {{ settings.c_button_b2 }}) );
-	background: -moz-linear-gradient( center top, {{ settings.c_button_b }} 5%, {{ settings.c_button_b2 }} 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='{{ settings.c_button_b }}', endColorstr='{{ settings.c_button_b2 }}');
-	background-color: {{ settings.c_button_b }};
-	
-	border: 1px solid {{ settings.c_button_b }};
-	
-	color: {{ settings.c_button_c }} !important;	
-	text-decoration:none !important;
-	text-shadow: 1px 1px 0px {{ settings.c_button_c_sh }};	
+    -moz-box-shadow: 0 1px 0 0 #BAB291 inset;
+    -webkit-box-shadow: 0 1px 0 0 #BAB291 inset;
+    box-shadow: 0 1px 0 0 #BAB291 inset;
+    background-color: #c0bbad; 
+    background: -moz-linear-gradient(center top , #C0BBAD 5%, #B1AB9A 100%) repeat scroll 0 0 #c0bbad;   
+    border: 1px solid #C0BBAD;
+    color: #4C4C4C !important;
+    text-shadow: 1px 1px 0 #DDDDDD;
 }
 input.button:hover, a.button:hover {
-	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, {{ settings.c_button_b2 }}), color-stop(1, {{ settings.c_button_b }}) );
-	background: -moz-linear-gradient( center top, {{ settings.c_button_b2 }} 5%, {{ settings.c_button_b }} 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='{{ settings.c_button_b2 }}', endColorstr='{{ settings.c_button_b }}');
-	background-color: {{ settings.c_button_b2 }};
+    background: -moz-linear-gradient(center top , #B1AB9A 5%, #C0BBAD 100%) repeat scroll 0 0 #B1AB9A;
 }
 input.text, textarea {
-  background: {{ settings.c_input_b }};
+    background: none repeat scroll 0 0 #DEDBD3;
 }
 
-
-
-.missing {
-  background: lightyellow;
+.error {
+  color: #f9f9f9;  
+  background: #C60017;
+}
+.notice {
+  background: lightgreen;
 }
 
 
@@ -120,7 +93,6 @@ input.text, textarea {
 }
 #header a, #header a:visited, #footer a, #footer a:visited, .menu .search {
   color: {{ settings.c_h_t }};
-  text-decoration: none;
 }
 #header #logo img {
   max-width: {{ settings.logo_width }}px;
@@ -134,12 +106,8 @@ input.text, textarea {
   border-bottom: 1px dotted {{ settings.c_h_cart_t }};
 }
 .menu #item.cart a {
-  color: {{ settings.c_h_cart_t }}; 
+    color: #4F4442;
 }
-.triangle-left {
-  border-color: transparent {{ settings.c_h_b }} transparent transparent;
-}
-
 
 
 /* 
@@ -167,13 +135,20 @@ input.text, textarea {
 .index #featured a:hover .triangle-top {
   border-color: transparent transparent {{ settings.c_scroll_i }};
 }
-.index #featured .read-more a {
+.read-more a {
   color: {{ settings.c_read_more }};
 }
 .index #featured .image img {
+   background: #fff;
   -moz-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.7), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   -khtml-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.7), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   -webkit-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.7), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+/* if background: #fff we must pad the featured image */
+.index #featured .image .inside .img img {
+  max-width: 90%;  
+  max-height: 90%;
+  padding: 1.25em;
 }
 
 
@@ -185,7 +160,6 @@ input.text, textarea {
 
 #latest {
   background: {{ settings.c_latest_b }};
-  color: {{ settings.c_latest_t }};
 }
 #latest-top.triangle-bottom {
   border-color: {{ settings.c_intro_b }} transparent transparent; 
@@ -208,8 +182,14 @@ input.text, textarea {
   -khtml-box-shadow: 0px 1px 7px {{ settings.c_latest_p_sh_o }};
   -webkit-box-shadow: 0px 1px 7px {{ settings.c_latest_p_sh_o }};
 }
-#item.product .image {
+#item.product #figcaption {
   background: {{ settings.c_latest_img }};  
+}
+#item.product .title {
+  background: #CDC7B8;
+}
+#item.product .image {
+    background: none repeat scroll 0 0 #FFFFFF;
 }
 #more {
   text-shadow: 1px 1px 2px {{ settings.c_latest_h_t_sh }};
@@ -233,12 +213,8 @@ input.text, textarea {
 #sales .sale a, #sales .sale a:hover {
   color: {{ settings.c_sales_h_t }};
 }
-#sales .meta .price {
+#sales #price {
   color: {{ settings.c_sales_h }};
-}
-#sales #item.hover .meta .price {
-  color: {{ settings.c_sales_h_t }};
-  background: {{ settings.c_sales_h }};
 }
 #sales #item.product #add-to-cart .sale {
   background: none;
@@ -260,10 +236,9 @@ input.text, textarea {
 
 #ecosystem {
   background: {{ settings.c_eco_b }};
-  color: {{ settings.c_eco_t }};
 }
 #ecosystem .form input.text {
-  color: color: {{ settings.c_eco_t }};
+  color: {{ settings.c_eco_t }};
 }
 #ecosystem-top.triangle-top {
   border-color: transparent transparent {{ settings.c_eco_b }};  
@@ -289,12 +264,28 @@ input.text, textarea {
 
 */
 
+#product-image {
+  background: #fff;
+}
+/* same here: if product image is white on a dark background padding is necessary */
+.product #product-image {
+  padding: 1.25em;
+}
 #sidebar {
   background: {{ settings.c_coll_tax_b }};
-  color: {{ settings.c_coll_tax_t }};
 }
+#sidebar h2 {
+  color: ;
+}
+/* ????? */
 #sidebar img, .product #product-image img  {
   border: 1px solid {{ settings.c_coll_tax_bo }}; 
+}
+#sidebar img, .product #product-image {
+    border: 1px solid #BAB291;
+    -moz-box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -webkit-box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 #sidebar .accordion h4 {
   border-bottom: 1px solid {{ settings.c_coll_u }};
@@ -303,10 +294,9 @@ input.text, textarea {
   border-bottom: 1px solid {{ settings.c_coll_u_li }};
 }
 #sidebar ul.list li a, #sidebar ul.list li a:visited {
-  text-decoration: none;
   color: {{ settings.c_coll_tax_t }};
 }
-#sidebar ul.list li.active {
+#sidebar ul.list li.active, #sidebar #tags .active {
   background: {{ settings.c_coll_h }};
 }
 #sidebar .date {
@@ -324,6 +314,12 @@ input.text, textarea {
   border-bottom: 1px solid {{ settings.c_cart_bo }};
 }
 
+.cart #info li.image {
+  background: #fff;
+  -moz-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
 
 /* 
 
@@ -332,9 +328,6 @@ input.text, textarea {
 */
 
 
-.collection #navigation #tags a, .collection #navigation #tags a:visited {
-  text-decoration: none;
-}
 .collection #navigation #tags a {
   color: {{ settings.c_coll_tax_t }};
 }
@@ -362,5 +355,8 @@ input.text, textarea {
 
 .article .meta {
   background: {{ settings.c_blog_f }};
+}
+#comments li {
+  border-bottom: 1px solid #ededed;
 }
 

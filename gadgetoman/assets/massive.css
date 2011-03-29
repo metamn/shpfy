@@ -104,7 +104,7 @@ input.text, textarea {
 .index #featured a:hover .triangle-top {
     border-color: transparent transparent #C0BBAD;
 }
-.index #featured .read-more a {
+.read-more a {
     color: #4C4C4C;
 }
 .index #featured .image img {
@@ -225,7 +225,7 @@ input.text, textarea {
     color: #3D3D3B;
     text-decoration: none;
 }
-#sidebar ul.list li.active {
+#sidebar ul.list li.active, #sidebar #tags .active {
     background: none repeat scroll 0 0 #BAB291;
 }
 #sidebar .date {

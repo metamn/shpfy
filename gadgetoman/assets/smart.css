@@ -12,11 +12,6 @@ a, a:visited, a:hover, *:link, *:visited {
     color: #111;
     text-decoration: none;
 }
-a, a:visited, a:hover, *:link, *:visited {
-    background: none repeat scroll 0 0 transparent;
-    color: #111;
-    text-decoration: none;
-}
 a.underline {
     text-decoration: underline !important;
 }
@@ -54,6 +49,14 @@ input.button:hover, a.button:hover {
 }
 input.text, textarea {
     background: none repeat scroll 0 0 #DEDBD3;
+}
+
+.error {
+  color: #f9f9f9;  
+  background: #C60017;
+}
+.notice {
+  background: lightgreen;
 }
 
 
@@ -190,7 +193,7 @@ input.text, textarea {
     color: #3D3D3B;
     text-decoration: none;
 }
-#sidebar ul.list li.active {
+#sidebar ul.list li.active, #sidebar #tags .active {
     background: none repeat scroll 0 0 #D1CBBC;
 }
 #sidebar .date {
