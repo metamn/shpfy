@@ -164,7 +164,7 @@
           {% if settings.locale == "enabled" %}
             {{ settings.locale_commentnote }}
           {% else %}
-            Comments have to be approved before showing up
+            Comments have to be approved before showing up.
           {% endif %}
           </dd>      
           {% endif %}
@@ -249,19 +249,8 @@
             </ul>
           </div>
         {% endif %}
-        
-        
-        {% if article.tags %}
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_tagged }}: 
-          {% else %}
-            Tags:   
-          {% endif %}
-          {% for tag in article.tags %}
-            <a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a>
-          {% endfor %}
-        {% endif %}
-        
+               
+                
         {% if collections.size > 0 %}
           <h4>
           {% if settings.locale == "enabled" %}
