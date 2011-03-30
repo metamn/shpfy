@@ -157,8 +157,8 @@ input.text, textarea {
 .index #featured .image img, #product-image, #sidebar img, .cart #info li.image {
    background: {{ settings.c_intro_img_b }};
 }
-.index #featured .image img, #sidebar img, .product #product-image img, .cart #info li.image {
-  {% if settings.c_intro_img_sh == "Enabled" %}
+.index #featured .image img, #sidebar img, .product #product-image, .cart #info li.image {
+  {% if settings.c_intro_img_sh == "enabled" %}
     -moz-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.7), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     -khtml-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.7), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     -webkit-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.7), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
@@ -168,17 +168,20 @@ input.text, textarea {
     -webkit-box-shadow: none;
   {% endif %}
 }
-.index #featured .image .inside .img img {
-  max-width: 90%;  
-  max-height: 90%;
-  padding: {{ settings.c_intro_img_p }}em;
-}
-.product #product-image {
-  padding: {{ settings.c_intro_img_p }}em;
-}
+{% if settings.c_intro_img_sh == "enabled" %}
+  .index #featured .image .inside .img img {
+    max-width: 90%;  
+    max-height: 90%;
+    padding: {{ settings.c_intro_img_p }}em;
+  }
+  .product #product-image {
+    padding: {{ settings.c_intro_img_p }}em;
+  }
+{% else %}
 #sidebar img, .product #product-image img {
   border: 1px solid {{ settings.c_coll_tax_bo }}
 }
+{% endif %}
 
 
 
@@ -219,7 +222,7 @@ input.text, textarea {
 }
 
 #more {
-  text-shadow: 1px 1px 2px {{ settings.c_latest_h_t_sh }};
+  text-shadow: 1px 1px 2px {{ settings.c_more_sh }};
 }
 
 
