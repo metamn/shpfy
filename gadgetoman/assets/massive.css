@@ -2,10 +2,12 @@
 body {
     font-family: 'Ubuntu',arial,serif;
 }
+
 body {
     background: url("custom_stripe.png") repeat scroll 0 0 #C0BBAD;
     color: #3D3D3B;
 }
+
 a, a:visited, a:hover, *:link, *:visited {
     background: none repeat scroll 0 0 transparent;
     color: #3D3D3B;
@@ -26,6 +28,7 @@ a.underline {
 a.title {
     text-decoration: none !important;
 }
+
 .note, .note a {
     color: #827A64;
     text-decoration: none;
@@ -33,6 +36,7 @@ a.title {
 .note a:hover {
     color: #3D3D3B;
 }
+
 input, textarea, a.button {
     -moz-box-shadow: 0 1px 0 0 #BAB291 inset;
     -webkit-box-shadow: 0 1px 0 0 #BAB291 inset;
@@ -52,8 +56,18 @@ input.text, textarea {
 }
 
 .missing {
-    background: none repeat scroll 0 0 lightyellow;
+  background: none repeat scroll 0 0 lightyellow;
 }
+.error {
+  color: #f9f9f9;  
+  background: #C60017;
+}
+.notice {
+  background: #BF2F17;
+  color: #FCF3FB;
+}
+
+
 #header {
     background: none repeat scroll 0 0 #4F4442;
     border-bottom: 1px solid #4F4442;

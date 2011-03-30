@@ -19,16 +19,22 @@
 	
 	
 	{{ 'massive.css' | asset_url | stylesheet_tag }}
+	
+	<!--[if IE]>
+  {{ 'ie.css' | asset_url | stylesheet_tag }}  
+  <![endif]-->
+  
 	{% if settings.colors == "enabled" %}
 	  {{ 'theme-custom-colors.css' | asset_url | stylesheet_tag }}	
+	  <!--[if IE]>
+    {{ 'ie-custom-colors.css.liquid' | asset_url | stylesheet_tag }}  
+    <![endif]-->
 	{% endif %}	
 	{% if settings.theme == "enabled" %}
 	  {{ settings.color_scheme | asset_url | stylesheet_tag }}
 	{% endif %}	 
 
-	<!--[if IE]>
-  {{ 'ie.css' | asset_url | stylesheet_tag }}  
-  <![endif]-->
+	
 			
 	{{ 'jquery-1.4.3.min.js' | asset_url | script_tag }}	
   {{ 'jquery.scrollTo-min.js' | asset_url | script_tag }}

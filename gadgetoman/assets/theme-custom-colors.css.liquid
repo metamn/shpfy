@@ -1,44 +1,52 @@
+/*
+
+  NOTICE: custom colors are meant to override the existing theme, they are applied after the existing theme is loaded.
+
+*/
 
 
+
+/*
+
+* The body background and colors are applied only to the #intro section. All other sections are styled differently.  
+
+*/
 body {
-  background: {{ settings.c_latest_b }} url(custom_stripe.png);
-  color: {{ settings.c_latest_t }};
+  background: {{ settings.c_intro_b }} url(custom_stripe.png);
+  color: {{ settings.c_intro_t }};
 }
 
 
-/* 
+/*
 
-## Links
+* Links are unstyled, ie. they look like normal text.
 
-* The *default* style is simple, no underline, no hover
 */
 a, a:visited, a:hover, :link, :visited {
-  color: {{ settings.c_latest_t }};
+  color: {{ settings.c_intro_t }};
 }
 
 
 /* 
-* Plain text style for post body, product description, pages etc. 
-  * class name: **.text**
-  * default style: underlined
+
+* Links in post body, product description, page content etc. look like normal links + they are underlined.
+* Underlining is defined in the original theme.
+* Active links, on mouse over are inverted.
+  
 */
 .text a, .text a:visited, .text :link, .text :visited {
-  color: {{ settings.c_latest_t }};
-  background: {{ settings.c_a_b }};
+  color: {{ settings.c_intro_t }};
 }
-/*
-  * hover: inverted colors 
-*/
 .text a:hover, .text a:focus, .text a:active {
-  color: {{ settings.c_a_h }} !important;
-  background: {{ settings.c_a_h_b }};
+  color: {{ settings.c_intro_b }} !important;
+  background: {{ settings.c_intro_t }};
 }
 
 
 /* 
-* Notes, highlighting texts
-  * class name: **.note**
-  * default style: gray with shadow, changing color on hover, no decoration 
+
+* There are special links for notification on Latest Products and Products on Sale (subscribe to newsletter or to social networks)
+
 */
 .note, .note a {
   color: {{ settings.c_latest_n }};
@@ -48,27 +56,22 @@ a, a:visited, a:hover, :link, :visited {
 }
 
 
-/* 
-
-## Forms 
-Forms are completely re-styled
-
-*/
 input, textarea, a.button {
-    -moz-box-shadow: 0 1px 0 0 #BAB291 inset;
-    -webkit-box-shadow: 0 1px 0 0 #BAB291 inset;
-    box-shadow: 0 1px 0 0 #BAB291 inset;
-    background-color: #c0bbad; 
-    background: -moz-linear-gradient(center top , #C0BBAD 5%, #B1AB9A 100%) repeat scroll 0 0 #c0bbad;   
-    border: 1px solid #C0BBAD;
-    color: #4C4C4C !important;
-    text-shadow: 1px 1px 0 #DDDDDD;
+    -moz-box-shadow: 0 1px 0 0 {{ settings.c_button_shadow }} inset;
+    -webkit-box-shadow: 0 1px 0 0 {{ settings.c_button_shadow }} inset;
+    box-shadow: 0 1px 0 0 {{ settings.c_button_shadow }} inset;
+    background-color: {{ settings.c_button_b}}; 
+    background: -moz-linear-gradient(center top , {{ settings.c_button_b }} 5%, {{ settings.c_button_b2 }} 100%) repeat scroll 0 0 {{ settings.c_button_b }};   
+    border: 1px solid {{ settings.c_button_bo }};
+    color: {{ settings.c_button_c }} !important;
+    text-shadow: 1px 1px 0 {{ settings.c_button_c_sh }};
 }
 input.button:hover, a.button:hover {
-    background: -moz-linear-gradient(center top , #B1AB9A 5%, #C0BBAD 100%) repeat scroll 0 0 #B1AB9A;
+    background-color: {{ settings.c_button_b_o }};
+    background: -moz-linear-gradient(center top , {{ settings.c_button_b_o }} 5%, {{ settings.c_button_b2_o }} 100%) repeat scroll 0 0 {{ settings.c_button_b_o }};
 }
 input.text, textarea {
-    background: none repeat scroll 0 0 #DEDBD3;
+    background: none repeat scroll 0 0 {{ settings.c_input_b }};
 }
 
 .error {
@@ -82,12 +85,10 @@ input.text, textarea {
 
 /* 
 
-## Header 
+* Header and Footer are styled in the same way
 
 */
-
-
-#header {
+#header, #footer {
   background: {{ settings.c_h_b }};
   border-bottom: 1px solid {{ settings.c_h_bb }};
 }
@@ -98,6 +99,13 @@ input.text, textarea {
   max-width: {{ settings.logo_width }}px;
   max-height: {{ settings.logo_height }}px;
 }
+
+
+/* 
+
+* The cart in header is highlighted
+
+*/
 .menu #item.cart {
   background: {{ settings.c_h_cart_b }} !important;
   color: {{ settings.c_h_cart_t }};      
@@ -106,17 +114,15 @@ input.text, textarea {
   border-bottom: 1px dotted {{ settings.c_h_cart_t }};
 }
 .menu #item.cart a {
-    color: #4F4442;
+    color: {{ settings.c_h_cart_t }};
 }
 
 
 /* 
 
-## Index 
+* Featured Products navigation 
 
 */
-
-
 .index #featured .triangle-bottom {
   border-color: {{ settings.c_scroll_a }} transparent transparent;  
 }
@@ -138,32 +144,57 @@ input.text, textarea {
 .read-more a {
   color: {{ settings.c_read_more }};
 }
-.index #featured .image img {
-   background: #fff;
-  -moz-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.7), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  -khtml-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.7), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  -webkit-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.7), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+
+/*
+
+* Featured Products / product image styling:
+
+  * the product image must have its background color set. This is usually white.
+  * if the surrounding environment color (Featured Products background, the stripes) is light (close to white) then you should probably don't need a shadow for the Product image
+  * otherwise, if the background is dark then you should add a shadow to the product image to reduce the contrast between white and the dark background.
+  * if you add a shadow then you should add a padding to.
+*/
+.index #featured .image img, #product-image, #sidebar img, .cart #info li.image {
+   background: {{ settings.c_intro_img_b }};
 }
-/* if background: #fff we must pad the featured image */
+.index #featured .image img, #sidebar img, .product #product-image img, .cart #info li.image {
+  {% if settings.c_intro_img_sh == "Enabled" %}
+    -moz-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.7), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -khtml-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.7), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -webkit-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.7), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  {% else %}
+    -moz-box-shadow: none;
+    -khtml-box-shadow: none;
+    -webkit-box-shadow: none;
+  {% endif %}
+}
 .index #featured .image .inside .img img {
   max-width: 90%;  
   max-height: 90%;
-  padding: 1.25em;
+  padding: {{ settings.c_intro_img_p }}em;
 }
+.product #product-image {
+  padding: {{ settings.c_intro_img_p }}em;
+}
+#sidebar img, .product #product-image img {
+  border: 1px solid {{ settings.c_coll_tax_bo }}
+}
+
 
 
 /* 
 
-## Latest Products 
+* Latest Products and Products on Sale are styled the same, only highlighting differs
 
 */
 
-#latest {
-  background: {{ settings.c_latest_b }};
-}
 #latest-top.triangle-bottom {
   border-color: {{ settings.c_intro_b }} transparent transparent; 
 }
+#latest, #sales {
+  background: {{ settings.c_latest_b }};
+}
+
 #latest .highlight, .collection .highlight {
   background: {{ settings.c_latest_h }};
 }
@@ -171,41 +202,7 @@ input.text, textarea {
   text-shadow: 1px 1px 2px {{ settings.c_latest_h_t_sh }};
   color: {{ settings.c_latest_h_t }};  
 }
-#item.product {  
-  background: {{ settings.c_latest_p_b }};
-  -moz-box-shadow: 0px 3px 10px {{ settings.c_latest_p_sh }};
-  -khtml-box-shadow: 0px 3px 10px {{ settings.c_latest_p_sh }};
-  -webkit-box-shadow: 0px 3px 10px {{ settings.c_latest_p_sh }};
-}
-#item.hover {  
-  -moz-box-shadow: 0px 1px 7px {{ settings.c_latest_p_sh_o }};
-  -khtml-box-shadow: 0px 1px 7px {{ settings.c_latest_p_sh_o }};
-  -webkit-box-shadow: 0px 1px 7px {{ settings.c_latest_p_sh_o }};
-}
-#item.product #figcaption {
-  background: {{ settings.c_latest_img }};  
-}
-#item.product .title {
-  background: #CDC7B8;
-}
-#item.product .image {
-    background: none repeat scroll 0 0 #FFFFFF;
-}
-#more {
-  text-shadow: 1px 1px 2px {{ settings.c_latest_h_t_sh }};
-}
 
-
-
-/* 
-
-## Products on Sale 
-
-*/
-
-#sales {
-  background: {{ settings.c_latest_b }};
-}
 #sales .sale  {
   background: {{ settings.c_sales_h }};
   color: {{ settings.c_sales_h_t }};
@@ -221,71 +218,48 @@ input.text, textarea {
   color: {{ settings.c_sales_h }};
 }
 
+#more {
+  text-shadow: 1px 1px 2px {{ settings.c_latest_h_t_sh }};
+}
 
-/* 
 
-## Ecosystem + Footer 
+/*
+
+* Product thumbnail styling
+
+  * Product image must have its background set (usually white)
+  * Product thumb must have a border or shadow around
+*/
+#item.product .image {
+  background: {{ settings.c_thumb_img_b }};
+}
+#item.product {  
+  background: {{ settings.c_thumb_img_b }};
+  -moz-box-shadow: 0px 3px 10px {{ settings.c_thumb_sh }};
+  -khtml-box-shadow: 0px 3px 10px {{ settings.c_thumb_sh }};
+  -webkit-box-shadow: 0px 3px 10px {{ settings.c_thumb_sh }};
+}
+#item.hover {  
+  -moz-box-shadow: 0px 1px 7px {{ settings.c_thumb_sh_o }};
+  -khtml-box-shadow: 0px 1px 7px {{ settings.c_thumb_sh_o }};
+  -webkit-box-shadow: 0px 1px 7px {{ settings.c_thumb_sh_o }};
+}
+#item.product #figcaption {
+  background: {{ settings.c_thumb_t }};  
+}
+
+
+
+/*
+
+* Sidebar, Pagination
 
 */
-
-
-#eco.product {
-  background: {{ settings.c_latest_b }};
-}
-
-
-#ecosystem {
-  background: {{ settings.c_eco_b }};
-}
-#ecosystem .form input.text {
-  color: {{ settings.c_eco_t }};
-}
-#ecosystem-top.triangle-top {
-  border-color: transparent transparent {{ settings.c_eco_b }};  
-}
-#ecosystem ul.list li {
-  border-bottom: 1px solid {{ settings.c_eco_h }};
-}
-#ecosystem .date {
-  color: {{ settings.c_eco_d }};
-}
-
-#footer {
-  background: {{ settings.c_f_b }};
-  border-top: 1px solid {{ settings.c_h_bb }}; 
-}
-
-
-
-
-/* 
-
-## Single Product 
-
-*/
-
-#product-image {
-  background: #fff;
-}
-/* same here: if product image is white on a dark background padding is necessary */
-.product #product-image {
-  padding: 1.25em;
-}
 #sidebar {
   background: {{ settings.c_coll_tax_b }};
 }
 #sidebar h2 {
-  color: ;
-}
-/* ????? */
-#sidebar img, .product #product-image img  {
-  border: 1px solid {{ settings.c_coll_tax_bo }}; 
-}
-#sidebar img, .product #product-image {
-    border: 1px solid #BAB291;
-    -moz-box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    -webkit-box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  color: {{ settings.c_coll_tax_ti }};
 }
 #sidebar .accordion h4 {
   border-bottom: 1px solid {{ settings.c_coll_u }};
@@ -302,32 +276,6 @@ input.text, textarea {
 #sidebar .date {
   color: {{ settings.c_coll_d }};
 }
-
-
-/* 
-
-### Checkout 
-
-*/
-
-.cart #info ul {
-  border-bottom: 1px solid {{ settings.c_cart_bo }};
-}
-
-.cart #info li.image {
-  background: #fff;
-  -moz-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  -webkit-box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.698), 0 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-}
-
-/* 
-
-## Product collections 
-
-*/
-
-
 .collection #navigation #tags a {
   color: {{ settings.c_coll_tax_t }};
 }
@@ -345,6 +293,15 @@ input.text, textarea {
 }
 
 
+/* 
+
+* Checkout 
+
+*/
+.cart #info ul {
+  border-bottom: 1px solid {{ settings.c_cart_bo }};
+}
+
 
 
 /* 
@@ -352,11 +309,40 @@ input.text, textarea {
 ## Blog 
 
 */
-
 .article .meta {
   background: {{ settings.c_blog_f }};
 }
 #comments li {
-  border-bottom: 1px solid #ededed;
+  border-bottom: 1px solid {{ settings.c_blog_li }};
 }
+
+
+
+/* 
+
+## Ecosystem + Footer 
+
+*/
+
+#eco.product {
+  background: {{ settings.c_latest_b }};
+}
+
+#ecosystem {
+  background: {{ settings.c_eco_b }};
+}
+#ecosystem .form input.text {
+  color: {{ settings.c_eco_t }};
+}
+#ecosystem-top.triangle-top {
+  border-color: transparent transparent {{ settings.c_eco_b }};  
+}
+#ecosystem ul.list li {
+  border-bottom: 1px solid {{ settings.c_eco_h }};
+}
+#ecosystem .date {
+  color: {{ settings.c_eco_d }};
+}
+
+
 

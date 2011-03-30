@@ -1,8 +1,14 @@
 <fieldset>
 	<legend>Snippets</legend>
+	<p>
+	Snippets are used to translate longer text and/or to set up external services like Twitter, Facebook, RSS Feeds.
+  <br/>
+  In any case you must review / edit these <a href="/admin/themes/current">snippets</a> to customize theme defaults 
+  to your own settings.
+  </p><hr/><br/>
 	<table>
 	  <tr>
-			<th><label for="snippets">You must review your snippets before launch your shop</label></th>
+			<th><label for="snippets">You must review your snippets before launching your shop!</label></th>
 			<td>
 				<select name="snippets" id="snippets">
 					<option value="disabled">Not yet reviewed</option>
@@ -15,6 +21,16 @@
 
 <fieldset>
 	<legend>Collections at Frontpage</legend>
+	<p>
+	Frontpage can display 3 collections of products: Featured, Latest and Sales.
+  <br/>
+  It is highly recommended to use these three collections to better show off your products.
+  <br/>
+  <br/>
+  Featured products are enabled by default, Latest and Sales must be set up manually.
+  <br/>
+  Instructions how to set up the Latest Products and Products on Sale you can find highlighted on your theme's frontpage.
+  </p><hr/><br/>
 	<table>
 	  <tr>
 			<th><label for="frontpage_all">View latest products on Frontpage</label></th>
@@ -42,8 +58,7 @@
 	<p>
 	Either you are keeping your site without logo, as is by default, or you upload a small logo and replace your shop name.
   <br/>
-  We recommend to use a small, standard-sized logo of 120×60 pixels. However you can set your logo width, height is adjusted
-  automatically.
+  We recommend to use a small, standard-sized logo of 120×60 pixels. However you can freely set your logo width and height.
   </p><hr/><br/>
 	<table>
 		<tr>
@@ -72,10 +87,10 @@
 <fieldset>
 	<legend>Color scheme</legend>
 	<p>
-	You can completely replace all colors by creating a new CSS file (Custom Color Scheme), 
-	or you can simply change the major colors of the current scheme here.
-  <br/>
-  If you are skilled in CSS we recommend you to create a Custom Color Scheme. 
+	You can completely replace all colors by selecting a Custom Color Scheme and then editing the CSS file 
+	(recommended for advanced users).
+	<br/>
+  If you are not skilled in CSS you can simply change all colors manually aided by a color picker. 
   </p><hr/><br/>
 	<table>
 	  <tr>
@@ -109,6 +124,21 @@
 		</tr>
 		
 		<tr>
+			<th><label for="c_intro_b">Body background</label></th>
+			<td><input type="text" name="c_intro_b" id="c_intro_b" class="color" value="#f9f9f9" /></td>
+		</tr>	
+		<tr>
+			<th><label for="c_intro_t">Body text</label></th>
+			<td><input type="text" name="c_intro_t" id="c_intro_t" class="color" value="#3d3d3b" /></td>
+		</tr>
+		<tr>
+			<th><label for="custom_stripe_file">Body background image (stripes)</label></th>
+			<td><input type="file" name="custom_stripe.png" id="custom_stripe" data-max-width="500" data-max-height="300" /></td>			
+		</tr>
+		
+		
+		
+		<tr>
 			<th><label for="c_h_b">Header background</label></th>
 			<td><input type="text" name="c_h_b" id="c_h_b" class="color" value="#3d3d3b" /></td>
 		</tr>	
@@ -130,44 +160,53 @@
 			<td><input type="text" name="c_h_cart_t" id="c_h_cart_t" class="color" value="#f9f9f9" /></td>
 		</tr>
 		
-		<tr>
-			<th><label for="c_intro_b">Intro background</label></th>
-			<td><input type="text" name="c_intro_b" id="c_intro_b" class="color" value="#f9f9f9" /></td>
-		</tr>	
-		<tr>
-			<th><label for="custom_stripe_file">Intro background image</label></th>
-			<td><input type="file" name="custom_stripe.png" id="custom_stripe" data-max-width="500" data-max-height="300" /></td>			
-		</tr>
-		<tr>
-			<th><label for="c_intro_img_sh">Intro featured image shadow</label></th>
-			<td><input type="text" name="c_intro_img_sh" id="c_intro_img_sh" class="color" value="#000" /></td>
-		</tr>	
-		<tr>
-			<th><label for="c_intro_t">Intro text</label></th>
-			<td><input type="text" name="c_intro_t" id="c_intro_t" class="color" value="#3d3d3b" /></td>
-		</tr>
+		
 				
 		<tr>
-			<th><label for="c_scroll_a">Scroll button </label></th>
+			<th><label for="c_scroll_a">Featured Products / Scroll button </label></th>
 			<td><input type="text" name="c_scroll_a" id="c_scroll_a" class="color" value="#3d3d3b" /></td>
 		</tr>
 		<tr>
-			<th><label for="c_scroll_i">Scroll button mouse hover</label></th>
+			<th><label for="c_scroll_i">Featured Products / Scroll button mouse hover</label></th>
 			<td><input type="text" name="c_scroll_i" id="c_scroll_i" class="color" value="#eee" /></td>
 		</tr>
 		<tr>
 			<th><label for="c_read_more">Read more text</label></th>
 			<td><input type="text" name="c_read_more" id="c_read_more" class="color" value="#a3a3a0" /></td>
 		</tr>
+		<tr>
+			<th><label for="c_intro_img_b">Featured Products / image background</label></th>
+			<td><input type="text" name="c_intro_img_b" id="c_intro_img_b" class="color" value="#fff" /></td>
+		</tr>
+		<tr>
+			<th><label>Featured Products / image shadow</label></th>
+			<td>
+				<select name="c_intro_img_sh" id="c_intro_img_sh">
+					<option value="disabled">Disabled</option>
+					<option value="enabled">Enabled</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th><label for="c_intro_img_p">Featured Products / image padding (in EM)</label></th>
+			<td><input type="text" name="c_intro_img_p" id="c_intro_img_p" class="color" value="1.25" /></td>
+		</tr>	
+		
+		
 		
 		<tr>
-			<th><label for="c_latest_b">Latest background</label></th>
+			<th><label for="c_latest_b">Latest Products and Products on Sale background</label></th>
 			<td><input type="text" name="c_latest_b" id="c_latest_b" class="color" value="#eee" /></td>
 		</tr>
 		<tr>
-			<th><label for="c_latest_t">Latest text</label></th>
-			<td><input type="text" name="c_latest_t" id="c_latest_t" class="color" value="#3d3d3b" /></td>
+			<th><label for="c_latest_n">Latest notice</label></th>
+			<td><input type="text" name="c_latest_n" id="c_latest_n" class="color" value="#A3A3A0" /></td>
 		</tr>
+		<tr>
+			<th><label for="c_latest_n_hover">Latest notice mouse over</label></th>
+			<td><input type="text" name="c_latest_n_hover" id="c_latest_n_hover" class="color" value="#3d3d3b" /></td>
+		</tr>
+		
 		<tr>
 			<th><label for="c_latest_h">Latest highlight (Hot!)</label></th>
 			<td><input type="text" name="c_latest_h" id="c_latest_h" class="color" value="#ffb200" /></td>
@@ -180,31 +219,6 @@
 			<th><label for="c_latest_h_t_sh">Latest highlight text shadow</label></th>
 			<td><input type="text" name="c_latest_h_t_sh" id="c_latest_h_t_sh" class="color" value="#ddd" /></td>
 		</tr>
-		<tr>
-			<th><label for="c_latest_img">Latest image background</label></th>
-			<td><input type="text" name="c_latest_img" id="c_latest_img" class="color" value="#fff" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_latest_n">Latest notice</label></th>
-			<td><input type="text" name="c_latest_n" id="c_latest_n" class="color" value="#A3A3A0" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_latest_n_hover">Latest notice mouse over</label></th>
-			<td><input type="text" name="c_latest_n_hover" id="c_latest_n_hover" class="color" value="#3d3d3b" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_latest_p_b">Latest product background</label></th>
-			<td><input type="text" name="c_latest_p_b" id="c_latest_p_b" class="color" value="#f3f3f3" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_latest_p_sh">Latest product shadow</label></th>
-			<td><input type="text" name="c_latest_p_sh" id="c_latest_p_sh" class="color" value="#ddd" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_latest_p_sh_o">Latest product mouse over shadow</label></th>
-			<td><input type="text" name="c_latest_p_sh_o" id="c_latest_p_sh_o" class="color" value="#4c4c4c" /></td>
-		</tr>
-				
 		
 		<tr>
 			<th><label for="c_sales_h">Sales highlight background (%)</label></th>
@@ -214,7 +228,106 @@
 			<th><label for="c_sales_h_t">Sales highlight text (%)</label></th>
 			<td><input type="text" name="c_sales_h_t" id="c_sales_h_t" class="color" value="#f9f9f9" /></td>
 		</tr>
-				
+		
+		
+		<tr>
+			<th><label for="c_thumb_img_b">Product thumbnail / image background</label></th>
+			<td><input type="text" name="c_thumb_img_b" id="c_thumb_img_b" class="color" value="#fff" /></td>
+		</tr>		
+		<tr>
+			<th><label for="c_thumb_sh">Product thumbnail shadow</label></th>
+			<td><input type="text" name="c_thumb_sh" id="c_thumb_sh" class="color" value="#ddd" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_thumb_sh_o">Product thumbnail mouse over shadow</label></th>
+			<td><input type="text" name="c_thumb_sh_o" id="c_thumb_sh_o" class="color" value="#4c4c4c" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_thumb_t">Product thumbnail title background</label></th>
+			<td><input type="text" name="c_thumb_t" id="c_thumb_t" class="color" value="#4c4c4c" /></td>
+		</tr>		
+		
+		<tr>
+			<th><label for="c_prod_h1_b">Product title background</label></th>
+			<td><input type="text" name="c_prod_h1_b" id="c_prod_h1_b" class="color" value="" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_prod_h1_t">Product title color</label></th>
+			<td><input type="text" name="c_prod_h1_c" id="c_prod_h1_c" class="color" value="#3d3d3b" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_prod_img_b">Product image background</label></th>
+			<td><input type="text" name="c_prod_img_b" id="c_prod_img_b" class="color" value="" /></td>
+		</tr>
+		
+		<tr>
+			<th><label for="c_coll_tax_b">Sidebar background</label></th>
+			<td><input type="text" name="c_coll_tax_b" id="c_coll_tax_b" class="color" value="" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_coll_tax_t">Sidebar text</label></th>
+			<td><input type="text" name="c_coll_tax_t" id="c_coll_tax_t" class="color" value="#3d3d3b" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_coll_tax_ti">Sidebar title color</label></th>
+			<td><input type="text" name="c_coll_tax_ti" id="c_coll_tax_ti" class="color" value="#3d3d3b" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_coll_tax_bo">Sidebar thumbs border</label></th>
+			<td><input type="text" name="c_coll_tax_bo" id="c_coll_tax_bo" class="color" value="#ededed" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_coll_u">Sidebar items underline</label></th>
+			<td><input type="text" name="c_coll_u" id="c_coll_u" class="color" value="#ccc" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_coll_u_li">Sidebar list items underline</label></th>
+			<td><input type="text" name="c_coll_u_li" id="c_coll_u_li" class="color" value="#ededed" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_coll_h">Sidebar item highlight</label></th>
+			<td><input type="text" name="c_coll_h" id="c_coll_h" class="color" value="#eee" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_coll_d">Sidebar date</label></th>
+			<td><input type="text" name="c_coll_d" id="c_coll_d" class="color" value="#9d9d9d" /></td>
+		</tr>
+		
+		
+		<tr>
+			<th><label for="c_pagin_b">Pagination background</label></th>
+			<td><input type="text" name="c_pagin_b" id="c_pagin_b" class="color" value="#eee" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_pagin_t">Pagination text</label></th>
+			<td><input type="text" name="c_pagin_t" id="c_pagin_t" class="color" value="#3d3d3b" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_pagin_c_b">Pagination current item background</label></th>
+			<td><input type="text" name="c_pagin_c_b" id="c_pagin_c_b" class="color" value="#A3A3A0" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_pagin_c_t">Pagination current item text</label></th>
+			<td><input type="text" name="c_pagin_c_t" id="c_pagin_c_t" class="color" value="#eee" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_blog_d">Blog date</label></th>
+			<td><input type="text" name="c_blog_d" id="c_blog_d" class="color" value="#eee" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_blog_f">Blog input background</label></th>
+			<td><input type="text" name="c_blog_f" id="c_blog_f" class="color" value="#eee" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_blog_li">Blog comments underline</label></th>
+			<td><input type="text" name="c_blog_li" id="c_blog_li" class="color" value="#eee" /></td>
+		</tr>
+		
+		<tr>
+			<th><label for="c_cart_bo">Checkout items separator</label></th>
+			<td><input type="text" name="c_coll_bo" id="c_coll_bo" class="color" value="#ededed" /></td>
+		</tr>
+		
 		
 		<tr>
 			<th><label for="c_eco_b">Ecosystem (RSS, Twitter, facebook) background</label></th>
@@ -246,6 +359,14 @@
 			<td><input type="text" name="c_button_b2" id="c_button_b2" class="color" value="#dfdfdf" /></td>
 		</tr>
 		<tr>
+			<th><label for="c_button_b_o">Button background mouse over (gradient, top)</label></th>
+			<td><input type="text" name="c_button_b_o" id="c_button_b_o" class="color" value="#ededed" /></td>
+		</tr>
+		<tr>
+			<th><label for="c_button_b2_o">Button background mouse over (gradient, bottom)</label></th>
+			<td><input type="text" name="c_button_b2_o" id="c_button_b2_o" class="color" value="#dfdfdf" /></td>
+		</tr>
+		<tr>
 			<th><label for="c_button_bo">Button border</label></th>
 			<td><input type="text" name="c_button_bo" id="c_button_bo" class="color" value="#dcdcdc" /></td>
 		</tr>
@@ -260,116 +381,17 @@
 		<tr>
 			<th><label for="c_input_b">Input, Textarea background</label></th>
 			<td><input type="text" name="c_input_b" id="c_input_b" class="color" value="#fff" /></td>
-		</tr>
+		</tr>				
 		
-		
-		<tr>
-			<th><label for="c_f_b">Footer background</label></th>
-			<td><input type="text" name="c_f_b" id="c_f_b" class="color" value="#3d3d3b" /></td>
-		</tr>	
-		<tr>
-			<th><label for="c_f_t">Footer text</label></th>
-			<td><input type="text" name="c_f_t" id="c_f_t" class="color" value="#f9f9f9" /></td>
-		</tr>
-		
-		
-		<tr>
-			<th><label for="c_prod_h1_b">Product title background</label></th>
-			<td><input type="text" name="c_prod_h1_b" id="c_prod_h1_b" class="color" value="" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_prod_h1_t">Product title color</label></th>
-			<td><input type="text" name="c_prod_h1_c" id="c_prod_h1_c" class="color" value="#3d3d3b" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_prod_img_b">Product image background</label></th>
-			<td><input type="text" name="c_prod_img_b" id="c_prod_img_b" class="color" value="" /></td>
-		</tr>
-		
-		<tr>
-			<th><label for="c_coll_tax_b">Sidebar background</label></th>
-			<td><input type="text" name="c_coll_tax_b" id="c_coll_tax_b" class="color" value="" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_coll_tax_t">Sidebar text</label></th>
-			<td><input type="text" name="c_coll_tax_t" id="c_coll_tax_t" class="color" value="#3d3d3b" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_coll_tax_bo">Sidebar thumbs border</label></th>
-			<td><input type="text" name="c_coll_tax_bo" id="c_coll_tax_bo" class="color" value="#ededed" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_coll_u">Sidebar items underline</label></th>
-			<td><input type="text" name="c_coll_u" id="c_coll_u" class="color" value="#ccc" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_coll_u_li">Sidebar list items underline</label></th>
-			<td><input type="text" name="c_coll_u_li" id="c_coll_u_li" class="color" value="#ededed" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_coll_h">Sidebar item highlight</label></th>
-			<td><input type="text" name="c_coll_h" id="c_coll_h" class="color" value="#eee" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_coll_d">Sidebar date</label></th>
-			<td><input type="text" name="c_coll_d" id="c_coll_d" class="color" value="#9d9d9d" /></td>
-		</tr>
-		
-		<tr>
-			<th><label for="c_cart_bo">Checkout items separator</label></th>
-			<td><input type="text" name="c_coll_bo" id="c_coll_bo" class="color" value="#ededed" /></td>
-		</tr>
-		
-		<tr>
-			<th><label for="c_pagin_b">Pagination background</label></th>
-			<td><input type="text" name="c_pagin_b" id="c_pagin_b" class="color" value="#eee" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_pagin_t">Pagination text</label></th>
-			<td><input type="text" name="c_pagin_t" id="c_pagin_t" class="color" value="#3d3d3b" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_pagin_c_b">Pagination current item background</label></th>
-			<td><input type="text" name="c_pagin_c_b" id="c_pagin_c_b" class="color" value="#A3A3A0" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_pagin_c_t">Pagination current item text</label></th>
-			<td><input type="text" name="c_pagin_c_t" id="c_pagin_c_t" class="color" value="#eee" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_blog_d">Blog date</label></th>
-			<td><input type="text" name="c_blog_d" id="c_blog_d" class="color" value="#eee" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_blog_f">Blog input background</label></th>
-			<td><input type="text" name="c_blog_f" id="c_blog_f" class="color" value="#eee" /></td>
-		</tr>
-				
-		
-		<tr>
-			<th><label for="c_a">Content link</label></th>
-			<td><input type="text" name="c_a" id="c_a" class="color" value="#3d3d3b" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_a_b">Content link background</label></th>
-			<td><input type="text" name="c_a_b" id="c_a_b" class="color" value="" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_a_h">Content link mouse over</label></th>
-			<td><input type="text" name="c_a_h" id="c_a_h" class="color" value="#f9f9f9" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_a_h_b">Content link mouse over background</label></th>
-			<td><input type="text" name="c_a_h_b" id="c_a_h_b" class="color" value="#3d3d3b" /></td>
-		</tr>
-		<tr>
-			<th><label for="c_coll_info_t">Content text</label></th>
-			<td><input type="text" name="c_coll_info_t" id="c_coll_info_t" class="color" value="#3d3d3b" /></td>
-		</tr>			
 	</table>
 </fieldset>
 <fieldset>
 	<legend>Translations</legend>
+	<p>
+	You can completely replace all texts the site uses to display messages.
+	<br/>
+  You can replace the original English text, or translate theme to your own language.
+  </p><hr/><br/>
 	<table>
 	  <tr>
 			<th><label for="locale">Translations</label></th>
@@ -606,22 +628,26 @@
 			<td><input type="text" name="locale_coll_vendors" id="locale_coll_vendors" value="Product vendors" /></td>
 		</tr>
 		
-		
 		<!-- Other -->			
 		
 		<tr>
 			<th><label for="locale_read_more">Read more</label></th>
 			<td><input type="text" name="locale_read_more" id="locale_read_more" value="Read more" /></td>
 		</tr>
-		
-		
 	</table>
 </fieldset>
 
 
 
 <fieldset>
-	<legend>Twitter, Facebook, Feed</legend>
+	<legend>Twitter, RSS Feed</legend>
+	<p>
+	Here you can set up external services embedded in your theme. If you are not using a service you can simply disable.
+	<br/>
+  The RSS Feed displays the titles of your latest blog posts at the Frontpage, below your list of products in the footer.  
+  <br/>
+  Similarily there is a box in the footer displaying the avatars of your Twitter followers.
+  </p><hr/><br/>
 	<table>
 	  <tr>
 			<th><label for="rss_feed">Latest news from your Blog</label></th>
@@ -667,6 +693,14 @@
 
 <fieldset>
 	<legend>Mobile Version</legend>
+	<p>
+	This theme adapts itself to various screen sizes from large desktop displays to tablets, smartphones and small mobile screens.
+	<br/>
+  The functionality and the design is fully preserved across all devices, there is no less content on smaller screens.
+  <br/>
+  Mobile version was not tested on all existing devices only on Apple, Nokia, Samsung and RIM smartphones. If you consider not to
+  use this feature you can switch it off below.
+  </p><hr/><br/>
 	<table>
 	  <tr>
 			<th><label for="mobile">Display mobile optimized version on mobile phones</label></th>
