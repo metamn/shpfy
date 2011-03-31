@@ -104,7 +104,7 @@
           {% endif %}
         {% endif %}    
         {% if form.errors %}
-          <div class="notice error">
+          <div class="error">
           {% if settings.locale == "enabled" %}
             {{ settings.locale_commenterror }}
           {% else %}
@@ -272,7 +272,6 @@
         
         <h4>
         {% if settings.locale == "enabled" %}
-          {{ settings.locale_search }}
           {% assign s = settings.locale_search %}
         {% else %}
           Search
