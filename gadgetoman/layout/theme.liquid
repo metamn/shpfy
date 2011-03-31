@@ -23,13 +23,12 @@
 	<!--[if IE]>
   {{ 'ie.css' | asset_url | stylesheet_tag }}  
   <![endif]-->
-  
-	{% if settings.colors == "enabled" %}
-	  {{ 'theme-custom-colors.css' | asset_url | stylesheet_tag }}	
-	  <!--[if IE]>
-    {{ 'ie-custom-colors.css.liquid' | asset_url | stylesheet_tag }}  
-    <![endif]-->
-	{% endif %}	
+  	
+  {{ 'theme-custom-colors.css' | asset_url | stylesheet_tag }}	
+  <!--[if IE]>
+  {{ 'ie-custom-colors.css.liquid' | asset_url | stylesheet_tag }}  
+  <![endif]-->
+	
 	{% if settings.theme == "enabled" %}
 	  {{ settings.color_scheme | asset_url | stylesheet_tag }}
 	{% endif %}	 
@@ -165,14 +164,17 @@
 				  {% endif %}		
 				  
 				  <div id="item" class="search-menu">
-			      <form action="/search" method="get">
-		          <input class="text" type="text" name="q" /> 
-		          {% if settings.locale == "enabled" %}
-		            <input class="" type="submit" value="{{ settings.locale_search }}"  />
-		          {% else %}
-		            <input class="button" type="submit" value="Search"  />
-		          {% endif %}
-	          </form>
+			      {% if settings.locale == "enabled" %}
+              {% assign s = settings.locale_search %}
+            {% else %}
+              {% assign s = "Search" %}
+            {% endif %} 
+            <div id="search" class="notfound">        
+              <form action="/search" method="get">
+                <input class="text" type="text" name="q" /> 
+                <input class="button" type="submit" value="{{ s }}"  />
+              </form>
+            </div> 
 			    </div>
 					
 					
@@ -228,7 +230,7 @@
           
             {% assign rss_url = settings.rss_feed_url %}
             {% assign rss_limit = settings.rss_feed_limit %}
-            {% assign rss_title = settings.rss_title %}
+            {% assign rss_title = settings.rss_feed_title %}
                        
             {% unless rss_url %}
               {% assign rss_url = "http://www.shopledge.com/feed/" %}

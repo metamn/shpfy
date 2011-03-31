@@ -11,7 +11,6 @@
       {% endif %} 
       <br/>
       {% if settings.locale == "enabled" %}
-        {{ settings.locale_search }}
         {% assign s = settings.locale_search %}
       {% else %}
         {% assign s = "Search" %}
@@ -85,8 +84,7 @@
         
         
         <h4>
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_search }}
+        {% if settings.locale == "enabled" %}          
           {% assign s = settings.locale_search %}
         {% else %}
           Search

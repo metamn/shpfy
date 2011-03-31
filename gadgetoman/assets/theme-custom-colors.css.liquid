@@ -1,9 +1,16 @@
+#header #logo img {
+  max-width: {{ settings.logo_width }}px;
+  height: auto;
+}
+
+
 /*
 
   NOTICE: custom colors are meant to override the existing theme, they are applied after the existing theme is loaded.
 
 */
 
+{% if settings.colors == "enabled" %}
 
 
 /*
@@ -95,10 +102,6 @@ input.text, textarea {
 }
 #header a, #header a:visited, #footer a, #footer a:visited, .menu .search {
   color: {{ settings.c_h_t }};
-}
-#header #logo img {
-  max-width: {{ settings.logo_width }}px;
-  max-height: {{ settings.logo_height }}px;
 }
 
 
@@ -349,4 +352,5 @@ input.text, textarea {
 }
 
 
+{% endif %}
 
