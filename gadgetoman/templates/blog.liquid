@@ -91,7 +91,7 @@
             {% for article in blog.articles limt: 3%}		   
               {% for comment in article.comments limit: 2 %}
                 <li>
-                  <a href="{{ comment.url }}" title="Comment on {{ article.title }}">
+                  <a href="{{shop.url}}{{ comment.url }}" title="Comment on {{ article.title }}">
                     <blockquote>&ldquo;{{ comment.content | strip_html | truncate: 250 }}&rdquo;
                       <span class="date"> &mdash; {{ comment.author }}</span>
                     </blockquote>                                    

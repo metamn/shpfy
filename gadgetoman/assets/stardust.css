@@ -240,3 +240,19 @@ input.text, textarea {
 }
 
 
+
+
+#paginate .page, #paginate .prev, #paginate .next {
+background: #cac1b2;
+}
+#paginate .current, #paginate .deco {
+background: none;
+}
+
+.article .meta {
+  background: #DEDBD3;
+}
+#comments li {
+  border-bottom: 1px solid #DEDBD3;
+}
+

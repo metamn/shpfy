@@ -616,6 +616,9 @@ blockquote {
 #sidebar #share {
   padding-bottom: .62em;
 }
+#share #item {
+  margin-bottom: 1.25em;
+}
 
 .page #info #content {
   margin-bottom: 2.5em;
