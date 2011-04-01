@@ -155,7 +155,6 @@ h3 { font-size:2em; padding:1.25em 0; }
 
 .section {
   height: 20em;
-  margin-bottom: 2.5em;
 }
 .section #article.thumb {
   width: 100%;
@@ -189,13 +188,17 @@ h3 { font-size:2em; padding:1.25em 0; }
 
 }
 
-.section #navigation li.inactive a {
+#navigation {
+  margin-bottom: 2.5em;
+}
+#navigation li.inactive a {
   color: gray;
 }
-.section #navigation {
-  position: relative;
-  z-index: 1;
+#navigation li a {
+  font-size: 2em;
+  text-decoration: none;
 }
+
 
 
 /*

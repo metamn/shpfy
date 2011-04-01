@@ -1,11 +1,6 @@
 
 {% if settings.frontpage_all != "disabled" %}	
-<div id="all" class="section col-1">
-  <ul id="navigation" class="inline-list">
-    {% for product in collections.all.products limit : settings.frontpage_all_count %}
-      <li><a href="#latest{{ forloop.index }}">&bull;</a></li>
-    {% endfor %}
-  </ul>
+<div id="all" class="section col-1">  
   <div id="details" class="block">
     <h1>{{ collections.all.title }}</h1>    
     {% if collections.all.products.size > 0 %}
@@ -56,12 +51,7 @@
 
 
 {% if settings.frontpage_frontpage != "disabled" %}	
-<div id="frontpage" class="section col-2">
-  <ul id="navigation" class="inline-list">
-    {% for product in collections.frontpage.products limit : settings.frontpage_frontpage_count %}
-      <li><a href="#featured{{ forloop.index }}">&bull;</a></li>
-    {% endfor %}
-  </ul>
+<div id="frontpage" class="section col-2">  
   <div id="details" class="block">
     <h1>{{ collections.frontpage.title }}</h1>    
     {% if collections.frontpage.products.size > 0 %}
@@ -110,8 +100,27 @@
 </div> 
 {% endif %}
 
+{% if settings.frontpage_all != "disabled" %}	
+<div id="navigation" class="col-1">
+  <ul class="inline-list">
+  {% for product in collections.all.products limit : settings.frontpage_all_count %}
+    <li><a href="#latest{{ forloop.index }}">&bull;</a></li>
+  {% endfor %}
+  </ul>
+</div>
+{% endif %}
 
-<!--
+{% if settings.frontpage_frontpage != "disabled" %}	
+<div id="navigation" class="col-2">
+  <ul class="inline-list">
+  {% for product in collections.frontpage.products limit : settings.frontpage_frontpage_count %}
+    <li><a href="#featured{{ forloop.index }}">&bull;</a></li>
+  {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+
 
 
 {% if settings.frontpage_sale != "disabled" %}	
@@ -257,4 +266,3 @@
 </div>
 
 
--->

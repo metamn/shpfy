@@ -5,8 +5,8 @@ jQuery(document).ready(function(){
   
   
   // Marking the scroller active 
-  jQuery("#section.all #navigation a").click(function() {
-    jQuery("#section.all #navigation").children().removeClass("inactive");
+  jQuery("#navigation a").click(function() {
+    jQuery(this).parent().parent().children().removeClass("inactive");
     jQuery(this).parent().addClass("inactive");
   });
   
