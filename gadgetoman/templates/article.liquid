@@ -29,7 +29,7 @@
         {% endif %}
         
         <br/>        
-        {% if article.tags %}
+        {% unless article.tags  == blank %}
           {% if settings.locale == "enabled" %}
             {{ settings.locale_tagged }}: 
           {% else %}
@@ -38,7 +38,7 @@
           {% for tag in article.tags %}
             <a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a>
           {% endfor %}
-        {% endif %}
+        {% endunless %}
 	    </div>
       
       <div class="text body">    
