@@ -269,18 +269,10 @@ h6 { font-style: italic; }
 /*
 ### `<p>` ###
 
-* Every second paragraph is indented
 * After the first paragraph all the following paragraphs are separated with a blank line
 
 */
 
-div + p, h1 + p, h2 + p, h3 + p, p.first, pre + p, p:first-child, ul + p, ol + p,
-fieldset + p, legend + p, form + p {
-  text-indent: 0;
-}
-p {
-  text-indent: 1.25em;
-}
 p + p {
   margin-top: 1.25em;
 }

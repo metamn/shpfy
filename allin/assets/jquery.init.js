@@ -4,13 +4,13 @@ jQuery.noConflict();
 jQuery(document).ready(function(){
   
   
-  // Marking the scroller active 
+  // Marking the scroller bullet / list item active 
   jQuery("#navigation a").click(function() {
     jQuery(this).parent().parent().children().removeClass("inactive");
     jQuery(this).parent().addClass("inactive");
   });
   
-  // Scrolling products at frontpage
+  // Scrolling products at frontpage on all sections
   jQuery.localScroll.defaults.axis = 'xy';
   jQuery(".section").each(function(){ 
     jQuery.localScroll({
@@ -32,7 +32,7 @@ jQuery(document).ready(function(){
  
   
   // Show product details on hover, at frontpage
-  jQuery("#section #article.thumb #figure").hover(
+  jQuery(".section #article.thumb #figure").hover(
     function () {
       jQuery(this).next("#summary").fadeIn('slow');
     }, 

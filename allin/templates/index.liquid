@@ -1,8 +1,19 @@
+{% if settings.frontpage_all != "disabled" %}	
+  <div id="title" class="col-1">
+    <h1><a href="{{ collections.all.url }}" title="View all products in {{ collections.all.title }}">{{ collections.all.title }}</a></h1>
+  </div>
+{% endif %}
+
+{% if settings.frontpage_frontpage != "disabled" %}	
+  <div id="title" class="col-2">
+    <h1><a href="{{ collections.frontpage.url }}" title="View all products in {{ collections.frontpage.title }}">{{ collections.frontpage.title }}</a></h1>
+  </div>
+{% endif %}
+
 
 {% if settings.frontpage_all != "disabled" %}	
 <div id="all" class="section col-1">  
-  <div id="details" class="block">
-    <h1>{{ collections.all.title }}</h1>    
+  <div id="details" class="block">        
     {% if collections.all.products.size > 0 %}
     <div id="articles">  
       {% for product in collections.all.products limit : settings.frontpage_all_count %}
@@ -31,7 +42,7 @@
               </div>
               
               <div id="summary">                
-                  {{ product.description | truncatewords: 40 }}
+                  {{ product.description | strip_html | truncatewords: 30 }}
               </div>  
                            
             </div> <!-- details -->
@@ -52,8 +63,7 @@
 
 {% if settings.frontpage_frontpage != "disabled" %}	
 <div id="frontpage" class="section col-2">  
-  <div id="details" class="block">
-    <h1>{{ collections.frontpage.title }}</h1>    
+  <div id="details" class="block">        
     {% if collections.frontpage.products.size > 0 %}
     <div id="articles">  
       {% for product in collections.frontpage.products limit : settings.frontpage_frontpage_count %}
@@ -82,7 +92,7 @@
               </div>
               
               <div id="summary">                
-                  {{ product.description | truncatewords: 40 }}
+                  {{ product.description | strip_html | truncatewords: 30 }}
               </div>  
                            
             </div> <!-- details -->
@@ -101,7 +111,7 @@
 {% endif %}
 
 {% if settings.frontpage_all != "disabled" %}	
-<div id="navigation" class="col-1">
+<div id="navigation" class="col-1">  
   <ul class="inline-list">
   {% for product in collections.all.products limit : settings.frontpage_all_count %}
     <li><a href="#latest{{ forloop.index }}">&bull;</a></li>

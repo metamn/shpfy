@@ -125,6 +125,9 @@ h3 { font-size:2em; padding:1.25em 0; }
 
 */
 
+#header {
+  height: 10em;
+}
 
 #shopping {
   position: relative;
@@ -153,6 +156,11 @@ h3 { font-size:2em; padding:1.25em 0; }
 
 */
 
+#title h1 {
+  font-size: 1em;
+  font-variant: small-caps;
+}
+
 .section {
   height: 20em;
 }
@@ -160,24 +168,28 @@ h3 { font-size:2em; padding:1.25em 0; }
   width: 100%;
   height: auto;
 }
-.section #articles {
-  position: relative;
-  top: -12em;
+.section #article.thumb #details {
+  padding: 0;
+}
+.section #article.thumb #details #figure, .section #article.thumb #details #figcaption {
+  padding: 1.25em;
 }
 .section #article.thumb #figure {
   float: left;
-  width: 45%;
+  width: 40%;
   margin-right: 5%;
 }
 .section #article.thumb #figcaption {
   float: right;
-  width: 50%;
+  width: 40%;
 }
 .section #article.thumb #summary {
   position: relative;
   top: -3.75em;
   display: none;
   clear: both;
+  padding: 1.25em;
+  text-align: left;
 }
 .scroller {
   position: relative;

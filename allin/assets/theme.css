@@ -1,6 +1,12 @@
 .section {
   background: #eee;
 }
+.section #article #summary {
+  background: #000;
+  color: #fff;
+  opacity: .7;
+}
 #navigation ul {
   background: #f9f9f9;
 }
+
