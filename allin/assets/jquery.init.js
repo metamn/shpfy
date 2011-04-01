@@ -12,23 +12,24 @@ jQuery(document).ready(function(){
   
   // Scrolling products at frontpage
   jQuery.localScroll.defaults.axis = 'xy';
-  jQuery.localScroll.hash({
-    target: '#section.all', 
-    queue: true,
-    duration: 1500
+  jQuery(".section").each(function(){ 
+    jQuery.localScroll({
+      target: jQuery(this), 
+      duration: 1000,
+      hash: true,
+      onBefore:function( e, anchor, $target ){
+        //alert( $target[0].id + " > " + anchor.id);
+        var d1 = "#" + $target[0].id.toString();  
+        var d2 = "#" + anchor.id.toString();
+        if ( jQuery(d1).find(d2).length == 0 ) {
+          return false;
+        }
+      },
+      onAfter:function( anchor, settings ){
+      }
+    });
   });
-  jQuery.localScroll({
-    target: '#section.all', 
-    queue: true,
-    duration: 1000,
-    hash: true,
-    onBefore:function( e, anchor, $target ){
-
-    },
-    onAfter:function( anchor, settings ){
-
-    }
-  });
+ 
   
   // Show product details on hover, at frontpage
   jQuery("#section #article.thumb #figure").hover(

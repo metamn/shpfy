@@ -153,55 +153,47 @@ h3 { font-size:2em; padding:1.25em 0; }
 
 */
 
-#section, #article.frontpage {
+.section {
   height: 20em;
   margin-bottom: 2.5em;
 }
-#section #article.thumb {
+.section #article.thumb {
   width: 100%;
   height: auto;
 }
-#section #articles {
+.section #articles {
   position: relative;
   top: -12em;
 }
-#section #article.thumb #figure {
+.section #article.thumb #figure {
   float: left;
   width: 45%;
   margin-right: 5%;
 }
-#section #article.thumb #figcaption {
+.section #article.thumb #figcaption {
   float: right;
   width: 50%;
 }
-#section #article.thumb #summary {
+.section #article.thumb #summary {
   position: relative;
   top: -3.75em;
   display: none;
   clear: both;
 }
-
-ul.subs {
-  list-style-type: none;
-  margin: 0;
-}
-ul.subs li {
-  margin: 0;
-}
-.sub {
-	position: relative;
+.scroller {
+  position: relative;
 	float: left;
 	padding: 0;
 	width: 100%;
 	height: 20em;
+
 }
-#section #navigation li.inactive a {
+
+.section #navigation li.inactive a {
   color: gray;
 }
-#section #navigation {
-  position: fixed;
-  top: 33em;
-  left: 40%;
+.section #navigation {
+  position: relative;
   z-index: 1;
 }
 
