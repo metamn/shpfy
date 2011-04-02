@@ -11,20 +11,6 @@
 
 
 /*
-## The Layout
-
-* centered, width **80%**, **10%** margins left and right
-* this layout does not change on large, and tablet screens, not even on mobile screens
-
-*/
-.container {
-  width: 80%; 
-  max-width: 80em;  /* 80x16px=1280px */
-  margin: 0 auto;
-}
-
-
-/*
 ## Vertical Rhythm 
 
 * the height of the grid is set to **1.25em**
@@ -82,25 +68,8 @@ h3 { font-size:2em; padding:1.25em 0; }
 }
 
 
-/*
-### The forced grid
 
-* columns have both **45%** width 
-* the left column is aligned left, the right is aligned to right to fit the grid
-  
-*/
 
-.col-1, .col-2 {
-  width: 45%;
-  float: left;
-  overflow: hidden;
-}
-.col-1 {
-  margin-right: 5%;
-}
-.col-2 {
-  margin-left: 5%;
-}
 
 
 
@@ -174,15 +143,7 @@ h3 { font-size:2em; padding:1.25em 0; }
 .section #article.thumb #details #figure, .section #article.thumb #details #figcaption {
   padding: 1.25em;
 }
-.section #article.thumb #figure {
-  float: left;
-  width: 40%;
-  margin-right: 5%;
-}
-.section #article.thumb #figcaption {
-  float: right;
-  width: 40%;
-}
+
 .section #article.thumb #summary {
   position: relative;
   top: -3.75em;

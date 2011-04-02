@@ -1,0 +1,131 @@
+/*
+## Mobile
+
+*/
+@media screen and (min-width: 480px) {
+  .container {
+    margin: 0 .625em;
+    background: none;
+  }
+  
+  .col-1, .col-2 {
+    width: 98%;
+    float: left;
+    overflow: hidden;
+  }
+  
+  .section #article.thumb #figure, .section #article.thumb #figcaption {
+    float: left;
+    text-align: left;
+    width: 90%;
+    margin-right: 5%;
+  }
+    
+}/*/mediaquery*/
+
+
+/*
+## Tablet
+
+*/
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+  .container {
+    width: 80%; 
+    max-width: 80em;  /* 80x16px=1280px */
+    margin: 0 auto;
+  }
+  
+  .col-1, .col-2 {
+    width: 98%;
+    float: left;
+    overflow: hidden;
+  }
+  
+  .section #article.thumb #figure {
+    float: left;
+    width: 40%;
+    margin-right: 5%;
+  }
+  .section #article.thumb #figcaption {
+    float: right;
+    width: 40%;
+  }
+    
+}/*/mediaquery*/
+
+
+/*
+## Wide
+
+*/
+@media screen and (min-width: 1025px) and (max-width: 1399px) {
+  .container {
+    width: 80%; 
+    max-width: 80em;  /* 80x16px=1280px */
+    margin: 0 auto;
+  }
+  
+  .col-1, .col-2 {
+    width: 48%;
+    float: left;
+    overflow: hidden;
+  }
+  .col-1 {
+    margin-right: 2%;
+  }
+  .col-2 {
+    margin-left: 2%;
+  }
+  
+  .section #article.thumb #figure {
+    float: left;
+    width: 30%;
+    margin-right: 5%;
+  }
+  .section #article.thumb #figcaption {
+    float: right;
+    width: 40%;
+  }
+  
+  
+}/*/mediaquery*/
+
+
+
+
+
+
+/*
+## Large
+
+*/
+@media screen and (min-width: 1400px) {
+  .container {
+    width: 80%; 
+    max-width: 80em;  /* 80x16px=1280px */
+    margin: 0 auto;
+  }  
+  
+  .col-1, .col-2 {
+    width: 45%;
+    float: left;
+    overflow: hidden;
+  }
+  .col-1 {
+    margin-right: 5%;
+  }
+  .col-2 {
+    margin-left: 5%;
+  }
+  
+  .section #article.thumb #figure {
+    float: left;
+    width: 40%;
+    margin-right: 5%;
+  }
+  .section #article.thumb #figcaption {
+    float: right;
+    width: 40%;
+  }
+  
+}/*/mediaquery*/
