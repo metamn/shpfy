@@ -52,7 +52,7 @@
     </div> <!-- articles -->    
     {% else %}
       <div class="notice">        
-        To see here a list of featured products please <a href="/admin/custom_collections/new">create a new collection</a>
+        To see here the latest products please <a href="/admin/custom_collections/new">create a new collection</a>
         and name it's handle to <strong>all</strong> then add products to it.
       </div>
     {% endif %}
@@ -133,44 +133,63 @@
 
 
 
+
+
 {% if settings.frontpage_sale != "disabled" %}	
-<div id="sale" class="section col-1">
-  <div id="details">
-    <h1>{{ collections.sale.title }}</h1>
+  <div id="title" class="col-1">
+    <h1><a href="{{ collections.sale.url }}" title="View all products in {{ collections.sale.title }}">{{ collections.sale.title }}</a></h1>
+  </div>
+{% endif %}
+
+{% if settings.frontpage_info != "disabled" %}	
+  <div id="title" class="col-2">
+    <h1>{{ linklists.info.title }}</h1>
+  </div>
+{% endif %}
+
+
+{% if settings.frontpage_sale != "disabled" %}	
+<div id="sale" class="section col-1">  
+  <div id="details" class="block">        
     {% if collections.sale.products.size > 0 %}
-    <div id="articles">
+    <div id="articles">  
       {% for product in collections.sale.products limit : settings.frontpage_sale_count %}
-        <div id="article" class="thumb">
-          <div id="details">
-            <div id="figcaption">
-              <div id="title">
+        <div id="sale{{ forloop.index }}" class="scroller">
+          <div id="article" class="thumb">
+            <div id="details">                    
+              <div id="figcaption">
+                <div id="title">
+                  <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                  <h3>{{ product.title | escape }}</h3></a>
+                </div>
+                <div id="price">
+                  {% if settings.locale == "enabled" %}
+                    {% assign add = settings.locale_cart_add %}
+                  {% else %}
+                    {% assign add = "Add to cart" %}
+                  {% endif %}
+                  <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                    {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
+                </div>
+              </div>
+              
+              <div id="figure">
                 <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                <h3>{{ product.title | escape }}</h3></a>
+                  <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
               </div>
-              <div id="price">
-                {% if settings.locale == "enabled" %}
-                  {% assign add = settings.locale_cart_add %}
-                {% else %}
-                  {% assign add = "Add to cart" %}
-                {% endif %}
-                <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                  {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
-              </div>
-            </div>
-            <div id="figure">
-              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
-            </div>
-            <div id="summary">                
-                {{ product.description | truncatewords: 40 }}
-            </div>
-          </div> <!-- details -->
-        </div> <!-- article --> 
+              
+              <div id="summary">                
+                  {{ product.description | strip_html | truncatewords: 30 }}
+              </div>  
+                           
+            </div> <!-- details -->
+          </div> <!-- article --> 
+        </div>
       {% endfor %}
-    </div> <!-- articles -->
+    </div> <!-- articles -->    
     {% else %}
       <div class="notice">        
-        To see here a list of featured products please <a href="/admin/custom_collections/new">create a new collection</a>
+        To see here a list of products on sale please <a href="/admin/custom_collections/new">create a new collection</a>
         and name it's handle to <strong>sale</strong> then add products to it.
       </div>
     {% endif %}
@@ -179,100 +198,172 @@
 {% endif %}
 
 
-{% assign article = pages.frontpage %}
-<div id="frontpage-article" class="section col-2">
-  <div id="details">    
-    <h1>
-        <a href="{{ article.url }}" title="{{ article.title }}"> {{ article.title | escape }} </a>
-    </h1>
-    <div id="summary" class="text">                
-       {{ article.excerpt }}
-    </div>
-    <div id="read-more">
-      <a href="{{ article.url }}" title="{{ article.title }}">
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_read_more }} &rarr;
-        {% else %}
-          Read more &rarr;
-        {% endif %}
-      </a>
-    </div>
-  </div>
+{% if settings.frontpage_info != "disabled" %}	
+<div id="info" class="section col-2">  
+  <div id="details" class="block">        
+    {% if linklists.info.size > 0 %}
+    <div id="articles">  
+      {% for product in linklists.info.links limit : settings.frontpage_info_count %}
+        <div id="info{{ forloop.index }}" class="scroller">
+          <div id="article" class="post">
+            <div id="details">                                  
+              <a href="{{ product.url }}" title="{{ product.title | escape }}">
+                <h3>{{ product.title | escape }}</h3>
+              </a> 
+              <div id="summary">                
+                link article here ...
+              </div>
+              <div id="read-more">
+              </div>             
+            </div> <!-- details -->
+          </div> <!-- article --> 
+        </div>
+      {% endfor %}
+    </div> <!-- articles -->
+    {% else %}
+      <div class="notice">        
+        To see here a list of pages with info about your store please <a href="/admin/links/new">create a new linklist</a>
+        and name it's handle to <strong>info</strong> then add pages to it.
+      </div>
+    {% endif %}
+  </div> 
 </div> 
-
-
-<div id="navigation" class="section col-1">
-  <div id="details">
-{% if collections.size > 0 %}
-  <h3>
-  {% if settings.locale == "enabled" %}
-    {{ settings.locale_allcollections }}
-  {% else %}
-    All collections
-  {% endif %}
-  </h3>
-  <ul>
-	  {% for i in collections %}      	    
-		  <li {% if collection.url == i.url %} class="active"{% endif %}>
-		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title }}</a>
-		  </li>
-		{% endfor %}
-	</ul>
-{% endif %}    
-        
-{% if shop.types.size > 0 %}
-  <h3>
-  {% if settings.locale == "enabled" %}
-    {{ settings.locale_alltypes }}
-  {% else %}
-    All product types
-  {% endif %}          
-  </h3>        
-  <ul>
-  	{% for product_type in shop.types %}
-      <li>
-        {{ product_type | link_to_type  }}
-      </li>
-    {% endfor %}
-	</ul>      
 {% endif %}
 
-{% if shop.vendors.size > 0 %}
-  <h3>
-  {% if settings.locale == "enabled" %}
-    {{ settings.locale_allvendors }}
-  {% else %}
-    All vendors
-  {% endif %}
-  </h3>
-  <ul>
-  	{% for product_vendor in shop.vendors %}
-      <li {% if collection.url == url_for_vendor %} class="active"{% endif %}>
-        {{ product_vendor | link_to_vendor  }}
-      </li>
-    {% endfor %}
-  </ul>      
-{% endif %}
-
-{% if collection.all_tags.size > 0 %}
-  <h3>
-  {% if settings.locale == "enabled" %}
-    {{ settings.locale_coll_tags }}
-  {% else %}
-    Tags
-  {% endif %}
-   <em>{{ collection.title }}</em>
-  </h3>
+{% if settings.frontpage_sale != "disabled" %}	
+<div id="navigation" class="col-1">  
   <ul class="inline-list">
-    {% for tag in collection.all_tags %}
-      <li>
-        {{ tag | highlight_active_tag | link_to_tag: tag }}
-      </li>
-    {% endfor %}
-  </ul>      
-{% endif %} 
-
-  </div>
+  {% for product in collections.sale.products limit : settings.frontpage_sale_count %}
+    <li><a href="#sale{{ forloop.index }}">&bull;</a></li>
+  {% endfor %}
+  </ul>
 </div>
+{% endif %}
+
+{% if settings.frontpage_info != "disabled" %}	
+<div id="navigation" class="col-2">
+  <ul class="inline-list">
+  {% for product in linklists.info.links limit : settings.frontpage_info_count %}
+    <li><a href="#info{{ forloop.index }}">&bull;</a></li>
+  {% endfor %}
+    <li><a href="">&bull;</a></li>
+  </ul>
+</div>
+{% endif %}
+
+
+
+
+
+
+
+{% if settings.frontpage_collections != "disabled" %}	
+  <div id="title" class="col-1">
+    <h1>Collections</h1>
+  </div>
+{% endif %}
+
+{% if settings.frontpage_vendors != "disabled" %}	
+  <div id="title" class="col-2">
+    <h1>Vendors & Types</h1>
+  </div>
+{% endif %}
+
+
+{% if settings.frontpage_collections != "disabled" %}	
+<div id="collections" class="section col-1">  
+  <div id="details" class="block">        
+    {% if collections.size > 0 %}
+    <div id="articles">  
+      {% for collection in collections limit : settings.frontpage_collections_count %}
+        <div id="collection{{ forloop.index }}" class="scroller">
+          {% if collection.products.size > 0 %}
+            {% for product in collection.products limit : 1 %}
+              <div id="article" class="thumb">
+                <div id="details">                    
+                  <div id="figcaption">
+                    <div id="title">
+                      <a href="{{ collection.url }}" title="{{ collection.title | escape }}">
+                      <h3>{{ collection.title | escape }}</h3></a>
+                    </div> 
+                    {% if collection.description != blank %}
+                    <div id="description">                
+                      {{ collection.description }}
+                    </div>  
+                    {% endif %}
+                  </div>
+                  <div id="figure">
+                    <a href="{{ collection.url }}" title="{{ collection.title | escape }}">
+                      <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
+                  </div>
+                               
+                </div> <!-- details -->
+              </div> <!-- article --> 
+            {% endfor %}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div> <!-- articles -->    
+    {% else %}
+      <div class="notice">        
+        &nbsp;
+      </div>
+    {% endif %}
+  </div> 
+</div> 
+{% endif %}
+
+
+{% if settings.frontpage_vendors != "disabled" %}	
+<div id="vendors" class="section col-2">  
+  <div id="details" class="block">            
+    <div id="articles">  
+      {% if shop.vendors.size > 0 %}
+        <div id="vendor1" class="scroller">
+          <ul>
+            {% for vendor in shop.vendors  %}
+              <li>{{ vendor | link_to_vendor }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+      {% if shop.types.size > 0 %}
+        <div id="vendor2" class="scroller">
+          <ul>
+            {% for type in shop.types  %}
+              <li>{{ type | link_to_type }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}      
+    </div> <!-- articles -->    
+  </div> 
+</div> 
+{% endif %}
+
+
+{% if settings.frontpage_collections != "disabled" %}	
+<div id="navigation" class="col-1">  
+  <ul class="inline-list">
+  {% for collection in collections limit : settings.frontpage_collection_count %}
+    <li><a href="#collection{{ forloop.index }}">&bull;</a></li>
+  {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{% if settings.frontpage_vendors != "disabled" %}	
+<div id="navigation" class="col-2">
+  <ul class="inline-list">
+  {% if shop.vendors.size > 0 %}  
+    <li><a href="#vendor1">&bull;</a></li>  
+  {% endif %}
+  {% if shop.types.size > 0 %}  
+    <li><a href="#vendor2">&bull;</a></li>  
+  {% endif %}
+  </ul>
+</div>
+{% endif %}
+
 
 
