@@ -1,0 +1,21 @@
+.container {
+  width: 80%; 
+  max-width: 80em;  /* 80x16px=1280px */
+  margin: 0 auto;
+}
+
+.col-1, .col-2 {
+  width: 100%;
+  float: left;
+  overflow: hidden;
+}
+
+.section #article.thumb #figure {
+  float: left;
+  width: 40%;
+  margin-right: 5%;
+}
+.section #article.thumb #figcaption {
+  float: right;
+  width: 40%;
+}
