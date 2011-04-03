@@ -4,9 +4,6 @@
   float: left;
   overflow: hidden;
 }
-.col-2 {
-  display: none;
-}
 
 .section #article.thumb #figure {
   float: left;

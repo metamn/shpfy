@@ -117,25 +117,12 @@
 </div>
 {% endif %}
 
-<!--
-
-
 
 {% if settings.frontpage_sale != "disabled" %}	
-  <div id="title" class="col-1">
+<div id="sale" class="section col-1"> 
+  <div id="title" class="block">
     <h1><a href="{{ collections.sale.url }}" title="View all products in {{ collections.sale.title }}">{{ collections.sale.title }}</a></h1>
-  </div>
-{% endif %}
-
-{% if settings.frontpage_info != "disabled" %}	
-  <div id="title" class="col-2">
-    <h1>{{ linklists.info.title }}</h1>
-  </div>
-{% endif %}
-
-
-{% if settings.frontpage_sale != "disabled" %}	
-<div id="sale" class="section col-1">  
+  </div> 
   <div id="details" class="block">        
     {% if collections.sale.products.size > 0 %}
     <div id="articles">  
@@ -180,12 +167,22 @@
       </div>
     {% endif %}
   </div> 
+  <div id="navigation" class="block">  
+    <ul class="inline-list">
+    {% for product in collections.sale.products limit : settings.frontpage_sale_count %}
+      <li><a href="#sale{{ forloop.index }}">&bull;</a></li>
+    {% endfor %}
+    </ul>
+  </div>
 </div> 
 {% endif %}
 
 
 {% if settings.frontpage_info != "disabled" %}	
-<div id="info" class="section col-2">  
+<div id="info" class="section col-2"> 
+  <div id="title" class="block">
+    <h1>{{ linklists.info.title }}</h1>
+  </div> 
   <div id="details" class="block">        
     {% if linklists.info.size > 0 %}
     <div id="articles">  
@@ -213,51 +210,25 @@
       </div>
     {% endif %}
   </div> 
+  <div id="navigation" class="block">
+    <ul class="inline-list">
+    {% for product in linklists.info.links limit : settings.frontpage_info_count %}
+      <li><a href="#info{{ forloop.index }}">&bull;</a></li>
+    {% endfor %}
+      <li><a href="">&bull;</a></li>
+    </ul>
+  </div>
 </div> 
 {% endif %}
 
-{% if settings.frontpage_sale != "disabled" %}	
-<div id="navigation" class="col-1">  
-  <ul class="inline-list">
-  {% for product in collections.sale.products limit : settings.frontpage_sale_count %}
-    <li><a href="#sale{{ forloop.index }}">&bull;</a></li>
-  {% endfor %}
-  </ul>
-</div>
-{% endif %}
-
-{% if settings.frontpage_info != "disabled" %}	
-<div id="navigation" class="col-2">
-  <ul class="inline-list">
-  {% for product in linklists.info.links limit : settings.frontpage_info_count %}
-    <li><a href="#info{{ forloop.index }}">&bull;</a></li>
-  {% endfor %}
-    <li><a href="">&bull;</a></li>
-  </ul>
-</div>
-{% endif %}
-
-
-
-
 
 
 
 {% if settings.frontpage_collections != "disabled" %}	
-  <div id="title" class="col-1">
+<div id="collections" class="section col-1"> 
+  <div id="title" class="block">
     <h1>Collections</h1>
-  </div>
-{% endif %}
-
-{% if settings.frontpage_vendors != "disabled" %}	
-  <div id="title" class="col-2">
-    <h1>Vendors & Types</h1>
-  </div>
-{% endif %}
-
-
-{% if settings.frontpage_collections != "disabled" %}	
-<div id="collections" class="section col-1">  
+  </div> 
   <div id="details" class="block">        
     {% if collections.size > 0 %}
     <div id="articles">  
@@ -296,12 +267,22 @@
       </div>
     {% endif %}
   </div> 
+  <div id="navigation" class="block">  
+    <ul class="inline-list">
+    {% for collection in collections limit : settings.frontpage_collection_count %}
+      <li><a href="#collection{{ forloop.index }}">&bull;</a></li>
+    {% endfor %}
+    </ul>
+  </div>
 </div> 
 {% endif %}
 
 
 {% if settings.frontpage_vendors != "disabled" %}	
-<div id="vendors" class="section col-2">  
+<div id="vendors" class="section col-2"> 
+  <div id="title" class="block">
+    <h1>Vendors & Types</h1>
+  </div> 
   <div id="details" class="block">            
     <div id="articles">  
       {% if shop.vendors.size > 0 %}
@@ -324,32 +305,17 @@
       {% endif %}      
     </div> <!-- articles -->    
   </div> 
+  <div id="navigation" class="col-2">
+    <ul class="inline-list">
+    {% if shop.vendors.size > 0 %}  
+      <li><a href="#vendor1">&bull;</a></li>  
+    {% endif %}
+    {% if shop.types.size > 0 %}  
+      <li><a href="#vendor2">&bull;</a></li>  
+    {% endif %}
+    </ul>
+  </div>
 </div> 
 {% endif %}
 
-
-{% if settings.frontpage_collections != "disabled" %}	
-<div id="navigation" class="col-1">  
-  <ul class="inline-list">
-  {% for collection in collections limit : settings.frontpage_collection_count %}
-    <li><a href="#collection{{ forloop.index }}">&bull;</a></li>
-  {% endfor %}
-  </ul>
-</div>
-{% endif %}
-
-{% if settings.frontpage_vendors != "disabled" %}	
-<div id="navigation" class="col-2">
-  <ul class="inline-list">
-  {% if shop.vendors.size > 0 %}  
-    <li><a href="#vendor1">&bull;</a></li>  
-  {% endif %}
-  {% if shop.types.size > 0 %}  
-    <li><a href="#vendor2">&bull;</a></li>  
-  {% endif %}
-  </ul>
-</div>
-{% endif %}
-
--->
 
