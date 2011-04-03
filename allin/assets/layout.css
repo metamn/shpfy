@@ -1,43 +1,22 @@
-/*
-# The Grid and the Elements
 
-* File name: [layout.css](layout.css )
-* Defining and aligning all elements both vertically and horizontally
-* Author: [Shopledge](http://shopledge.com "Shopledge")
-* License: MIT Licence. Copyright 2010 Shopledge [www.shopledge.com](http://shopledge.com "Shopledge")
+/* Vertical Rhytm */
 
----
-*/
-
-
-/*
-## Vertical Rhythm 
-
-* the height of the grid is set to **1.25em**
-
-*/
 
 body {
   font: normal 100% Helvetica, Arial, sans-serif;
   line-height: 1.25; 
 }
 
-
-/*
-* h1 ... h6 margin and padding is adjusted to this vertical rhythm
-
-*/
-
+/* Typograph: stranded */
 h1, h2, h3 { margin-top:0; margin-bottom:0; }
 h1 { font-size:3.23077em; padding:1.30935em 0; }
 h2 { font-size:2.61538em; padding:1.28666em 0; }
 h3 { font-size:2em; padding:1.25em 0; }
 
 
-/* 
-## The Horizontal Grid 
 
-*/
+
+/* The basic grid */
 
 .container {
   width: 80%; 
@@ -45,8 +24,41 @@ h3 { font-size:2em; padding:1.25em 0; }
   margin: 0 auto;
 }  
 
+.section #article.thumb #figure {
+  float: left;
+  width: 40%;
+  margin-right: 5%;
+}
+.section #article.thumb #figcaption {
+  float: right;
+  width: 40%;
+}
 
 
+
+
+/* Header */
+
+#header {
+  height: 10em;
+}
+#header #shopping {
+  position: relative;
+  top: -7.5em;
+  width: 30%; /* do not overlap the logo */
+}
+
+#footer {
+  margin: 2.5em 0;
+}
+
+
+
+
+
+/* Frontpage */
+
+/* General settings */
 #article.thumb {
   width: 20em; /* medium sized image is 15x15em */
   height: 30em; 
@@ -56,69 +68,11 @@ h3 { font-size:2em; padding:1.25em 0; }
 }
 
 
-
-
-
-/*
-## Header
-
-### Main Menu
-
-* The current page cannot be highlighted due to a Liquid bug **BUG**
-* Search is added at the end of the Main Menu (**li#search** ). This is not a link, it will be handled by Javascript
-* The search form (**#search**)is hidden by default.
-* There are two Main Menus, one for **#nav.desktop** and the other for **#nav.mobile**. The logo is wrapped inside these Main Menus
-
-*/
-
-
-/*
-### Shopping Menu
-
-* There are three sections **#quantity**, **#price** and **#info**
-
-*/
-
-#header {
-  height: 10em;
-}
-
-#shopping {
-  position: relative;
-  top: -7.5em;
-  width: 30%; /* do not overlap the logo */
-}
-
-
-/*
-### Logo
-
-* The logo is wrapped into a **h2**
-
-*/
-
-
-
-#footer {
-  margin: 2.5em 0;
-}
-
-
-
-/*
-## Frontpage / Index
-
-* each section has **20em** height where the image thumb is **15x15em** 
-* each item in the section is embedded into a jquery scroller (**ul.subs**, **li.sub**)
-* each item is divided in two columns, the left for the image and the right for the title
-
-
-*/
-
-
+/* Sections at the frontpage */
 
 .section {
   height: 26em;
+  margin-bottom: 2.5em;
 }
 
 .section #title h1 {
@@ -144,12 +98,16 @@ h3 { font-size:2em; padding:1.25em 0; }
 .section #article.thumb #details {
   padding: 0;
 }
-.section #article.thumb #details #figure, .section #article.thumb #details #figcaption {
-  padding: 1.25em;
+.section #article.thumb #details #figure, 
+.section #article.thumb #details #figcaption {
+  margin: 1.25em;
+}
+.section #article.thumb #figcaption #title h3 {
+  padding-top: 0;
 }
 .section #article.thumb #summary {
-  position: relative;
-  top: -3.75em;
+  position: absolute;
+  bottom: 0;
   display: none;
   clear: both;
   padding: 1.25em;
@@ -169,10 +127,6 @@ h3 { font-size:2em; padding:1.25em 0; }
 
 
 
-/*
-## Collections page
-
-*/
 
 
 
@@ -184,9 +138,9 @@ h3 { font-size:2em; padding:1.25em 0; }
   width: 10%; /* small image is 6.75em */
 }
 
+
 /*
 ## Pages
-
 
 */
 

@@ -4,8 +4,11 @@ jQuery.noConflict();
 jQuery(document).ready(function(){
   
   
+  // Mobile navigation at frontpage
+  jQuery("#navigation.mobile").localScroll();
+  
   // Marking the scroller bullet / list item active 
-  jQuery("#navigation a").click(function() {
+  jQuery("#navigation.desktop a").click(function() {
     jQuery(this).parent().parent().children().removeClass("inactive");
     jQuery(this).parent().addClass("inactive");
   });
@@ -16,7 +19,7 @@ jQuery(document).ready(function(){
     jQuery.localScroll({
       target: "#" + jQuery(this).attr('id') + " #articles", 
       duration: 1000,
-      hash: true,
+      hash: false,
       onBefore:function( e, anchor, $target ){
         var sectionID = $target.selector.split(" ")[0];
         //var sectionID = "#" + $target[0].id.toString();  

@@ -10,12 +10,4 @@
   margin-left: 2%;
 }
 
-.section #article.thumb #figure {
-  float: left;
-  width: 30%;
-  margin-right: 5%;
-}
-.section #article.thumb #figcaption {
-  float: right;
-  width: 40%;
-}
+

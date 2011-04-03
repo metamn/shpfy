@@ -1,16 +1,77 @@
-.container {
-  margin: 0 .625em;
+.mobile {
+  display: block;
+}
+.desktop {
+  display: none;
 }
 
+
+.container {
+  margin: 0 .625em;
+  width: auto;
+}
 .col-1, .col-2 {
   width: 100%;
   float: left;
   overflow: hidden;
 }
 
-.section #article.thumb #figure, .section #article.thumb #figcaption {
+
+
+/* Typograph: traditional, h1 = 2em */
+h1, h2, h3 { margin-top:0; margin-bottom:0; }
+h1 { font-size:2em; padding:1.25em 0; }
+h2 { font-size:1.75em; padding:1.51786em 0; }
+h3 { font-size:1.5em; padding:1.45833em 0; }
+
+
+
+#header {
+  height: auto;
+  margin-bottom: 1.25em;
+}
+#header h2 {
+  padding: .81em 0;
+}
+#header #shopping {
+  top: 0;
   float: left;
   text-align: left;
-  width: 90%;
-  margin-right: 5%;
+  width: 100%;
 }
+#header #shopping > div {
+  float: left;
+  display: inline-block;
+}
+
+
+
+.section {
+  margin-bottom: 1.25em;
+}
+.section, .section #details, .section #articles, .section .scroller {
+  height: auto;
+}
+.section #article.thumb #details #figure, 
+.section #article.thumb #details #figcaption {
+  float: left;
+  text-align: center;
+  width: 90%;
+  margin: 0 5%;
+  margin: .625em;
+}
+.section #article #title h3 {
+  padding: 0;
+}
+.section #article.thumb {
+  margin-bottom: 2.5em;
+}
+.section #navigation {
+  margin-bottom: 0;
+}
+
+
+
+
+
+
