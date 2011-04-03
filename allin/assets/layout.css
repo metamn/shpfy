@@ -37,27 +37,15 @@ h3 { font-size:2em; padding:1.25em 0; }
 /* 
 ## The Horizontal Grid 
 
-* we have two types of grid:
-
-  * an automatic, given by **em** which resizes itself across all responsive styelsheets
-  * a forced, given by **%** which must be handled responsively
-  * if on a single page both grids are displayed they might not be in harmony 
-
-### The automatic grid
-
-* used in listing images (displaying collections)
-* there is no need to float left the images
-* in Shopify's case the grid is given by the image sizes:
-
-  * **small** - 100x100px = 6.75em
-  * **medium** - 240x240px = 15em
-  * **large** - 480x480px = 30em
-  * **grande** - 600x600px = 37.5em
-  * **original** - 1024x1024px = 64em
-  
-* if **medium** sized thumbs are shown a column is 15em + margins, in our case **20em**
-
 */
+
+.container {
+  width: 80%; 
+  max-width: 80em;  /* 80x16px=1280px */
+  margin: 0 auto;
+}  
+
+
 
 #article.thumb {
   width: 20em; /* medium sized image is 15x15em */
@@ -66,9 +54,6 @@ h3 { font-size:2em; padding:1.25em 0; }
 #article.thumb #figure {
   height: 15em;
 }
-
-
-
 
 
 
@@ -114,6 +99,11 @@ h3 { font-size:2em; padding:1.25em 0; }
 
 
 
+#footer {
+  margin: 2.5em 0;
+}
+
+
 
 /*
 ## Frontpage / Index
@@ -125,13 +115,27 @@ h3 { font-size:2em; padding:1.25em 0; }
 
 */
 
-#title h1 {
+
+
+.section {
+  height: 26em;
+}
+
+.section #title h1 {
   font-size: 1em;
   font-variant: small-caps;
 }
 
-.section {
+.section #details, .section #articles {
   height: 20em;
+  overflow: hidden;
+}
+.section .scroller {
+  position: relative;
+	float: left;
+	padding: 0;
+	width: 100%;
+	height: 20em;
 }
 .section #article.thumb {
   width: 100%;
@@ -143,7 +147,6 @@ h3 { font-size:2em; padding:1.25em 0; }
 .section #article.thumb #details #figure, .section #article.thumb #details #figcaption {
   padding: 1.25em;
 }
-
 .section #article.thumb #summary {
   position: relative;
   top: -3.75em;
@@ -152,22 +155,14 @@ h3 { font-size:2em; padding:1.25em 0; }
   padding: 1.25em;
   text-align: left;
 }
-.scroller {
-  position: relative;
-	float: left;
-	padding: 0;
-	width: 100%;
-	height: 20em;
 
-}
-
-#navigation {
+.section #navigation {
   margin-bottom: 2.5em;
 }
-#navigation li.inactive a {
+.section #navigation li.inactive a {
   color: gray;
 }
-#navigation li a {
+.section #navigation li a {
   font-size: 2em;
   text-decoration: none;
 }

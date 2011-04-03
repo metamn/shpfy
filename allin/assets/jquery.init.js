@@ -14,14 +14,14 @@ jQuery(document).ready(function(){
   jQuery.localScroll.defaults.axis = 'xy';
   jQuery(".section").each(function(){ 
     jQuery.localScroll({
-      target: jQuery(this), 
+      target: "#" + jQuery(this).attr('id') + " #articles", 
       duration: 1000,
       hash: true,
       onBefore:function( e, anchor, $target ){
-        //alert( $target[0].id + " > " + anchor.id);
-        var d1 = "#" + $target[0].id.toString();  
-        var d2 = "#" + anchor.id.toString();
-        if ( jQuery(d1).find(d2).length == 0 ) {
+        var sectionID = $target.selector.split(" ")[0];
+        //var sectionID = "#" + $target[0].id.toString();  
+        var targetID = "#" + anchor.id.toString();
+        if ( jQuery(sectionID).find(targetID).length == 0 ) {
           return false;
         }
       },
