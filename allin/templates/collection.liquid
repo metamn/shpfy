@@ -97,16 +97,13 @@
     </div>
     {% endif %}
     
-    {% if collection.all_tags.size > 0 %}
-    <div id="tags">
-      <ul class="inline-list">
-        {% for tag in collection.all_tags %}
-          <li>
+    {% if collection.tags.size > 0 %}
+    <span id="tags">
+      {% for tag in collection.tags %}
             {{ tag | highlight_active_tag | link_to_tag: tag }}
-          </li>
         {% endfor %}
-      </ul>      
-    </div>
+      
+    </span>
     {% endif %} 
     
   </div> <!-- navigation -->
