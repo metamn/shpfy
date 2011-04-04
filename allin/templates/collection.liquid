@@ -1,34 +1,35 @@
-<div id="section" class="products">
-  <div id="details">
-    {% paginate collection.products by 9 %}
-    {% if collection.products.size == 0 %}
-      {% if settings.snippets == "enabled" %}
-      {% else %}
-        <h1>No Items Found In This Collection</h1>
-        <p>Please try the <strong>search</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p> 
-      {% endif %} 
-    
-<h3>
-{% if settings.locale == "enabled" %}
-  {{ settings.locale_search }}
-  {% assign s = settings.locale_search %}
-{% else %}
-  Search
-  {% assign s = "Search" %}
-{% endif %} 
-</h3>
-<ul class="search">        
-  <li>
-    <form action="/search" method="get">
-      <input class="text" type="text" name="q" /> 
-      <input class="button" type="submit" value="{{ s }}"  />
-    </form>
-  </li>
-</ul> 
-    
+
+<div id="details">
+  {% paginate collection.products by 9 %}
+  {% if collection.products.size == 0 %}
+    {% if settings.snippets == "enabled" %}
+      {% include 'collection_empty' %}
     {% else %}
-  
-      <h1>
+      <h1>No Items Found In This Collection</h1>
+      <p>Please try the <strong>search</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p> 
+    {% endif %}     
+    <h3>
+    {% if settings.locale == "enabled" %}
+      {{ settings.locale_search }}
+      {% assign s = settings.locale_search %}
+    {% else %}
+      Search
+      {% assign s = "Search" %}
+    {% endif %} 
+    </h3>
+    <ul class="search">        
+      <li>
+        <form action="/search" method="get">
+          <input class="text" type="text" name="q" /> 
+          <input class="button" type="submit" value="{{ s }}"  />
+        </form>
+      </li>
+    </ul>     
+  {% endif %}
+    
+  <div id="navigation" class="block">
+    {% unless collection.title == blank %}
+      <span id="title">
         {{ collection.title }}
         <span class="tag-title"></span>
         // {{ collection.products_count }} 
@@ -37,7 +38,7 @@
         {% else %}
           items
         {% endif %}
-      </h1>
+      </span>
       <!-- Hack: getting the tag title, if any -->
       <div id="current-tags-hidden" class="hidden">
         <ul class="inline-list">
@@ -55,183 +56,98 @@
         }
       </script>
       <!-- end hack -->
-  
-      <div id="articles">
-        {% for product in collection.products %}  
-<div id="article" class="thumb">
-  <div id="details">
-    <div id="figcaption">
-      <div id="title">
-        <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-        <h3>{{ product.title | escape }}</h3></a>
-      </div>
-      <div id="price">
-        {% if settings.locale == "enabled" %}
-          {% assign add = settings.locale_cart_add %}
-        {% else %}
-          {% assign add = "Add to cart" %}
-        {% endif %}
-        <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-          {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
-      </div>
-    </div>
-    <div id="figure">
-      <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-        <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
-    </div>
-    <div id="summary">                
-        {{ product.description | truncatewords: 40 }}
-    </div>
-  </div> <!-- details -->
-</div> <!-- article --> 
-        {% endfor %}
-      </div>
+    {% endunless %}
     
-      {% if paginate.pages > 1 %}
-      <div id="paginate" class="right alignright">
-        {{ paginate | default_pagination }}
-      </div>
-      {% endif %}	  
-    
-    {% endif %}
-    {% endpaginate %}
-  </div>
-</div> <!-- section.products -->
-
-
-<div id="section" class="navigation"> 
-  <div id="details">  
-  
-    <h2>
-      {{ collection.title }}
-      <span class="tag-title"></span>
-      // {{ collection.products_count }} 
-      {% if settings.locale == "enabled" %}
-        {{ settings.locale_items }}
-      {% else %}
-        items
-      {% endif %}
-    </h2>      
-    
-       
     {% if collection.description.size > 0 %}
-      <h3>
-      {% if settings.locale == "enabled" %}
-        {{ settings.locale_coll_description }}
-      {% else %}
-        Description
-      {% endif %}
-      </h3>
-      <ul>
-        <li>{{ collection.description }}</li>
-      </ul>
+    <span id="description">{{ collection.description }}</span>
     {% endif %}
-                       
-                   
-{% if collections.size > 0 %}
-  <h3>
-  {% if settings.locale == "enabled" %}
-    {{ settings.locale_allcollections }}
-  {% else %}
-    All collections
-  {% endif %}
-  </h3>
-  <ul>
-	  {% for i in collections %}      	    
-		  <li {% if collection.url == i.url %} class="active"{% endif %}>
-		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title }}</a>
-		  </li>
-		{% endfor %}
-	</ul>
-{% endif %}    
-        
-{% if shop.types.size > 0 %}
-  <h3>
-  {% if settings.locale == "enabled" %}
-    {{ settings.locale_alltypes }}
-  {% else %}
-    All product types
-  {% endif %}          
-  </h3>        
-  <ul>
-  	{% for product_type in shop.types %}
-      <li>
-        {{ product_type | link_to_type  }}
-      </li>
-    {% endfor %}
-	</ul>      
-{% endif %}
+    
+    {% if collections.size > 0 %}
+      {% for i in collections %}
+        {% if collection.url == i.url %} 
+          {% assign klass = "collection active" %}
+        {% else %}
+          {% assign klass = "collection" %}
+        {% endif %}
+        <a href="{{ i.url }}" title="{{ i.title | upcase }}" class="{{ klass }}">{{ i.title }}</a>
+      {% endfor %}
+    {% endif %}    
+    
+    {% if shop.types.size > 0 %}
+    <div id="types">     
+      <ul class="inline-list">
+      	{% for product_type in shop.types %}
+          <li>
+            {{ product_type | link_to_type  }}
+          </li>
+        {% endfor %}
+      </ul>  
+    </div>    
+    {% endif %}
+    
+    {% if shop.vendors.size > 0 %}
+    <div id="vendors">
+      <ul>
+      	{% for product_vendor in shop.vendors %}
+          <li {% if collection.url == url_for_vendor %} class="active"{% endif %}>
+            {{ product_vendor | link_to_vendor  }}
+          </li>
+        {% endfor %}
+      </ul>      
+    </div>
+    {% endif %}
+    
+    {% if collection.all_tags.size > 0 %}
+    <div id="tags">
+      <ul class="inline-list">
+        {% for tag in collection.all_tags %}
+          <li>
+            {{ tag | highlight_active_tag | link_to_tag: tag }}
+          </li>
+        {% endfor %}
+      </ul>      
+    </div>
+    {% endif %} 
+    
+  </div> <!-- navigation -->
 
-{% if shop.vendors.size > 0 %}
-  <h3>
-  {% if settings.locale == "enabled" %}
-    {{ settings.locale_allvendors }}
-  {% else %}
-    All vendors
-  {% endif %}
-  </h3>
-  <ul>
-  	{% for product_vendor in shop.vendors %}
-      <li {% if collection.url == url_for_vendor %} class="active"{% endif %}>
-        {{ product_vendor | link_to_vendor  }}
-      </li>
+  <div id="articles" class="block">
+    {% for product in collection.products %}  
+      <div id="article" class="thumb c-{{ forloop.index }}">
+        <div id="details">
+          <div id="summary">                
+              {{ product.description | truncatewords: 50 }}
+          </div>
+          <div id="figcaption">
+            <div id="title">
+              <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+              <h5>{{ product.title | escape }}</h5></a>
+            </div>
+            <div id="price">
+              {% if settings.locale == "enabled" %}
+                {% assign add = settings.locale_cart_add %}
+              {% else %}
+                {% assign add = "Add to cart" %}
+              {% endif %}
+              <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
+            </div>
+          </div>
+          <div id="figure">            
+            <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
+          </div>
+        </div> <!-- details -->
+      </div> <!-- article --> 
     {% endfor %}
-  </ul>      
-{% endif %}
-
-{% if collection.all_tags.size > 0 %}
-  <h3>
-  {% if settings.locale == "enabled" %}
-    {{ settings.locale_coll_tags }}
-  {% else %}
-    Tags
-  {% endif %}
-   <em>{{ collection.title }}</em>
-  </h3>
-  <ul class="inline-list">
-    {% for tag in collection.all_tags %}
-      <li>
-        {{ tag | highlight_active_tag | link_to_tag: tag }}
-      </li>
-    {% endfor %}
-  </ul>      
-{% endif %} 
-
-<h3>
-{% if settings.locale == "enabled" %}
-  {{ settings.locale_search }}
-  {% assign s = settings.locale_search %}
-{% else %}
-  Search
-  {% assign s = "Search" %}
-{% endif %} 
-</h3>
-<ul class="search">        
-  <li>
-    <form action="/search" method="get">
-      <input class="text" type="text" name="q" /> 
-      <input class="button" type="submit" value="{{ s }}"  />
-    </form>
-  </li>
-</ul> 
-<h3>
-{% if settings.locale == "enabled" %}
-  {{ settings.locale_share }}
-{% else %}
-  Share 
-{% endif %}            
-</h3>
-<ul>
-  <li class="twitter">
-    <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
-  </li>
-  <li class="facebook">
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="true" width="150"></fb:like>              
-  </li>
-</li>    
+  </div>
   
-  </div>  
-</div>	<!-- section.navigation -->
+  {% if paginate.pages > 1 %}
+  <div id="paginate" class="right alignright">
+    {{ paginate | default_pagination }}
+  </div>
+  {% endif %}	    
+  {% endpaginate %}
+</div> <!-- details -->
  
 
 

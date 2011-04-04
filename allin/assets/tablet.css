@@ -5,3 +5,12 @@
 }
 
 
+.collection #article  {
+  width: 45%;
+  margin-right: 10%;
+}
+.collection #article.c-2, .collection #article.c-4, .collection #article.c-6, .collection #article.c-8 {
+  margin-right: 0;
+}
+
+

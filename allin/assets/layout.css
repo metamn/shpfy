@@ -54,11 +54,8 @@ h3 { font-size:2em; padding:1.25em 0; }
 
 
 
-
-
-/* Frontpage */
-
 /* General settings */
+
 #article.thumb {
   width: 20em; /* medium sized image is 15x15em */
   height: 30em; 
@@ -68,18 +65,14 @@ h3 { font-size:2em; padding:1.25em 0; }
 }
 
 
-/* Sections at the frontpage */
+
+
+/* Frontpage */
 
 .section {
   height: 26em;
   margin-bottom: 2.5em;
 }
-
-.section #title h1 {
-  font-size: 1em;
-  font-variant: small-caps;
-}
-
 .section #details, .section #articles {
   height: 20em;
   overflow: hidden;
@@ -95,17 +88,17 @@ h3 { font-size:2em; padding:1.25em 0; }
   width: 100%;
   height: auto;
 }
-.section #article.thumb #details {
+#article.thumb #details {
   padding: 0;
 }
-.section #article.thumb #details #figure, 
-.section #article.thumb #details #figcaption {
+#article.thumb #details #figure, 
+#article.thumb #details #figcaption {
   margin: 1.25em;
 }
 .section #article.thumb #figcaption #title h3 {
   padding-top: 0;
 }
-.section #article.thumb #summary {
+#article.thumb #summary {
   position: absolute;
   bottom: 0;
   display: none;
@@ -124,6 +117,38 @@ h3 { font-size:2em; padding:1.25em 0; }
   font-size: 2em;
   text-decoration: none;
 }
+
+
+
+/* Collections */
+
+.collection #navigation {
+  margin-bottom: 2.5em;
+}
+.collection #navigation > span {
+  display: inline-block;
+  float: left;
+  margin-right: 1.25em;
+}
+.collection #article.thumb {
+  float: left;
+  margin-bottom: 5em;
+  height: 27.5em;
+}
+.collection #article #title h5 {
+  padding: 0 0 1.25em;
+}
+.collection #article.thumb #summary {  
+  height: 30em;
+  position: relative;
+  cursor: pointer;
+}
+.collection #article.thumb #figure {
+  cursor: pointer;
+}
+
+
+
 
 
 

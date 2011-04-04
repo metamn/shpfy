@@ -10,4 +10,11 @@
   margin-left: 2%;
 }
 
+.collection #article  {
+  width: 30%;
+  margin-right: 5%;
+}
+.collection #article.c-3, .collection #article.c-6 {
+  margin-right: 0;
+}
 

@@ -33,8 +33,20 @@ jQuery(document).ready(function(){
     });
   });
  
+  // Show product details on hover, at Collections
+  jQuery(".collection #article.thumb #figure").click(
+    function () {
+      jQuery(this).siblings("#summary").fadeIn('slow');
+    }
+  ); 
+  jQuery(".collection #article.thumb #summary").click(
+    function () {
+      jQuery(this).fadeOut('slow');
+    }
+  ); 
+   
   
-  // Show product details on hover, at frontpage
+  // Show product details on hover, at Frontpage
   jQuery(".section #article.thumb #figure").hover(
     function () {
       jQuery(this).next("#summary").fadeIn('slow');

@@ -12,3 +12,14 @@
 }
 
 
+.collection #article {
+  width: 20%;
+  margin-right: 6.66%;
+}
+.collection #article.c-4, .collection #article.c-8 {
+  margin-right: 0;
+}
+
+
+
+

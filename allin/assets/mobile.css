@@ -71,6 +71,15 @@ h3 { font-size:1.5em; padding:1.45833em 0; }
 }
 
 
+.collection #article {
+  width: 100%;
+  height: auto;
+  margin-bottom: 3.75em;
+}
+.c-1, .c-2., .c-3, .c-4, .c-5, .c-6, .c-7, .c-8 {
+  margin: 0 auto;
+}
+
 
 
 
