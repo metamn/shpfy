@@ -118,15 +118,15 @@ a.button {
   background: #3d3d3b;
   border-bottom: 1px solid #2d2d2d;
 }
-#header a, #header a:visited, #footer a, #footer a:visited, .menu .search {
+#header a, #header a:visited, #footer a, #footer a:visited, #header .search, #footer .search {
   color: #f9f9f9;
   text-decoration: none;
 }
-.menu #item.cart {
+#shopping {
   background: #C60017 !important;
   color: #f9f9f9;    
 }
-.menu #item.cart .quantity {
+#shopping #quantity {
   border-bottom: 1px dotted #f9f9f9;
 }
 

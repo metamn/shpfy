@@ -79,19 +79,7 @@ jQuery(document).ready(function(){
     }
   );
   
-  // Click on Search in the Header  
-  jQuery("#main-menu .search").toggle (
-    function () {
-      jQuery("#shopping-menu").children(".item").hide();
-      jQuery("#shopping-menu .search-menu").fadeIn('slow');
-    },
-    function () {
-      jQuery("#shopping-menu").children(".item").show();      
-      jQuery("#shopping-menu .search-menu").fadeOut('slow');
-    }
-  );
       
-    
   // Highlight items on hover
   jQuery("#item.product, #add-to-cart").hover(
     function () {
