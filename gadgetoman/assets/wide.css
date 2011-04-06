@@ -1,4 +1,23 @@
-.index #item.c-3, .index #item.c-6,
-.product #item.c-3, .product #item.c-6 {
+.index #latest #item.c-3, .index #latest #item.c-6,
+.index #latest #item.c-9, .index #latest #item.c-12,
+.index #latest #item.c-15, .index #latest #item.c-18,
+.product #item.c-3, .product #item.c-6,
+.product #item.c-9, .product #item.c-12,
+.product #item.c-12, .product #item.c-18 {
   margin-right: 0;
+}
+
+.index #sales #item.c-2, .index #sales #item.c-4,
+.index #sales #item.c-6, .index #sales #item.c-8,
+.index #sales #item.c-10, .index #sales #item.c-12,
+.index #sales #item.c-14, .index #sales #item.c-16,
+.index #sales #item.c-18, .index #sales #item.c-20 {
+  margin-right: 0;
+}
+.index #sales #item.c-3, .index #sales #item.c-5,
+.index #sales #item.c-7, .index #sales #item.c-9,
+.index #sales #item.c-11, .index #sales #item.c-13,
+.index #sales #item.c-15, .index #sales #item.c-17
+  {
+  margin-left: 35%;
 }

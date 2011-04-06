@@ -9,7 +9,7 @@
 	{{ 'base.css' | asset_url | stylesheet_tag }}		
 	{{ 'layout.css' | asset_url | stylesheet_tag }}
 	
-	<!--{{ 'theme.css' | asset_url | stylesheet_tag }}-->
+	{{ 'theme.css' | asset_url | stylesheet_tag }}
 	
   {% if settings.mobile != "disabled" %}  
     <link href="{{ 'mobile.css' | asset_url }}" charset="utf-8" media="screen and (max-width: 480px)" rel="stylesheet" type="text/css" />
@@ -40,7 +40,7 @@
   {{ 'jquery.init.js' | asset_url | script_tag }}
   {{ 'jquery.mobile.js' | asset_url | script_tag }}
   
-  {{ 'jquery.grid.js' | asset_url | script_tag }}
+  <!--{{ 'jquery.grid.js' | asset_url | script_tag }}-->
   	
   <link href='http://fonts.googleapis.com/css?family=Ubuntu:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 
@@ -185,13 +185,10 @@
 				          
 				          msg += '<ul class="list">';		
 	                for (var i=0; i<feed.entries.length; i++) {			
-		                var entry = feed.entries[i];			
-		                var entryDate = new Date(entry.publishedDate);
-		                var pubDate = entryDate.toLocaleDateString();
+		                var entry = feed.entries[i];
 		
-		                msg += '<li class="title"><a href="'+ entry.link +'" title="View this feed at '+ feed.title +'">';				              
-			              msg += entry.title + '<span class="date"> # ' + pubDate + '</span></a></li>';
-			              //msg += '<div class="summary">'+ entry.content + '</div></li>';
+		                msg += '<li class="title"><a href="'+ entry.link +'" title="Read more at '+ feed.title +'">';				              
+			              msg += entry.title + '</a></li>';
 		              }			
 		              msg += '</ul>';
 		              

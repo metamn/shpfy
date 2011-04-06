@@ -122,6 +122,8 @@ body {
 }
 #header #logo {
   max-width: 70%; /* do not overlap the shopping cart */
+  position: relative;
+  top: -1.25em;
 }
 #header #shopping {
   margin-top: 1.25em;
@@ -232,6 +234,7 @@ body {
 }
 
 
+
 /* Latest */
 
 #latest {
@@ -271,7 +274,13 @@ body {
 #item.product #figcaption {
   padding: 1.25em 0;
 }
-
+#item.product #figcaption h3 {
+  padding: 0;
+}
+#item.product #figcaption #price {
+  font-size: small;
+  margin-top: .312em;
+}
 #call-for-subscribe {
   margin-top: 2.25em; /*to re-align to grid, in line with "Hot" */
 }
