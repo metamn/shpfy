@@ -1,24 +1,22 @@
 
 body {
-  background: url(neu.jpg) repeat scroll #E8E8D9;
-  color: #6D6850;
-  font-family: 'Expletus Sans', arial, serif;
+  background: url(goa.jpg) repeat scroll #ACF205;
+  color: #111;
+  font-family: 'Orbitron', arial, serif;
 }
 
 
 a, a:hover {
-  color: #6D6850;
+  color: #111;
   text-decoration: none;
 }
 
 
 
-  
-
 
 
 input, textarea, a.button {
-  background: #3E81BA;
+  background: #1D6AF4;
   color: #E7E6C7;
 }
 
@@ -30,16 +28,16 @@ input, textarea, a.button {
   border-bottom: 1px dotted;
 }
 #header #shopping {
-  background: #6D6850;
+  background: #111;
 }
 #header #shopping a, #header #shopping a:visited, #header #shopping a:hover {
-  color: #E8E8D9;
+  color: #09F907;
 }
 
 
 
 #article, #aside, #vendors #articles, #info #articles {
-  background: #E7E6C7;
+  background: #DAF698;
 }
 #article #figure {
   background: #fff;
@@ -48,8 +46,8 @@ input, textarea, a.button {
   box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;  
 }
 #article #summary {
-  background: #6D6850;
-  color: #E8E8D9;
+  background: #697649;
+  color: #DAF698;
 }
 #summary a, #summary a.visited  {
   text-decoration: underline;  
@@ -58,7 +56,8 @@ input, textarea, a.button {
 
 
 .section #title h4 a {
-  background: #EDD467; 
+  background: #18BF17; /* F9DE07 */
+  color: #DAF698;
 }
 
 

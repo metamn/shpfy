@@ -3,7 +3,7 @@
 
 
 body {
-  font: normal 100% Helvetica, Arial, sans-serif;
+  font: normal 100% arial, serif;
   line-height: 1.25; 
 }
 
@@ -176,11 +176,7 @@ h3 { font-size:2em; padding:1.25em 0; }
   height: 26em;
   margin-bottom: 2.5em;
 }
-.section #title h1 {
-  font-size: 1em;
-  font-variant: small-caps;
-}
-.section #title h1 a {
+.section #title h4 a {
   padding: .612em;
 }
 
@@ -228,7 +224,7 @@ h3 { font-size:2em; padding:1.25em 0; }
 }
 
 
-.section #navigation, .section #title h1 {
+.section #navigation, .section #title h4 {
   margin-left: 1.25em;
 }
 .section #navigation {

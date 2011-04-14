@@ -25,7 +25,8 @@
 {% if settings.frontpage_all != "disabled" %}	
 <div id="all" class="section col-1">  
   <div id="title" class="block">
-    <h1><a href="{{ collections.all.url }}" title="View all products in {{ collections.all.title }}">{{ collections.all.title }}</a></h1>
+    <h4><a href="{{ collections.all.url }}" title="View all products in {{ collections.all.title }}">{{ collections.all.title }}</a>
+    </h4>
   </div>
   <div id="details" class="block">        
     {% if collections.all.products.size > 0 %}
@@ -88,7 +89,8 @@
 {% if settings.frontpage_frontpage != "disabled" %}	
 <div id="frontpage" class="section col-2">  
   <div id="title" class="block">
-    <h1><a href="{{ collections.frontpage.url }}" title="View all products in {{ collections.frontpage.title }}">{{ collections.frontpage.title }}</a></h1>
+    <h4><a href="{{ collections.frontpage.url }}" title="View all products in {{ collections.frontpage.title }}">{{ collections.frontpage.title }}</a>
+    </h4>
   </div>
   <div id="details" class="block">        
     {% if collections.frontpage.products.size > 0 %}
@@ -151,7 +153,8 @@
 {% if settings.frontpage_sale != "disabled" %}	
 <div id="sale" class="section col-1"> 
   <div id="title" class="block">
-    <h1><a href="{{ collections.sale.url }}" title="View all products in {{ collections.sale.title }}">{{ collections.sale.title }}</a></h1>
+    <h4><a href="{{ collections.sale.url }}" title="View all products in {{ collections.sale.title }}">{{ collections.sale.title }}</a>
+    </h4>
   </div> 
   <div id="details" class="block">        
     {% if collections.sale.products.size > 0 %}
@@ -215,7 +218,7 @@
 <div id="info" class="section col-2"> 
   {% if linklists.info != blank %}
     <div id="title" class="block">
-      <h1>{{ linklists.info.title }}</h1>
+      <h4>{{ linklists.info.title }}</h4>
     </div> 
     <div id="details" class="block">        
       {% if linklists.info.links != blank %}
@@ -270,7 +273,7 @@
 {% if settings.frontpage_collections != "disabled" %}	
 <div id="collections" class="section col-1"> 
   <div id="title" class="block">
-    <h1>Collections</h1>
+    <h4>Collections</h4>
   </div> 
   <div id="details" class="block">        
     {% if collections.size > 0 %}
@@ -326,7 +329,7 @@
 {% if settings.frontpage_vendors != "disabled" %}	
 <div id="vendors" class="section col-2"> 
   <div id="title" class="block">
-    <h1>Vendors & Types</h1>
+    <h4>Vendors & Types</h4>
   </div> 
   <div id="details" class="block">            
     <div id="articles">  
