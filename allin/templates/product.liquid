@@ -21,103 +21,78 @@
     </div>
     {% endif %} 
     
-    <div id="summary" class="block">
+    <div id="summary">
       {{ product.description }}
     </div> 
   </div>  
-</div>  <!-- article -- >
+</div> 
 	
 
-<div id="aside" class="col col-2">
-  <div id="shopping">
-    <form action="/cart/add" method="post" name="cartadd">
-      {% if product.available %}
-  			<div id="variations">	
-          <select id="variant-select" name='id'>
-            {% for variant in product.variants %}
-              {% if variant.available %}
-                <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
-              {% else %}
-                <option value="{{ variant.id }}" disabled="disabled">{{ variant.title }} - 
-                {% if settings.locale == "enabled" %}
-                  {{ settings.locale_soldout }}
+<div id="sidebar" class="col col-2">
+  <div id="aside">
+    <div id="shopping">
+      <form action="/cart/add" method="post" name="cartadd">
+        {% if product.available %}
+    			<div id="variations">	
+            <select id="variant-select" name='id'>
+              {% for variant in product.variants %}
+                {% if variant.available %}
+                  <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
                 {% else %}
-                  SOLD OUT
-                {% endif %}
-                </option>
-      				{% endif %}
-            {% endfor %}
-          </select>
-  			</div>      			
+                  <option value="{{ variant.id }}" disabled="disabled">{{ variant.title }} - 
+                  {% if settings.locale == "enabled" %}
+                    {{ settings.locale_soldout }}
+                  {% else %}
+                    SOLD OUT
+                  {% endif %}
+                  </option>
+        				{% endif %}
+              {% endfor %}
+            </select>
+    			</div>      			
 
-  			<span id="price-field"></span>
-        {% if settings.locale == "enabled" %}
-          <input class="button" type="submit" name="add" value="{{ settings.locale_cart_add }}" id="add-cart">
-        {% else %}
-          <input class="button" type="submit" name="add" value="Add to cart" id="add-cart">
-        {% endif %}
-  			
-      {% else %}
-        <h3>
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_unavailable }}
-        {% else %}
-          TEMPORARILY UNAVAILABLE
-        {% endif %}
-        </h3>
-      {% endif %}
-    </form>
-  </div> <!-- Shopping -->
-    
-  <div id="section" class="navigation">	  
-    {% if settings.snippets == "enabled" %}
-      {% include 'shopping_info' %}        
-    {% else %}
-      <h3>Shopping Info</h3>
-      <ul>
-        <li>One step checkout, no registration needed</li>
-        <li>Your goods are delivered in 2 business days</li>
-        <li>Postage and packaging is usually less than 10 USD</li>
-        <li>You have money-back guarantee on all products purchased</li>
-        <li>Contact us at <em>phone number</em>, <em>email</em>, ...</li>
-      </ul> 
-    {% endif %} 
-    
-    
-    {% if product.collections.size > 0 %}
-      <h3>
-      {% if settings.locale == "enabled" %}
-        {{ settings.locale_listedin }}
-      {% else %}
-        Listed in
-      {% endif %}
-      </h3>
-      <ul>
-    	  {% for i in product.collections %}      	    
-    		  <li {% if collection.url == i.url %} class="active"{% endif %}>
-    		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title }}</a>
-    		  </li>
-    		{% endfor %}
-	      <li>
-    		  {% if settings.locale == "enabled" %}
-            {{ settings.locale_taggedwith }}
+    			<span id="price-field"></span>
+          {% if settings.locale == "enabled" %}
+            <input class="button" type="submit" name="add" value="{{ settings.locale_cart_add }}" id="add-cart">
           {% else %}
-            Tagged with
+            <input class="button" type="submit" name="add" value="Add to cart" id="add-cart">
           {% endif %}
-          <em>{{ product.tags | join: ', ' }}</em>
-        </li>
-    	</ul>
-    {% endif %} 
-              
-    <h3>
-    {% if settings.locale == "enabled" %}
-      {{ settings.locale_browsemore }}
-    {% else %}
-      Browse more
-    {% endif %}            
-    </h3>
-    <ul>
+    			
+        {% else %}
+          <h3>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_unavailable }}
+          {% else %}
+            TEMPORARILY UNAVAILABLE
+          {% endif %}
+          </h3>
+        {% endif %}
+      </form>
+    </div>
+    <div class="clear"></div>
+    
+    <ul id="share" class="inline-list">
+      <li class="twitter">
+        <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
+      </li>
+      <li class="facebook">
+        <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="true" width="150"></fb:like>              
+      </li>
+    </ul> 
+    
+    <ul id="more">  
       <li>
+        {% if product.collections.size > 0 %}
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_listedin }}
+          {% else %}
+            This product is listed in
+          {% endif %}              
+      	  {% for i in product.collections %}      	    
+      		  <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title }}</a>{% unless forloop.last %}, {% endunless %}
+      		{% endfor %}	      
+        {% endif %} 
+        . 
         {% if settings.locale == "enabled" %}
           {{ settings.locale_seemore }}
         {% else %}
@@ -131,31 +106,10 @@
           and 
         {% endif %}      
         {{ product.type | link_to_type }}
-      </li>
-    </ul>
-            
-                       
-    <h3>
-    {% if settings.locale == "enabled" %}
-      {{ settings.locale_share }}
-    {% else %}
-      Share 
-    {% endif %}            
-    </h3>
-    <ul>
-      <li class="twitter">
-        <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
-      </li>
-      <li class="facebook">
-        <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="true" width="150"></fb:like>              
-      </li>
-    </li>    
-  </div> <!-- navigation -->    
-    
-</div> <! -- aside -->        
-
-  
-
+      </li>      
+    </ul>   
+  </div>      
+</div>
 
 
 

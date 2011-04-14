@@ -255,14 +255,14 @@ input[type="radio"], input[type="checkbox"], input[type="file"] {
 ### `<h4>, <h5>, <h6>` ###
 
 * They all have normal sizes like paragraphs
-* `<h4>` is bold
-* `<h5>` is small caps
+* `<h4>` is small caps
+* `<h5>` is bold
 * `<h6>` is italic
 
 */
 h4, h5, h6 { padding: 1.25em 0; }
-h4 { font-weight: bold; }
-h5 { font-variant: small-caps; }
+h4 { font-variant: small-caps; }
+h5 { font-weight: bold; }
 h6 { font-style: italic; }
 
 

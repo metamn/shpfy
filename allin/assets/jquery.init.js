@@ -4,16 +4,30 @@ jQuery.noConflict();
 jQuery(document).ready(function(){
   
   
+  
+  
+  // Show date in blog sidebar on hover
+  jQuery("#aside ul.hoverable li").hover(
+    function () {
+      jQuery(this).children(".date").fadeIn('slow');
+    }, 
+    function () {
+      jQuery(this).children('.date').fadeOut('slow');
+    }
+  );
+  
   // Mobile navigation at frontpage
   jQuery("#navigation.mobile").localScroll();
   
+  
   // Marking the scroller bullet / list item active 
   jQuery("#navigation.desktop a").click(function() {
-    jQuery(this).parent().parent().children().removeClass("inactive");
-    jQuery(this).parent().addClass("inactive");
+    jQuery(this).parent().parent().children().removeClass("active");
+    jQuery(this).parent().addClass("active");
   });
   
-  // Scrolling products at frontpage on all sections
+  
+  // Scrolling products at frontpage for all sections
   jQuery.localScroll.defaults.axis = 'xy';
   jQuery(".section").each(function(){ 
     jQuery.localScroll({
@@ -32,20 +46,7 @@ jQuery(document).ready(function(){
       }
     });
   });
- 
-  // Show product details on hover, at Collections
-  jQuery(".collection #article.thumb #figure").click(
-    function () {
-      jQuery(this).siblings("#summary").fadeIn('slow');
-    }
-  ); 
-  jQuery(".collection #article.thumb #summary").click(
-    function () {
-      jQuery(this).fadeOut('slow');
-    }
-  ); 
-   
-  
+    
   // Show product details on hover, at Frontpage
   jQuery(".section #article.thumb #figure").hover(
     function () {
@@ -56,14 +57,17 @@ jQuery(document).ready(function(){
     }
   );  
   
-  // Click on Search in the Main Menu  
-  jQuery("#header #nav #main-menu .search").toggle (
-    function () {
-      jQuery("#header #search").fadeIn('slow');
-    },
-    function () {
-      jQuery("#header #search").fadeOut('slow');
-    }
-  );
-    
+  
+  // Click on Thumbnail at the Product page
+  jQuery(".product #thumbs img.link").click(function(){
+    var newImage = jQuery(this).attr('rev');  
+    var wrap = jQuery(".product #figure");    
+    var img = new Image();
+    img.onload = function() {
+      // change the image
+      wrap.find("img").attr("src", newImage);
+      wrap.find("a").attr("href", newImage);
+    };
+    img.src = newImage;       
+  });    
 });   

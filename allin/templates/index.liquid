@@ -56,7 +56,7 @@
               </div>
               
               <div id="summary">                
-                  {{ product.description | strip_html | truncatewords: 30 }}
+                  {{ product.description | strip_html | truncatewords: 50 }}
               </div>  
                            
             </div> <!-- details -->
@@ -74,7 +74,7 @@
   <div id="navigation" class="desktop block">  
     <ul class="inline-list">
     {% for product in collections.all.products limit : settings.frontpage_all_count %}
-      <li><a href="#latest{{ forloop.index }}">&bull;</a></li>
+      <li {% if forloop.first %} class="active" {% endif %}><a href="#latest{{ forloop.index }}">&bull;</a></li>
     {% endfor %}
     </ul>
   </div>
@@ -119,7 +119,7 @@
               </div>
               
               <div id="summary">                
-                  {{ product.description | strip_html | truncatewords: 30 }}
+                  {{ product.description | strip_html | truncatewords: 50 }}
               </div>  
                            
             </div> <!-- details -->
@@ -137,7 +137,7 @@
   <div id="navigation" class="desktop block">
     <ul class="inline-list">
     {% for product in collections.frontpage.products limit : settings.frontpage_frontpage_count %}
-      <li><a href="#featured{{ forloop.index }}">&bull;</a></li>
+      <li {% if forloop.first %} class="active" {% endif %}><a href="#featured{{ forloop.index }}">&bull;</a></li>
     {% endfor %}
     </ul>
   </div>
@@ -182,7 +182,7 @@
               </div>
               
               <div id="summary">                
-                  {{ product.description | strip_html | truncatewords: 30 }}
+                  {{ product.description | strip_html | truncatewords: 50 }}
               </div>  
                            
             </div> <!-- details -->
@@ -200,7 +200,7 @@
   <div id="navigation" class="desktop block">  
     <ul class="inline-list">
     {% for product in collections.sale.products limit : settings.frontpage_sale_count %}
-      <li><a href="#sale{{ forloop.index }}">&bull;</a></li>
+      <li {% if forloop.first %} class="active" {% endif %}><a href="#sale{{ forloop.index }}">&bull;</a></li>
     {% endfor %}
     </ul>
   </div>
@@ -213,47 +213,54 @@
 
 {% if settings.frontpage_info != "disabled" %}	
 <div id="info" class="section col-2"> 
-  <div id="title" class="block">
-    <h1>{{ linklists.info.title }}</h1>
-  </div> 
-  <div id="details" class="block">        
-    {% if linklists.info.size > 0 %}
-    <div id="articles">  
-      {% for product in linklists.info.links limit : settings.frontpage_info_count %}
-        <div id="info{{ forloop.index }}" class="scroller">
-          <div id="article" class="post">
-            <div id="details">                                  
-              <a href="{{ product.url }}" title="{{ product.title | escape }}">
-                <h3>{{ product.title | escape }}</h3>
-              </a> 
-              <div id="summary">                
-                link article here ...
-              </div>
-              <div id="read-more">
-              </div>             
-            </div> <!-- details -->
-          </div> <!-- article --> 
+  {% if linklists.info != blank %}
+    <div id="title" class="block">
+      <h1>{{ linklists.info.title }}</h1>
+    </div> 
+    <div id="details" class="block">        
+      {% if linklists.info.links != blank %}
+        <div id="articles">  
+          {% for link in linklists.info.links limit : settings.frontpage_info_count %}
+            <div id="info{{ forloop.index }}" class="scroller">
+              <div id="article" class="page">
+                <div id="details">
+                  <div id="figcaption">
+                    <div id="title">                                  
+                      <a href="{{ link.object.url }}" title="{{ link.object.title | escape }}">
+                        <h3>{{ link.object.title | escape }}</h3>
+                      </a> 
+                    </div>
+                  </div>
+                  <div id="summary">                
+                    {{ link.object.content | strip_html | truncatewords: 60 }}
+                  </div>             
+                </div> <!-- details -->
+              </div> <!-- article --> 
+            </div>
+          {% endfor %}
+        </div> <!-- articles -->
+      {% else %}
+        <div class="notice">        
+          Please add pages like About Us, Contact Us, Shopping Info etc. to this list named info.
         </div>
+      {% endif %}
+    </div>
+    <div id="navigation" class="desktop block">
+      <ul class="inline-list">
+      {% for product in linklists.info.links limit : settings.frontpage_info_count %}
+        <li {% if forloop.first %} class="active" {% endif %}><a href="#info{{ forloop.index }}">&bull;</a></li>
       {% endfor %}
-    </div> <!-- articles -->
-    {% else %}
-      <div class="notice">        
-        To see here a list of pages with info about your store please <a href="/admin/links/new">create a new linklist</a>
-        and name it's handle to <strong>info</strong> then add pages to it.
-      </div>
-    {% endif %}
-  </div> 
-  <div id="navigation" class="desktop block">
-    <ul class="inline-list">
-    {% for product in linklists.info.links limit : settings.frontpage_info_count %}
-      <li><a href="#info{{ forloop.index }}">&bull;</a></li>
-    {% endfor %}
-      <li><a href="">&bull;</a></li>
-    </ul>
-  </div>
-  <div id="navigation" class="mobile">
-    <a href="#top">[top]</a>
-  </div>
+      </ul>
+    </div>
+    <div id="navigation" class="mobile">
+      <a href="#top">[top]</a>
+    </div>
+  {% else %}
+    <div class="notice">        
+      To see here a list of pages with info about your store please <a href="/admin/links/new">create a new linklist</a>
+      and name it's handle to <strong>info</strong> then add pages to it.
+    </div>
+  {% endif %}
 </div> 
 {% endif %}
 
@@ -280,7 +287,7 @@
                       <h3>{{ collection.title | escape }}</h3></a>
                     </div> 
                     {% if collection.description != blank %}
-                    <div id="description">                
+                    <div id="summary">                
                       {{ collection.description }}
                     </div>  
                     {% endif %}
@@ -288,8 +295,7 @@
                   <div id="figure">
                     <a href="{{ collection.url }}" title="{{ collection.title | escape }}">
                       <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
-                  </div>
-                               
+                  </div>                               
                 </div> <!-- details -->
               </div> <!-- article --> 
             {% endfor %}
@@ -306,7 +312,7 @@
   <div id="navigation" class="desktop block">  
     <ul class="inline-list">
     {% for collection in collections limit : settings.frontpage_collection_count %}
-      <li><a href="#collection{{ forloop.index }}">&bull;</a></li>
+      <li {% if forloop.first %} class="active" {% endif %}><a href="#collection{{ forloop.index }}">&bull;</a></li>
     {% endfor %}
     </ul>
   </div>
@@ -326,20 +332,42 @@
     <div id="articles">  
       {% if shop.vendors.size > 0 %}
         <div id="vendor1" class="scroller">
-          <ul>
-            {% for vendor in shop.vendors  %}
-              <li>{{ vendor | link_to_vendor }}</li>
-            {% endfor %}
-          </ul>
+          <div id="article" class="page">
+            <div id="details">
+              <div id="figcaption">
+                <div id="title">
+                  <h3>Vendors</h3>
+                </div>
+              </div>
+              <div id="summary">
+                <span>
+                  {% for product_vendor in shop.vendors %}
+                    {{ product_vendor | link_to_vendor  }}      
+                  {% endfor %}
+                </span>      
+              </div>
+            </div>
+          </div>
         </div>
       {% endif %}
       {% if shop.types.size > 0 %}
         <div id="vendor2" class="scroller">
-          <ul>
-            {% for type in shop.types  %}
-              <li>{{ type | link_to_type }}</li>
-            {% endfor %}
-          </ul>
+          <div id="article" class="page">
+            <div id="details">
+              <div id="figcaption">
+                <div id="title">
+                  <h3>Product Types</h3>
+                </div>
+              </div>
+              <div id="summary">
+                <span>
+                	{% for product_type in shop.types %}
+                    {{ product_type | link_to_type  }}          
+                  {% endfor %}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       {% endif %}      
     </div> <!-- articles -->    
@@ -347,7 +375,7 @@
   <div id="navigation" class="desktop col-2">
     <ul class="inline-list">
     {% if shop.vendors.size > 0 %}  
-      <li><a href="#vendor1">&bull;</a></li>  
+      <li class="active"><a href="#vendor1">&bull;</a></li>  
     {% endif %}
     {% if shop.types.size > 0 %}  
       <li><a href="#vendor2">&bull;</a></li>  

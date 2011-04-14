@@ -10,11 +10,45 @@
   margin-left: 2%;
 }
 
-.collection #article  {
+#header #shopping {
+  width: 10%; /* do not overlap the logo */  
+}
+
+.section #article.thumb #figure {
+  width: 43%;  
+}
+
+.collection #article.thumb, .search #article.page  {
   width: 30%;
   margin-right: 5%;
+  min-height: 35em;
 }
-.collection #article.c-3, .collection #article.c-6 {
+.collection #article.c-3, .collection #article.c-6,
+.collection #article.c-9 {
   margin-right: 0;
+}
+
+
+.product select, #article #search input {
+  margin-right: 0;
+}
+.product select {
+  width: 100%;
+}
+.product input.button {
+  margin: .612em 0;
+}
+#article #search input.text {
+  width: 77%;
+}
+#search ul {
+  margin-bottom: 1.25em;
+  list-style-type: none;
+  margin-left: 0;
+}
+
+
+.cart #info {
+  top: -1.5em;
 }
 

@@ -1,207 +1,167 @@
-{% paginate search.results by 9 %}
-{% if search.results.size == 0 %}
-  <div id="article" class="col col-1">
-    <div id="details">
-      {% if settings.snippets == "enabled" %}
-      {% else %}
-        <h1>We did not found any products for you.</h1>
-        <div id="summary">
-          <p>Please try searching <strong>again</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p> 
-        </div>
+<div id="details">
+
+  {% if search.terms == blank %}
+  
+    {% if settings.locale == "enabled" %}
+      {% assign s = settings.locale_search %}
+    {% else %}
+      {% assign s = "Search" %}
+    {% endif %} 
+    <div id="search" class="notfound">        
+      <form action="/search" method="get">
+        <input class="text" type="text" name="q" /> 
+        <input class="button" type="submit" value="{{ s }}"  />
+      </form>
+    </div>  
+      
+  {% else %}
+
+    <div id="navigation" class="collections block">    
+      <span class="title">
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_search_title }}
+        {% else %}
+          Search results for:
+        {% endif %}
+         {{ search.terms }}
+      </span>      
+          
+      {% if collections.size > 0 %}
+        <span class="collections">
+          {% for i in collections %}
+            {% if collection.url == i.url %} 
+              {% assign klass = "collection active" %}
+            {% else %}
+              {% assign klass = "collection" %}
+            {% endif %}
+            <a href="{{ i.url }}" title="{{ i.title | upcase }}" class="{% if forloop.last %} last {% endif %} {{ klass }}">{{ i.title }}</a>
+          {% endfor %}
+        </span>
+      {% endif %}    
+      
+      {% if shop.types.size > 0 %}
+      <span class="types"> 
+      	{% for product_type in shop.types %}
+      	  <!--
+      	  
+      	  Cannot get the current url in Shopify, collection.url doesn't works with types and vendors
+      	  
+      	  {% capture url %}{{ product_type | url_for_type  }}{% endcapture %}
+      	  {% if collection.url == url %} 
+            {% assign klass = "active" %}
+          {% else %}
+            {% assign klass = "" %}
+          {% endif %}
+          <a href="{{ url }}" title="{{ product_type }}" class="{{ klass }}">{{ product_type}}</a>          
+          -->
+          {{ product_type | link_to_type  }}
+        {% endfor %}
+      </span>    
       {% endif %}
       
-<h3>
-{% if settings.locale == "enabled" %}
-  {{ settings.locale_search }}
-  {% assign s = settings.locale_search %}
-{% else %}
-  Search
-  {% assign s = "Search" %}
-{% endif %} 
-</h3>
-<ul class="search">        
-  <li>
-    <form action="/search" method="get">
-      <input class="text" type="text" name="q" /> 
-      <input class="button" type="submit" value="{{ s }}"  />
-    </form>
-  </li>
-</ul> 
-    </div>
-  </div>
+      {% if shop.vendors.size > 0 %}
+      <span class="vendors">
+        {% for product_vendor in shop.vendors %}
+          {{ product_vendor | link_to_vendor  }}      
+        {% endfor %}      
+      </span>
+      {% endif %}
+      
+      {% if collection.tags.size > 0 %}
+      <span class="tags">
+        {% for tag in collection.tags %}
+            {{ tag | highlight_active_tag | link_to_tag: tag }}
+        {% endfor %}      
+      </span>
+      {% endif %}     
+    </div> <!-- navigation --> 
   
-{% else %}
+  
+    {% if search.results.size == 0 %}
+      
+      {% if settings.snippets == "enabled" %}
+        {% include 'search_not_found' %}
+      {% else %}
+        <h1>We did not found any products for you.</h1>        
+      {% endif %}
+        
+      
+      {% if settings.locale == "enabled" %}
+        {{ settings.locale_search }}
+        {% assign s = settings.locale_search %}
+      {% else %}
+        {% assign s = "Search again" %}
+      {% endif %} 
+      <ul class="search">        
+        <li>
+          <form action="/search" method="get">
+            <input class="text" type="text" name="q" /> 
+            <input class="button" type="submit" value="{{ s }}"  />
+          </form>
+        </li>
+      </ul>   
     
-  <div id="section" class="products col col-1">
-    <div id="details">
-      <h1>
-        {% if settings.locale == "enabled" %}
-          {% assign s = settings.locale_search_results %}
-        {% else %}
-          {% assign s = "Search results for" %}
-        {% endif %} 
-        {{ s }}:
-      </h1>
-      <div id="articles">    
+    {% else %}
+  
+      {% paginate search.results by 9 %}
+      <div id="articles" class="block">
         {% for item in search.results %}
-          {% if item.featured_image %} 
-            {{ assign product = item }}
-<div id="article" class="thumb">
-  <div id="details">
-    <div id="figcaption">
-      <div id="title">
-        <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-        <h3>{{ product.title | escape }}</h3></a>
-      </div>
-      <div id="price">
-        {% if settings.locale == "enabled" %}
-          {% assign add = settings.locale_cart_add %}
-        {% else %}
-          {% assign add = "Add to cart" %}
-        {% endif %}
-        <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-          {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
-      </div>
-    </div>
-    <div id="figure">
-      <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-        <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
-    </div>
-    <div id="summary">                
-        {{ product.description | truncatewords: 40 }}
-    </div>
-  </div> <!-- details -->
-</div> <!-- article --> 
-          {% else %}
-            <div id="article" class="thumb">
+          {% if item.featured_image %}  
+            {% assign product = item %}    
+            <div id="article" class="thumb c-{{ forloop.index }}">
               <div id="details">
-                <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
-                    <h3>{{ item.title | escape }}</h3></a>
+                <div id="summary">                
+                    {{ product.description | strip_html | truncatewords: 50 }}
+                </div>
+                <div id="figcaption">
+                  <div id="title">
+                    <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                    <h3>{{ product.title | escape }}</h3></a>
+                  </div>
+                  <div id="price">
+                    {% if settings.locale == "enabled" %}
+                      {% assign add = settings.locale_cart_add %}
+                    {% else %}
+                      {% assign add = "Add to cart" %}
+                    {% endif %}
+                    <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+                      {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
+                  </div>
+                </div>
+                <div id="figure">      
+                  <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">      
+                    <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>
+                </div>
+              </div> <!-- details -->
+            </div> <!-- article --> 
+          {% else %}
+            <div id="article" class="page c-{{ forloop.index }}">
+              <div id="details">
+                <div id="figcaption">
+                  <div id="title">
+                    <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
+                      <h3>{{ item.title | escape }}</h3></a>
+                  </div>
+                </div>
                 <div id="summary" class="text">
-                  {{ item.content | truncatewords: 20 }}
+                  {{ item.content | strip_html | truncatewords: 60 }}
                 </div>
               </div>
             </div>
           {% endif %}
         {% endfor %}
-        
-        {% if paginate.pages > 1 %}
-          <div id="paginate">
-            {{ paginate | default_pagination }}
-          </div>
-        {% endif %}	      
-      </div> <!-- articles -->     
-    </div> <!-- details -->
-  </div> <!-- section -->  
-
-{% endif %}
-{% endpaginate %}
-
-
-<div id="aside" class="navigation col col-2">
-  <div id="details">
-{% if collections.size > 0 %}
-  <h3>
-  {% if settings.locale == "enabled" %}
-    {{ settings.locale_allcollections }}
-  {% else %}
-    All collections
+      </div>
+      
+      {% if paginate.pages > 1 %}
+      <div id="paginate" class="">
+        {{ paginate | default_pagination }}
+      </div>
+      {% endif %}	    
+      {% endpaginate %}
+    {% endif %}
   {% endif %}
-  </h3>
-  <ul>
-	  {% for i in collections %}      	    
-		  <li {% if collection.url == i.url %} class="active"{% endif %}>
-		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title }}</a>
-		  </li>
-		{% endfor %}
-	</ul>
-{% endif %}    
-        
-{% if shop.types.size > 0 %}
-  <h3>
-  {% if settings.locale == "enabled" %}
-    {{ settings.locale_alltypes }}
-  {% else %}
-    All product types
-  {% endif %}          
-  </h3>        
-  <ul>
-  	{% for product_type in shop.types %}
-      <li>
-        {{ product_type | link_to_type  }}
-      </li>
-    {% endfor %}
-	</ul>      
-{% endif %}
+</div> <!-- details -->
 
-{% if shop.vendors.size > 0 %}
-  <h3>
-  {% if settings.locale == "enabled" %}
-    {{ settings.locale_allvendors }}
-  {% else %}
-    All vendors
-  {% endif %}
-  </h3>
-  <ul>
-  	{% for product_vendor in shop.vendors %}
-      <li {% if collection.url == url_for_vendor %} class="active"{% endif %}>
-        {{ product_vendor | link_to_vendor  }}
-      </li>
-    {% endfor %}
-  </ul>      
-{% endif %}
 
-{% if collection.all_tags.size > 0 %}
-  <h3>
-  {% if settings.locale == "enabled" %}
-    {{ settings.locale_coll_tags }}
-  {% else %}
-    Tags
-  {% endif %}
-   <em>{{ collection.title }}</em>
-  </h3>
-  <ul class="inline-list">
-    {% for tag in collection.all_tags %}
-      <li>
-        {{ tag | highlight_active_tag | link_to_tag: tag }}
-      </li>
-    {% endfor %}
-  </ul>      
-{% endif %} 
 
-<h3>
-{% if settings.locale == "enabled" %}
-  {{ settings.locale_share }}
-{% else %}
-  Share 
-{% endif %}            
-</h3>
-<ul>
-  <li class="twitter">
-    <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
-  </li>
-  <li class="facebook">
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="true" width="150"></fb:like>              
-  </li>
-</li>    
-<h3>
-{% if settings.locale == "enabled" %}
-  {{ settings.locale_search }}
-  {% assign s = settings.locale_search %}
-{% else %}
-  Search
-  {% assign s = "Search" %}
-{% endif %} 
-</h3>
-<ul class="search">        
-  <li>
-    <form action="/search" method="get">
-      <input class="text" type="text" name="q" /> 
-      <input class="button" type="submit" value="{{ s }}"  />
-    </form>
-  </li>
-</ul> 
-  </div>
-</div>
 
-  

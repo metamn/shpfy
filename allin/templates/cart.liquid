@@ -11,110 +11,38 @@
     </div>
   </div>
   
-  <div id="aside" class="navigation col col-2">
-    <div id="details">
-{% if collections.size > 0 %}
-  <h3>
-  {% if settings.locale == "enabled" %}
-    {{ settings.locale_allcollections }}
-  {% else %}
-    All collections
-  {% endif %}
-  </h3>
-  <ul>
-	  {% for i in collections %}      	    
-		  <li {% if collection.url == i.url %} class="active"{% endif %}>
-		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title }}</a>
-		  </li>
-		{% endfor %}
-	</ul>
-{% endif %}    
-        
-{% if shop.types.size > 0 %}
-  <h3>
-  {% if settings.locale == "enabled" %}
-    {{ settings.locale_alltypes }}
-  {% else %}
-    All product types
-  {% endif %}          
-  </h3>        
-  <ul>
-  	{% for product_type in shop.types %}
-      <li>
-        {{ product_type | link_to_type  }}
-      </li>
-    {% endfor %}
-	</ul>      
-{% endif %}
-
-{% if shop.vendors.size > 0 %}
-  <h3>
-  {% if settings.locale == "enabled" %}
-    {{ settings.locale_allvendors }}
-  {% else %}
-    All vendors
-  {% endif %}
-  </h3>
-  <ul>
-  	{% for product_vendor in shop.vendors %}
-      <li {% if collection.url == url_for_vendor %} class="active"{% endif %}>
-        {{ product_vendor | link_to_vendor  }}
-      </li>
-    {% endfor %}
-  </ul>      
-{% endif %}
-
-{% if collection.all_tags.size > 0 %}
-  <h3>
-  {% if settings.locale == "enabled" %}
-    {{ settings.locale_coll_tags }}
-  {% else %}
-    Tags
-  {% endif %}
-   <em>{{ collection.title }}</em>
-  </h3>
-  <ul class="inline-list">
-    {% for tag in collection.all_tags %}
-      <li>
-        {{ tag | highlight_active_tag | link_to_tag: tag }}
-      </li>
-    {% endfor %}
-  </ul>      
-{% endif %} 
-
-<h3>
-{% if settings.locale == "enabled" %}
-  {{ settings.locale_search }}
-  {% assign s = settings.locale_search %}
-{% else %}
-  Search
-  {% assign s = "Search" %}
-{% endif %} 
-</h3>
-<ul class="search">        
-  <li>
-    <form action="/search" method="get">
-      <input class="text" type="text" name="q" /> 
-      <input class="button" type="submit" value="{{ s }}"  />
-    </form>
-  </li>
-</ul> 
-<h3>
-{% if settings.locale == "enabled" %}
-  {{ settings.locale_share }}
-{% else %}
-  Share 
-{% endif %}            
-</h3>
-<ul>
-  <li class="twitter">
-    <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
-  </li>
-  <li class="facebook">
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="true" width="150"></fb:like>              
-  </li>
-</li>    
-    </div>
+  <div id="sidebar" class="col col-2">
+       
+    <div id="navigation" class="collections block">
+      {% if collections.size > 0 %}
+        <span class="collections">
+          {% for i in collections %}
+            {% if collection.url == i.url %} 
+              {% assign klass = "collection active" %}
+            {% else %}
+              {% assign klass = "collection" %}
+            {% endif %}
+            <a href="{{ i.url }}" title="{{ i.title | upcase }}" class="{% if forloop.last %} last {% endif %} {{ klass }}">{{ i.title }}</a>
+          {% endfor %}
+        </span>
+      {% endif %}    
+      
+      {% if shop.types.size > 0 %}
+      <span class="types"> 
+      	{% for product_type in shop.types %}
+          {{ product_type | link_to_type  }}          
+        {% endfor %}
+      </span>    
+      {% endif %}
+      
+      {% if shop.vendors.size > 0 %}
+      <span class="vendors">
+        {% for product_vendor in shop.vendors %}
+          {{ product_vendor | link_to_vendor  }}      
+        {% endfor %}      
+      </span>
+      {% endif %}
+    </div>  
   </div>
     
 {% else %}
@@ -131,18 +59,18 @@
     <div id="articles">           
       <form action="/cart" method="post" id="cartform" name="cartform">          
         {% for item in cart.items %}
-          <ul id="article" class="inline-list">
-            <li id="image">
+          <div id="article" class="block">
+            <div id="image">
               <a href="{{ item.product.url | within: collections.all }}">
                 <img src="{{ item.product.images.last | product_img_url: 'medium' }}" alt="{{ item.title | escape }}" />
               </a>
-            </li>
-            <li id="info">
+            </div>
+            <div id="info">
               <a href="{{ item.product.url | within: collections.all }}">
                 {{ item.title }} <span>{{ item.price | money }}
               </a>	
-            </li>
-            <li id="update">
+            </div>
+            <div id="update">
               <input type="text" class="text update quantity" name="updates[]" id="updates_{{ item.variant.id }}" value="{{ item.quantity }}" onfocus="this.select();" />
               <input type="hidden" name="id" value="{{ item.variant.id }}" />
               {% if settings.locale == "enabled" %}
@@ -151,11 +79,11 @@
                 {% assign u = "Update" %}
               {% endif %}  
               <input type="submit" class="button update" name="update" value="{{ u }}" id="update-cart" />
-            </li>
-            <li id="lineprice">
+            </div>
+            <div id="lineprice">
               {{ item.line_price | money }}
-            </li>
-            <li id="remove">
+            </div>
+            <div id="remove">
               <a class="button" href="/cart/change/{{ item.variant.id }}?quantity=0">
               {% if settings.locale == "enabled" %}
                 {{ settings.locale_cart_remove }}
@@ -163,8 +91,8 @@
                 Remove
               {% endif %} 
               </a>
-            </li>
-          </ul>
+            </div>
+          </div>
         {% endfor %}
               
         <ul id="checkout" class="inline-list">

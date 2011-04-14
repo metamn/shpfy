@@ -1,16 +1,37 @@
 .col-1, .col-2 {
-  width: 90%;
+  width: 100%;
   float: left;
   overflow: hidden;
 }
 
+#header #shopping {
+  width: 13%; /* do not overlap the logo */  
+}
 
-.collection #article  {
+.section #article.thumb #figure {
+  width: 45%;  
+}
+
+
+.collection #article.thumb, .search #article.page  {
   width: 45%;
   margin-right: 10%;
+  min-height: 35em;
 }
-.collection #article.c-2, .collection #article.c-4, .collection #article.c-6, .collection #article.c-8 {
+.collection #article.c-2, .collection #article.c-4, .collection #article.c-6, .collection #article.c-8, .collection #article.c-10 {
   margin-right: 0;
 }
 
+.product input.button {
+  margin: .612em 0;
+}
 
+
+.article #sidebar {
+  margin-top: 2.5em;
+}
+
+
+.cart #info {
+  top: -1.5em;
+}

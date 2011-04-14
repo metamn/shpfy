@@ -10,128 +10,58 @@
       </div> 
     {% endif %} 
     
-<h3>
-{% if settings.locale == "enabled" %}
-  {{ settings.locale_search }}
-  {% assign s = settings.locale_search %}
-{% else %}
-  Search
-  {% assign s = "Search" %}
-{% endif %} 
-</h3>
-<ul class="search">        
-  <li>
-    <form action="/search" method="get">
-      <input class="text" type="text" name="q" /> 
-      <input class="button" type="submit" value="{{ s }}"  />
-    </form>
-  </li>
-</ul> 
+    <div id="search">
+      <h3>
+      {% if settings.locale == "enabled" %}
+        {{ settings.locale_search }}
+        {% assign s = settings.locale_search %}
+      {% else %}
+        Search
+        {% assign s = "Search" %}
+      {% endif %} 
+      </h3>
+      <ul class="search block">        
+        <li>
+          <form action="/search" method="get">
+            <input class="text" type="text" name="q" /> 
+            <input class="button" type="submit" value="{{ s }}"  />
+          </form>
+        </li>
+      </ul>
+    </div>    
   </div>
 </div>  
 
-<div id="aside" class="navigation col col-2">
-  <div id="details">
-{% if collections.size > 0 %}
-  <h3>
-  {% if settings.locale == "enabled" %}
-    {{ settings.locale_allcollections }}
-  {% else %}
-    All collections
-  {% endif %}
-  </h3>
-  <ul>
-	  {% for i in collections %}      	    
-		  <li {% if collection.url == i.url %} class="active"{% endif %}>
-		    <a href="{{ i.url }}" title="{{ i.title | upcase }}">{{ i.title }}</a>
-		  </li>
-		{% endfor %}
-	</ul>
-{% endif %}    
-        
-{% if shop.types.size > 0 %}
-  <h3>
-  {% if settings.locale == "enabled" %}
-    {{ settings.locale_alltypes }}
-  {% else %}
-    All product types
-  {% endif %}          
-  </h3>        
-  <ul>
-  	{% for product_type in shop.types %}
-      <li>
-        {{ product_type | link_to_type  }}
-      </li>
-    {% endfor %}
-	</ul>      
-{% endif %}
-
-{% if shop.vendors.size > 0 %}
-  <h3>
-  {% if settings.locale == "enabled" %}
-    {{ settings.locale_allvendors }}
-  {% else %}
-    All vendors
-  {% endif %}
-  </h3>
-  <ul>
-  	{% for product_vendor in shop.vendors %}
-      <li {% if collection.url == url_for_vendor %} class="active"{% endif %}>
-        {{ product_vendor | link_to_vendor  }}
-      </li>
-    {% endfor %}
-  </ul>      
-{% endif %}
-
-{% if collection.all_tags.size > 0 %}
-  <h3>
-  {% if settings.locale == "enabled" %}
-    {{ settings.locale_coll_tags }}
-  {% else %}
-    Tags
-  {% endif %}
-   <em>{{ collection.title }}</em>
-  </h3>
-  <ul class="inline-list">
-    {% for tag in collection.all_tags %}
-      <li>
-        {{ tag | highlight_active_tag | link_to_tag: tag }}
-      </li>
-    {% endfor %}
-  </ul>      
-{% endif %} 
-
-<h3>
-{% if settings.locale == "enabled" %}
-  {{ settings.locale_share }}
-{% else %}
-  Share 
-{% endif %}            
-</h3>
-<ul>
-  <li class="twitter">
-    <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="metamn">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>          
-  </li>
-  <li class="facebook">
-    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like layout="button_count" show_faces="true" width="150"></fb:like>              
-  </li>
-</li>    
-<h3>
-{% if settings.locale == "enabled" %}
-  {{ settings.locale_search }}
-  {% assign s = settings.locale_search %}
-{% else %}
-  Search
-  {% assign s = "Search" %}
-{% endif %} 
-</h3>
-<ul class="search">        
-  <li>
-    <form action="/search" method="get">
-      <input class="text" type="text" name="q" /> 
-      <input class="button" type="submit" value="{{ s }}"  />
-    </form>
-  </li>
-</ul> 
+<div id="sidebar" class="col col-2">   
+  <div id="navigation" class="collections block">
+    {% if collections.size > 0 %}
+      <span class="collections">
+        {% for i in collections %}
+          {% if collection.url == i.url %} 
+            {% assign klass = "collection active" %}
+          {% else %}
+            {% assign klass = "collection" %}
+          {% endif %}
+          <a href="{{ i.url }}" title="{{ i.title | upcase }}" class="{% if forloop.last %} last {% endif %} {{ klass }}">{{ i.title }}</a>
+        {% endfor %}
+      </span>
+    {% endif %}    
+    
+    {% if shop.types.size > 0 %}
+    <span class="types"> 
+    	{% for product_type in shop.types %}
+        {{ product_type | link_to_type  }}          
+      {% endfor %}
+    </span>    
+    {% endif %}
+    
+    {% if shop.vendors.size > 0 %}
+    <span class="vendors">
+      {% for product_vendor in shop.vendors %}
+        {{ product_vendor | link_to_vendor  }}      
+      {% endfor %}      
+    </span>
+    {% endif %}
   </div>
+  
 </div>

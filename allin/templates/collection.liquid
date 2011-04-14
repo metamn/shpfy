@@ -1,35 +1,7 @@
-
-<div id="details">
-  {% paginate collection.products by 9 %}
-  {% if collection.products.size == 0 %}
-    {% if settings.snippets == "enabled" %}
-      {% include 'collection_empty' %}
-    {% else %}
-      <h1>No Items Found In This Collection</h1>
-      <p>Please try the <strong>search</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p> 
-    {% endif %}     
-    <h3>
-    {% if settings.locale == "enabled" %}
-      {{ settings.locale_search }}
-      {% assign s = settings.locale_search %}
-    {% else %}
-      Search
-      {% assign s = "Search" %}
-    {% endif %} 
-    </h3>
-    <ul class="search">        
-      <li>
-        <form action="/search" method="get">
-          <input class="text" type="text" name="q" /> 
-          <input class="button" type="submit" value="{{ s }}"  />
-        </form>
-      </li>
-    </ul>     
-  {% endif %}
-    
-  <div id="navigation" class="block">
+<div id="details">   
+  <div id="navigation" class="collections block">
     {% unless collection.title == blank %}
-      <span id="title">
+      <span class="title">
         {{ collection.title }}
         <span class="tag-title"></span>
         // {{ collection.products_count }} 
@@ -59,66 +31,72 @@
     {% endunless %}
     
     {% if collection.description.size > 0 %}
-    <span id="description">{{ collection.description }}</span>
+    <span class="description">{{ collection.description }}</span>
     {% endif %}
     
     {% if collections.size > 0 %}
-      {% for i in collections %}
-        {% if collection.url == i.url %} 
-          {% assign klass = "collection active" %}
-        {% else %}
-          {% assign klass = "collection" %}
-        {% endif %}
-        <a href="{{ i.url }}" title="{{ i.title | upcase }}" class="{{ klass }}">{{ i.title }}</a>
-      {% endfor %}
+      <span class="collections">
+        {% for i in collections %}
+          {% if collection.url == i.url %} 
+            {% assign klass = "collection active" %}
+          {% else %}
+            {% assign klass = "collection" %}
+          {% endif %}
+          <a href="{{ i.url }}" title="{{ i.title | upcase }}" class="{% if forloop.last %} last {% endif %} {{ klass }}">{{ i.title }}</a>
+        {% endfor %}
+      </span>
     {% endif %}    
     
     {% if shop.types.size > 0 %}
-    <div id="types">     
-      <ul class="inline-list">
-      	{% for product_type in shop.types %}
-          <li>
-            {{ product_type | link_to_type  }}
-          </li>
-        {% endfor %}
-      </ul>  
-    </div>    
+    <span class="types"> 
+    	{% for product_type in shop.types %}
+    	  <!--
+    	  
+    	  Cannot get the current url in Shopify, collection.url doesn't works with types and vendors
+    	  
+    	  {% capture url %}{{ product_type | url_for_type  }}{% endcapture %}
+    	  {% if collection.url == url %} 
+          {% assign klass = "active" %}
+        {% else %}
+          {% assign klass = "" %}
+        {% endif %}
+        <a href="{{ url }}" title="{{ product_type }}" class="{{ klass }}">{{ product_type}}</a>          
+        -->
+        {{ product_type | link_to_type  }}
+      {% endfor %}
+    </span>    
     {% endif %}
     
     {% if shop.vendors.size > 0 %}
-    <div id="vendors">
-      <ul>
-      	{% for product_vendor in shop.vendors %}
-          <li {% if collection.url == url_for_vendor %} class="active"{% endif %}>
-            {{ product_vendor | link_to_vendor  }}
-          </li>
-        {% endfor %}
-      </ul>      
-    </div>
+    <span class="vendors">
+      {% for product_vendor in shop.vendors %}
+        {{ product_vendor | link_to_vendor  }}      
+      {% endfor %}      
+    </span>
     {% endif %}
     
     {% if collection.tags.size > 0 %}
-    <span id="tags">
+    <span class="tags">
       {% for tag in collection.tags %}
-            {{ tag | highlight_active_tag | link_to_tag: tag }}
-        {% endfor %}
-      
+          {{ tag | highlight_active_tag | link_to_tag: tag }}
+      {% endfor %}      
     </span>
-    {% endif %} 
-    
+    {% endif %}     
   </div> <!-- navigation -->
+  
+  {% paginate collection.products by 9 %}
 
   <div id="articles" class="block">
     {% for product in collection.products %}  
       <div id="article" class="thumb c-{{ forloop.index }}">
         <div id="details">
           <div id="summary">                
-              {{ product.description | truncatewords: 50 }}
+              {{ product.description | strip_html | truncatewords: 50 }}
           </div>
           <div id="figcaption">
             <div id="title">
               <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-              <h5>{{ product.title | escape }}</h5></a>
+              <h3>{{ product.title | escape }}</h3></a>
             </div>
             <div id="price">
               {% if settings.locale == "enabled" %}
@@ -130,8 +108,9 @@
                 {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
             </div>
           </div>
-          <div id="figure">            
-            <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
+          <div id="figure">      
+            <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">      
+              <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>
           </div>
         </div> <!-- details -->
       </div> <!-- article --> 
@@ -139,12 +118,24 @@
   </div>
   
   {% if paginate.pages > 1 %}
-  <div id="paginate" class="right alignright">
+  <div id="paginate" class="">
     {{ paginate | default_pagination }}
   </div>
   {% endif %}	    
   {% endpaginate %}
 </div> <!-- details -->
+
+
+
+
+
+
+
+
+
+
+
+
  
 
 
