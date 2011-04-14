@@ -1,12 +1,13 @@
 /*
 
-background: f9f9f9
-  - color, link: 1c1c1c (-26)
-  - article background: f1f1f1 (-1)
-  - button: f1f1f1 
-    - variants: fff (+2, shadow), e0e0e0 (-2, gradient), d8d8d8 (-3, border), 
-  - sales button: FAAFAF (monochromatic)
-    - variants: fccfcf (+2), f88f8f (-2), f77f7f (-3), FCD9C9 (+11, text), f66f6f (-4, text-shadow)
+background: EFE4BD (Kuler Japanese Garden)
+  - color, link: 2B2922 
+  - button: A39770
+    - variants: 93865e (-2, gradient), 887d58 (-3, border, shadow), (EFE4BD ,text) 
+  - sales button: A32500 
+    - variants: c52d00 (+2), 811d00 (-2), 701900 (-3, border), 5f1600 (-4, text-shadow)
+article background: EFE4CE
+  - collection backgrounds: 
 
 */
 
@@ -14,32 +15,32 @@ background: f9f9f9
 
 
 body {
-  background: url(simple.jpg) repeat scroll #f9f9f9;
-  color: #1c1c1c;
+  background: url(japanese.jpg) repeat scroll #EFE4BD;
+  color: #2B2922;
 }
 
 
 a, a:hover {
-  color: #1c1c1c;
+  color: #2B2922;
   text-decoration: none;
 }
 
 
 input, textarea, a.button {
-  -moz-box-shadow: 0 1px 0 0 #fff inset;
-  -webkit-box-shadow: 0 1px 0 0 #fff inset;
-  box-shadow: 0 1px 0 0 #fff inset;
-  background-color: #f1f1f1;
-  background: -moz-linear-gradient(center top , #f1f1f1 5%, #e0e0e0 100%) repeat scroll 0 0 #f1f1f1;
-  background: -webkit-linear-gradient(top, #f1f1f1, #e0e0e0) repeat scroll 0 0 #f1f1f1;
-  border: 1px solid #d8d8d8;
-  color: #4C4C4C !important;
+  -moz-box-shadow: 0 1px 0 0 #b0a685 inset;
+  -webkit-box-shadow: 0 1px 0 0 #b0a685 inset;
+  box-shadow: 0 1px 0 0 #b0a685 inset;
+  background-color: #A39770;
+  background: -moz-linear-gradient(center top , #A39770 5%, #93865e 100%) repeat scroll 0 0 #A39770;
+  background: -webkit-linear-gradient(top, #A39770, #93865e) repeat scroll 0 0 #A39770;
+  border: 1px solid #887d58;
+  color: #EFE4BD !important;
   text-decoration: none !important;
-  text-shadow: 1px 1px 0 #fff;
+  text-shadow: 1px 1px 0 #887D58;
 }
 input.button:hover, a.button:hover {
-  background: -moz-linear-gradient(center top , #e0e0e0 5%, #f1f1f1 100%) repeat scroll 0 0 #e0e0e0;
-  background: -webkit-linear-gradient(top, #e0e0e0, #f1f1f1) repeat scroll 0 0 #e0e0e0;
+  background: -moz-linear-gradient(center top , #93865e 5%, #A39770 100%) repeat scroll 0 0 #93865e;
+  background: -webkit-linear-gradient(top, #93865e, #A39770) repeat scroll 0 0 #93865e;
 }
 input.text, textarea {
   background: none repeat scroll 0 0 #f9f9f9;
@@ -47,19 +48,19 @@ input.text, textarea {
 
 
 #sale input, #sale textarea, #sale a.button {
-  -moz-box-shadow: 0 1px 0 0 #fccfcf inset;
-  -webkit-box-shadow: 0 1px 0 0 #fccfcf inset;
-  box-shadow: 0 1px 0 0 #fccfcf inset;
+  -moz-box-shadow: 0 1px 0 0 #c52d00 inset;
+  -webkit-box-shadow: 0 1px 0 0 #c52d00 inset;
+  box-shadow: 0 1px 0 0 #c52d00 inset;
   background-color: #FAAFAF;
-  background: -moz-linear-gradient(center top , #FAAFAF 5%, #f88f8f 100%) repeat scroll 0 0 #FAAFAF;
-  border: 1px solid #f77f7f;
-  color: #f9f9f9 !important;
+  background: -moz-linear-gradient(center top , #A32500 5%, #811d00 100%) repeat scroll 0 0 #A32500;
+  border: 1px solid #701900;
+  color: #EFE4BD !important;
   text-decoration: none !important;
-  text-shadow: 1px 1px 0 #f66f6f;
+  text-shadow: 1px 1px 0 #5f1600;
 }
 #sale input.button:hover, #sale a.button:hover {
-  background: -moz-linear-gradient(center top , #f88f8f 5%, #FAAFAF 100%) repeat scroll 0 0 #f88f8f;
-  background: -webkit-linear-gradient(top, #f88f8f, #FAAFAF) repeat scroll 0 0 #f88f8f;
+  background: -moz-linear-gradient(center top , #811d00 5%, #A32500 100%) repeat scroll 0 0 #811d00;
+  background: -webkit-linear-gradient(top, #811d00, #A32500) repeat scroll 0 0 #811d00;
 }
 
 
@@ -69,7 +70,7 @@ input.text, textarea {
   border-bottom: 2px dotted;
 }
 #header #shopping {
-  background: #1c1c1c;  
+  background: #2B2922;  
   color: #f9f9f9;
 }
 #header #shopping a, #header #shopping a:visited {
@@ -80,8 +81,9 @@ input.text, textarea {
 }
 
 
+
 #article, #aside, #vendors #articles, #info #articles {
-  background: #f1f1f1;
+  background: #EFE4CE;
 }
 #article #figure {
   background: #fff;
@@ -111,16 +113,16 @@ input.text, textarea {
   color: #f9f9f9;
 }
 #navigation.collections .collections {
-  background: #E2CFCB; /*FFE6FE*/
+  background: #AE8FBC;
 }
 #navigation.collections .types {
   background: #FCEAE3;
 }
 #navigation.collections .vendors {
-  background: #E2CBD6;
+  background: #B8F2D6;
 }
 #navigation.collections .tags {
-  background: #f1f1f1;
+  background: #93D0F1;
 }
 #navigation.collections .tags a {
   color: #1c1c1c;

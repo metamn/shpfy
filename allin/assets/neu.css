@@ -1,0 +1,64 @@
+
+body {
+  background: url(neu.jpg) repeat scroll #E8E8D9;
+  color: #6D6850;
+}
+
+a, a:hover {
+  color: #6D6850;
+  text-decoration: none;
+}
+
+
+
+input, textarea, a.button {
+  background: #3E81BA;
+  color: #E7E6C7;
+}
+
+
+
+
+
+#header #logo h2 {
+  border-bottom: 1px dotted;
+}
+#header #shopping {
+  background: #6D6850;
+}
+#header #shopping a, #header #shopping a:visited, #header #shopping a:hover {
+  color: #E8E8D9;
+}
+
+
+
+#article, #aside, #vendors #articles, #info #articles {
+  background: #E7E6C7;
+}
+#article #figure {
+  background: #fff;
+  -moz-box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;  
+}
+#article #summary {
+  background: #6D6850;
+  color: #E8E8D9;
+}
+#summary a, #summary a.visited  {
+  text-decoration: underline;  
+}
+
+
+
+.section #title h1 a {
+  background: #EDD467; 
+}
+
+
+
+#navigation.collections .collections {
+  background: #FB8886;
+}
+
+
