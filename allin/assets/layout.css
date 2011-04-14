@@ -142,7 +142,6 @@ h3 { font-size:2em; padding:1.25em 0; }
 }
 #header #logo h2 {
   padding-bottom: 0;
-  border-bottom: 2px dotted;
 }
 #header #shopping {
   position: relative;
@@ -150,9 +149,7 @@ h3 { font-size:2em; padding:1.25em 0; }
   padding: 1.25em;
   text-align: center;
 }
-#header #shopping #quantity {
-  border-bottom: 1px dotted;
-}
+
 
 #header #nav li a {
   font-size: small;
@@ -207,20 +204,16 @@ h3 { font-size:2em; padding:1.25em 0; }
 .section #article.thumb #figcaption {
   float: right;
   width: 40%;
-  margin: 2%;
 }
 .section #article #figcaption #title h3 {
   padding-top: 0; /* Shared with #article.page */
 }
 
-.section #article.page #figcaption {
-  margin: 2%; /* inherited from #article.thumb */
-}
 .section #article.page #details {
   padding: 1.25em;
-}}
+}
 .section #article.page #summary {
-  padding: 0 1.25em;
+  padding: 0;
 }
 #vendors.section #article.page span a {
   padding: .612em;
@@ -324,6 +317,10 @@ li.facebook {
 .blog #article {
   width: 100%;
   margin-bottom: 5em;
+}
+.blog #article h3 {
+  padding-left: .612em;
+  padding-right: .612em;
 }
 .page #article #details h1, .article #article #details h1 {
   padding-left: .4em;

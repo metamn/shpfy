@@ -14,7 +14,7 @@
 	<link href="{{ 'wide.css' | asset_url }}" charset="utf-8" media="screen and (min-width: 1025px) and (max-width: 1399px)" rel="stylesheet" type="text/css" />
   <link href="{{ 'large.css' | asset_url }}" charset="utf-8" media="screen and (min-width: 1400px)" rel="stylesheet" type="text/css" />
     
-	{{ 'theme.css' | asset_url | stylesheet_tag }}
+	{{ 'simple.css' | asset_url | stylesheet_tag }}
 	{% if settings.colors == "enabled" %}
 	  {{ 'theme-custom-colors.css' | asset_url | stylesheet_tag }}	
 	{% endif %}	
@@ -28,7 +28,7 @@
   <![endif]-->
   
  			
-	{{ 'jquery-1.4.3.min.js' | asset_url | script_tag }}	
+	{{ 'jquery-1.5.1.min.js' | asset_url | script_tag }}	
 	{{ 'jquery.scrollTo-min.js' | asset_url | script_tag }}
   {{ 'jquery.localscroll-min.js' | asset_url | script_tag }}
   {{ 'jquery.init.js' | asset_url | script_tag }}

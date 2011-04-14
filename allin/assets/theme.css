@@ -57,6 +57,7 @@ input, textarea, a.button {
   box-shadow: 0 1px 0 0 #bddbef inset;
   background-color: #A2CCE9;
   background: -moz-linear-gradient(center top , #A2CCE9 5%, #87bde3 100%) repeat scroll 0 0 #A2CCE9;
+  background: -webkit-linear-gradient(top, #A2CCE9, #87bde3) repeat scroll 0 0 #A2CCE9;
   border: 1px solid #79b5df;
   color: #4C4C4C !important;
   text-decoration: none !important;
@@ -91,12 +92,18 @@ input.text, textarea {
 
 /* Header */
 
+#header #logo h2 {
+  border-bottom: 2px dotted;
+}
 #header #shopping {
   background: #4c4b44;  
   color: #fff;
 }
 #header #shopping a, #header #shopping a:visited {
   color: #fff;
+}
+#header #shopping #quantity {
+  border-bottom: 1px dotted;
 }
 
 
@@ -188,12 +195,20 @@ input.text, textarea {
 }
 
 
+/* Porduct */
+.product #article #thumbs {
+  background: #fff;
+}
+.product #article #thumbs img {
+  border: .36em solid #fff;
+}
+
+
+
+
 /* Blog Article */
 
-.blog #article h3 {
-  padding-left: .612em;
-  padding-right: .612em;
-}
+
 .blog #article #meta {
   background: #fff;
 }
