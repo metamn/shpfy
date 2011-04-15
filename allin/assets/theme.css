@@ -92,7 +92,7 @@ input.text, textarea {
 
 /* Header */
 
-#header #logo h2 {
+#header #logo {
   border-bottom: 2px dotted;
 }
 #header #shopping {
@@ -102,9 +102,7 @@ input.text, textarea {
 #header #shopping a, #header #shopping a:visited {
   color: #fff;
 }
-#header #shopping #quantity {
-  border-bottom: 1px dotted;
-}
+
 
 
 

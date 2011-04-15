@@ -4,9 +4,6 @@
   overflow: hidden;
 }
 
-#header #shopping {
-  width: 13%; /* do not overlap the logo */  
-}
 
 .section #article.thumb #figure {
   width: 45%;  

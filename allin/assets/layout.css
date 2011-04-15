@@ -144,10 +144,16 @@ h3 { font-size:2em; padding:1.25em 0; }
   padding-bottom: 0;
 }
 #header #shopping {
+  -moz-border-radius: 5em;
+  border-radius: 5em;
+  height: 8em;
+  width: 8em;
   position: relative;
-  top: -5.1em;
-  padding: 1.25em;
+  top: -4.2em;  
   text-align: center;
+}
+#header #shopping #quantity {
+  margin-top: 2.8em;
 }
 
 
