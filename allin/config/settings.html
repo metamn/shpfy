@@ -314,8 +314,7 @@
 	<p>
 	Either you are keeping your site without logo, as is by default, or you upload a small logo and replace your shop name.
   <br/>
-  We recommend to use a small, standard-sized logo of 120×60 pixels. However you can set your logo width, height is adjusted
-  automatically.
+  We recommend to use a small, standard-sized logo of 320×120 pixels. However you can freely set your logo width and height.
   </p><hr/><br/>
 	<table>
 		<tr>
@@ -335,6 +334,24 @@
 			<th><label for="logo_width">Logo Image Size (width, in pixels)</label></th>
 			<td><input type="text" name="logo_width" id="logo_width" value="120" /></td>			
 		</tr>
+		<tr>
+			<th><label for="logo_height">Logo Image Size (height, in pixels)</label></th>
+			<td><input type="text" name="logo_height" id="logo_height" value="60" /></td>			
+		</tr>
+		<tr>
+			<th><label for="line">Display dotted line after the logo?</label></th>
+			<td>
+				<select name="line" id="line">
+					<option value="disabled">Disabled</option>
+					<option value="enabled">Enabled</option>
+				</select>				
+			</td>
+		</tr>
+		<tr>
+			<th><label for="line_top">Dotted line margin-top (in em)</label></th>
+			<td><input type="text" name="line_top" id="line_top" value="-1.5" /></td>			
+		</tr>
+		
 	</table>
 </fieldset>
 <fieldset>

@@ -30,23 +30,7 @@ h3 { font-size:2em; padding:1.25em 0; }
 /* Header & Footer */
 
 #header {
-  height: 12.5em;
   margin-bottom: 2.5em;
-}
-#header #logo h2 {
-  padding-bottom: 0;
-}
-#header #shopping {
-  -moz-border-radius: 5em;
-  border-radius: 5em;
-  height: 8em;
-  width: 8em;
-  position: relative;
-  top: -4.2em;  
-  text-align: center;
-}
-#header #shopping #quantity {
-  margin-top: 2.8em;
 }
 #header #nav li a {
   font-size: small;
@@ -57,6 +41,25 @@ h3 { font-size:2em; padding:1.25em 0; }
 }
 #header #nav li.search {
   margin-right: 0;
+}
+#header #logo h2 {
+  padding-bottom: 0;
+}
+#header #shopping {
+  -moz-border-radius: 5em;
+  border-radius: 5em;
+  height: 8em;
+  width: 8em;
+  margin-top: 1.25em; 
+  text-align: center;
+}
+#header #shopping #quantity {
+  margin-top: 2.8em;
+}
+#header #line {
+  position: relative;
+  z-index: -1; 
+  top: -1.25em;
 }
 
 #footer {

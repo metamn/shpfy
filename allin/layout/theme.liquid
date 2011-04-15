@@ -15,6 +15,9 @@
   <link href="{{ 'large.css' | asset_url }}" charset="utf-8" media="screen and (min-width: 1400px)" rel="stylesheet" type="text/css" />
     
 	{{ 'theme.css' | asset_url | stylesheet_tag }}
+	{% if settings.logo == "enabled" %}
+	  {{ 'logo.css' | asset_url | stylesheet_tag }}	
+	{% endif %}
 	{% if settings.colors == "enabled" %}
 	  {{ 'theme-custom-colors.css' | asset_url | stylesheet_tag }}	
 	{% endif %}	
@@ -52,28 +55,7 @@
 	<div id="header" class="block">
 	  <div class="container">
 	    <div id="nav" class="desktop right alignright block">	
-	      {% capture active_url %}
-		      {% if template == "index" %}
-		        "/"
-		      {% elsif template == "collection" %}
-		        "/collections/{{ collection.handle }}"
-		      {% elsif template == "product" %}
-		        {% if collection %}
-		          /collections/{{ collection.handle }}
-		        {% endif %}
-		        /products/{{ product.handle }}
-		      {% elsif template == "page" %}
-		        "/pages/{{ page.handle }}"
-		      {% elsif template == "blog" %}
-		        /blogs/{{ blog.handle }}
-		      {% elsif template == "cart" %}
-		        "/cart"
-		      {% elsif template == "search" %}
-		        /search
-		      {% endif %}
-		    {% endcapture %}
-		    
-		    <ul id="main-menu" class="inline-list">
+	      <ul id="main-menu" class="inline-list">
 		      {% if linklists.main-menu.links.size > 0 %}				
 			      {% for link in linklists.main-menu.links %}
 			        <li>
@@ -95,7 +77,7 @@
 		    </ul>	
 			</div>	 <!-- nav desktop -->
 				
-			<div id="logo" class="left block">
+			<div id="logo" class="left">
 	      {% if settings.logo == "enabled" %}
 		      <a href="/" title="{{ shop.name }}"><img src="{{ "logo.png" | asset_url }}" alt="{{ shop.name | escape }}" /></a>
 		    {% else %}
@@ -126,7 +108,7 @@
 	      </ul>	
 	    </div>	    
 	    					
-      <div id="shopping" class="right alignright block">
+      <div id="shopping" class="right alignright">
         <div id="quantity">
           <a href="/cart">  
             {% if settings.locale == "enabled" %}
@@ -140,6 +122,8 @@
           <a href="/cart" title="Shopping cart">{{ cart.total_price | money }}</a>
         </div>        
       </div>	
+      
+      <div id="line" class="block">&nbsp;</div>
       	
 		</div> <!-- container -->
 	</div> <!-- header -->

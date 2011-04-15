@@ -1,0 +1,14 @@
+#header #logo img {  
+  width: {{ settings.logo_width }}px;
+  height: {{ settings.logo_height }}px;
+}
+
+{% if settings.line == "enabled" %}
+  #header #line {
+    top: {{ settings.line_top }}em;
+  }
+{% else %}
+  #header #line {
+    display: none;
+  }
+{% endif %}

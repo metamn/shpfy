@@ -5,6 +5,10 @@
 }
 
 
+#header #line {
+  width: 83%;
+}
+
 .section #article.thumb #figure {
   width: 45%;  
 }

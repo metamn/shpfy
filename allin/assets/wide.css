@@ -11,6 +11,11 @@
 }
 
 
+#header #line {
+  width: 86%;
+}
+
+
 .section #article.thumb #figure {
   width: 43%;  
 }
