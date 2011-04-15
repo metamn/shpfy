@@ -23,7 +23,7 @@
 </div>
 
 {% if settings.frontpage_all != "disabled" %}	
-<div id="all" class="section col-1">  
+<div id="all" class="section">  
   <div id="title" class="block">
     <h4><a href="{{ collections.all.url }}" title="View all products in {{ collections.all.title }}">{{ collections.all.title }}</a>
     </h4>
@@ -86,8 +86,8 @@
 {% endif %}
 
 
-{% if settings.frontpage_frontpage != "disabled" %}	
-<div id="frontpage" class="section col-2">  
+{% if settings.frontpage_featured != "disabled" %}	
+<div id="frontpage" class="section">  
   <div id="title" class="block">
     <h4><a href="{{ collections.frontpage.url }}" title="View all products in {{ collections.frontpage.title }}">{{ collections.frontpage.title }}</a>
     </h4>
@@ -95,7 +95,7 @@
   <div id="details" class="block">        
     {% if collections.frontpage.products.size > 0 %}
     <div id="articles">  
-      {% for product in collections.frontpage.products limit : settings.frontpage_frontpage_count %}
+      {% for product in collections.frontpage.products limit : settings.frontpage_featured_count %}
         <div id="featured{{ forloop.index }}" class="scroller">
           <div id="article" class="thumb">
             <div id="details">                    
@@ -138,7 +138,7 @@
   </div> 
   <div id="navigation" class="desktop block">
     <ul class="inline-list">
-    {% for product in collections.frontpage.products limit : settings.frontpage_frontpage_count %}
+    {% for product in collections.frontpage.products limit : settings.frontpage_featured_count %}
       <li {% if forloop.first %} class="active" {% endif %}><a href="#featured{{ forloop.index }}">&bull;</a></li>
     {% endfor %}
     </ul>
@@ -150,8 +150,8 @@
 {% endif %}
 
 
-{% if settings.frontpage_sale != "disabled" %}	
-<div id="sale" class="section col-1"> 
+{% if settings.frontpage_sales != "disabled" %}	
+<div id="sale" class="section"> 
   <div id="title" class="block">
     <h4><a href="{{ collections.sale.url }}" title="View all products in {{ collections.sale.title }}">{{ collections.sale.title }}</a>
     </h4>
@@ -159,7 +159,7 @@
   <div id="details" class="block">        
     {% if collections.sale.products.size > 0 %}
     <div id="articles">  
-      {% for product in collections.sale.products limit : settings.frontpage_sale_count %}
+      {% for product in collections.sale.products limit : settings.frontpage_sales_count %}
         <div id="sale{{ forloop.index }}" class="scroller">
           <div id="article" class="thumb">
             <div id="details">                    
@@ -202,7 +202,7 @@
   </div> 
   <div id="navigation" class="desktop block">  
     <ul class="inline-list">
-    {% for product in collections.sale.products limit : settings.frontpage_sale_count %}
+    {% for product in collections.sale.products limit : settings.frontpage_sales_count %}
       <li {% if forloop.first %} class="active" {% endif %}><a href="#sale{{ forloop.index }}">&bull;</a></li>
     {% endfor %}
     </ul>
@@ -215,7 +215,7 @@
 
 
 {% if settings.frontpage_info != "disabled" %}	
-<div id="info" class="section col-2"> 
+<div id="info" class="section"> 
   {% if linklists.info != blank %}
     <div id="title" class="block">
       <h4>{{ linklists.info.title }}</h4>
@@ -271,7 +271,7 @@
 
 
 {% if settings.frontpage_collections != "disabled" %}	
-<div id="collections" class="section col-1"> 
+<div id="collections" class="section"> 
   <div id="title" class="block">
     <h4>Collections</h4>
   </div> 
@@ -327,7 +327,7 @@
 
 
 {% if settings.frontpage_vendors != "disabled" %}	
-<div id="vendors" class="section col-2"> 
+<div id="vendors" class="section"> 
   <div id="title" class="block">
     <h4>Vendors & Types</h4>
   </div> 

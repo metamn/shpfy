@@ -16,12 +16,7 @@
 			  <td><input type="text" name="frontpage_all_count" id="frontpage_all_count" value="10" /></td>
 			</td>
 		</tr>
-		<tr>
-		  <td>
-			  <th><label for="frontpage_all_title">The title for latest products</label></th>
-			  <td><input type="text" name="frontpage_all_title" id="frontpage_all_title" value="Latest Products" /></td>
-			</td>
-		</tr>
+		
 	
 	  <tr>
 			<th><label for="frontpage_featured">View featured products on Frontpage</label></th>
@@ -59,6 +54,26 @@
 			<th><label for="frontpage_info">View Shopping Info on Frontpage</label></th>
 			<td>
 				<select name="frontpage_info" id="frontpage_info">
+					<option value="disabled">Disabled</option>
+					<option value="enabled">Enabled</option>
+				</select>
+			</td>
+		</tr>
+		
+		<tr>
+			<th><label for="frontpage_collections">View Collections on Frontpage</label></th>
+			<td>
+				<select name="frontpage_collections" id="frontpage_collections">
+					<option value="disabled">Disabled</option>
+					<option value="enabled">Enabled</option>
+				</select>
+			</td>
+		</tr>
+		
+		<tr>
+			<th><label for="frontpage_vendors">View Vendors on Frontpage</label></th>
+			<td>
+				<select name="frontpage_vendors" id="frontpage_vendors">
 					<option value="disabled">Disabled</option>
 					<option value="enabled">Enabled</option>
 				</select>

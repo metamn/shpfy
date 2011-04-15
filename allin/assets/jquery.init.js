@@ -4,7 +4,15 @@ jQuery.noConflict();
 jQuery(document).ready(function(){
   
   
-  
+  // Add .col-x class to frontpage items
+  jQuery(".index .section").each(function(index) {
+    if ( index % 2 != 0) {
+      jQuery(this).addClass("col-2");
+    } else {
+      jQuery(this).addClass("col-1");
+    }
+  });
+
   
   // Show date in blog sidebar on hover
   jQuery("#aside ul.hoverable li").hover(
