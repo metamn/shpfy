@@ -132,6 +132,9 @@ h3 { font-size:2em; padding:1.25em 0; }
 .section #navigation, .section #title h4 {
   margin-left: 1.25em;
 }
+.section #title h4 a {
+  padding: .612em;
+}
 .section #navigation {
   margin-bottom: 2.5em;
 }

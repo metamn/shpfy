@@ -5,6 +5,12 @@
   - notice: D4C97E
   - border/pagination: B2B09F (kuler / shades)
   - background: D9D6C1 (kuler / shades)
+  - color: #4c4b44
+    - shadow: ebeae8 (+19)
+  - link hover: #111
+    - shadow: #eee 
+  - summary link: ebeae8
+    - shadow: none
 - button: A2CCE9
   - variants: bddbef (+2, shadow), 87bde3 (-2, gradient), 79b5df (-3, border), 
 - sales: F25E18
@@ -22,19 +28,24 @@
 
 body {
   background: url(background.jpg) repeat scroll #CCC9B6;
-  color: #111;
+  color: #4c4b44;
+}
+.container {
+  text-shadow: 1px 1px #ebeae8; /*if added to body a scrollbar is inserted */
 }
 
-
-/* Links */
-
 a, a:hover {
-  color: #4c4b44;
   text-decoration: none;
+}
+a {
+  color: #4c4b44;
+  text-shadow: 1px 1px #ebeae8;
 }
 a:hover {
   color: #111;
+  text-shadow: 1px 1px #eee;
 }
+
 
 
 /* Messages */
@@ -81,6 +92,7 @@ input.text, textarea {
   box-shadow: 0 1px 0 0 #f47438 inset;
   background-color: #F25E18;
   background: -moz-linear-gradient(center top , #F25E18 5%, #dc4f0c 100%) repeat scroll 0 0 #F25E18;
+  background: -webkit-linear-gradient(top, #F25E18, #dc4f0c) repeat scroll 0 0 #F25E18;
   border: 1px solid #cc490b;
   color: #FCD9C9 !important;
   text-decoration: none !important;
@@ -100,12 +112,35 @@ input.text, textarea {
 }
 #header #shopping {
   background: #4c4b44;  
-  color: #fff;
+  color: #ebeae8;
+  text-shadow: none;
 }
 #header #shopping a, #header #shopping a:visited {
-  color: #fff;
+  color: #ebeae8;
+  text-shadow: none;
 }
 
+
+/* Frontpage */
+
+.section #title h4 a {
+  background: #CCC9B6;
+}
+.section #article.page #summary {
+  background: #ccc9b6;
+  color: #4c4b44;
+}
+#vendors.section #article.page span a, #vendors.section #article.page span a:visited {
+  background: #ebeae8;
+  color: #4c4b44;
+  text-decoration: none;
+}
+.section #navigation li a {
+  color: #999;
+}
+.section #navigation li.active a {
+  color: #666;
+}
 
 
 
@@ -123,36 +158,19 @@ input.text, textarea {
 }
 #article #summary {
   background: #4c4b44;
-  color: #fff;
+  color: #ebeae8;
+  text-shadow: none;
 }
 #summary a, #summary a.visited  {
   text-decoration: underline;
-  color: #fff;
+  color: #ebeae8;
+  text-shadow: none;
 }
 
 
 
 
-/* Frontpage */
 
-.section #navigation li a {
-  color: #999;
-}
-.section #navigation li.active a {
-  color: #666;
-}
-#vendors.section h3 {
-  color: #4c4b44;
-}
-.section #article.page #summary {
-  background: #ccc9b6;
-  color: #4c4b44;
-}
-#vendors.section #article.page span a, #vendors.section #article.page span a:visited {
-  background: #fff;
-  color: #4c4b44;
-  text-decoration: none;
-}
 
 
 
@@ -198,10 +216,10 @@ input.text, textarea {
 
 /* Porduct */
 .product #article #thumbs {
-  background: #fff;
+  background: #ebeae8;
 }
 .product #article #thumbs img {
-  border: .36em solid #fff;
+  border: .36em solid #ebeae8;
 }
 
 
@@ -211,13 +229,13 @@ input.text, textarea {
 
 
 .blog #article #meta {
-  background: #fff;
+  background: #ebeae8;
 }
 #article #meta a, #article #meta a:visited {
   border-bottom: 1px dotted;
 }
 ul.comments li {
-  background: #fff;
+  background: #ebeae8;
 }
 
 
