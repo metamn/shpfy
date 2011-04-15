@@ -32,6 +32,9 @@ a, a:hover {
   color: #4c4b44;
   text-decoration: none;
 }
+a:hover {
+  color: #111;
+}
 
 
 /* Messages */

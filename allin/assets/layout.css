@@ -25,6 +25,132 @@ h3 { font-size:2em; padding:1.25em 0; }
 }  
 
 
+
+
+/* Header & Footer */
+
+#header {
+  height: 12.5em;
+  margin-bottom: 2.5em;
+}
+#header #logo h2 {
+  padding-bottom: 0;
+}
+#header #shopping {
+  -moz-border-radius: 5em;
+  border-radius: 5em;
+  height: 8em;
+  width: 8em;
+  position: relative;
+  top: -4.2em;  
+  text-align: center;
+}
+#header #shopping #quantity {
+  margin-top: 2.8em;
+}
+#header #nav li a {
+  font-size: small;
+  padding: .36em 0;
+}
+#header #nav li, #footer #nav li {
+  margin-right: .612em;
+}
+#header #nav li.search {
+  margin-right: 0;
+}
+
+#footer {
+  margin: 2.5em 0;
+}
+
+
+
+/* Content 
+
+- since header has a margin bottom content must not be aligned
+- on pages starting with <h1> the default padding-top of <h1> must be reset
+*/
+
+.blog .articles h1, .cart .products h1 {
+  padding-top: 0;
+}
+
+
+
+
+/* Frontpage */
+
+.section {
+  height: 26em;
+  margin-bottom: 2.5em;
+}
+.section #details, .section #articles {
+  height: 20em;
+  overflow: hidden;
+}
+.section .scroller {
+  position: relative;
+	float: left;
+	padding: 0;
+	width: 100%;
+	height: 20em;
+}
+.section #article.thumb {
+  width: 100%;
+  height: auto;
+}
+.section #article.thumb #details {
+  text-align: left;
+}
+.section #article.thumb #figure {
+  float: left;
+  margin-right: 5%;
+  text-align: center;
+}
+.section #article.thumb #figcaption {
+  float: right;
+  width: 40%;
+}
+.section #article #figcaption #title h3 {
+  padding-top: 0; /* Shared with #article.page */
+}
+
+.section #article.page #details {
+  padding: 1.25em;
+}
+.section #article.page #summary {
+  padding: 0;
+}
+#vendors.section #article.page span a {
+  padding: .612em;
+}
+
+
+.section #navigation, .section #title h4 {
+  margin-left: 1.25em;
+}
+.section #navigation {
+  margin-bottom: 2.5em;
+}
+.section #navigation li a {
+  font-size: 2em;
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* General Settings
 */
 
@@ -65,7 +191,7 @@ h3 { font-size:2em; padding:1.25em 0; }
 /* Collections navigation */
 
 #navigation.collections {
-  margin: 2.5em 0 5em;
+  margin: 0 0 5em;
 }
 #navigation.collections > span,
 .section #article.page span {
@@ -134,104 +260,6 @@ h3 { font-size:2em; padding:1.25em 0; }
 
 
 
-
-/* Header & Footer */
-
-#header {
-  height: 10em;
-}
-#header #logo h2 {
-  padding-bottom: 0;
-}
-#header #shopping {
-  -moz-border-radius: 5em;
-  border-radius: 5em;
-  height: 8em;
-  width: 8em;
-  position: relative;
-  top: -4.2em;  
-  text-align: center;
-}
-#header #shopping #quantity {
-  margin-top: 2.8em;
-}
-
-
-#header #nav li a {
-  font-size: small;
-  padding: .36em 0;
-}
-#header #nav li, #footer #nav li {
-  margin-right: .612em;
-}
-#header #nav li.search {
-  margin-right: 0;
-}
-
-#footer {
-  margin: 2.5em 0;
-}
-
-
-
-/* Frontpage */
-
-.section {
-  height: 26em;
-  margin-bottom: 2.5em;
-}
-.section #details, .section #articles {
-  height: 20em;
-  overflow: hidden;
-}
-.section .scroller {
-  position: relative;
-	float: left;
-	padding: 0;
-	width: 100%;
-	height: 20em;
-}
-.section #article.thumb {
-  width: 100%;
-  height: auto;
-}
-.section #article.thumb #details {
-  text-align: left;
-}
-.section #article.thumb #figure {
-  float: left;
-  margin-right: 5%;
-  text-align: center;
-}
-.section #article.thumb #figcaption {
-  float: right;
-  width: 40%;
-}
-.section #article #figcaption #title h3 {
-  padding-top: 0; /* Shared with #article.page */
-}
-
-.section #article.page #details {
-  padding: 1.25em;
-}
-.section #article.page #summary {
-  padding: 0;
-}
-#vendors.section #article.page span a {
-  padding: .612em;
-}
-
-
-.section #navigation, .section #title h4 {
-  margin-left: 1.25em;
-}
-.section #navigation {
-  margin-bottom: 2.5em;
-}
-.section #navigation li a {
-  font-size: 2em;
-  text-decoration: none;
-}
 
 
 
@@ -317,16 +345,11 @@ li.facebook {
 /* Blogs and Pages */
 
 .blog #article {
-  width: 100%;
   margin-bottom: 5em;
 }
 .blog #article h3 {
   padding-left: .612em;
   padding-right: .612em;
-}
-.page #article #details h1, .article #article #details h1 {
-  padding-left: .4em;
-  padding-right: .4em;
 }
 .article #article #comments, #article #search, #article #meta {
   padding: 0 1.25em;
@@ -369,66 +392,64 @@ ul.comments li {
 
 
 
-.cart #article {
+.cart .products #article {
   margin-bottom: 2.5em;
 }
-.cart #article div {
+.cart .products #article div {
   float: left;
   margin: 1%;
 }
-.cart #image {
+.cart .products #image {
   width: 10%;
   height: 100px;
   min-width: 100px;
   text-align: center;
 }
-.cart img {
+.cart .products img {
   max-width: 100px;
   max-height: 100px;
 }
-.cart #info, .cart #lineprice, .cart #remove {
+.cart .products #info, .cart .products #lineprice, .cart .products #remove {
   padding-top: 1.862em;
 }
-.cart #info {
+.cart .products #info {
   width: 27%;
   margin: 0 4%;
 }
-.cart #update {
+.cart .products #update {
   width: 24%;
   padding-top: 1.25em;
 }
-.cart #lineprice {
+.cart .products #lineprice {
   width: 10%;
 }
-.cart #remove {
+.cart .products #remove {
   width: 16%;
   margin-right: 0;
 }
-.cart input.quantity {
+.cart .products input.quantity {
   width: 3em;
 }
 
-.cart ul {
+.cart .products ul {
   margin: 0;
   margin-bottom: 1.25em;
   padding-bottom: 1.25em;
 }
-.cart li {
+.cart .products li {
   margin-right: 1%;
   margin-left: 1%;
   display: inline-block !important; 
   margin-top: 1.25em; 
 }
-.cart #checkout input {
+.cart .products #checkout input {
   float: right;
 }
-.cart #checkout #gotocheckout {
+.cart .products #checkout #gotocheckout {
   position: relative;
   top: .612em;
 } 
-.cart #navigation.collections {
-  margin-top: 0;
-}
+
 
 
 

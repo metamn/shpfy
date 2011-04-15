@@ -1,109 +1,91 @@
-<div id="details">
-
-  {% if search.terms == blank %}
+{% if search.terms == blank %}
   
-    {% if settings.locale == "enabled" %}
-      {% assign s = settings.locale_search %}
-    {% else %}
-      {% assign s = "Search" %}
-    {% endif %} 
-    <div id="search" class="notfound">        
-      <form action="/search" method="get">
-        <input class="text" type="text" name="q" /> 
-        <input class="button" type="submit" value="{{ s }}"  />
-      </form>
-    </div>  
-      
+  {% if settings.locale == "enabled" %}
+    {% assign s = settings.locale_search %}
   {% else %}
+    {% assign s = "Search" %}
+  {% endif %} 
+  <div id="search" class="notfound">        
+    <form action="/search" method="get">
+      <input class="text" type="text" name="q" /> 
+      <input class="button" type="submit" value="{{ s }}"  />
+    </form>
+  </div>  
+      
+{% else %}
+  
+  {% if search.results.size == 0 %}
 
-    <div id="navigation" class="collections block">    
-      <span class="title">
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_search_title }}
+    <div id="article" class="col col-1">
+      <div id="details">
+        {% if settings.snippets == "enabled" %}
+          {% include 'search_not_found' %}
         {% else %}
-          Search results for:
-        {% endif %}
-         {{ search.terms }}
-      </span>      
-          
-      {% if collections.size > 0 %}
-        <span class="collections">
-          {% for i in collections %}
-            {% if collection.url == i.url %} 
-              {% assign klass = "collection active" %}
-            {% else %}
-              {% assign klass = "collection" %}
-            {% endif %}
-            <a href="{{ i.url }}" title="{{ i.title | upcase }}" class="{% if forloop.last %} last {% endif %} {{ klass }}">{{ i.title }}</a>
-          {% endfor %}
-        </span>
-      {% endif %}    
-      
-      {% if shop.types.size > 0 %}
-      <span class="types"> 
-      	{% for product_type in shop.types %}
-      	  <!--
-      	  
-      	  Cannot get the current url in Shopify, collection.url doesn't works with types and vendors
-      	  
-      	  {% capture url %}{{ product_type | url_for_type  }}{% endcapture %}
-      	  {% if collection.url == url %} 
-            {% assign klass = "active" %}
-          {% else %}
-            {% assign klass = "" %}
-          {% endif %}
-          <a href="{{ url }}" title="{{ product_type }}" class="{{ klass }}">{{ product_type}}</a>          
-          -->
-          {{ product_type | link_to_type  }}
-        {% endfor %}
-      </span>    
-      {% endif %}
-      
-      {% if shop.vendors.size > 0 %}
-      <span class="vendors">
-        {% for product_vendor in shop.vendors %}
-          {{ product_vendor | link_to_vendor  }}      
-        {% endfor %}      
-      </span>
-      {% endif %}
-      
-      {% if collection.tags.size > 0 %}
-      <span class="tags">
-        {% for tag in collection.tags %}
-            {{ tag | highlight_active_tag | link_to_tag: tag }}
-        {% endfor %}      
-      </span>
-      {% endif %}     
-    </div> <!-- navigation --> 
-  
-  
-    {% if search.results.size == 0 %}
-      
-      {% if settings.snippets == "enabled" %}
-        {% include 'search_not_found' %}
-      {% else %}
-        <h1>We did not found any products for you.</h1>        
-      {% endif %}
+          <h1>We did not found any products for you.</h1>
+          <div id="summary">
+            Please try searching <strong>again</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links. 
+          </div>
+        {% endif %} 
         
-      
-      {% if settings.locale == "enabled" %}
-        {{ settings.locale_search }}
-        {% assign s = settings.locale_search %}
-      {% else %}
-        {% assign s = "Search again" %}
-      {% endif %} 
-      <ul class="search">        
-        <li>
-          <form action="/search" method="get">
-            <input class="text" type="text" name="q" /> 
-            <input class="button" type="submit" value="{{ s }}"  />
-          </form>
-        </li>
-      </ul>   
-    
-    {% else %}
+        <div id="search">
+          <h3>
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_search }}
+            {% assign s = settings.locale_search %}
+          {% else %}
+            Search
+            {% assign s = "Search" %}
+          {% endif %} 
+          </h3>
+          <ul class="search block">        
+            <li>
+              <form action="/search" method="get">
+                <input class="text" type="text" name="q" /> 
+                <input class="button" type="submit" value="{{ s }}"  />
+              </form>
+            </li>
+          </ul>
+        </div>    
+      </div>
+    </div>  
+
+    <div id="sidebar" class="col col-2">   
+      <div id="navigation" class="collections block">
+        {% if collections.size > 0 %}
+          <span class="collections">
+            {% for i in collections %}
+              {% if collection.url == i.url %} 
+                {% assign klass = "collection active" %}
+              {% else %}
+                {% assign klass = "collection" %}
+              {% endif %}
+              <a href="{{ i.url }}" title="{{ i.title | upcase }}" class="{% if forloop.last %} last {% endif %} {{ klass }}">{{ i.title }}</a>
+            {% endfor %}
+          </span>
+        {% endif %}    
+        
+        {% if shop.types.size > 0 %}
+        <span class="types"> 
+        	{% for product_type in shop.types %}
+            {{ product_type | link_to_type  }}          
+          {% endfor %}
+        </span>    
+        {% endif %}
+        
+        {% if shop.vendors.size > 0 %}
+        <span class="vendors">
+          {% for product_vendor in shop.vendors %}
+            {{ product_vendor | link_to_vendor  }}      
+          {% endfor %}      
+        </span>
+        {% endif %}
+      </div>  
+    </div>
   
-      {% paginate search.results by 9 %}
+  {% else %} 
+  
+  
+    {% paginate search.results by 9 %}
       <div id="articles" class="block">
         {% for item in search.results %}
           {% if item.featured_image %}  
@@ -151,17 +133,19 @@
           {% endif %}
         {% endfor %}
       </div>
-      
+    
       {% if paginate.pages > 1 %}
       <div id="paginate" class="">
         {{ paginate | default_pagination }}
       </div>
       {% endif %}	    
-      {% endpaginate %}
-    {% endif %}
+    {% endpaginate %}
+  
+  
   {% endif %}
-</div> <!-- details -->
-
+  
+{% endif %}
+  
 
 
 

@@ -1,100 +1,161 @@
+{% if blog.articles.size == 0 %}
+
+<div id="article" class="col col-1">
+  <div id="details">
+    {% if settings.snippets == "enabled" %}
+      {% include 'blog_empty' %}
+    {% else %}
+      <h1>We did not found any posts for you in this blog ({{ blog.title }})</h1>
+      <div id="summary">
+        <p>Please try searching <strong>again</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p> 
+      </div>
+    {% endif %} 
+    
+    <div id="search">
+      <h3>
+      {% if settings.locale == "enabled" %}
+        {{ settings.locale_search }}
+        {% assign s = settings.locale_search %}
+      {% else %}
+        Search
+        {% assign s = "Search" %}
+      {% endif %} 
+      </h3>
+      <ul class="search block">        
+        <li>
+          <form action="/search" method="get">
+            <input class="text" type="text" name="q" /> 
+            <input class="button" type="submit" value="{{ s }}"  />
+          </form>
+        </li>
+      </ul>
+    </div>    
+  </div>
+</div>  
+
+<div id="sidebar" class="col col-2">   
+  <div id="navigation" class="collections block">
+    {% if collections.size > 0 %}
+      <span class="collections">
+        {% for i in collections %}
+          {% if collection.url == i.url %} 
+            {% assign klass = "collection active" %}
+          {% else %}
+            {% assign klass = "collection" %}
+          {% endif %}
+          <a href="{{ i.url }}" title="{{ i.title | upcase }}" class="{% if forloop.last %} last {% endif %} {{ klass }}">{{ i.title }}</a>
+        {% endfor %}
+      </span>
+    {% endif %}    
+    
+    {% if shop.types.size > 0 %}
+    <span class="types"> 
+    	{% for product_type in shop.types %}
+        {{ product_type | link_to_type  }}          
+      {% endfor %}
+    </span>    
+    {% endif %}
+    
+    {% if shop.vendors.size > 0 %}
+    <span class="vendors">
+      {% for product_vendor in shop.vendors %}
+        {{ product_vendor | link_to_vendor  }}      
+      {% endfor %}      
+    </span>
+    {% endif %}
+  </div>  
+</div>
+
+
+{% else %}
+
+
 <div id="section" class="articles col col-1">
   <div id="details">
     {% assign tags = "" %}
-      {% for tag in blog.all_tags %}
-        {% if current_tags contains tag %}
-          {% capture tags %}
-            {{ tag }}
-          {% endcapture %}
-        {% endif %}
-      {% endfor %}
+    {% for tag in blog.all_tags %}
+      {% if current_tags contains tag %}
+        {% capture tags %}
+          {{ tag }}
+        {% endcapture %}
+      {% endif %}
+    {% endfor %}
       
-      <h1>
-        <a href="{{ shop.url}}/{{ blog.url }}">
-          {{ blog.title }}
-          {% if tags != blank %}
-            // {{ tags }}
-          {% endif %}
-        </a>
-      </h1>
-  
-    {% if blog.articles.size > 0 %}
-      {% paginate blog.articles by 10 %}        
-        <div id="articles">
-          {% for article in blog.articles %}
-            <div id="article" class="blog">
-              <div id="details">  
-                <div id="figcaption">
-                  <div id="title">  
-                    <h3>
-                        <a href="{{ article.url }}" title="{{ article.title }}"> {{ article.title | escape }} </a>
-                    </h3>
-                  </div>
-                </div>
-                <div id="meta">
-                  {% if settings.locale == "enabled" %}
-                    {{ settings.locale_by }}
-                  {% else %}
-                    By  
-                  {% endif %}
-                   {{ article.author }}  
-                  
-                  {% if settings.locale == "enabled" %}
-                    {{ settings.locale_on }}
-                  {% else %}
-                    on  
-                  {% endif %} 
-                   
-                   {{ article.created_at | date: "%B %d, %Y" }}
-                  {% if blog.comments_enabled? %}
-                    &mdash; 
-                    <a href="{{article.url}}#comments">{{ article.comments.size }} 
-                    {% if settings.locale == "enabled" %}
-                      {{ settings.locale_comments }}
-                    {% else %}
-                      comments  
-                    {% endif %}           
-                    </a>
-                  {% endif %}
-                  
-                  {% unless article.tags  == blank %}
-                    . 
-                    {% if settings.locale == "enabled" %}
-                      {{ settings.locale_tagged }}: 
-                    {% else %}
-                      Tagged with   
-                    {% endif %}
-                    {% for tag in article.tags %}
-                      <a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a>
-                    {% endfor %}
-                  {% endunless %} 
-                </div>
-                {% if article.excerpt != blank %}
-                  <div id="summary" class="text">                
-                     {{ article.excerpt }}
-                  </div>                  
-                {% endif %}
-              </div>
-            </div> 
-          {% endfor %}
-        </div> <!-- articles --->
-
-       	{% if paginate.pages > 1 %}
-        <div id="paginate" class="">
-          {{ paginate | default_pagination }}
-        </div>
-        {% endif %}	        
-       {% endpaginate %}	
+    <h1>
+      <a href="{{ shop.url}}/{{ blog.url }}">
+        {{ blog.title }}
+        {% if tags != blank %}
+          // {{ tags }}
+        {% endif %}
+      </a>
+    </h1>  
     
-    {% else %}
-      {% if settings.snippets == "enabled" %}
-      {% else %}
-        <h1>We did not found any posts for you.</h1>
-        <div id="summary">
-          <p>Please try searching <strong>again</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p> 
-        </div>
-      {% endif %}  
-    {% endif %}  
+    {% paginate blog.articles by 10 %}        
+      <div id="articles">
+        {% for article in blog.articles %}
+          <div id="article" class="blog">
+            <div id="details">  
+              <div id="figcaption">
+                <div id="title">  
+                  <h3>
+                      <a href="{{ article.url }}" title="{{ article.title }}"> {{ article.title | escape }} </a>
+                  </h3>
+                </div>
+              </div>
+              <div id="meta">
+                {% if settings.locale == "enabled" %}
+                  {{ settings.locale_by }}
+                {% else %}
+                  By  
+                {% endif %}
+                 {{ article.author }}  
+                
+                {% if settings.locale == "enabled" %}
+                  {{ settings.locale_on }}
+                {% else %}
+                  on  
+                {% endif %} 
+                 
+                 {{ article.created_at | date: "%B %d, %Y" }}
+                {% if blog.comments_enabled? %}
+                  &mdash; 
+                  <a href="{{article.url}}#comments">{{ article.comments.size }} 
+                  {% if settings.locale == "enabled" %}
+                    {{ settings.locale_comments }}
+                  {% else %}
+                    comments  
+                  {% endif %}           
+                  </a>
+                {% endif %}
+                
+                {% unless article.tags  == blank %}
+                  . 
+                  {% if settings.locale == "enabled" %}
+                    {{ settings.locale_tagged }}: 
+                  {% else %}
+                    Tagged with   
+                  {% endif %}
+                  {% for tag in article.tags %}
+                    <a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a>
+                  {% endfor %}
+                {% endunless %} 
+              </div>
+              {% if article.excerpt != blank %}
+                <div id="summary" class="text">                
+                   {{ article.excerpt }}
+                </div>                  
+              {% endif %}
+            </div>
+          </div> 
+        {% endfor %}
+      </div> <!-- articles --->
+
+     	{% if paginate.pages > 1 %}
+      <div id="paginate" class="">
+        {{ paginate | default_pagination }}
+      </div>
+      {% endif %}	        
+     {% endpaginate %}	
   </div>  
 </div>
 
@@ -192,4 +253,12 @@
     {% endif %}
   </div>
 </div>
+
+
+{% endif %}
+
+
+
+
+
 
