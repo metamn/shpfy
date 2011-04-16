@@ -1,3 +1,32 @@
+.container {
+  width: 90%;
+}
+
+.col-1, .col-2, .collection #article.col-1 {
+  width: 45%;
+  float: left;
+  overflow: hidden;
+}
+.col-1, .collection #article.col-1 {
+  margin-right: 5%;
+}
+.col-2 {
+  margin-left: 5%;
+}
+
+
+#header #line {
+  width: 88%;
+}
+
+
+.section #article.thumb #figure, .section #article.thumb #figcaption {
+  margin: 1.25em; /* 3.473% */
+  width: 42%; /* 1 col = 42 + 2*3.473 = 48.946% */
+} 
+
+
+/* original below, large above
 .col-1, .col-2 {
   width: 48%;
   float: left;
@@ -16,9 +45,12 @@
 }
 
 
-.section #article.thumb #figure {
-  width: 43%;  
-}
+.section #article.thumb #figure, .section #article.thumb #figcaption {
+  margin: 1.25em; 
+  width: 43%; 
+} 
+*/
+
 
 .collection #article.thumb, .search #article.page  {
   width: 30%;

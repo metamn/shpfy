@@ -17,10 +17,11 @@
 }
 
 
+.section #article.thumb #figure, .section #article.thumb #figcaption {
+  margin: 1.25em; /* 3.473% */
+  width: 42%; /* 1 col = 42 + 2*3.473 = 48.946% */
+} 
 
-.section #article.thumb #figure {
-  width: 45%;  
-}
 
 .collection #article.thumb, .search #article.page {
   width: 20%;

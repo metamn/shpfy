@@ -16,7 +16,12 @@ h3 { font-size:2em; padding:1.25em 0; }
 
 
 
-/* The basic grid */
+/* The basic grid 
+
+- 1em = 16px
+- 1.25em = 20px
+
+*/
 
 .container {
   width: 80%; 
@@ -87,6 +92,15 @@ h3 { font-size:2em; padding:1.25em 0; }
   height: 26em;
   margin-bottom: 2.5em;
 }
+
+.section #title h4, .section #navigation ul {
+  margin-left: 1.25em;
+}
+.section #title h4 a {
+  padding: .612em;
+}
+
+
 .section #details, .section #articles {
   height: 20em;
   overflow: hidden;
@@ -107,12 +121,11 @@ h3 { font-size:2em; padding:1.25em 0; }
 }
 .section #article.thumb #figure {
   float: left;
-  margin-right: 5%;
   text-align: center;
 }
 .section #article.thumb #figcaption {
   float: right;
-  width: 40%;
+  padding: 0;
 }
 .section #article #figcaption #title h3 {
   padding-top: 0; /* Shared with #article.page */
@@ -129,12 +142,7 @@ h3 { font-size:2em; padding:1.25em 0; }
 }
 
 
-.section #navigation, .section #title h4 {
-  margin-left: 1.25em;
-}
-.section #title h4 a {
-  padding: .612em;
-}
+
 .section #navigation {
   margin-bottom: 2.5em;
 }
