@@ -107,49 +107,24 @@
     <span class="description">{{ collection.description }}</span>
     {% endif %}
     
-    {% if collections.size > 0 %}
-      <span class="collections">
-        {% for i in collections %}
-          {% if collection.url == i.url %} 
-            {% assign klass = "collection active" %}
-          {% else %}
-            {% assign klass = "collection" %}
-          {% endif %}
-          <a href="{{ i.url }}" title="{{ i.title | upcase }}" class="{% if forloop.last %} last {% endif %} {{ klass }}">{{ i.title }}</a>
-        {% endfor %}
-      </span>
-    {% endif %}    
-    
-    {% if shop.types.size > 0 %}
-    <span class="types"> 
-    	{% for product_type in shop.types %}
-    	  {{ product_type | link_to_type  }}
-      {% endfor %}
-    </span>    
-    {% endif %}
-    
-    {% if shop.vendors.size > 0 %}
-    <span class="vendors">
-      {% for product_vendor in shop.vendors %}
-        {{ product_vendor | link_to_vendor  }}      
-      {% endfor %}      
-    </span>
-    {% endif %}
+    {% include '_navigation.collections' %}
     
     {% if collection.tags.size > 0 %}
     <span class="tags">
-      {% for tag in collection.tags limit : 10 %}
+      {% for tag in collection.tags limit : settings.coll_tags_count %}
         {{ tag | highlight_active_tag | link_to_tag: tag }}        
-      {% endfor %}  
+      {% endfor %}      
       
-      {% if collection.tags.size > 10 %}
-        <span class="show-more link">&rarr;</span>
-        <span class="hidden">
-          {% for tag in collection.tags offset : 11 %}
-            {{ tag | highlight_active_tag | link_to_tag: tag }}        
-          {% endfor %} 
-        </span>
-      {% endif %}          
+      {% for tag in collection.tags offset : settings.coll_tags_count | plus : 1 %}
+        {% if forloop.first %}
+          <span class="show-more link">&rarr;</span>
+          <span class="hidden">          
+        {% endif %}
+        {{ tag | highlight_active_tag | link_to_tag: tag }}   
+        {% if forloop.last %}
+          </span>
+        {% endif %}     
+      {% endfor %} 
     </span>
     {% endif %}     
   </div> <!-- navigation -->

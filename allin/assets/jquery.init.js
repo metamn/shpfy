@@ -26,7 +26,6 @@ jQuery(document).ready(function(){
 
   // Show the rest of the tags/collections/product types on click on Collections page
   jQuery("#navigation.collections .show-more").click(function() {
-    alert(jQuery(this).html());
     if (jQuery(this).html() == "→") {
       jQuery(this).html('&larr;');
     } else {
@@ -60,7 +59,7 @@ jQuery(document).ready(function(){
   jQuery("#navigation.mobile").localScroll();
   
   
-  // Marking the scroller bullet / list item active 
+  // Marking the scroller bullet / list item active at Frontpage
   jQuery("#navigation.desktop a").click(function() {
     jQuery(this).parent().parent().children().removeClass("active");
     jQuery(this).parent().addClass("active");

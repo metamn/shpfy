@@ -1,0 +1,68 @@
+{% if collections.size > 0 %}
+  <span class="collections">
+    {% for i in collections limit : settings.coll_coll_count %}
+      {% if collection.url == i.url %} 
+        {% assign klass = "collection active" %}
+      {% else %}
+        {% assign klass = "collection" %}
+      {% endif %}
+      <a href="{{ i.url }}" title="{{ i.title | upcase }}" class="{% if forloop.last %} last {% endif %} {{ klass }}">{{ i.title }}</a>
+    {% endfor %}
+    
+    {% for i in collections offset : settings.coll_coll_count | plus : 1 %}
+    {% if forloop.first %}
+      <span class="show-more link">&rarr;</span>
+      <span class="hidden">          
+    {% endif %}
+    
+    {% if collection.url == i.url %} 
+      {% assign klass = "collection active" %}
+    {% else %}
+      {% assign klass = "collection" %}
+    {% endif %}
+    <a href="{{ i.url }}" title="{{ i.title | upcase }}" class="{% if forloop.last %} last {% endif %} {{ klass }}">{{ i.title }}</a>
+     
+    {% if forloop.last %}
+      </span>
+    {% endif %}     
+  {% endfor %} 
+  </span>
+{% endif %}    
+
+{% if shop.types.size > 0 %}
+<span class="types jquery-active"> 
+	{% for product_type in shop.types limit : settings.coll_types_count %}
+	  {{ product_type | link_to_type  }}
+  {% endfor %}
+  
+  {% for product_type in shop.types offset : settings.coll_types_count | plus : 1 %}
+    {% if forloop.first %}
+      <span class="show-more link">&rarr;</span>
+      <span class="hidden">          
+    {% endif %}
+    {{ product_type | link_to_type  }}   
+    {% if forloop.last %}
+      </span>
+    {% endif %}     
+  {% endfor %} 
+</span>    
+{% endif %}
+
+{% if shop.vendors.size > 0 %}
+<span class="vendors jquery-active">
+  {% for product_vendor in shop.vendors limit : settings.coll_vendors_count %}
+    {{ product_vendor | link_to_vendor  }}      
+  {% endfor %}      
+  
+  {% for product_vendor in shop.vendors offset : settings.coll_vendors_count | plus : 1 %}
+    {% if forloop.first %}
+      <span class="show-more link">&rarr;</span>
+      <span class="hidden">          
+    {% endif %}
+    {{ product_vendor | link_to_vendor  }}    
+    {% if forloop.last %}
+      </span>
+    {% endif %}     
+  {% endfor %} 
+</span>
+{% endif %}

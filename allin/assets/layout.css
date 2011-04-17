@@ -156,15 +156,6 @@ h3 { font-size:2em; padding:1.25em 0; }
 
 
 
-
-
-
-
-
-
-
-
-
 /* General Settings
 */
 
@@ -215,6 +206,7 @@ h3 { font-size:2em; padding:1.25em 0; }
   padding: .612em .36em .612em .36em;
 }
 #navigation.collections span a,
+#navigation.collections .show-more,
 .section #article.page span a {
   margin-right: .612em;
 }
