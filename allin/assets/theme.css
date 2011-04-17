@@ -177,6 +177,9 @@ input.text, textarea {
 
 /* Collection */
 
+#navigation.collections span, #navigation.collections span a, #navigation.collections span a:visited {
+  text-shadow: none;
+}
 #navigation.collections .title, #navigation.collections .description {
   background: #4c4b44;
   color: #CCC9B6;

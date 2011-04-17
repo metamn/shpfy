@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'shopify_api'
 
+puts "Ready to sync ..."
 watch('(assets|config|layout|snippets|templates)/.*\.*') do |match|
   puts "Updating #{match[0].inspect}..."
   upload_template(match.to_s)

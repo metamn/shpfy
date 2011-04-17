@@ -3,6 +3,38 @@ jQuery.noConflict();
 // Use jQuery via jQuery(...)
 jQuery(document).ready(function(){
   
+  // Making the selected product type/vendor active at Collections page
+  var urlParams = {};
+  (function () {
+      var e,
+          a = /\+/g,  // Regex for replacing addition symbol with a space
+          r = /([^&=]+)=?([^&]*)/g,
+          d = function (s) { return decodeURIComponent(s.replace(a, " ")); },
+          q = window.location.search.substring(1);
+
+      while (e = r.exec(q))
+         urlParams[d(e[1])] = d(e[2]);
+  })();  
+  if (urlParams['q']) {
+    jQuery(".collection #navigation .jquery-active a").each(function(index){
+      if (jQuery(this).html() == urlParams['q']) {
+        jQuery(this).addClass('active');
+      }
+    });
+  }
+  
+
+  // Show the rest of the tags/collections/product types on click on Collections page
+  jQuery("#navigation.collections .show-more").click(function() {
+    alert(jQuery(this).html());
+    if (jQuery(this).html() == "→") {
+      jQuery(this).html('&larr;');
+    } else {
+      jQuery(this).html('&rarr;');
+    }
+    jQuery(this).next().toggle('slow');
+  });
+
   
   // Add .col-x class to frontpage items
   jQuery(".index .section").each(function(index) {

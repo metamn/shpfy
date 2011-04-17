@@ -43,13 +43,14 @@
           {% else %}
             {% assign klass = "collection" %}
           {% endif %}
+          
           <a href="{{ i.url }}" title="{{ i.title | upcase }}" class="{% if forloop.last %} last {% endif %} {{ klass }}">{{ i.title }}</a>
         {% endfor %}
       </span>
     {% endif %}    
     
     {% if shop.types.size > 0 %}
-    <span class="types"> 
+    <span class="types jquery-active"> 
     	{% for product_type in shop.types %}
         {{ product_type | link_to_type  }}          
       {% endfor %}
@@ -57,7 +58,7 @@
     {% endif %}
     
     {% if shop.vendors.size > 0 %}
-    <span class="vendors">
+    <span class="vendors jquery-active">
       {% for product_vendor in shop.vendors %}
         {{ product_vendor | link_to_vendor  }}      
       {% endfor %}      
@@ -122,19 +123,7 @@
     {% if shop.types.size > 0 %}
     <span class="types"> 
     	{% for product_type in shop.types %}
-    	  <!--
-    	  
-    	  Cannot get the current url in Shopify, collection.url doesn't works with types and vendors
-    	  
-    	  {% capture url %}{{ product_type | url_for_type  }}{% endcapture %}
-    	  {% if collection.url == url %} 
-          {% assign klass = "active" %}
-        {% else %}
-          {% assign klass = "" %}
-        {% endif %}
-        <a href="{{ url }}" title="{{ product_type }}" class="{{ klass }}">{{ product_type}}</a>          
-        -->
-        {{ product_type | link_to_type  }}
+    	  {{ product_type | link_to_type  }}
       {% endfor %}
     </span>    
     {% endif %}
@@ -149,9 +138,18 @@
     
     {% if collection.tags.size > 0 %}
     <span class="tags">
-      {% for tag in collection.tags %}
-          {{ tag | highlight_active_tag | link_to_tag: tag }}
-      {% endfor %}      
+      {% for tag in collection.tags limit : 10 %}
+        {{ tag | highlight_active_tag | link_to_tag: tag }}        
+      {% endfor %}  
+      
+      {% if collection.tags.size > 10 %}
+        <span class="show-more link">&rarr;</span>
+        <span class="hidden">
+          {% for tag in collection.tags offset : 11 %}
+            {{ tag | highlight_active_tag | link_to_tag: tag }}        
+          {% endfor %} 
+        </span>
+      {% endif %}          
     </span>
     {% endif %}     
   </div> <!-- navigation -->
