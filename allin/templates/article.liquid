@@ -1,8 +1,11 @@
 <div id="article" class="col col-1">
-  <div id="details">      
-    <h1>
-      <a href="{{ article.url }}" title="Permanent link to {{ article.title | escape }}">{{ article.title | escape }}</a>
-    </h1> 
+  <div id="details"> 
+    <div id="title">     
+      <h1>
+        <a href="{{ article.url }}" title="Permanent link to {{ article.title | escape }}">{{ article.title | escape }}</a>
+      </h1> 
+    </div>
+    
     <div id="meta">
       {% include '_blogmeta' %}
     </div>

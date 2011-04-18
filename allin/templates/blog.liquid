@@ -24,15 +24,17 @@
         {% endcapture %}
       {% endif %}
     {% endfor %}
-      
-    <h1>
-      <a href="{{ shop.url}}/{{ blog.url }}">
-        {{ blog.title }}
-        {% if tags != blank %}
-          // {{ tags }}
-        {% endif %}
-      </a>
-    </h1>  
+    
+    <div id="title">  
+      <h1>
+        <a href="{{ shop.url}}/{{ blog.url }}">
+          {{ blog.title }}
+          {% if tags != blank %}
+            // {{ tags }}
+          {% endif %}
+        </a>
+      </h1>  
+    </div>
     
     {% paginate blog.articles by 10 %}        
       <div id="articles">

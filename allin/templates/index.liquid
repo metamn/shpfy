@@ -204,23 +204,26 @@
         <div id="collection{{ forloop.index }}" class="scroller">
           {% if collection.products.size > 0 %}
             {% for product in collection.products limit : 1 %}
-              <div id="article" class="collection">
+              <div id="article" class="collection thumb">
                 <div id="details">                    
                   <div id="figcaption">
                     <div id="title">
                       <a href="{{ collection.url }}" title="{{ collection.title | escape }}">
                       <h3>{{ collection.title | escape }}</h3></a>
-                    </div> 
-                    {% if collection.description != blank %}
-                    <div id="summary">                
-                      {{ collection.description }}
-                    </div>  
-                    {% endif %}
+                    </div>   
+                    <div id="size">
+                      {{ collection.products.size }} products.
+                    </div>                  
                   </div>
                   <div id="figure">
                     <a href="{{ collection.url }}" title="{{ collection.title | escape }}">
                       <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
-                  </div>                               
+                  </div>   
+                  {% if collection.description != blank %}
+                  <div id="summary">                
+                    {{ collection.description }}
+                  </div>  
+                  {% endif %}                            
                 </div> <!-- details -->
               </div> <!-- article --> 
             {% endfor %}
@@ -297,7 +300,7 @@
       {% endif %}      
     </div> <!-- articles -->    
   </div> 
-  <div id="navigation" class="desktop col-2">
+  <div id="navigation" class="desktop block">
     <ul class="inline-list">
     {% if shop.vendors.size > 0 %}  
       <li class="active"><a href="#vendor1">&bull;</a></li>  

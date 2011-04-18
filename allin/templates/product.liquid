@@ -1,9 +1,11 @@
 <div id="article"  class="col col-1">
   <div id="details">
-    <h1>
-      <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-        {{ product.title | escape }} by {{ product.vendor }} <span>{{ product.price | money }}</span></a>
-    </h1>
+    <div id="title">
+      <h1>
+        <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+          {{ product.title | escape }} by {{ product.vendor }} <span>{{ product.price | money }}</span></a>
+      </h1>
+    </div>
     
     <div id="figure">
 	    <img src="{{ product.featured_image | product_img_url: 'grande' }}" alt="{{ product.title | escape }}" />

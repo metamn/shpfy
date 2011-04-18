@@ -4,7 +4,9 @@
     {% if settings.snippets == "enabled" %}
       {% include 'cart_empty' %}
     {% else %}
-      <h1>Your cart is empty.</h1>
+      <div id="title">
+        <h1>Your cart is empty.</h1>
+      </div>
       <div id="summary">
         <a href="/">Please visit our shop.</a>
       </div>
@@ -22,13 +24,15 @@
 
 <div id="section" class="products">
   <div id="details">
-    <h1>
-      {% if settings.locale == "enabled" %}
-        {{ settings.locale_cart_title }}
-      {% else %}
-        Your Shopping Cart
-      {% endif %}  
-    </h1>
+    <div id="title">
+      <h1>
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_cart_title }}
+        {% else %}
+          Your Shopping Cart
+        {% endif %}  
+      </h1>
+    </div>
     <div id="articles">           
       <form action="/cart" method="post" id="cartform" name="cartform">          
         {% for item in cart.items %}

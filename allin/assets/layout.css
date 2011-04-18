@@ -100,7 +100,6 @@ h3 { font-size:2em; padding:1.25em 0; }
   padding: .612em;
 }
 
-
 .section #details, .section #articles {
   height: 20em;
   overflow: hidden;
@@ -112,24 +111,57 @@ h3 { font-size:2em; padding:1.25em 0; }
 	width: 100%;
 	height: 20em;
 }
+
+
+#article.thumb {
+  width: 20em; /* medium sized image is 15x15em */
+  height: 30em; 
+}
 .section #article.thumb {
   width: 100%;
   height: auto;
 }
+
+#article.thumb #details {
+  padding: 0;  
+}
 .section #article.thumb #details {
   text-align: left;
+}
+
+.section #article.thumb #figcaption {
+  float: right;
+  padding: 0;
+}
+#article #figcaption #title {
+  margin: 0;
+}
+.section #article #figcaption #title h3 {
+  padding-top: 0; 
+}
+
+#article.thumb #figure {
+  height: 15em;  
+  padding: 1.25em 0;
+  margin: 1.25em;
 }
 .section #article.thumb #figure {
   float: left;
   text-align: center;
 }
-.section #article.thumb #figcaption {
-  float: right;
-  padding: 0;
+
+#article #summary {  
+  padding: 1.25em;
 }
-.section #article #figcaption #title h3 {
-  padding-top: 0; /* Shared with #article.page */
+#article.thumb #summary {
+  position: absolute;
+  left: 50%;
+  height: 20em;
+  display: none;
+  clear: both;
+  text-align: left;
 }
+
 
 .section #article.page #details {
   padding: 1.25em;
@@ -137,10 +169,11 @@ h3 { font-size:2em; padding:1.25em 0; }
 .section #article.page #summary {
   padding: 0;
 }
+
+
 #vendors.section #article.page span a {
   padding: .612em;
 }
-
 
 
 .section #navigation {
@@ -154,41 +187,26 @@ h3 { font-size:2em; padding:1.25em 0; }
 
 
 
+/* Collections */
 
-
-/* General Settings
-*/
-
-
-/* Articles, Article types */
-
-
-#article #summary {  
-  padding: 1.25em;
+.collection #article.thumb, .search #article.page {
+  float: left;
+  margin-bottom: 5em;
+  height: auto;
 }
-
-
-#article.thumb {
-  width: 20em; /* medium sized image is 15x15em */
-  height: 30em; 
+.collection #article.thumb #title h3 {
+  padding-top: 0;
 }
-#article.thumb #figure {
-  height: 15em;  
-  padding: 1.25em 0;
+.collection #article.thumb #summary {  
+  height: 30em;
+  position: relative;
+  cursor: pointer;
 }
-#article.thumb #details {
-  padding: 0;
+.collection #article.thumb #figure {
+  cursor: pointer;
 }
-#article.thumb #details #figure {
-  margin: 1.25em;
-}
-#article.thumb #summary {
-  position: absolute;
-  left: 50%;
-  height: 20em;
-  display: none;
-  clear: both;
-  text-align: left;
+.collection #sidebar #navigation.collections {
+  margin-top: 0;
 }
 
 
@@ -228,90 +246,14 @@ h3 { font-size:2em; padding:1.25em 0; }
 
 
 
-/* Search and input boxes */
-
-.product select, .product input,
-#article #search input {
-  float: left;
-}
-
-
-.search ul.search {
-  list-style-type: none;
-}
-.search input.text {
-  width: 33%;
-}
-
-.comment-form input.text {
-  width: 96%;
-} 
-.comment-form textarea {
-  width: 97%;
-}
-
-
-/* Messages */
-
-.section .notice {
-  margin-top: 3.75em;
-}
-.section #details .notice {
-  margin-top: 0;
-}
-.notice, .success, .error {  
-  padding: 1.25em;
-}
-
-
-
-
-
-
-
-
-
-/* Collections */
-
-.collection #article.thumb, .search #article.page {
-  float: left;
-  margin-bottom: 5em;
-  height: auto;
-}
-.collection #article.thumb #summary {  
-  height: 30em;
-  position: relative;
-  cursor: pointer;
-}
-.collection #article.thumb #figure {
-  cursor: pointer;
-}
-.collection #sidebar #navigation.collections {
-  margin-top: 0;
-}
-
-.collection #article #title h3 {
-  padding: 0 0 1.25em; /* Common with search articles */
-}
-
-
-/* Search */
-
-.search #article.page #title, .search #article.page #summary {
-  padding: 1.25em;
-}
-.search #article.page #title {
-  padding-bottom: 0;
-}
-
-.search #article.page #summary {
-  display: block;
-}
-
 
 
 /* Product page */
 
+
+#details #title {
+  margin: 0 1.25em;
+}
 .product #figure {
   padding: 2.5em 1.25em;
   text-align: center;
@@ -353,17 +295,16 @@ li.facebook {
 .blog #article {
   margin-bottom: 5em;
 }
-.blog #article h3 {
-  padding-left: .612em;
-  padding-right: .612em;
-}
 .article #article #comments, #article #search, #article #meta {
   padding: 0 1.25em;
+}
+
+#article.blog #figcaption #title {
+  margin: 0 1.25em;
 }
 .article #article #summary {
   margin: 1.25em 0;
 }
-
 .blog #article #meta {
   padding: 1.25em;  
 }
@@ -464,6 +405,56 @@ ul.comments li {
 .not_found #navigation.collections {
   margin-top: 0;
 }
+
+
+
+/* Search */
+
+.search #article.page #figcaption #title {
+  margin: 0 1.25em;
+}
+.search #article.page #summary {
+  padding: 1.25em;
+  display: block;
+}
+
+
+
+/* Search and input boxes */
+
+.product select, .product input,
+#article #search input {
+  float: left;
+}
+
+
+.search ul.search {
+  list-style-type: none;
+}
+.search input.text {
+  width: 33%;
+}
+
+.comment-form input.text {
+  width: 96%;
+} 
+.comment-form textarea {
+  width: 97%;
+}
+
+
+/* Messages */
+
+.section .notice {
+  margin-top: 3.75em;
+}
+.section #details .notice {
+  margin-top: 0;
+}
+.notice, .success, .error {  
+  padding: 1.25em;
+}
+
 
 
 
