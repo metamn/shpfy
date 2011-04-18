@@ -1,0 +1,51 @@
+{% include '_share' %}   
+    
+<h4>
+{% if settings.locale == "enabled" %}
+  {{ settings.locale_article_posts }}
+{% else %}
+  Latest blog posts
+{% endif %}
+</h4>
+<ul class="hoverable">
+  {% for article in blog.articles limt: 3%}
+    <li>
+      <a href="{{ article.url }}" title="{{ article.title }}">
+        {{ article.title }}            
+      </a>
+      <span class="date">on {{ article.created_at | date: "%B %d, %Y" }}</span>
+    </li>
+  {% endfor %}
+</ul>
+    
+<h4>
+{% if settings.locale == "enabled" %}
+  {{ settings.locale_article_comments }}
+{% else %}
+  Recent comments
+{% endif %}
+</h4>
+<ul class="hoverable">
+  {% assign comments_found = false %}
+  {% for article in blog.articles limt: 3%}		   
+    {% for comment in article.comments limit: 2 %}
+      <li>
+        <a href="{{ comment.url }}" title="Comment on {{ article.title }}">
+          "{{ comment.content | strip_html | truncatewords: 20 }}"
+        </a>
+        <span class="date">by {{ comment.author }}</span>
+      </li>
+      {% assign comments_found = true %}
+    {% endfor %}
+  {% endfor %}
+  
+  {% unless comments_found %}
+    <li>
+      {% if settings.locale == "enabled" %}
+        {{ settings.locale_article_no_comments }}
+      {% else %}
+        No comments were posted yet.
+      {% endif %}        
+    </li>
+  {% endunless %}
+</ul>

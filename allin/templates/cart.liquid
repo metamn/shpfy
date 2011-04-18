@@ -14,34 +14,7 @@
 
 <div id="sidebar" class="col col-2">   
   <div id="navigation" class="collections block">
-    {% if collections.size > 0 %}
-      <span class="collections">
-        {% for i in collections %}
-          {% if collection.url == i.url %} 
-            {% assign klass = "collection active" %}
-          {% else %}
-            {% assign klass = "collection" %}
-          {% endif %}
-          <a href="{{ i.url }}" title="{{ i.title | upcase }}" class="{% if forloop.last %} last {% endif %} {{ klass }}">{{ i.title }}</a>
-        {% endfor %}
-      </span>
-    {% endif %}    
-    
-    {% if shop.types.size > 0 %}
-    <span class="types"> 
-    	{% for product_type in shop.types %}
-        {{ product_type | link_to_type  }}          
-      {% endfor %}
-    </span>    
-    {% endif %}
-    
-    {% if shop.vendors.size > 0 %}
-    <span class="vendors">
-      {% for product_vendor in shop.vendors %}
-        {{ product_vendor | link_to_vendor  }}      
-      {% endfor %}      
-    </span>
-    {% endif %}
+    {% include '_navigation.collections' %}
   </div>  
 </div>
     

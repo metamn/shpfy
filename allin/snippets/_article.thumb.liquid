@@ -1,0 +1,26 @@
+<div id="details">                    
+  <div id="figcaption">
+    <div id="title">
+      <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+      <h3>{{ product.title | escape }}</h3></a>
+    </div>
+    <div id="price">
+      {% if settings.locale == "enabled" %}
+        {% assign add = settings.locale_cart_add %}
+      {% else %}
+        {% assign add = "Add to cart" %}
+      {% endif %}
+      <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+        {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
+    </div>
+  </div>
+  
+  <div id="figure">
+    <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
+      <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
+  </div>
+  
+  <div id="summary">                
+      {{ product.description | strip_html | truncatewords: 50 }}
+  </div>                             
+</div> <!-- details -->

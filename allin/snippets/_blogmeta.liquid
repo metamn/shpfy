@@ -1,0 +1,36 @@
+{% if settings.locale == "enabled" %}
+  {{ settings.locale_by }}
+{% else %}
+  By  
+{% endif %}
+ {{ article.author }}  
+
+{% if settings.locale == "enabled" %}
+  {{ settings.locale_on }}
+{% else %}
+  on  
+{% endif %} 
+ 
+ {{ article.created_at | date: "%B %d, %Y" }}
+{% if blog.comments_enabled? %}
+  &mdash; 
+  <a href="{{article.url}}#comments">{{ article.comments.size }} 
+  {% if settings.locale == "enabled" %}
+    {{ settings.locale_comments }}
+  {% else %}
+    comments  
+  {% endif %}           
+  </a>
+{% endif %}
+
+{% unless article.tags  == blank %}
+  . 
+  {% if settings.locale == "enabled" %}
+    {{ settings.locale_tagged }}: 
+  {% else %}
+    Tagged with   
+  {% endif %}
+  {% for tag in article.tags %}
+    <a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a>
+  {% endfor %}
+{% endunless %} 

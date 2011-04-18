@@ -17,69 +17,11 @@
   {% if search.results.size == 0 %}
 
     <div id="article" class="col col-1">
-      <div id="details">
-        {% if settings.snippets == "enabled" %}
-          {% include 'search_not_found' %}
-        {% else %}
-          <h1>We did not found any products for you.</h1>
-          <div id="summary">
-            Please try searching <strong>again</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links. 
-          </div>
-        {% endif %} 
-        
-        <div id="search">
-          <h3>
-          {% if settings.locale == "enabled" %}
-            {{ settings.locale_search }}
-            {% assign s = settings.locale_search %}
-          {% else %}
-            Search
-            {% assign s = "Search" %}
-          {% endif %} 
-          </h3>
-          <ul class="search block">        
-            <li>
-              <form action="/search" method="get">
-                <input class="text" type="text" name="q" /> 
-                <input class="button" type="submit" value="{{ s }}"  />
-              </form>
-            </li>
-          </ul>
-        </div>    
-      </div>
+      {% include '_notfound' %}
     </div>  
 
     <div id="sidebar" class="col col-2">   
-      <div id="navigation" class="collections block">
-        {% if collections.size > 0 %}
-          <span class="collections">
-            {% for i in collections %}
-              {% if collection.url == i.url %} 
-                {% assign klass = "collection active" %}
-              {% else %}
-                {% assign klass = "collection" %}
-              {% endif %}
-              <a href="{{ i.url }}" title="{{ i.title | upcase }}" class="{% if forloop.last %} last {% endif %} {{ klass }}">{{ i.title }}</a>
-            {% endfor %}
-          </span>
-        {% endif %}    
-        
-        {% if shop.types.size > 0 %}
-        <span class="types"> 
-        	{% for product_type in shop.types %}
-            {{ product_type | link_to_type  }}          
-          {% endfor %}
-        </span>    
-        {% endif %}
-        
-        {% if shop.vendors.size > 0 %}
-        <span class="vendors">
-          {% for product_vendor in shop.vendors %}
-            {{ product_vendor | link_to_vendor  }}      
-          {% endfor %}      
-        </span>
-        {% endif %}
-      </div>  
+      {% include '_navigation.collections' %}
     </div>
   
   {% else %} 
@@ -91,30 +33,7 @@
           {% if item.featured_image %}  
             {% assign product = item %}    
             <div id="article" class="thumb c-{{ forloop.index }}">
-              <div id="details">
-                <div id="summary">                
-                    {{ product.description | strip_html | truncatewords: 50 }}
-                </div>
-                <div id="figcaption">
-                  <div id="title">
-                    <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                    <h3>{{ product.title | escape }}</h3></a>
-                  </div>
-                  <div id="price">
-                    {% if settings.locale == "enabled" %}
-                      {% assign add = settings.locale_cart_add %}
-                    {% else %}
-                      {% assign add = "Add to cart" %}
-                    {% endif %}
-                    <a class="button" href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">
-                      {{ product.price | money }} &nbsp;&nbsp; {{ add }}</a>
-                  </div>
-                </div>
-                <div id="figure">      
-                  <a href="{{ product.url | within: collections.all }}" title="{{ product.title | escape }}">      
-                    <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>
-                </div>
-              </div> <!-- details -->
+              {% include '_article.thumb' %}
             </div> <!-- article --> 
           {% else %}
             <div id="article" class="page c-{{ forloop.index }}">
@@ -134,13 +53,8 @@
         {% endfor %}
       </div>
     
-      {% if paginate.pages > 1 %}
-      <div id="paginate" class="">
-        {{ paginate | default_pagination }}
-      </div>
-      {% endif %}	    
+      {% include '_paginate' %}    	    
     {% endpaginate %}
-  
   
   {% endif %}
   
