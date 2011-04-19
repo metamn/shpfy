@@ -25,9 +25,8 @@ input, textarea, a.button {
 
 
 
-
-#header #logo h2 {
-  border-bottom: 1px dotted;
+#header #line {
+  border-bottom: 2px dotted;
 }
 #header #shopping {
   background: #6D6850;
