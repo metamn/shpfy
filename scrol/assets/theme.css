@@ -6,10 +6,10 @@
   - border/pagination: B2B09F (kuler / shades)
   - background: D9D6C1 (kuler / shades)
   - color: #4c4b44
-    - shadow: ebeae8 (+19)
+    - shadow: dbdad6 (+17)
   - link hover: #111
-    - shadow: #eee 
-  - summary link: ebeae8
+    - shadow: #ddd 
+  - summary link: dbdad6
     - shadow: none
 - button: A2CCE9
   - variants: bddbef (+2, shadow), 87bde3 (-2, gradient), 79b5df (-3, border), 
@@ -31,7 +31,7 @@ body {
   color: #4c4b44;
 }
 .container {
-  text-shadow: 1px 1px #ebeae8; /*if added to body a scrollbar is inserted */
+  text-shadow: 1px 1px #dbdad6; /*if added to body a scrollbar is inserted */
 }
 
 a, a:hover {
@@ -39,11 +39,11 @@ a, a:hover {
 }
 a {
   color: #4c4b44;
-  text-shadow: 1px 1px #ebeae8;
+  text-shadow: 1px 1px #dbdad6;
 }
 a:hover {
   color: #111;
-  text-shadow: 1px 1px #eee;
+  text-shadow: 1px 1px #ddd;
 }
 
 
@@ -112,13 +112,15 @@ input.text, textarea {
 }
 #header #shopping {
   background: #4c4b44;  
-  color: #ebeae8;
+  color: #dbdad6;
   text-shadow: none;
 }
 #header #shopping a, #header #shopping a:visited {
-  color: #ebeae8;
+  color: #dbdad6;
   text-shadow: none;
 }
+
+
 
 
 /* Frontpage */
@@ -131,7 +133,7 @@ input.text, textarea {
   color: #4c4b44;
 }
 #vendors.section #article.page span a, #vendors.section #article.page span a:visited {
-  background: #ebeae8;
+  background: #dbdad6;
   color: #4c4b44;
   text-decoration: none;
 }
@@ -158,12 +160,12 @@ input.text, textarea {
 }
 #article #summary {
   background: #4c4b44;
-  color: #ebeae8;
+  color: #dbdad6;
   text-shadow: none;
 }
 #summary a, #summary a.visited  {
   text-decoration: underline;
-  color: #ebeae8;
+  color: #dbdad6;
   text-shadow: none;
 }
 
@@ -219,10 +221,10 @@ input.text, textarea {
 
 /* Porduct */
 .product #article #thumbs {
-  background: #ebeae8;
+  background: #dbdad6;
 }
 .product #article #thumbs img {
-  border: .36em solid #ebeae8;
+  border: .36em solid #dbdad6;
 }
 
 
@@ -232,13 +234,13 @@ input.text, textarea {
 
 
 .blog #article #meta {
-  background: #ebeae8;
+  background: #dbdad6;
 }
 #article #meta a, #article #meta a:visited {
   border-bottom: 1px dotted;
 }
 ul.comments li {
-  background: #ebeae8;
+  background: #dbdad6;
 }
 
 

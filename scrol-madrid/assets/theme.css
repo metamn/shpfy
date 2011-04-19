@@ -97,6 +97,7 @@ input.text, textarea {
 
 .section #title h4 a {
   background: none;
+  padding: 0;
 }
 .section #article.page #summary {
   background: #E7E7DF;

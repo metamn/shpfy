@@ -14,7 +14,7 @@
 	<link href="{{ 'wide.css' | asset_url }}" charset="utf-8" media="screen and (min-width: 1025px) and (max-width: 1399px)" rel="stylesheet" type="text/css" />
   <link href="{{ 'large.css' | asset_url }}" charset="utf-8" media="screen and (min-width: 1400px)" rel="stylesheet" type="text/css" />
     
-	{{ 'theme.cs' | asset_url | stylesheet_tag }}
+	{{ 'theme.css' | asset_url | stylesheet_tag }}
 	{% if settings.logo == "enabled" %}
 	  {{ 'logo.css' | asset_url | stylesheet_tag }}	
 	{% endif %}
@@ -37,15 +37,6 @@
   {{ 'jquery.init.js' | asset_url | script_tag }}
 	
 	
-	<link href='http://fonts.googleapis.com/css?family=Expletus+Sans:regular,500,600,bold' rel='stylesheet' type='text/css'>
-  
-  <link href='http://fonts.googleapis.com/css?family=Orbitron:regular,500,bold,900' rel='stylesheet' type='text/css'>
-
-  <script type="text/javascript">
-  var myfont_webfont_test = false;
-  var woffEnabled = true;
-  </script>
-  {{ 'MuseoSans.js' | asset_url | script_tag }}
 	
 	<!-- {{ 'jquery.grid.js' | asset_url | script_tag }} -->
 	

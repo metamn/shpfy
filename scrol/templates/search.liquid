@@ -1,16 +1,35 @@
 {% if search.terms == blank %}
-  
-  {% if settings.locale == "enabled" %}
-    {% assign s = settings.locale_search %}
-  {% else %}
-    {% assign s = "Search" %}
-  {% endif %} 
-  <div id="search" class="notfound">        
-    <form action="/search" method="get">
-      <input class="text" type="text" name="q" /> 
-      <input class="button" type="submit" value="{{ s }}"  />
-    </form>
+  <div id="article" class="col col-1">  
+    <div id="details">
+      {% if settings.locale == "enabled" %}
+        {% assign s = settings.locale_search %}
+      {% else %}
+        {% assign s = "Search" %}
+      {% endif %} 
+      <div id="title">
+        <h1>{{ s }}</h1>
+      </div>
+          
+      <div id="search">    
+        <ul class="search block">        
+          <li>
+            <form action="/search" method="get">
+              <input class="text" type="text" name="q" /> 
+              <input class="button" type="submit" value="{{ s }}"  />
+            </form>
+          </li>
+        </ul>
+      </div>    
+    </div>
   </div>  
+
+  <div id="sidebar" class="col col-2">   
+    <div id="navigation" class="collections block">    
+      {% include '_navigation.collections' %}    
+    </div>  
+  </div>
+  
+  
       
 {% else %}
   

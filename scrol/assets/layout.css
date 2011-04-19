@@ -68,7 +68,7 @@ h3 { font-size:2em; padding:1.25em 0; }
 }
 
 #footer {
-  margin: 2.5em 0;
+  margin: 5em 0;
 }
 
 
@@ -417,7 +417,6 @@ ul.comments li {
   padding: 1.25em;
   display: block;
 }
-
 
 
 /* Search and input boxes */
