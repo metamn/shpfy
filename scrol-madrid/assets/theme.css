@@ -1,0 +1,151 @@
+/*
+ - background: c8c8c6
+  - article: E7E7DF (picked)
+  - button: 
+    - variants: b7b7b5 (-2, gradient), afafac (-3, border), d9d9d7 (+2, shadow), (e8e8e6, text-shadow)
+ - link: 9E515C 
+ - color: #000, #333
+    
+
+*/
+
+
+
+
+body {
+  background: url(background.jpg) repeat scroll #c8c8c6;
+  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+h1, h2, h3, h4, h5 {
+  font-family: MuseoSans-500;
+}
+h1, h2, h3 {
+  text-transform: uppercase;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+a {
+  color: #111;
+}
+a:hover {
+  color: #333;
+}
+
+
+
+input, textarea, a.button {
+  -moz-box-shadow: 0 1px 0 0 #d9d9d7 inset;
+  -webkit-box-shadow: 0 1px 0 0 #d9d9d7 inset;
+  box-shadow: 0 1px 0 0 #d9d9d7 inset;
+  background-color: #c8c8c6;
+  background: -moz-linear-gradient(center top , #c8c8c6 5%, #b7b7b5 100%) repeat scroll 0 0 #c8c8c6;
+  background: -webkit-linear-gradient(top, #c8c8c6, #b7b7b5) repeat scroll 0 0 #c8c8c6;
+  border: 1px solid #afafac;
+  color: #333 !important;
+  text-decoration: none !important;
+  text-shadow: 1px 1px 0 #e8e8e6;
+}
+input.button:hover, a.button:hover {
+  background: -moz-linear-gradient(center top , #b7b7b5 5%, #c8c8c6 100%) repeat scroll 0 0 #b7b7b5;
+  background: -webkit-linear-gradient(top, #b7b7b5, #c8c8c6) repeat scroll 0 0 #b7b7b5;
+}
+input.text, textarea {
+  background: none repeat scroll 0 0 #DEDBD3;
+}
+
+#sale input, #sale textarea, #sale a.button {
+  -moz-box-shadow: 0 1px 0 0 #af626d inset;
+  -webkit-box-shadow: 0 1px 0 0 #af626d inset;
+  box-shadow: 0 1px 0 0 #af626d inset;
+  background-color: #9E515C;
+  background: -moz-linear-gradient(center top , #9E515C 5%, #88454f 100%) repeat scroll 0 0 #9E515C;
+  background: -webkit-linear-gradient(top, #9E515C, #88454f) repeat scroll 0 0 #9E515C;
+  border: 1px solid #7c4048;
+  color: #EABFC5 !important;
+  text-decoration: none !important;
+  text-shadow: 1px 1px 0 #494946;
+}
+#sale input.button:hover, #sale a.button:hover {
+  background: -moz-linear-gradient(center top , #88454f 5%, #9E515C 100%) repeat scroll 0 0 #88454f;
+  background: -webkit-linear-gradient(top, #88454f, #9E515C) repeat scroll 0 0 #88454f;
+}
+
+
+
+
+/* Header */
+
+#header #line {
+  border-bottom: 2px dotted #9E515C;
+}
+#header #shopping {
+  background: #9E515C;  
+  color: #c8c8c6;
+  text-shadow: none;
+}
+#header #shopping a, #header #shopping a:visited {
+  color: #c8c8c6;
+  text-shadow: none;
+}
+
+
+/* Frontpage */
+
+.section #title h4 a {
+  background: none;
+}
+.section #article.page #summary {
+  background: #E7E7DF;
+  color: #111;
+}
+#vendors.section #article.page span a, #vendors.section #article.page span a:visited {
+  background: #ebeae8;
+  color: #4c4b44;
+  text-decoration: none;
+}
+.section #navigation li a {
+  color: #999;
+}
+.section #navigation li.active a {
+  color: #666;
+}
+
+
+/* Articles */
+
+#article, #aside, #vendors #articles, #info #articles {
+  background: #E7E7DF;
+}
+#article #figure {
+  background: #fff;
+  -moz-box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;  
+}
+#article #summary {
+  background: #E7E7DF;
+  color: #111;
+  text-shadow: none;
+}
+#summary a, #summary a.visited  {
+  text-decoration: underline;
+  color: #111;
+  text-shadow: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
