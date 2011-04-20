@@ -26,10 +26,13 @@
 .collection #article.thumb, .search #article.page {
   width: 20%;
   margin-right: 6.66%;
-  min-height: 32.5em;
 }
 .collection #article.c-4, .collection #article.c-8 {
   margin-right: 0;
+}
+
+.collection #navigation ul.inline-list {
+  margin-right: 1.25em;
 }
 
 
@@ -42,11 +45,10 @@
 #article #search input.text {
   width: 77%;
 }
-#search ul {
-  margin-bottom: 1.25em;
-  list-style-type: none;
-  margin-left: 0;
+.search input.text {
+  width: 33%;
 }
+
 
 
 

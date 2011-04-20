@@ -17,16 +17,18 @@
 <div id="details">   
   <div id="navigation" class="collections block">
     {% unless collection.title == blank %}
-      <span class="title">
-        {{ collection.title }}
-        <span class="tag-title"></span>
-        // {{ collection.products_count }} 
-        {% if settings.locale == "enabled" %}
-          {{ settings.locale_items }}
-        {% else %}
-          items
-        {% endif %}
-      </span>
+      <ul class="inline-list title">
+        <li>
+          {{ collection.title }}
+          <span class="tag-title"></span>
+          // {{ collection.products_count }} 
+          {% if settings.locale == "enabled" %}
+            {{ settings.locale_items }}
+          {% else %}
+            items
+          {% endif %}
+        </li>
+      </ul>
       <!-- Hack: getting the tag title, if any -->
       <div id="current-tags-hidden" class="hidden">
         <ul class="inline-list">
@@ -47,28 +49,28 @@
     {% endunless %}
     
     {% if collection.description.size > 0 %}
-      <span class="description">{{ collection.description }}</span>
+      <ul class="inline-list description"><li>{{ collection.description }}</li></ul>
     {% endif %}
     
     {% include '_navigation.collections' %}
     
     {% if collection.tags.size > 0 %}
-      <span class="tags">
+      <ul class="inline-list tags">
         {% for tag in collection.tags limit : settings.coll_tags_count %}
-          {{ tag | highlight_active_tag | link_to_tag: tag }}        
+          <li>{{ tag | highlight_active_tag | link_to_tag: tag }}</li>        
         {% endfor %}      
         
         {% for tag in collection.tags offset : settings.coll_tags_count | plus : 1 %}
           {% if forloop.first %}
-            <span class="show-more link">&rarr;</span>
+            <li class="show-more link">&rarr;</li>
             <span class="hidden">          
           {% endif %}
-          {{ tag | highlight_active_tag | link_to_tag: tag }}   
+          <li>{{ tag | highlight_active_tag | link_to_tag: tag }}</li>   
           {% if forloop.last %}
             </span>
           {% endif %}     
         {% endfor %} 
-      </span>
+      </ul>
     {% endif %}     
   </div> <!-- navigation -->
   

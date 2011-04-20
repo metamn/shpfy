@@ -1,68 +1,72 @@
 {% if collections.size > 0 %}
-  <span class="collections">
+  <ul class="inline-list collections">
     {% for i in collections limit : settings.coll_coll_count %}
       {% if collection.url == i.url %} 
         {% assign klass = "collection active" %}
       {% else %}
         {% assign klass = "collection" %}
       {% endif %}
-      <a href="{{ i.url }}" title="{{ i.title | upcase }}" class="{% if forloop.last %} last {% endif %} {{ klass }}">{{ i.title }}</a>
+      <li>
+        <a href="{{ i.url }}" title="{{ i.title | upcase }}" class="{% if forloop.last %} last {% endif %} {{ klass }}">{{ i.title }}</a></li>
     {% endfor %}
     
     {% for i in collections offset : settings.coll_coll_count | plus : 1 %}
-    {% if forloop.first %}
-      <span class="show-more link">&rarr;</span>
-      <span class="hidden">          
-    {% endif %}
+      {% if forloop.first %}
+        <li><span class="show-more link">&rarr;</span></li>
+        <span class="hidden">          
+      {% endif %}
     
-    {% if collection.url == i.url %} 
-      {% assign klass = "collection active" %}
-    {% else %}
-      {% assign klass = "collection" %}
-    {% endif %}
-    <a href="{{ i.url }}" title="{{ i.title | upcase }}" class="{% if forloop.last %} last {% endif %} {{ klass }}">{{ i.title }}</a>
+      {% if collection.url == i.url %} 
+        {% assign klass = "collection active" %}
+      {% else %}
+        {% assign klass = "collection" %}
+      {% endif %}
+      <li>
+        <a href="{{ i.url }}" title="{{ i.title | upcase }}" class="{% if forloop.last %} last {% endif %} {{ klass }}">{{ i.title }}</a></li>
      
-    {% if forloop.last %}
-      </span>
-    {% endif %}     
+      {% if forloop.last %}
+        </span>
+      {% endif %}     
   {% endfor %} 
-  </span>
+  </ul>
 {% endif %}    
 
 {% if shop.types.size > 0 %}
-<span class="types jquery-active"> 
+<ul class="inline-list types jquery-active"> 
 	{% for product_type in shop.types limit : settings.coll_types_count %}
-	  {{ product_type | link_to_type  }}
+	  <li>{{ product_type | link_to_type  }}</li>
   {% endfor %}
   
   {% for product_type in shop.types offset : settings.coll_types_count | plus : 1 %}
     {% if forloop.first %}
-      <span class="show-more link">&rarr;</span>
+      <li class="show-more link">&rarr;</li>
       <span class="hidden">          
     {% endif %}
-    {{ product_type | link_to_type  }}   
+    
+    <li>{{ product_type | link_to_type  }}</li>   
+    
     {% if forloop.last %}
       </span>
     {% endif %}     
   {% endfor %} 
-</span>    
+</ul>    
 {% endif %}
 
 {% if shop.vendors.size > 0 %}
-<span class="vendors jquery-active">
+<ul class="inline-list vendors jquery-active">  
   {% for product_vendor in shop.vendors limit : settings.coll_vendors_count %}
-    {{ product_vendor | link_to_vendor  }}      
-  {% endfor %}      
+    <li>{{ product_vendor | link_to_vendor  }}</li>
+  {% endfor %}
   
   {% for product_vendor in shop.vendors offset : settings.coll_vendors_count | plus : 1 %}
     {% if forloop.first %}
-      <span class="show-more link">&rarr;</span>
+      <li class="show-more link">&rarr;</li>
       <span class="hidden">          
     {% endif %}
-    {{ product_vendor | link_to_vendor  }}    
+    <li>{{ product_vendor | link_to_vendor  }}</li>
     {% if forloop.last %}
       </span>
     {% endif %}     
   {% endfor %} 
-</span>
+</ul>
 {% endif %}

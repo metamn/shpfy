@@ -27,7 +27,6 @@ body {
   background: url(background.jpg) repeat scroll #c8c8c6;
   color: #000;
   font-family: Arial, Helvetica, sans-serif;
-
 }
 h1, h2, h3, h4, h5 {
   font-family: MuseoSans-500;
@@ -35,6 +34,8 @@ h1, h2, h3, h4, h5 {
 h1, h2, h3 {
   text-transform: uppercase;
 }
+
+
 
 a, a:hover {
   text-decoration: none;
@@ -143,6 +144,16 @@ input.text, textarea {
 }
 .section #navigation li.active a {
   color: #666;
+}
+
+
+/* Frontpage Articles Overwriting */
+
+.section {
+  height: 28em;
+} 
+.section #details, .section #articles, .section .scroller {
+  height: 22em;
 }
 
 

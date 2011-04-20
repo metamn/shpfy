@@ -1,7 +1,17 @@
-.col-1, .col-2 {
-  width: 100%;
+.container {
+  width: 90%;
+}
+
+.col-1, .col-2, .collection #article.col-1 {
+  width: 48%;
   float: left;
   overflow: hidden;
+}
+.col-1, .collection #article.col-1 {
+  margin-right: 2%;
+}
+.col-2 {
+  margin-left: 2%;
 }
 
 
@@ -9,16 +19,33 @@
   width: 83%;
 }
 
+
+
 .section #article.thumb #figure, .section #article.thumb #figcaption {
-  margin: 1.25em; /* 3.473% */
-  width: 42%; /* 1 col = 42 + 2*3.473 = 48.946% */
+  margin: 1.25em;
+}  
+.section #article.thumb #figure {
+  width: 37%; 
 } 
+.section #article.thumb #figcaption {
+  width: 43%;
+}
+.section #article.thumb #figure {
+  height: 10em;
+}
+#article.thumb #summary {
+  font-size: small;
+  height: 100%;
+}
+#article.thumb #price {
+  font-size: small;
+}
 
 
 .collection #article.thumb, .search #article.page  {
   width: 45%;
   margin-right: 10%;
-  min-height: 35em;
+  height: 32.5em;
 }
 .collection #article.c-2, .collection #article.c-4, .collection #article.c-6, .collection #article.c-8, .collection #article.c-10 {
   margin-right: 0;
@@ -37,3 +64,9 @@
 .cart #info {
   top: -1.5em;
 }
+
+
+.search input.text {
+  width: 63%;
+}
+

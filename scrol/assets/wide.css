@@ -26,9 +26,8 @@
 } 
 
 .collection #article.thumb, .search #article.page {
-  width: 23.33%;
-  margin-right: 3.33%;
-  min-height: 32.5em;
+  width: 23%;
+  margin-right: 2.66%;
 }
 .collection #article.c-4, .collection #article.c-8 {
   margin-right: 0;
