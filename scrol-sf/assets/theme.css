@@ -1,3 +1,30 @@
+/*
+- SF (San Francisco) color scheme for Scrol Theme for Shopify
+- by Shopledge (www.shopledge.com)
+- created April 2011
+- version 1.0
+
+
+*/
+
+/* Colors:
+
+- background: E8E8D9
+- article: E7E6C7
+  - frontpage vendor link background: dddbaf (-2)
+- text and link color: 6D6850
+    
+- buttons:
+  - normal: 
+    - background: 3E81BA
+    - gradient: 366fa1 (-2)
+    - text: E7E6C7
+    - border: 316694 (-3)
+    - shadow: 5492c6 (+2)
+
+*/
+
+
 
 body {
   background: url(background.jpg) repeat scroll #E8E8D9;
@@ -13,16 +40,49 @@ a, a:hover {
 
 
 
-  
+/* Messages */
 
-
-
-input, textarea, a.button {
-  background: #3E81BA;
-  color: #E7E6C7;
+.notice {
+  background: #D4C97E;
+}
+.success {
+  background: #85C36A;
+}
+.error {
+  background: #C36C6A;
+}
+.notice a, .notice a:hover {
+  text-decoration: underline;
 }
 
 
+
+
+/* Forms */
+
+input, textarea, a.button {
+  -moz-box-shadow: 0 1px 0 0 #5492c6 inset;
+  -webkit-box-shadow: 0 1px 0 0 #5492c6 inset;
+  box-shadow: 0 1px 0 0 #5492c6 inset;
+  background-color: #3E81BA;
+  background: -moz-linear-gradient(center top , #3E81BA 5%, #366fa1 100%) repeat scroll 0 0 #3E81BA;
+  background: -webkit-linear-gradient(top, #3E81BA, #366fa1) repeat scroll 0 0 #3E81BA;
+  border: 1px solid #316694;
+  color: #E7E6C7 !important;
+  text-decoration: none !important;
+  text-shadow: none;
+}
+input.button:hover, a.button:hover {
+  background: -moz-linear-gradient(center top , #366fa1 5%, #3E81BA 100%) repeat scroll 0 0 #366fa1;
+  background: -webkit-linear-gradient(top, #366fa1, #3E81BA) repeat scroll 0 0 #366fa1;
+}
+input.text, textarea {
+  background: none repeat scroll 0 0 #DEDBD3;
+}
+
+
+
+/* Header */
 
 
 #header #line {
@@ -33,6 +93,30 @@ input, textarea, a.button {
 }
 #header #shopping a, #header #shopping a:visited, #header #shopping a:hover {
   color: #E8E8D9;
+}
+
+
+
+/* Frontpage */
+
+.section #title h4 a {
+  background: #EDD467; 
+}
+#vendors.section #article #summary {
+  background: #E7E6C7;
+  color: #6D6850;
+}
+#vendors.section #article li a, #vendors.section #article li a:visited {
+  background: #dddbaf;
+  color: #6D6850;
+  text-decoration: none;
+}
+
+.section #navigation li a {
+  color: #999;
+}
+.section #navigation li.active a {
+  color: #6D6850;
 }
 
 
@@ -56,9 +140,7 @@ input, textarea, a.button {
 
 
 
-.section #title h4 a {
-  background: #EDD467; 
-}
+
 
 
 

@@ -163,15 +163,24 @@ h3 { font-size:2em; padding:1.25em 0; }
 }
 
 
-.section #article.page #details {
+#info.section #article #figcaption {
+  float: left;
+}
+#info.section #article #summary {
+  display: block;
+}
+
+#vendors.section #article.page #details {
   padding: 1.25em;
 }
-.section #article.page #summary {
+#vendors.section #article.page #summary {
   padding: 0;
 }
-
-
-#vendors.section #article.page span a {
+#vendors.section #article li {
+  display: inline-block;
+  margin-bottom: 2.5em;
+}
+#vendors.section #article li a {
   padding: .612em;
 }
 

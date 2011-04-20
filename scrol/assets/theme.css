@@ -1,3 +1,12 @@
+/*
+- Scrol Theme for Shopify
+- by Shopledge (www.shopledge.com)
+- created April 2011
+- version 1.0
+
+
+*/
+
 /* Colors:
 
 - background: CCC9B6
@@ -128,15 +137,16 @@ input.text, textarea {
 .section #title h4 a {
   background: #CCC9B6;
 }
-.section #article.page #summary {
+#vendors.section #article #summary {
   background: #ccc9b6;
   color: #4c4b44;
 }
-#vendors.section #article.page span a, #vendors.section #article.page span a:visited {
+#vendors.section #article li a, #vendors.section #article li a:visited {
   background: #dbdad6;
   color: #4c4b44;
   text-decoration: none;
 }
+
 .section #navigation li a {
   color: #999;
 }

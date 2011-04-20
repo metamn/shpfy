@@ -147,18 +147,19 @@
         <div id="articles">  
           {% for link in linklists.info.links limit : settings.frontpage_info_count %}
             <div id="info{{ forloop.index }}" class="scroller">
-              <div id="article" class="page">
+              <div id="article" class="thumb">
                 <div id="details">
+                  <div id="summary">                
+                    {{ link.object.content | strip_html | truncatewords: 60 }}
+                  </div> 
+                  
                   <div id="figcaption">
                     <div id="title">                                  
                       <a href="{{ link.object.url }}" title="{{ link.object.title | escape }}">
                         <h3>{{ link.object.title | escape }}</h3>
                       </a> 
                     </div>
-                  </div>
-                  <div id="summary">                
-                    {{ link.object.content | strip_html | truncatewords: 60 }}
-                  </div>             
+                  </div>                              
                 </div> <!-- details -->
               </div> <!-- article --> 
             </div>
@@ -268,11 +269,11 @@
                 </div>
               </div>
               <div id="summary">
-                <span>
+                <ul class="inline-list">
                   {% for product_vendor in shop.vendors %}
-                    {{ product_vendor | link_to_vendor  }}      
-                  {% endfor %}
-                </span>      
+                    <li>{{ product_vendor | link_to_vendor  }}</li>      
+                  {% endfor %}                  
+                </ul>      
               </div>
             </div>
           </div>
@@ -288,11 +289,11 @@
                 </div>
               </div>
               <div id="summary">
-                <span>
+                <ul class="inline-list">
                 	{% for product_type in shop.types %}
-                    {{ product_type | link_to_type  }}          
+                    <li>{{ product_type | link_to_type  }}</li>          
                   {% endfor %}
-                </span>
+                </ul>
               </div>
             </div>
           </div>

@@ -1,6 +1,17 @@
 /*
+- Madrid color scheme for Scrol Theme for Shopify
+- by Shopledge (www.shopledge.com)
+- created April 2011
+- version 1.0
+
+
+*/
+
+
+/*
  - background: c8c8c6
   - article: E7E7DF (picked)
+    - frontpage vendors link background: eeeee9 (+1)
   - button: 
     - variants: b7b7b5 (-2, gradient), afafac (-3, border), d9d9d7 (+2, shadow), (e8e8e6, text-shadow)
  - link: 9E515C 
@@ -27,8 +38,6 @@ h1, h2, h3 {
 
 a, a:hover {
   text-decoration: none;
-}
-a {
   color: #111;
 }
 a:hover {
@@ -36,6 +45,26 @@ a:hover {
 }
 
 
+
+/* Messages */
+
+
+.notice {
+  background: #D4C97E;
+}
+.success {
+  background: #85C36A;
+}
+.error {
+  background: #C36C6A;
+}
+.notice a, .notice a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* Forms */
 
 input, textarea, a.button {
   -moz-box-shadow: 0 1px 0 0 #d9d9d7 inset;
@@ -93,19 +122,20 @@ input.text, textarea {
 }
 
 
+
 /* Frontpage */
 
 .section #title h4 a {
   background: none;
   padding: 0;
 }
-.section #article.page #summary {
+#vendors.section #article #summary {
   background: #E7E7DF;
   color: #111;
 }
-#vendors.section #article.page span a, #vendors.section #article.page span a:visited {
-  background: #ebeae8;
-  color: #4c4b44;
+#vendors.section #article li a, #vendors.section #article li a:visited {
+  background: #eeeee9;
+  color: #111;
   text-decoration: none;
 }
 .section #navigation li a {
@@ -128,8 +158,8 @@ input.text, textarea {
   box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;  
 }
 #article #summary {
-  background: #E7E7DF;
-  color: #111;
+  background: #C8C8C6;
+  color: #333;
   text-shadow: none;
 }
 #summary a, #summary a.visited  {
