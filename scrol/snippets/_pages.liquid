@@ -1,0 +1,8 @@
+{% if linklists.info.links != blank %}
+  <h4>More information</h4>
+  <ul>
+  {% for link in linklists.info.links %}
+    <li><a href="{{ link.object.url }}" title="{{ link.object.title }}">{{ link.object.title }}</a></li>
+  {% endfor %}
+  </ul>
+{% endif %}
