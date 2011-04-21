@@ -85,7 +85,7 @@ input.button:hover, a.button:hover {
   background: -webkit-linear-gradient(top, #b7b7b5, #c8c8c6) repeat scroll 0 0 #b7b7b5;
 }
 input.text, textarea {
-  background: none repeat scroll 0 0 #DEDBD3;
+  background: none repeat scroll 0 0 #eeeee9;
 }
 
 #sale input, #sale textarea, #sale a.button, .product .button {
@@ -174,7 +174,7 @@ input.text, textarea {
   box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;  
 }
 #article #summary {
-  background: #e0e0d5;
+  background: #d9d9cb;
   color: #333;
   text-shadow: none;
 }
@@ -229,7 +229,7 @@ input.text, textarea {
 /* Product */
 
 .product #article #thumbs {
-  background: #e7e7df;
+  background: #eeeee9;
 }
 .product #article #thumbs img {
   border: .36em solid #fff;
@@ -241,15 +241,29 @@ input.text, textarea {
 /* Blog Article */
 
 
-.blog #article #meta, .article #article #meta {
-  background: #D7DFC9;
+.blog #article #meta, .article #article #meta, .article #comments {
+  background: #d9d9cb;
 }
 #article #meta a, #article #meta a:visited {
   border-bottom: 1px dotted;
 }
-ul.comments li {
-  background: #D7DFC9;
+.article #article #meta, .article #article #summary {
+  border-bottom: 1px solid #E7E7DF;
 }
+.blog #article #summary {
+  border-top: 1px solid #E7E7DF;
+}
+.article #article #summary {
+  padding-top: 2.5em;
+  padding-bottom: 2.5em;
+}
+.article #article #comments {
+  padding-bottom: 1.25em;
+}
+ul.comments li {
+  background: #eeeee9;
+}
+
 
 
 

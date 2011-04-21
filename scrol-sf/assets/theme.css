@@ -21,6 +21,12 @@
     - text: E7E6C7
     - border: 316694 (-3)
     - shadow: 5492c6 (+2)
+    
+- collections: (from the blue button)
+  - coll: C55A56
+  - types: 83871F
+  - vendors: BA893E
+  - tags: FCFCA0
 
 */
 
@@ -156,19 +162,31 @@ input.text, textarea {
   color: #E8E8D9;
 }
 #navigation.collections .collections {
-  background: #FB8886;
+  background: #C55A56;
 }
 #navigation.collections .types {
-  background: #C5FBC7;
+  background: #83871F;
 }
 #navigation.collections .vendors {
-  background: #C8A689;
+  background: #BA893E;
 }
+#navigation.collections, #navigation.collections a, #navigation.collections a:visited {
+  color: #E8E8D9;
+} 
+
 #navigation.collections .tags {
   background: #EDD467;
 }
-#navigation.collections .tags a {
+#navigation.collections .tags,  #navigation.collections .tags a {
   color: #6D6850;
+}
+
+
+
+/* Collection overwrites */
+
+.collection #navigation ul.inline-list {
+  margin-right: 0;
 }
 
 
@@ -183,6 +201,18 @@ input.text, textarea {
 
 #aside a, #aside a:visited {
   border-bottom: 1px dotted;
+}
+
+
+
+/* Product */
+
+
+.product #article #thumbs {
+  background: #EDD467;
+}
+.product #article #thumbs img {
+  border: .36em solid #fff;
 }
 
 
