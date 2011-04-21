@@ -157,6 +157,7 @@ input.text, textarea {
 }
 
 
+
 /* Articles */
 
 #article, #aside, #vendors #articles, #info #articles {
@@ -180,6 +181,35 @@ input.text, textarea {
 }
 
 
+
+
+/* Collection */
+
+#navigation.collections li, #navigation.collections li a {
+  text-shadow: none;
+}
+#navigation.collections .title, #navigation.collections .description {
+  background: #c8c8c6;
+}
+#navigation.collections .collections {
+  background: #D7DFC9;
+}
+#navigation.collections .types {
+  background: #DFDDC9;
+}
+#navigation.collections .vendors {
+  background: #D5D1BF;
+}
+#navigation.collections .tags {
+  background: #C7D5BF;
+}
+
+
+/* Pagination */
+#paginate span {
+  background: #e0e0d5;
+  border-bottom: 1px solid #c8c8c6;
+}
 
 
 

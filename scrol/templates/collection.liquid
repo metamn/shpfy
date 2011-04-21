@@ -1,3 +1,6 @@
+{% paginate collection.products by 4 %} <!-- we must start with this in all cases -->
+
+
 {% if collection.products.size == 0 %}
 
 <div id="article" class="col col-1">
@@ -73,22 +76,21 @@
       </ul>
     {% endif %}     
   </div> <!-- navigation -->
+    
+  <div id="articles" class="block">
+    {% for product in collection.products %}  
+      <div id="article" class="thumb c-{{ forloop.index }}">
+        {% include '_article.thumb' %}
+      </div> <!-- article --> 
+    {% endfor %}
+  </div>  
+  {% include '_paginate' %}  	    
   
-  {% paginate collection.products by 9 %}
-    <div id="articles" class="block">
-      {% for product in collection.products %}  
-        <div id="article" class="thumb c-{{ forloop.index }}">
-          {% include '_article.thumb' %}
-        </div> <!-- article --> 
-      {% endfor %}
-    </div>  
-    {% include '_paginate' %}  	    
-  {% endpaginate %}
 </div> <!-- details -->
 
 {% endif %}
 
-
+{% endpaginate %}
 
 
 

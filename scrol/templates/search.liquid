@@ -1,3 +1,5 @@
+{% paginate search.results by 8 %}
+
 {% if search.terms == blank %}
   <div id="article" class="col col-1">  
     <div id="details">
@@ -44,41 +46,43 @@
     </div>
   
   {% else %} 
-  
-  
-    {% paginate search.results by 9 %}
-      <div id="articles" class="block">
-        {% for item in search.results %}
-          {% if item.featured_image %}  
-            {% assign product = item %}    
-            <div id="article" class="thumb c-{{ forloop.index }}">
-              {% include '_article.thumb' %}
-            </div> <!-- article --> 
-          {% else %}
-            <div id="article" class="page c-{{ forloop.index }}">
-              <div id="details">
-                <div id="figcaption">
-                  <div id="title">
-                    <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
-                      <h3>{{ item.title | escape }}</h3></a>
-                  </div>
-                </div>
-                <div id="summary" class="text">
-                  {{ item.content | strip_html | truncatewords: 60 }}
+   
+   <div id="details">
+    <div id="navigation" class="collections block">
+      <ul class="inline-list description"><li>Search results for: {{ search.terms }} // {{ search.results.size }} items</li></ul>
+    </div>
+    
+    <div id="articles" class="block">
+      {% for item in search.results %}
+        {% if item.featured_image %}  
+          {% assign product = item %}    
+          <div id="article" class="thumb c-{{ forloop.index }}">
+            {% include '_article.thumb' %}
+          </div> <!-- article --> 
+        {% else %}
+          <div id="article" class="page c-{{ forloop.index }}">
+            <div id="details">
+              <div id="figcaption">
+                <div id="title">
+                  <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
+                    <h3>{{ item.title | escape }}</h3></a>
                 </div>
               </div>
+              <div id="summary" class="text">
+                {{ item.content | strip_html | truncatewords: 60 }}
+              </div>
             </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-    
-      {% include '_paginate' %}    	    
-    {% endpaginate %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>    
+    {% include '_paginate' %}    	          
+  </div>
   
   {% endif %}
   
 {% endif %}
   
 
-
+{% endpaginate %}
 

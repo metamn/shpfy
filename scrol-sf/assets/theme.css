@@ -120,6 +120,8 @@ input.text, textarea {
 }
 
 
+/* Articles */
+
 
 #article, #aside, #vendors #articles, #info #articles {
   background: #E7E6C7;
@@ -140,12 +142,42 @@ input.text, textarea {
 
 
 
+/* Collection */
 
-
-
-
+#navigation.collections li, #navigation.collections li a {
+  text-shadow: none;
+}
+#navigation.collections .title, #navigation.collections .description {
+  background: #6D6850;
+  color: #E8E8D9;
+}
 #navigation.collections .collections {
   background: #FB8886;
 }
+#navigation.collections .types {
+  background: #C5FBC7;
+}
+#navigation.collections .vendors {
+  background: #C8A689;
+}
+#navigation.collections .tags {
+  background: #EDD467;
+}
+#navigation.collections .tags a {
+  color: #6D6850;
+}
+
+
+/* Pagination */
+#paginate span {
+  background: #E7E6C7;
+  border-bottom: 1px solid #6D6850;
+}
+
+
+
+
+
+
 
 
