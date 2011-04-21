@@ -51,9 +51,23 @@
   margin-right: 0;
 }
 
+
+
 .product input.button {
   margin: .612em 0;
 }
+
+/* Typograph: traditional, h1 = 2em */
+.product #summary h1 { font-size:2em; padding:1.25em 0; }
+.product #summary h2 { font-size:1.75em; padding:1.51786em 0; }
+.product #summary h3 { font-size:1.5em; padding:1.45833em 0; }
+.product #summary h1, .product #summary h2, .product #summary h3 { 
+  margin-top: 0; 
+  margin-bottom: 0;
+  padding: .625em 0; 
+}
+
+
 
 
 .article #sidebar {

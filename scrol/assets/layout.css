@@ -274,6 +274,9 @@ h3 { font-size:2em; padding:1.25em 0; }
   width: 10%; /* small image is 6.75em */
   margin-right: .612em;
 }
+#summary ul li {
+  margin-bottom: 0;
+}
 
 
 

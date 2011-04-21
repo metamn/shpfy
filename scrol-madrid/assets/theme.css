@@ -87,7 +87,7 @@ input.text, textarea {
   background: none repeat scroll 0 0 #DEDBD3;
 }
 
-#sale input, #sale textarea, #sale a.button {
+#sale input, #sale textarea, #sale a.button, .product .button {
   -moz-box-shadow: 0 1px 0 0 #af626d inset;
   -webkit-box-shadow: 0 1px 0 0 #af626d inset;
   box-shadow: 0 1px 0 0 #af626d inset;
@@ -99,7 +99,7 @@ input.text, textarea {
   text-decoration: none !important;
   text-shadow: 1px 1px 0 #494946;
 }
-#sale input.button:hover, #sale a.button:hover {
+#sale input.button:hover, #sale a.button:hover, .product .button:hover {
   background: -moz-linear-gradient(center top , #88454f 5%, #9E515C 100%) repeat scroll 0 0 #88454f;
   background: -webkit-linear-gradient(top, #88454f, #9E515C) repeat scroll 0 0 #88454f;
 }
@@ -147,13 +147,16 @@ input.text, textarea {
 }
 
 
-/* Frontpage Articles Overwriting */
+/* Frontpage, Collections Articles Overwriting */
 
 .section {
   height: 28em;
 } 
 .section #details, .section #articles, .section .scroller {
   height: 22em;
+}
+.collection #article.thumb, .search #article.page {
+  height: 38.5em;
 }
 
 
@@ -214,6 +217,20 @@ input.text, textarea {
 
 
 
+/* Sidebar */
+
+#aside a, #aside a:visited {
+  border-bottom: 1px dotted;
+}
+
+
+/* Product */
+.product #article #thumbs {
+  background: #dbdad6;
+}
+.product #article #thumbs img {
+  border: .36em solid #dbdad6;
+}
 
 
 

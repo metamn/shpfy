@@ -137,7 +137,9 @@ input.text, textarea {
   color: #E8E8D9;
 }
 #summary a, #summary a.visited  {
-  text-decoration: underline;  
+  text-decoration: underline; 
+  color: #E8E8D9;
+  text-shadow: none;
 }
 
 
@@ -175,6 +177,11 @@ input.text, textarea {
 }
 
 
+/* Sidebar */
+
+#aside a, #aside a:visited {
+  border-bottom: 1px dotted;
+}
 
 
 
