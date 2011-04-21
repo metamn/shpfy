@@ -54,10 +54,11 @@ a:hover {
   background: #D4C97E;
 }
 .success {
-  background: #85C36A;
+  background: #C7D5BF;
 }
 .error {
-  background: #C36C6A;
+  background: #9E515C;
+  color: #c8c8c6;
 }
 .notice a, .notice a:hover {
   text-decoration: underline;
@@ -173,7 +174,7 @@ input.text, textarea {
   box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;  
 }
 #article #summary {
-  background: #C8C8C6;
+  background: #e0e0d5;
   color: #333;
   text-shadow: none;
 }
@@ -224,17 +225,31 @@ input.text, textarea {
 }
 
 
+
 /* Product */
+
 .product #article #thumbs {
-  background: #dbdad6;
+  background: #e7e7df;
 }
 .product #article #thumbs img {
-  border: .36em solid #dbdad6;
+  border: .36em solid #fff;
 }
 
 
 
 
+/* Blog Article */
+
+
+.blog #article #meta, .article #article #meta {
+  background: #D7DFC9;
+}
+#article #meta a, #article #meta a:visited {
+  border-bottom: 1px dotted;
+}
+ul.comments li {
+  background: #D7DFC9;
+}
 
 
 

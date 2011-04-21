@@ -63,9 +63,11 @@ a:hover {
 }
 .success {
   background: #85C36A;
+  text-shadow: none;
 }
 .error {
   background: #C36C6A;
+  text-shadow: none;
 }
 .notice a, .notice a:hover {
   text-decoration: underline;
@@ -238,7 +240,7 @@ input.text, textarea {
 /* Blog Article */
 
 
-.blog #article #meta {
+.blog #article #meta, .article #article #meta {
   background: #dbdad6;
 }
 #article #meta a, #article #meta a:visited {

@@ -4,8 +4,9 @@
 {% if settings.locale == "enabled" %}
   {{ settings.locale_article_posts }}
 {% else %}
-  Latest blog posts
+  Latest blog posts on
 {% endif %}
+<a href="{{ shop.url}}/{{ blog.url }}">{{ blog.title }}</a>
 </h4>
 <ul class="hoverable">
   {% for article in blog.articles limt: 3%}
@@ -30,7 +31,7 @@
   {% for article in blog.articles limt: 3%}		   
     {% for comment in article.comments limit: 2 %}
       <li>
-        <a href="{{ comment.url }}" title="Comment on {{ article.title }}">
+        <a href="{{ article.url }}#comments" title="Comment on {{ article.title }}">
           "{{ comment.content | strip_html | truncatewords: 20 }}"
         </a>
         <span class="date">by {{ comment.author }}</span>

@@ -226,13 +226,13 @@ h3 { font-size:2em; padding:1.25em 0; }
 #navigation.collections {
   margin: 0 0 5em;
 }
-.collection #navigation ul.inline-list {
+#navigation.collections ul.inline-list {
   display: inline-block;
   float: left;
   margin-right: 0;
   padding: .36em;
 }
-.collection #navigation ul.inline-list li {
+#navigation.collections ul.inline-list li {
   display: inline-block;
   margin: .36em .612em .36em 0;
 }
@@ -274,7 +274,7 @@ h3 { font-size:2em; padding:1.25em 0; }
   width: 10%; /* small image is 6.75em */
   margin-right: .612em;
 }
-#summary ul li {
+#summary ul li, #summary ol li {
   margin-bottom: 0;
 }
 
@@ -310,14 +310,10 @@ li.facebook {
 .article #article #comments, #article #search, #article #meta {
   padding: 0 1.25em;
 }
-
 #article.blog #figcaption #title {
   margin: 0 1.25em;
 }
-.article #article #summary {
-  margin: 1.25em 0;
-}
-.blog #article #meta {
+.blog #article #meta, .article #article #meta {
   padding: 1.25em;  
 }
 

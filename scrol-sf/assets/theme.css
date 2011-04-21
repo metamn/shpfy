@@ -46,10 +46,11 @@ a, a:hover {
   background: #D4C97E;
 }
 .success {
-  background: #85C36A;
+  background: #B4BA3E;
 }
 .error {
-  background: #C36C6A;
+  background: #C55A56;
+  color: #E8E8D9;
 }
 .notice a, .notice a:hover {
   text-decoration: underline;
@@ -78,6 +79,7 @@ input.button:hover, a.button:hover {
 }
 input.text, textarea {
   background: none repeat scroll 0 0 #DEDBD3;
+  color: #6D6850 !important;
 }
 
 
@@ -185,6 +187,18 @@ input.text, textarea {
 
 
 
+/* Blog Article */
+
+
+.blog #article #meta, .article #article #meta {
+  background: #EDD467;
+}
+#article #meta a, #article #meta a:visited {
+  border-bottom: 1px dotted;
+}
+ul.comments li {
+  background: #EDD467;
+}
 
 
 
