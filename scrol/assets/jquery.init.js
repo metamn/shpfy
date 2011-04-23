@@ -3,6 +3,14 @@ jQuery.noConflict();
 // Use jQuery via jQuery(...)
 jQuery(document).ready(function(){
   
+  
+  // Show collections, tags on mobile
+  jQuery("#show-collections-link .link").click(function() {
+    jQuery(this).hide('slow');
+    jQuery("#show-collections").show("slow");
+  });
+  
+  
   // Making the selected product type/vendor active at Collections page
   var urlParams = {};
   (function () {
@@ -55,12 +63,9 @@ jQuery(document).ready(function(){
     }
   );
   
-  // Mobile navigation at frontpage
-  jQuery("#navigation.mobile").localScroll();
-  
-  
+    
   // Marking the scroller bullet / list item active at Frontpage
-  jQuery("#navigation.desktop a").click(function() {
+  jQuery(".section #navigation a").click(function() {
     jQuery(this).parent().parent().children().removeClass("active");
     jQuery(this).parent().addClass("active");
   });

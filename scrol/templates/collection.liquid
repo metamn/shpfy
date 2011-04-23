@@ -50,31 +50,36 @@
       </script>
       <!-- end hack -->
     {% endunless %}
-    
+        
     {% if collection.description.size > 0 %}
       <ul class="inline-list description"><li>{{ collection.description }}</li></ul>
     {% endif %}
     
-    {% include '_navigation.collections' %}
-    
-    {% if collection.tags.size > 0 %}
-      <ul class="inline-list tags">
-        {% for tag in collection.tags limit : settings.coll_tags_count %}
-          <li>{{ tag | highlight_active_tag | link_to_tag: tag }}</li>        
-        {% endfor %}      
-        
-        {% for tag in collection.tags offset : settings.coll_tags_count | plus : 1 %}
-          {% if forloop.first %}
-            <li class="show-more link">&rarr;</li>
-            <span class="hidden">          
-          {% endif %}
-          <li>{{ tag | highlight_active_tag | link_to_tag: tag }}</li>   
-          {% if forloop.last %}
-            </span>
-          {% endif %}     
-        {% endfor %} 
-      </ul>
-    {% endif %}     
+    <div id="show-collections-link" class="mobile block">
+      <span class="link">Show collections, tags and more &rarr;</span>
+    </div>
+    <div id="show-collections" class="desktop">    
+      {% include '_navigation.collections' %}
+      
+      {% if collection.tags.size > 0 %}
+        <ul class="inline-list tags">
+          {% for tag in collection.tags limit : settings.coll_tags_count %}
+            <li>{{ tag | highlight_active_tag | link_to_tag: tag }}</li>        
+          {% endfor %}      
+          
+          {% for tag in collection.tags offset : settings.coll_tags_count | plus : 1 %}
+            {% if forloop.first %}
+              <li class="show-more link">&rarr;</li>
+              <span class="hidden">          
+            {% endif %}
+            <li>{{ tag | highlight_active_tag | link_to_tag: tag }}</li>   
+            {% if forloop.last %}
+              </span>
+            {% endif %}     
+          {% endfor %} 
+        </ul>
+      {% endif %}     
+    </div>
   </div> <!-- navigation -->
     
   <div id="articles" class="block">
