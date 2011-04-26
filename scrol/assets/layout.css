@@ -436,7 +436,7 @@ ul.comments li {
   margin-right: .612em;
 }
 
-.search ul.search {
+ul.search {
   list-style-type: none;
   margin-left: 0;
   margin-bottom: 1.25em;
