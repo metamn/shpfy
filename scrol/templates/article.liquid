@@ -1,21 +1,21 @@
 <div id="article" class="col col-1">
-  <div id="details"> 
-    <div id="title">     
+  <div id="details" class="block"> 
+    <div id="title" class="block">     
       <h1>
         <a href="{{ article.url }}" title="Permanent link to {{ article.title | escape }}">{{ article.title | escape }}</a>
       </h1> 
     </div>
     
-    <div id="meta">
+    <div id="meta" class="block">
       {% include '_blogmeta' %}
     </div>
     
-    <div id="summary">    
+    <div id="summary" class="block">    
       {{ article.content }}
     </div>
       
     {% if blog.comments_enabled? %}
-    <div id="comments">
+    <div id="comments" class="block">
       <h2>
       {% if settings.locale == "enabled" %}
         {{ settings.locale_comments }}

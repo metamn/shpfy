@@ -2,17 +2,17 @@
 
 {% if search.terms == blank %}
   <div id="article" class="col col-1">  
-    <div id="details">
+    <div id="details" class="block">
       {% if settings.locale == "enabled" %}
         {% assign s = settings.locale_search %}
       {% else %}
         {% assign s = "Search" %}
       {% endif %} 
-      <div id="title">
+      <div id="title" class="block">
         <h1>{{ s }}</h1>
       </div>
           
-      <div id="search">    
+      <div id="search" class="block">    
         <ul class="search block">        
           <li>
             <form action="/search" method="get">
@@ -69,14 +69,14 @@
           </div> <!-- article --> 
         {% else %}
           <div id="article" class="page c-{{ forloop.index }}">
-            <div id="details">
-              <div id="figcaption">
+            <div id="details" class="block">
+              <div id="figcaption" class="block">
                 <div id="title">
                   <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
                     <h3>{{ item.title | escape }}</h3></a>
                 </div>
               </div>
-              <div id="summary" class="text">
+              <div id="summary" class="block text">
                 {{ item.content | strip_html | truncatewords: 60 }}
               </div>
             </div>
