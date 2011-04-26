@@ -2,7 +2,7 @@
   display: block;
 }
 .desktop {
-  display: none;
+  display: none !important;
 }
 
 
@@ -118,6 +118,22 @@ h3 { font-size:1.5em; padding:1.45833em 0; }
   margin-bottom: 0;
 }
 
+
+#info.section #article #details,
+#article.page #details,
+#content.page #article #details {
+  padding: 0;
+}
+#info.section #article #title,
+#article.page #title,
+#content.page #article #title {
+  padding: 1.25em;
+}
+#info.section #article #title h3,
+#article.page #title h3,
+#content.page #article #title h3 {
+  padding: 0;
+}
 #article #summary {
   width: auto;
   height: auto;
@@ -138,7 +154,7 @@ h3 { font-size:1.5em; padding:1.45833em 0; }
   padding: .612em 0;
 }
 
-.collection #article.thumb, .search #article.page {
+.collection #article.thumb {
   height: 30em;
   width: 100%;
 }
@@ -149,6 +165,9 @@ h3 { font-size:1.5em; padding:1.45833em 0; }
   padding: 0;
 }
 
+.search #article.page {
+  height: 26em;
+}
 .search #article.page #figcaption #title {
   margin: 0;
 }
@@ -173,6 +192,9 @@ h3 { font-size:1.5em; padding:1.45833em 0; }
 
 #aside {
   margin: 1.25em 0;
+}
+#aside ul {
+  margin-left: .625em;
 }
 
 

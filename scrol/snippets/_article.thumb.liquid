@@ -20,7 +20,7 @@
       <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>                
   </div>
   
-  <div id="summary">                
+  <div id="summary" class="desktop">                
       {{ product.description | strip_html | truncatewords: 50 }}
   </div>                             
 </div> <!-- details -->
