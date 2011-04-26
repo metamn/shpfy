@@ -45,7 +45,12 @@
     </div>  
 
     <div id="sidebar" class="col col-2">   
-      {% include '_navigation.collections' %}
+      <div id="aside">      
+      {% include '_pages' %}
+      </div>
+      <div id="navigation" class="collections block">    
+        {% include '_navigation.collections' %}    
+      </div>
     </div>
   
   {% else %} 

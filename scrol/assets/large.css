@@ -36,9 +36,7 @@
 }
 
 
-.product select, #article #search input {
-  margin-right: .612em;
-}
+
 .product select {
   width: 76%;
 }

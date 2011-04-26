@@ -215,10 +215,6 @@ h3 { font-size:2em; padding:1.25em 0; }
 .collection #article.thumb #figure {
   cursor: pointer;
 }
-.collection #sidebar #navigation.collections {
-  margin-top: 0;
-}
-
 
 
 /* Collections navigation */
@@ -296,8 +292,11 @@ li.facebook {
   top: .13em;
 }
 
-#sidebar #navigation.collections > span {
+#sidebar #navigation.collections ul.inline-list {
   margin-right: 0;
+}
+.collection #sidebar #navigation.collections {
+  margin-top: 0;
 }
 
 
@@ -433,7 +432,9 @@ ul.comments li {
 #article #search input {
   float: left;
 }
-
+.product select, #article #search input {
+  margin-right: .612em;
+}
 
 .search ul.search {
   list-style-type: none;

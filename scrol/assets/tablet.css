@@ -52,6 +52,10 @@
 }
 
 
+#sidebar #navigation.collections ul.inline-list {
+  width: 100%;
+}
+
 
 .product input.button {
   margin: .612em 0;
