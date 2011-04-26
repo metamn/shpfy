@@ -9,9 +9,10 @@
 .container {
   margin: 0 .625em;
   width: auto;
+  float: left;
 }
 .col-1, .col-2 {
-  width: 100%;
+  width: auto;
   float: left;
   overflow: hidden;
 }
@@ -27,12 +28,13 @@ h3 { font-size:1.5em; padding:1.45833em 0; }
 
 
 #header #nav, #header #logo, #header #shopping {
-  width: 100%;
+  width: auto;
   float: left;
   text-align: left;
 }
 #header #logo {
   padding: 1.25em 0;
+  width: 100%;
 }
 #header #logo h2 {
   padding: 0;
@@ -54,6 +56,9 @@ h3 { font-size:1.5em; padding:1.45833em 0; }
   display: inline-block;
   float: left;
 }
+#header #line {
+  margin-top: .36em;
+}
 
 
 
@@ -62,47 +67,42 @@ h3 { font-size:1.5em; padding:1.45833em 0; }
   margin-bottom: 2.5em;
 }
 
-.section #title h4, .section #navigation ul {
+.section #title h4 {
   margin-left: 0;
 }
 .section #title h4 a {
   padding: .612em;
 }
 
-.section #navigation ul {
+.section #navigation ul li {
   font-size: 150%;
 }
 
-.section #details, .section #articles {
+.section #details, .section #articles, .section .scroller {
   height: 30em;
-  overflow: hidden;
-}
-.section .scroller {
-  position: relative;
-	float: left;
-	padding: 0;
-	width: 100%;
-	height: 30em;
 }
 
 #article #figcaption, #article #figure, #article #summary {
-  width: 100%;
+  width: auto;
   float: left;
 }
+.section #article.thumb {
+  width: auto;
+}
 #article #details, #article.thumb #details {
-  padding: 1.25em;
   text-align: left;
 }
 .section #article.thumb #figcaption, 
 .collection #article.thumb #figcaption,
 #article #figcaption  {
   text-align: left;
-  margin-bottom: 1.25em;
-  width: 100%;
+  margin-bottom: 0;
+  width: auto;
+  padding: 1.25em;
+  float: left;
 }
-#article.thumb #figure {
-  margin: 0;
-}
+
+
 
 #info.section, #vendors.section {
   height: 30em;
@@ -117,35 +117,23 @@ h3 { font-size:1.5em; padding:1.45833em 0; }
 #info.section #article #figcaption {
   margin-bottom: 0;
 }
-
-
-#info.section #article #details,
-#article.page #details,
-#content.page #article #details {
-  padding: 0;
-}
-#info.section #article #title,
-#article.page #title,
-#content.page #article #title {
-  padding: 1.25em;
-}
-#info.section #article #title h3,
-#article.page #title h3,
-#content.page #article #title h3 {
-  padding: 0;
-}
-#article #summary {
+#info.section #article.thumb #summary {
+  position: relative;
+  left: 0;
   width: auto;
   height: auto;
 }
-#info.section #article #summary {
-  position: relative;
-  left: 0;
-  display: block;
+#info.section #article #figcaption #title h3,
+#vendors.section #article #figcaption #title h3 {
+  padding-bottom: 0;
 }
 
-
-
+#vendors.section #article.page #details {
+  padding: 0;
+}
+#vendors.section #article.page #summary {
+  padding: 1.25em;
+}
 
 .collection #navigation.collections {
   margin-bottom: 1.25em;
@@ -156,7 +144,7 @@ h3 { font-size:1.5em; padding:1.45833em 0; }
 
 .collection #article.thumb {
   height: 30em;
-  width: 100%;
+  width: auto;
 }
 .collection #article.thumb #figure {
   text-align: center;
