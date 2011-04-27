@@ -93,4 +93,34 @@
 }
 
 
+
+
+.collection #navigation.collections {
+  margin-bottom: 1.25em;
+}
+.collection #show-collections-link {
+  padding: .612em 0;
+}
+
+.collection #article.thumb {
+  height: 32em;
+  width: auto;
+}
+.collection #article.thumb #details {
+  text-align: left;
+}
+.collection #article.thumb #figcaption {
+  padding: 1.25em;
+}
+.collection #article.thumb #figure {
+  text-align: center;
+}
+
+.search #article.page {
+  height: 26em;
+  width: auto;
+}
+.search #article.page #summary {
+  width: auto;
+}
   
