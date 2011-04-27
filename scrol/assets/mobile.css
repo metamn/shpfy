@@ -5,26 +5,10 @@
   display: none;
 }
 
-
 .container {
   margin: 0 .625em;
   width: auto;
-  float: left;
 }
-.col-1, .col-2 {
-  width: auto;
-  float: left;
-  overflow: hidden;
-}
-
-
-
-/* Typograph: traditional, h1 = 2em */
-h1, h2, h3 { margin-top:0; margin-bottom:0; }
-h1 { font-size:2em; padding:1.25em 0; }
-h2 { font-size:1.75em; padding:1.51786em 0; }
-h3 { font-size:1.5em; padding:1.45833em 0; }
-
 
 
 #header #nav, #header #logo, #header #shopping {
@@ -44,7 +28,6 @@ h3 { font-size:1.5em; padding:1.45833em 0; }
   border-radius: 0;
   width: auto;
   height: auto;
-  text-align: right;
   margin-top: 0;
   padding: .612em;
 }
@@ -62,139 +45,52 @@ h3 { font-size:1.5em; padding:1.45833em 0; }
 
 
 
-.section {
-  height: 36em;
-  margin-bottom: 2.5em;
-}
-
 .section #title h4 {
   margin-left: 0;
 }
 .section #title h4 a {
   padding: .612em;
 }
-
 .section #navigation ul li {
   font-size: 150%;
 }
 
+.section {
+  height: 42em;
+  margin-bottom: 2.5em;
+}
 .section #details, .section #articles, .section .scroller {
-  height: 30em;
+  height: 36em;
 }
-
-#article #figcaption, #article #figure, #article #summary {
-  width: auto;
-  float: left;
-}
-.section #article.thumb {
-  width: auto;
-}
-#article #details, #article.thumb #details {
-  text-align: left;
-}
-.section #article.thumb #figcaption, 
-.collection #article.thumb #figcaption,
-#article #figcaption  {
-  text-align: left;
-  margin-bottom: 0;
-  width: auto;
-  padding: 1.25em;
-  float: left;
-}
-
-
-
 #info.section, #vendors.section {
   height: 30em;
 }
-#info.section #details, #info.section #articles,
-#vendors.section #details, #vendors.section #articles {
-  height: 24em;
-}
+#info.section #details, #vendors.section #details,
+#info.section #articles, #vendors.section #articles,
 #info.section .scroller, #vendors.section .scroller {
   height: 24em;
 }
-#info.section #article #figcaption {
-  margin-bottom: 0;
+
+
+.section #article.thumb #figcaption {
+  padding: 1.25em;
+  float: left;
+}
+#info.section #article #figcaption #title h3 {
+  padding: 0;
+}
+
+
+.section #article.thumb #summary {
+  display: none !important; /* to override the jquery event on img hover */
 }
 #info.section #article.thumb #summary {
+  display: block !important;
   position: relative;
   left: 0;
   width: auto;
   height: auto;
 }
-#info.section #article #figcaption #title h3,
-#vendors.section #article #figcaption #title h3 {
-  padding-bottom: 0;
-}
-
-#vendors.section #article.page #details {
-  padding: 0;
-}
-#vendors.section #article.page #summary {
-  padding: 1.25em;
-}
 
 
-
-
-
-.collection #navigation.collections {
-  margin-bottom: 1.25em;
-}
-.collection #show-collections-link {
-  padding: .612em 0;
-}
-
-.collection #article.thumb {
-  height: 30em;
-  width: auto;
-}
-.collection #article.thumb #figure {
-  text-align: center;
-}
-
-
-.search #article.page {
-  height: 26em;
-}
-.search #article.page #figcaption #title {
-  margin: 0;
-}
-.search #article.page #figcaption #title h3 {
-  padding: 0;
-} 
-
-
-
-
-#content.page #details #title {
-  padding: 1.25em;
-  margin: 0;
-}
-#content.page #details #title h1 {
-  padding: 0;
-}
-
-
-
-#aside {
-  margin: 1.25em 0;
-}
-#aside ul {
-  margin-left: .625em;
-}
-
-
-
-
-#article.blog #figcaption #title {
-  margin: 0;
-}
-#article.blog #figcaption #title h3 {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-
-
+  

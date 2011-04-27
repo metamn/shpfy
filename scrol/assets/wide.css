@@ -57,6 +57,13 @@
   margin-left: 0;
 }
 
+.comment-form input.text {
+  width: 80%;
+} 
+.comment-form textarea {
+  width: 81%;
+}
+
 
 .cart #info {
   top: -1.5em;

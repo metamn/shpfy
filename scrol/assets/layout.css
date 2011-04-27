@@ -344,7 +344,9 @@ ul.comments li {
 
 */
 
-
+.cart .products #details #title {
+  margin: 0;
+}
 
 .cart .products #article {
   margin-bottom: 2.5em;
@@ -443,12 +445,7 @@ ul.search {
 }
 
 
-.comment-form input.text {
-  width: 96%;
-} 
-.comment-form textarea {
-  width: 97%;
-}
+
 
 
 /* Messages */

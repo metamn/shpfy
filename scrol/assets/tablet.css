@@ -84,3 +84,10 @@
   width: 68%;
 }
 
+.comment-form input.text {
+  width: 80%;
+} 
+.comment-form textarea {
+  width: 81%;
+}
+
