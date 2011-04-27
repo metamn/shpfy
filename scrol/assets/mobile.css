@@ -91,6 +91,9 @@
   width: auto;
   height: auto;
 }
+#article #summary {
+  width: auto;
+}
 
 
 
@@ -120,7 +123,42 @@
   height: 26em;
   width: auto;
 }
-.search #article.page #summary {
+
+
+
+#aside {
+  margin: 1.25em 0;
+}
+#aside ul {
+  margin-left: .625em;
+}
+#sidebar #navigation.collections ul.inline-list {
+  width: 100%;
+}
+
+
+.cart .products #article {
+  padding: .625em;
   width: auto;
 }
+.cart .products #image, .cart .products #info, .cart .products #update, .cart .products #remove {
+  width: auto;
+  float: left;
+}
+.cart .products #info {
+  width: 50%;
+  padding-top: 0;
+  padding-left: 4%;
+  min-height: 100px;
+}
+.cart .products #lineprice {
+  display: none;
+}
+
+
+
+
+
+
+
   
