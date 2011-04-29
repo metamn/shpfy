@@ -196,6 +196,20 @@ h1 { font-size:2em; padding:1.25em 0; } /* h1 == h3 */
 
 
 
+body.sf #show-collections-link {
+  color: #6D6850;
+}
+body.sf .collection #article.thumb {
+  height: 36em;
+}
+
+
+body.madrid .section #details, 
+body.madrid .section #articles, 
+body.madrid .section .scroller {
+  height: 39em;
+}
+
 
 
 

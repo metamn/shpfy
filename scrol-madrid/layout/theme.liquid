@@ -51,10 +51,10 @@
 	
 </head>
 
-<body>	
+<body class="madrid">	
 	<div id="header" class="block">
 	  <div class="container">
-	    <div id="nav" class="desktop right alignright block">	
+	    <div id="nav" class="right alignright block">	
 	      <ul id="main-menu" class="inline-list">
 		      {% if linklists.main-menu.links.size > 0 %}				
 			      {% for link in linklists.main-menu.links %}
@@ -83,31 +83,8 @@
 		    {% else %}
 		      <h2><a href="/" title="{{ shop.name }}">{{ shop.name | escape }}</a></h2>
 		    {% endif %}
-		  </div>
-			  
-		  <div id="nav" class="mobile">
-		    <ul id="main-menu" class="inline-list">
-	        {% if linklists.main-menu.links.size > 0 %}				
-		        {% for link in linklists.main-menu.links %}
-		          <li>
-			          <a href="{{ link.url }}" title="{{ link.title }}"{{ link.title }}</a>
-			        </li>
-			      {% endfor %}
-			    {% endif %}
-			    
-			    <li class="search">
-			      {% if settings.locale == "enabled" %}
-	            {% assign s= settings.locale_search %}
-	          {% else %}
-	            {% assign s= "Search" %}
-	          {% endif %}
-				    <a href="/search" title="{{ s }}">
-				      {{ s }}
-		        </a>
-		      </li>
-	      </ul>	
-	    </div>	    
-	    					
+		  </div>			  
+      	    					
       <div id="shopping" class="right alignright">
         <div id="quantity">
           <a href="/cart">  
