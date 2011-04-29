@@ -9,15 +9,20 @@
   margin: 0 .625em;
   width: auto;
 }
+.col {
+  width: auto;
+}
+
 
 
 h1 { font-size:2em; padding:1.25em 0; } /* h1 == h3 */
 
 /* Typograph: traditional, h1 = 2em */
-#summary h1, #summary h2, #summary h3 { margin-top:0; margin-bottom:0; }
-#summary h1 { font-size:2em; padding:1.25em 0; }
-#summary h2 { font-size:1.75em; padding:1.51786em 0; }
-#summary h3 { font-size:1.5em; padding:1.45833em 0; }
+#summary h1, #summary h2, #summary h3,
+.article #comments h1, .article #comments h2, .article #comments h3 { margin-top:0; margin-bottom:0; }
+#summary h1, .article #comments h1 { font-size:2em; padding:1.25em 0; }
+#summary h2, .article #comments h2 { font-size:1.75em; padding:1.51786em 0; }
+#summary h3, .article #comments h3 { font-size:1.5em; padding:1.45833em 0; }
 
 
 
@@ -148,6 +153,12 @@ h1 { font-size:2em; padding:1.25em 0; } /* h1 == h3 */
 }
 
 
+
+#article #meta {
+  width: auto;
+}
+
+
 .cart .products #article {
   padding: .625em;
   width: auto;
@@ -164,6 +175,22 @@ h1 { font-size:2em; padding:1.25em 0; } /* h1 == h3 */
 }
 .cart .products #lineprice {
   display: none;
+}
+.cart a.button {
+  font-size: 12px;
+}
+
+
+
+.search input.text {
+  width: auto;
+}
+
+.comment-form input.text {
+  width: 80%;
+} 
+.comment-form textarea {
+  width: 81%;
 }
 
 

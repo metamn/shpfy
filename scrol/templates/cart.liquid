@@ -61,13 +61,12 @@
               {{ item.line_price | money }}
             </div>
             <div id="remove">
-              <a class="button" href="/cart/change/{{ item.variant.id }}?quantity=0">
               {% if settings.locale == "enabled" %}
-                {{ settings.locale_cart_remove }}
+                {% assign r = settings.locale_cart_remove %}
               {% else %}
-                Remove
+                {% assign r = "Remove"%}
               {% endif %} 
-              </a>
+              <a class="button" href="/cart/change/{{ item.variant.id }}?quantity=0">{{ r }}</a>
             </div>
           </div>
         {% endfor %}

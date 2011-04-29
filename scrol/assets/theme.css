@@ -89,8 +89,9 @@ input, textarea, a.button {
   text-shadow: 1px 1px 0 #bddbef;
 }
 input.button:hover, a.button:hover {
+  background-color: #87bde3;
   background: -moz-linear-gradient(center top , #87bde3 5%, #A2CCE9 100%) repeat scroll 0 0 #87bde3;
-  background: -webkit-linear-gradient(top, #87bde3, #A2CCE9) repeat scroll 0 0 #A2CCE9;
+  background: -webkit-linear-gradient(top, #87bde3, #A2CCE9) repeat scroll 0 0 #87bde3;
 }
 input.text, textarea {
   background: none repeat scroll 0 0 #DEDBD3;
@@ -112,6 +113,7 @@ input.text, textarea {
 #sale input.button:hover, #sale a.button:hover {
   background: -moz-linear-gradient(center top , #dc4f0c 5%, #F25E18 100%) repeat scroll 0 0 #dc4f0c;
   background: -webkit-linear-gradient(top, #dc4f0c, #F25E18) repeat scroll 0 0 #dc4f0c;
+  background-color: #dc4f0c;
 }
 
 
