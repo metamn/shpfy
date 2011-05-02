@@ -80,6 +80,7 @@ input, textarea, a.button {
   text-shadow: none;
 }
 input.button:hover, a.button:hover {
+  background-color: #366fa1;
   background: -moz-linear-gradient(center top , #366fa1 5%, #3E81BA 100%) repeat scroll 0 0 #366fa1;
   background: -webkit-linear-gradient(top, #366fa1, #3E81BA) repeat scroll 0 0 #366fa1;
 }

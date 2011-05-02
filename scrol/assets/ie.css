@@ -1,0 +1,5 @@
+.collection #articles #article {
+  width: 300px;
+  margin-right: 6%;
+  float: left;
+}
