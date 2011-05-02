@@ -21,9 +21,7 @@
 	{% if settings.colors == "enabled" %}
 	  {{ 'theme-custom-colors.css' | asset_url | stylesheet_tag }}	
 	{% endif %}	
-	{% if settings.theme == "enabled" %}
-	  {{ settings.color_scheme | asset_url | stylesheet_tag }}
-	{% endif %}	 
+	
 
 	<!--[if IE]>
 	{{ 'tablet.css' | asset_url | stylesheet_tag }}  
