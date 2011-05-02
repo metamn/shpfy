@@ -41,18 +41,18 @@
         {% for article in blog.articles %}
           <div id="article" class="blog block">
             <div id="details">  
-              <div id="figcaption" class="block">
+              <div id="figcaption">
                 <div id="title">  
                   <h3>
                       <a href="{{ article.url }}" title="{{ article.title }}"> {{ article.title | escape }} </a>
                   </h3>
                 </div>
               </div>
-              <div id="meta" class="block">
+              <div id="meta">
                 {% include '_blogmeta' %}
               </div>
               {% if article.excerpt != blank %}
-                <div id="summary" class="block text">                
+                <div id="summary" class="text">                
                    {{ article.excerpt }}
                 </div>                  
               {% endif %}

@@ -1,13 +1,13 @@
-{% if settings.frontpage_all != "disabled" %}	
+{% if settings.frontpage_latest != "disabled" %}	
 <div id="all" class="section">  
   <div id="title" class="block">
-    <h4><a href="{{ collections.all.url }}" title="View all products in {{ collections.all.title }}">{{ collections.all.title }}</a>
+    <h4><a href="{{ collections.latest.url }}" title="View all products in {{ collections.latest.title }}">{{ collections.latest.title }}</a>
     </h4>
   </div>
   <div id="details" class="block">        
-    {% if collections.all.products.size > 0 %}
+    {% if collections.latest.products.size > 0 %}
     <div id="articles">  
-      {% for product in collections.all.products limit : settings.frontpage_all_count %}
+      {% for product in collections.latest.products limit : settings.frontpage_latest_count %}
         <div id="latest{{ forloop.index }}" class="scroller">
           <div id="article" class="thumb">
             {% include '_article.thumb' %}
@@ -18,13 +18,13 @@
     {% else %}
       <div class="notice">        
         To see here the latest products please <a href="/admin/custom_collections/new">create a new collection</a>
-        and name it's handle to <strong>all</strong> then add products to it.
+        and name it's handle to <strong>latest</strong> then add products to it.
       </div>
     {% endif %}
   </div> 
   <div id="navigation" class="block">  
     <ul class="inline-list">
-    {% for product in collections.all.products limit : settings.frontpage_all_count %}
+    {% for product in collections.latest.products limit : settings.frontpage_latest_count %}
       <li {% if forloop.first %} class="active" {% endif %}><a href="#latest{{ forloop.index }}">&bull;</a></li>
     {% endfor %}
     </ul>

@@ -8,11 +8,11 @@
       {% else %}
         {% assign s = "Search" %}
       {% endif %} 
-      <div id="title" class="block">
+      <div id="title">
         <h1>{{ s }}</h1>
       </div>
           
-      <div id="search" class="block">    
+      <div id="search">    
         <ul class="search block">        
           <li>
             <form action="/search" method="get">
@@ -70,13 +70,13 @@
         {% else %}
           <div id="article" class="page c-{{ forloop.index }}">
             <div id="details" class="block">
-              <div id="figcaption" class="block">
+              <div id="figcaption">
                 <div id="title">
                   <a href="{{ item.url | within: collections.all }}" title="{{ item.title | escape }}">
                     <h3>{{ item.title | escape }}</h3></a>
                 </div>
               </div>
-              <div id="summary" class="block text">
+              <div id="summary" class="text">
                 {{ item.content | strip_html | truncatewords: 60 }}
               </div>
             </div>

@@ -2,17 +2,17 @@
   {% if settings.snippets == "enabled" %}
     {% include 'page_not_found' %}
   {% else %}
-    <div id="title" class="block">
+    <div id="title">
       <h1>Page Not Found</h1>
     </div>
-    <div id="summary" class="block">
+    <div id="summary">
       <p>The page you are looking for is not found.</p>
       <p>Either the page address was wrong, or, the page itself was moved / removed by the site administrator.</p>
       <p>Please try the <strong>search</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p>
     </div> 
   {% endif %} 
   
-  <div id="search" class="block">
+  <div id="search">
     <h3>
     {% if settings.locale == "enabled" %}
       {{ settings.locale_search }}

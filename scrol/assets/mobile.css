@@ -120,6 +120,9 @@ h1 { font-size:2em; padding:1.25em 0; } /* h1 == h3 */
 .collection #show-collections-link {
   padding: .612em 0;
 }
+.collection #navigation.collections #show-collections ul.inline-list {
+  width: 100%;
+}
 
 .collection #article.thumb {
   height: 32em;
