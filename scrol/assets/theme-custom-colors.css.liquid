@@ -1,6 +1,6 @@
 body {
-  background: url(custom_background.jpg) {{ settings.c_b }}
-  color: {{ settings.c_t }}
+  background: url(custom_background.jpg) {{ settings.c_b }};
+  color: {{ settings.c_t }};
 }
 
 
@@ -118,7 +118,7 @@ input.text, textarea {
   {% endif %}
 }
 #header #shopping a, #header #shopping a:visited {
-  color: {{ settings.c_sh }};
+  color: {{ settings.c_sh_t }};
   {% if settings.c_sh_t_sh == blank %}
     text-shadow: none;
   {% else %}
@@ -128,8 +128,8 @@ input.text, textarea {
 
 
 #vendors.section #article #summary, #article, #aside, #vendors #articles, #info #articles {
-  background: {{ settings.c_fp }}
-  color: {{ settings.c_t }}
+  background: {{ settings.c_fp }};
+  color: {{ settings.c_t }};
 }
 .section #title h4 a {
   background: {{ settings.c_fp_t_b }};
@@ -162,27 +162,39 @@ input.text, textarea {
 
 
 #navigation.collections .title, #navigation.collections .description {
-  background: {{ settings.c_c_t }};
+  background: {{ settings.c_c_t }};  
+  color: {{ settings.c_c_t_t }};
+}
+#navigation.collections .title a, #navigation.collections .description a {
   color: {{ settings.c_c_t_t }};
 }
 #navigation.collections .collections {
   background: {{ settings.c_c_c }};
-  color: {{ settings.c_c_c_t }}
+  color: {{ settings.c_c_c_t }};
+}
+#navigation.collections .collections a {
+  color: {{ settings.c_c_c_t }};
 }
 #navigation.collections .types {
   background: {{ settings.c_c_pt }};
-  color: {{ settings.c_c_pt_t }}
+  color: {{ settings.c_c_pt_t }};
+}
+#navigation.collections .types a {
+  color: {{ settings.c_c_pt_t }};
 }
 #navigation.collections .vendors {
   background: {{ settings.c_c_v }};
-  color: {{ settings.c_c_v_t }}
+  color: {{ settings.c_c_v_t }};
+}
+#navigation.collections .vendors a {
+  color: {{ settings.c_c_v_t }};
 }
 #navigation.collections .tags {
   background: {{ settings.c_c_ta }};
-  color: {{ settings.c_c_ta_t }}
+  color: {{ settings.c_c_ta_t }};
 }
 #navigation.collections .tags a {
-  color: {{ settings.c_c_ta_t }}
+  color: {{ settings.c_c_ta_t }};
   {% if settings.c_c_ta_sh == blank %}
     text-shadow: none;
   {% else %}
