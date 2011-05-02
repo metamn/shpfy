@@ -1,5 +1,10 @@
 {% if linklists.info.links != blank %}
-  <h4>More information</h4>
+  {% if settings.locale == "enabled" %}
+    {% assign s = settings.locale_more_info %}
+  {% else %}
+    {% assign s = "More information" %}
+  {% endif %} 
+  <h4>{{ s }}</h4>
   <ul>
   {% for link in linklists.info.links %}
     <li><a href="{{ link.object.url }}" title="{{ link.object.title }}">{{ link.object.title }}</a></li>

@@ -2,15 +2,18 @@
 <div id="article" class="col col-1">
   <div id="details">
     {% if settings.snippets == "enabled" %}
-      {% include 'cart_empty' %}
+      {% assign c1 =  settings.locale_cart_empty %}
+      {% assign c1 =  settings.locale_cart_visit %}
     {% else %}
-      <div id="title">
-        <h1>Your cart is empty.</h1>
-      </div>
-      <div id="summary">
-        <a href="/">Please visit our shop.</a>
-      </div>
-    {% endif %} 
+      {% assign c1 = "Your cart is empty" %}
+      {% assign c2 = "Please visit our shop" %}
+    {% endif %}
+    <div id="title">
+      <h1>{{ c1 }}.</h1>
+    </div>
+    <div id="summary">
+      <a href="/">{{ c2 }}.</a>
+    </div>
   </div>
 </div>  
 

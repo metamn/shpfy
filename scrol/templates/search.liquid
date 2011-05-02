@@ -57,7 +57,14 @@
    
    <div id="details">
     <div id="navigation" class="collections block">
-      <ul class="inline-list description"><li>Search results for: {{ search.terms }} // {{ search.results.size }} items</li></ul>
+      <ul class="inline-list description">
+        {% if settings.locale == "enabled" %}
+          {% assign sr = settings.locale_search_results %}
+        {% else %}
+          {% assign sr = "Search results for" %}
+        {% endif %} 
+        <li>{{ sr }}: {{ search.terms }} // {{ search.results.size }} items</li>
+      </ul>
     </div>
     
     <div id="articles" class="block">

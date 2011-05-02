@@ -1,4 +1,50 @@
 <fieldset>
+	<legend>Logo</legend>
+	<p>
+	Either you are keeping your site without logo, as is by default, or you upload a small logo and replace your shop name.
+  <br/>
+  We recommend to use a small, standard-sized logo of 320×120 pixels. However you can freely set your logo width and height.
+  </p><hr/><br/>
+	<table>
+		<tr>
+			<th><label for="logo">Custom Logo</label></th>
+			<td>
+				<select name="logo" id="logo">
+					<option value="disabled">Disabled</option>
+					<option value="enabled">Enabled</option>
+				</select>				
+			</td>
+		</tr>
+		<tr>
+			<th><label for="logo_file">Logo Image</label></th>
+			<td><input type="file" name="logo.png" id="logo_file" data-max-width="500" data-max-height="300" /></td>			
+		</tr>
+		<tr>
+			<th><label for="logo_width">Logo Image Size (width, in pixels)</label></th>
+			<td><input type="text" name="logo_width" id="logo_width" value="120" /></td>			
+		</tr>
+		<tr>
+			<th><label for="logo_height">Logo Image Size (height, in pixels)</label></th>
+			<td><input type="text" name="logo_height" id="logo_height" value="60" /></td>			
+		</tr>
+		<tr>
+			<th><label for="line">Display dotted line after the logo?</label></th>
+			<td>
+				<select name="line" id="line">
+					<option value="disabled">Disabled</option>
+					<option value="enabled">Enabled</option>
+				</select>				
+			</td>
+		</tr>
+		<tr>
+			<th><label for="line_top">Dotted line margin-top (in em)</label></th>
+			<td><input type="text" name="line_top" id="line_top" value="-1.5" /></td>			
+		</tr>
+		
+	</table>
+</fieldset>
+
+<fieldset>
 	<legend>Frontpage</legend>
 	<table>
 	  <tr>
@@ -83,7 +129,7 @@
 
 
 <fieldset>
-  <legend>Collections</legend>
+  <legend>Collections page</legend>
 	<table>
 	  <tr>
 		  <td>
@@ -131,7 +177,7 @@
 		</tr>	
 		
 		<tr>
-			<th><label for="locale_search_results">Search Results For:</label></th>
+			<th><label for="locale_search_results">Search results for</label></th>
 			<td><input type="text" name="locale_search_results" id="locale_search_results" value="Search Results For" /></td>
 		</tr>
 			
@@ -150,33 +196,63 @@
 		
 		<!-- Frontpage -->
 		<tr>
-			<th><label for="locale_hot">Hot!</label></th>
-			<td><input type="text" name="locale_hot" id="locale_hot" value="Hot!" /></td>
+		  <th>
+		    The frontpage displays latest products, featured products, products on sale etc.
+		    <br/>
+		    If one of these sections are missing an error message is shown.
+		    <br/>
+		    Here you can customize these error messages.
+		  </th>
+		  <td>&nbsp;</td>
+		</tr>
+		<tr>		  
+			<th><label for="locale_fp_latest_1">To see here the latest products please</label></th>
+			<td><input type="text" name="locale_fp_latest_1" id="locale_fp_latest_1" value="To see here the latest products please" /></td>
+		</tr>	
+		<tr>
+		  <th><label for="locale_fp_latest_2">create a new collection</label></th>
+			<td><input type="text" name="locale_fp_latest_2" id="locale_fp_latest_2" value="create a new collection" /></td>
+		</tr>	
+		<tr>
+		  <th><label for="locale_fp_latest_3">and name it's handle to</label></th>
+			<td><input type="text" name="locale_fp_latest_3" id="locale_fp_latest_3" value="and name it's handle to" /></td>
 		</tr>
 		<tr>
-			<th><label for="locale_hot_instore">in the store now</label></th>
-			<td><input type="text" name="locale_hot_instore" id="locale_hot_instore" value="in the store now" /></td>
+		  <th><label for="locale_fp_latest_4">then add products to it</label></th>
+			<td><input type="text" name="locale_fp_latest_4" id="locale_fp_latest_4" value="then add products to it" /></td>
+		</tr>
+		<tr>
+		  <th><label for="locale_fp_latest_5">Please add pages like About Us, Contact Us, Shopping info etc. to the linklist named</label></th>
+			<td><input type="text" name="locale_fp_latest_5" id="locale_fp_latest_5" value="Please add pages like About Us, Contact Us, Shopping info etc. to the linklist named" /></td>
+		</tr>
+		<tr>
+		  <th><label for="locale_fp_latest_6">To see here a list of pages with info about your store please</label></th>
+			<td><input type="text" name="locale_fp_latest_6" id="locale_fp_latest_6" value="To see here a list of pages with info about your store please" /></td>
 		</tr>		
 		<tr>
-			<th><label for="locale_subscribe_email">Subscribe to newsletter</label></th>
-			<td><input type="text" name="locale_subscribe_email" id="locale_subscribe_email" value="To stay updated please subscribe to our newsletter. It's free." /></td>
+		  <th><label for="locale_fp_latest_7">create a new linklist</label></th>
+			<td><input type="text" name="locale_fp_latest_7" id="locale_fp_latest_7" value="create a new linklist" /></td>
 		</tr>
 		<tr>
-			<th><label for="locale_more_products">See all new products</label></th>
-			<td><input type="text" name="locale_more_products" id="locale_more_products" value="See all new products" /></td>
-		</tr>		
+		  <th><label for="locale_fp_latest_8">then add pages to it</label></th>
+			<td><input type="text" name="locale_fp_latest_8" id="locale_fp_latest_8" value="then add pages to it" /></td>
+		</tr>
+		
 		<tr>
-			<th><label for="locale_sales">Sales!</label></th>
-			<td><input type="text" name="locale_sales" id="locale_sales" value="Sales!" /></td>
+			<th><label for="locale_coll">Collections</label></th>
+			<td><input type="text" name="locale_coll" id="locale_coll" value="Collections" /></td>
 		</tr>
 		<tr>
-			<th><label for="locale_subscribe_social">Subscribe to special sales</label></th>
-			<td><input type="text" name="locale_subscribe_social" id="locale_subscribe_social" value="We are running periodicaly special sales on Twitter and Facebook. Follow us to get more!" /></td>
+			<th><label for="locale_vendors">Vendors</label></th>
+			<td><input type="text" name="locale_vendors" id="locale_vendors" value="Vendors" /></td>
 		</tr>
 		<tr>
-			<th><label for="locale_more_sales">See all products on sale</label></th>
-			<td><input type="text" name="locale_more_sales" id="locale_more_sales" value="See all products on sale" /></td>
+			<th><label for="locale_types">Product types</label></th>
+			<td><input type="text" name="locale_types" id="locale_types" value="Product types" /></td>
 		</tr>
+		
+		
+		<!-- Product -->
 		<tr>
 			<th><label for="locale_soldout">Product Sold out</label></th>
 			<td><input type="text" name="locale_soldout" id="locale_soldout" value="SOLD OUT" /></td>
@@ -186,16 +262,12 @@
 			<td><input type="text" name="locale_unavailable" id="locale_unavailable" value="TEMPORARILY UNAVAILABLE" /></td>
 		</tr>
 		<tr>
-			<th><label for="locale_listedin">Product listed in</label></th>
-			<td><input type="text" name="locale_listedin" id="locale_listedin" value="Listed in" /></td>
-		</tr>
+			<th><label for="locale_cart_add">Add to cart</label></th>
+			<td><input type="text" name="locale_cart_add" id="locale_cart_add" value="Add to cart" /></td>
+		</tr>	
 		<tr>
-			<th><label for="locale_taggedwith">Product tagged with</label></th>
-			<td><input type="text" name="locale_taggedwith" id="locale_taggedwith" value="Tagged with" /></td>
-		</tr>
-		<tr>
-			<th><label for="locale_browsemore">Browse more products</label></th>
-			<td><input type="text" name="locale_browsemore" id="locale_browsemore" value="Browse more" /></td>
+			<th><label for="locale_listedin">This product is listed in</label></th>
+			<td><input type="text" name="locale_listedin" id="locale_listedin" value="This product is listed in" /></td>
 		</tr>
 		<tr>
 			<th><label for="locale_seemore">See more products from</label></th>
@@ -205,26 +277,11 @@
 			<th><label for="locale_and">and</label></th>
 			<td><input type="text" name="locale_and" id="locale_and" value="and" /></td>
 		</tr>
-		<tr>
-			<th><label for="locale_share">Share</label></th>
-			<td><input type="text" name="locale_share" id="locale_share" value="Share" /></td>
-		</tr>
 		
-		<!-- Sidebar -->
-		<tr>
-			<th><label for="locale_allcollections">All collections</label></th>
-			<td><input type="text" name="locale_allcollections" id="locale_allcollections" value="All collections" /></td>
-		</tr>
-		<tr>
-			<th><label for="locale_allvendors">All vendors</label></th>
-			<td><input type="text" name="locale_allvendors" id="locale_allvendors" value="All vendors" /></td>
-		</tr>
-		<tr>
-			<th><label for="locale_alltypes">All product types</label></th>
-			<td><input type="text" name="locale_alltypes" id="locale_alltypes" value="All product types" /></td>
-		</tr>
 		
-		<!-- Article -->
+		
+		
+		<!-- Article, Blog -->
 		<tr>
 			<th><label for="locale_by">By</label></th>
 			<td><input type="text" name="locale_by" id="locale_by" value="By" /></td>
@@ -238,8 +295,16 @@
 			<td><input type="text" name="locale_comments" id="locale_comments" value="comments" /></td>
 		</tr>
 		<tr>
+			<th><label for="locale_tagged">Tagged with</label></th>
+			<td><input type="text" name="locale_tagged" id="locale_tagged" value="Tagged with" /></td>
+		</tr>
+		<tr>
 			<th><label for="locale_commentposted">Comment posted</label></th>
-			<td><input type="text" name="locale_commentposted" id="locale_commentposted" value="Successfully posted your comment." /></td>
+			<td><input type="text" name="locale_commentposted" id="locale_commentposted" value="Your comment was posted with success" /></td>
+		</tr>
+		<tr>
+			<th><label for="locale_commentposted_moderated">Comment awaits moderation</label></th>
+			<td><input type="text" name="locale_commentposted_moderated" id="locale_commentposted_moderated" value="In order to be shown here a moderator first must approve it" /></td>
 		</tr>
 		<tr>
 			<th><label for="locale_commenterror">Comment error</label></th>
@@ -269,9 +334,13 @@
 			<th><label for="locale_commentnote">Comment note</label></th>
 			<td><input type="text" name="locale_commentnote" id="locale_commentnote" value="Comments have to be approved before showing up" /></td>
 		</tr>
+		
+		
+		
+		<!-- Sidebar -->		
 		<tr>
-			<th><label for="locale_article_posts">Latest blog posts</label></th>
-			<td><input type="text" name="locale_article_posts" id="locale_article_posts" value="Latest blog posts" /></td>
+			<th><label for="locale_article_posts">Latest blog posts on </label></th>
+			<td><input type="text" name="locale_article_posts" id="locale_article_posts" value="Latest blog posts on " /></td>
 		</tr>
 		<tr>
 			<th><label for="locale_article_comments">Recent comments</label></th>
@@ -282,15 +351,13 @@
 			<td><input type="text" name="locale_article_no_comments" id="locale_article_no_comments" value="No comments were posted yet" /></td>
 		</tr>
 		<tr>
-			<th><label for="locale_article_collections">Product collections</label></th>
-			<td><input type="text" name="locale_article_collections" id="locale_article_collections" value="Product collections" /></td>
+			<th><label for="locale_more_info">More information</label></th>
+			<td><input type="text" name="locale_more_info" id="locale_more_info" value="More information" /></td>
 		</tr>
 		
-		<!-- Cart -->
-		<tr>
-			<th><label for="locale_cart_add">Add to cart</label></th>
-			<td><input type="text" name="locale_cart_add" id="locale_cart_add" value="Add to cart" /></td>
-		</tr>		
+		
+		
+		<!-- Cart -->			
 		<tr>
 			<th><label for="locale_cart_title">Your Shopping Cart</label></th>
 			<td><input type="text" name="locale_cart_title" id="locale_cart_title" value="Your Shopping Cart" /></td>
@@ -311,93 +378,46 @@
 			<th><label for="locale_cart_checkout">Checkout</label></th>
 			<td><input type="text" name="locale_cart_checkout" id="locale_cart_checkout" value="Proceed to checkout" /></td>
 		</tr>
-		
-		
-		<!-- Collections -->
 		<tr>
-			<th><label for="locale_coll_current">Current collection</label></th>
-			<td><input type="text" name="locale_coll_current" id="locale_coll_current" value="Current collection" /></td>
+			<th><label for="locale_cart_empty">Your cart is empty</label></th>
+			<td><input type="text" name="locale_cart_empty" id="locale_cart_empty" value="Your cart is empty" /></td>
 		</tr>
 		<tr>
-			<th><label for="locale_coll_description">Description</label></th>
-			<td><input type="text" name="locale_coll_description" id="locale_coll_description" value="Description" /></td>
-		</tr>
-		<tr>
-			<th><label for="locale_coll_tags">Tags for</label></th>
-			<td><input type="text" name="locale_coll_tags" id="locale_coll_tags" value="Tags for" /></td>
-		</tr>
-		<tr>
-			<th><label for="locale_coll_tags_similar">Similar tags</label></th>
-			<td><input type="text" name="locale_coll_tags_similar" id="locale_coll_tags_similar" value="Similar tags" /></td>
-		</tr>
-		<tr>
-			<th><label for="locale_coll_types">Product types</label></th>
-			<td><input type="text" name="locale_coll_types" id="locale_coll_types" value="Product types" /></td>
-		</tr>
-		<tr>
-			<th><label for="locale_coll_vendors">Product vendors</label></th>
-			<td><input type="text" name="locale_coll_vendors" id="locale_coll_vendors" value="Product vendors" /></td>
+			<th><label for="locale_cart_visit">Please visit our shop</label></th>
+			<td><input type="text" name="locale_cart_visit" id="locale_cart_visit" value="Please visit our shop" /></td>
 		</tr>
 		
 		
-		<!-- Other -->			
-		
+		<!-- Not found -->
 		<tr>
-			<th><label for="locale_read_more">Read more</label></th>
-			<td><input type="text" name="locale_read_more" id="locale_read_more" value="Read more" /></td>
+			<th><label for="locale_nf">Page not found</label></th>
+			<td><input type="text" name="locale_nf" id="locale_nf" value="Page not found" /></td>
+		</tr>
+		<tr>
+			<th><label for="locale_nf_1">The page or product you are looking for is not found.</label></th>
+			<td><input type="text" name="locale_nf_1" id="locale_nf_1" value="The page or product you are looking for is not found" /></td>
+		</tr>
+		<tr>
+			<th><label for="locale_nf_2">Either the page address was wrong ...</label></th>
+			<td><input type="text" name="locale_nf_2" id="locale_nf_2" value="Either the page address was wrong, or, the page itself was moved / removed by the site administrator" /></td>
+		</tr>
+		<tr>
+			<th><label for="locale_nf_3">Please try ...</label></th>
+			<td><input type="text" name="locale_nf_3" id="locale_nf_3" value="Please try the search, browse the menu or the sidebar links" /></td>
 		</tr>
 		
 		
+		<!-- Collections -->		
+		<tr>
+			<th><label for="locale_coll_more">Show collections, tags and more</label></th>
+			<td><input type="text" name="locale_coll_more" id="locale_coll_more" value="Show collections, tags and more" /></td>
+		</tr>
 	</table>
 </fieldset>
 
 
 
-<fieldset>
-	<legend>Logo</legend>
-	<p>
-	Either you are keeping your site without logo, as is by default, or you upload a small logo and replace your shop name.
-  <br/>
-  We recommend to use a small, standard-sized logo of 320×120 pixels. However you can freely set your logo width and height.
-  </p><hr/><br/>
-	<table>
-		<tr>
-			<th><label for="logo">Custom Logo</label></th>
-			<td>
-				<select name="logo" id="logo">
-					<option value="disabled">Disabled</option>
-					<option value="enabled">Enabled</option>
-				</select>				
-			</td>
-		</tr>
-		<tr>
-			<th><label for="logo_file">Logo Image</label></th>
-			<td><input type="file" name="logo.png" id="logo_file" data-max-width="500" data-max-height="300" /></td>			
-		</tr>
-		<tr>
-			<th><label for="logo_width">Logo Image Size (width, in pixels)</label></th>
-			<td><input type="text" name="logo_width" id="logo_width" value="120" /></td>			
-		</tr>
-		<tr>
-			<th><label for="logo_height">Logo Image Size (height, in pixels)</label></th>
-			<td><input type="text" name="logo_height" id="logo_height" value="60" /></td>			
-		</tr>
-		<tr>
-			<th><label for="line">Display dotted line after the logo?</label></th>
-			<td>
-				<select name="line" id="line">
-					<option value="disabled">Disabled</option>
-					<option value="enabled">Enabled</option>
-				</select>				
-			</td>
-		</tr>
-		<tr>
-			<th><label for="line_top">Dotted line margin-top (in em)</label></th>
-			<td><input type="text" name="line_top" id="line_top" value="-1.5" /></td>			
-		</tr>
-		
-	</table>
-</fieldset>
+
 <fieldset>
 	<legend>Color scheme</legend>
 	<p>
@@ -701,62 +721,6 @@
 
 
 
-<fieldset>
-	<legend>Twitter, Facebook, Feed</legend>
-	<table>
-	  <tr>
-			<th><label for="rss_feed">Latest news from your Blog</label></th>
-			<td>
-				<select name="rss_feed" id="rss_feed">
-					<option value="disabled">Disabled</option>
-					<option value="enabled">Enabled</option>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<th><label for="rss_feed_url">Blog RSS address</label></th>
-			<td><input type="text" name="rss_feed_url" id="rss_feed_url" value="http://gadgetoman.myshopify.com/blogs/news.atom" /></td>
-		</tr>
-		<tr>
-			<th><label for="rss_feed_limit">Number of articles to display</label></th>
-			<td><input type="text" name="rss_feed_limit" id="rss_feed_limit" value="5" /></td>
-		</tr>
-		
-	  <tr>
-			<th><label for="twitter_followers">Twitter Followers</label></th>
-			<td>
-				<select name="twitter_followers" id="twitter_followers">
-					<option value="disabled">Disabled</option>
-					<option value="enabled">Enabled</option>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<th><label for="twitter_followers_id">Twitter name</label></th>
-			<td><input type="text" name="twitter_followers_id" id="twitter_followers_id" value="shopledge" /></td>
-		</tr>	
-		<tr>
-			<th><label for="twitter_followers_limit">Number of followers to display</label></th>
-			<td><input type="text" name="twitter_followers_limit" id="twitter_followers_limit" value="50" /></td>
-		</tr>			
-	</table>
-</fieldset>
-
-
-<fieldset>
-	<legend>Mobile Version</legend>
-	<table>
-	  <tr>
-			<th><label for="mobile">Display mobile optimized version on mobile phones</label></th>
-			<td>
-				<select name="mobile" id="mobile">
-					<option value="disabled">Disabled</option>
-					<option value="enabled">Enabled</option>
-				</select>
-			</td>
-		</tr>
-	</table>
-</fieldset>
 
 
 

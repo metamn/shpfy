@@ -59,9 +59,13 @@
           {% if blog.moderated? %}
             <div class="success">
               {% if settings.snippets == "enabled" %}
+                {{ settings.locale_commentposted }}
+                <br/>
+                {{ settings.locale_commentposted_moderated }}
               {% else %}
-                Successfully posted your comment.<br />
-                It will have to be approved by the blog owner first before showing up.
+                Your comment was posted with success.
+                <br/>
+                In order to be shown here a moderator first must approve it.
               {% endif %}              
             </div>
           {% else %}
@@ -69,7 +73,7 @@
             {% if settings.locale == "enabled" %}
               {{ settings.locale_commentposted }}
             {% else %}
-              Successfully posted your comment.  
+              Your comment was posted with success. 
             {% endif %} 
             </div>
           {% endif %}
@@ -135,9 +139,9 @@
           <dt>&nbsp;</dt>
           <dd class="comment-meta">
           {% if settings.locale == "enabled" %}
-            {{ settings.locale_commentnote }}
+            {{ settings.locale_commentnote }}.
           {% else %}
-            Comments have to be approved before showing up
+            Comments have to be approved before showing up.
           {% endif %}
           </dd>      
           {% endif %}

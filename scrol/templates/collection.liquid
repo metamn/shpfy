@@ -56,7 +56,12 @@
     {% endif %}
     
     <div id="show-collections-link" class="mobile block">
-      <span class="link">Show collections, tags and more &rarr;</span>
+      {% if settings.locale == "enabled" %}
+        {% assign sh =  settings.locale_coll_more %}
+      {% else %}
+        {% assign sh = "Show collections, tags and more" %}
+      {% endif %}
+      <span class="link">{{ sh }} &rarr;</span>
     </div>
     <div id="show-collections" class="desktop">    
       {% include '_navigation.collections' %}

@@ -1,16 +1,23 @@
 <div id="details" class="block">
-  {% if settings.snippets == "enabled" %}
-    {% include 'page_not_found' %}
+  {% if settings.locale == "enabled" %}
+    {% assign nf = settings.locale_nf %}
+    {% assign nf1 = settings.locale_nf_1 %}
+    {% assign nf2 = settings.locale_nf_2 %}
+    {% assign nf3 = settings.locale_nf_3 %}
   {% else %}
-    <div id="title">
-      <h1>Page Not Found</h1>
-    </div>
-    <div id="summary">
-      <p>The page you are looking for is not found.</p>
-      <p>Either the page address was wrong, or, the page itself was moved / removed by the site administrator.</p>
-      <p>Please try the <strong>search</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p>
-    </div> 
-  {% endif %} 
+    {% assign nf = "Page not found" %}
+    {% assign nf1 = "The page or product you are looking for is not found" %}
+    {% assign nf2 = "Either the page address was wrong, or, the page itself was moved / removed by the site administrator" %}
+    {% assign nf3 = "Please try the search, browse the menu or the sidebar links" %}
+  {% endif %}
+  <div id="title">
+    <h1>{{ nf }}</h1>
+  </div>
+  <div id="summary">
+    <p>{{ nf1 }}.</p>
+    <p>{{ nf2 }}.</p>
+    <p>{{ nf3 }}.</p>
+  </div> 
   
   <div id="search">
     <h3>

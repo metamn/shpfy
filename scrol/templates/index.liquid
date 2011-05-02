@@ -16,9 +16,20 @@
       {% endfor %}
     </div> <!-- articles -->    
     {% else %}
-      <div class="notice">        
-        To see here the latest products please <a href="/admin/custom_collections/new">create a new collection</a>
-        and name it's handle to <strong>latest</strong> then add products to it.
+      <div class="notice">   
+        {% if settings.locale == "enabled" %}
+          {% assign m1 = settings.locale_fp_latest_1 %}
+          {% assign m2 = settings.locale_fp_latest_2 %}
+          {% assign m3 = settings.locale_fp_latest_3 %}
+          {% assign m4 = settings.locale_fp_latest_4 %}
+        {% else %}
+          {% assign m1 = "To see here the latest products please" %}
+          {% assign m2 = "create a new collection" %}
+          {% assign m3 = "and name it's handle to" %}
+          {% assign m4 = "then add products to it" %}
+        {% endif %}      
+        {{ m1 }} <a href="/admin/custom_collections/new">{{ m2 }}</a>
+        {{ m3 }} <strong>latest</strong> {{ m4 }}.
       </div>
     {% endif %}
   </div> 
@@ -51,9 +62,20 @@
       {% endfor %}
     </div> <!-- articles -->
     {% else %}
-      <div class="notice">        
-        To see here a list of featured products please <a href="/admin/custom_collections/new">create a new collection</a>
-        and name it's handle to <strong>frontpage</strong> then add products to it.
+      <div class="notice">   
+        {% if settings.locale == "enabled" %}
+          {% assign m1 = settings.locale_fp_latest_1 %}
+          {% assign m2 = settings.locale_fp_latest_2 %}
+          {% assign m3 = settings.locale_fp_latest_3 %}
+          {% assign m4 = settings.locale_fp_latest_4 %}
+        {% else %}
+          {% assign m1 = "To see here the latest products please" %}
+          {% assign m2 = "create a new collection" %}
+          {% assign m3 = "and name it's handle to" %}
+          {% assign m4 = "then add products to it" %}
+        {% endif %}      
+        {{ m1 }} <a href="/admin/custom_collections/new">{{ m2 }}</a>
+        {{ m3 }} <strong>frontpage</strong> {{ m4 }}.
       </div>
     {% endif %}
   </div> 
@@ -86,9 +108,20 @@
       {% endfor %}
     </div> <!-- articles -->    
     {% else %}
-      <div class="notice">        
-        To see here a list of products on sale please <a href="/admin/custom_collections/new">create a new collection</a>
-        and name it's handle to <strong>sale</strong> then add products to it.
+      <div class="notice">   
+        {% if settings.locale == "enabled" %}
+          {% assign m1 = settings.locale_fp_latest_1 %}
+          {% assign m2 = settings.locale_fp_latest_2 %}
+          {% assign m3 = settings.locale_fp_latest_3 %}
+          {% assign m4 = settings.locale_fp_latest_4 %}
+        {% else %}
+          {% assign m1 = "To see here the latest products please" %}
+          {% assign m2 = "create a new collection" %}
+          {% assign m3 = "and name it's handle to" %}
+          {% assign m4 = "then add products to it" %}
+        {% endif %}      
+        {{ m1 }} <a href="/admin/custom_collections/new">{{ m2 }}</a>
+        {{ m3 }} <strong>sale</strong> {{ m4 }}.
       </div>
     {% endif %}
   </div> 
@@ -141,9 +174,14 @@
           {% endfor %}
         </div> <!-- articles -->
       {% else %}
-        <div class="notice">        
-          Please add pages like About Us, Contact Us, Shopping Info etc. to this list named info.
-        </div>
+        <div class="notice">   
+          {% if settings.locale == "enabled" %}
+            {% assign m5 = settings.locale_fp_latest_5 %}
+          {% else %}
+            {% assign m5 = "Please add pages like About Us, Contact Us, Shopping info etc. to the linklist named" %}
+          {% endif %}      
+          {{ m5 }} info.
+        </div>        
       {% endif %}
     </div>
     <div id="navigation" class="block">
@@ -154,9 +192,18 @@
       </ul>
     </div>
   {% else %}
-    <div class="notice">        
-      To see here a list of pages with info about your store please <a href="/admin/links/new">create a new linklist</a>
-      and name it's handle to <strong>info</strong> then add pages to it.
+    <div class="notice">    
+      {% if settings.locale == "enabled" %}
+        {% assign m6 = settings.locale_fp_latest_6 %}
+        {% assign m7 = settings.locale_fp_latest_7 %}
+        {% assign m8 = settings.locale_fp_latest_8 %}
+      {% else %}
+        {% assign m6 = "To see here a list of pages with info about your store please" %}
+        {% assign m7 = "create a new linklist" %}
+        {% assign m8 = "the add pages to it" %}
+      {% endif %}   
+      {{ m6 }} <a href="/admin/links/new">{{ m7 }}</a>
+      {{ m3 }} <strong>info</strong> {{ m8 }}.
     </div>
   {% endif %}
 </div> 
@@ -168,7 +215,12 @@
 {% if settings.frontpage_collections != "disabled" %}	
 <div id="collections" class="section"> 
   <div id="title" class="block">
-    <h4>Collections</h4>
+    {% if settings.locale == "enabled" %}
+      {% assign c = settings.locale_coll %}
+    {% else %}
+      {% assign c = "Collections" %}
+    {% endif %}   
+    <h4>{{ c }}</h4>
   </div> 
   <div id="details" class="block">        
     {% if collections.size > 0 %}
@@ -224,7 +276,14 @@
 {% if settings.frontpage_vendors != "disabled" %}	
 <div id="vendors" class="section"> 
   <div id="title" class="block">
-    <h4>Vendors & Types</h4>
+    {% if settings.locale == "enabled" %}
+      {% assign v = settings.locale_vendors %}
+      {% assign t = settings.locale_types %}
+    {% else %}
+      {% assign v = "Vendors" %}
+      {% assign t = "Product types" %}
+    {% endif %} 
+    <h4>{{ v }} & {{ t }}</h4>
   </div> 
   <div id="details" class="block">            
     <div id="articles">  
@@ -234,7 +293,7 @@
             <div id="details">
               <div id="figcaption">
                 <div id="title">
-                  <h3>Vendors</h3>
+                  <h3>{{ v }}</h3>
                 </div>
               </div>
               <div id="summary">
@@ -254,7 +313,7 @@
             <div id="details">
               <div id="figcaption">
                 <div id="title">
-                  <h3>Product Types</h3>
+                  <h3>{{ t }}</h3>
                 </div>
               </div>
               <div id="summary">
