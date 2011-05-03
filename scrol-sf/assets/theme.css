@@ -121,8 +121,10 @@ input.text, textarea {
   text-decoration: none;
 }
 
+
 .section #navigation li a {
   color: #999;
+  font-size: 3em;
 }
 .section #navigation li.active a {
   color: #6D6850;

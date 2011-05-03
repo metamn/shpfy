@@ -43,11 +43,11 @@
 
 
 .collection #article.thumb, .search #article.page  {
-  width: 45%;
-  margin-right: 10%;
+  width: 30%;
+  margin-right: 5%;
   height: 32.5em;
 }
-.collection #article.c-2, .collection #article.c-4, .collection #article.c-6, .collection #article.c-8, .collection #article.c-10 {
+.collection #article.c-3, .collection #article.c-6, .collection #article.c-9 {
   margin-right: 0;
 }
 
