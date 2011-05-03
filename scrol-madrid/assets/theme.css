@@ -36,7 +36,6 @@ h1, h2, h3 {
 }
 
 
-
 a, a:hover {
   text-decoration: none;
   color: #111;
@@ -158,9 +157,7 @@ input.text, textarea {
 .section #details, .section #articles, .section .scroller {
   height: 22em;
 }
-.collection #article.thumb, .search #article.page {
-  height: 38.5em;
-}
+
 
 
 

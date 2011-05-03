@@ -126,7 +126,7 @@ h1 { font-size:2em; padding:1.25em 0; } /* h1 == h3 */
 
 .collection #article.thumb {
   height: 32em;
-  width: auto;
+  width: 100%;
 }
 .collection #article.thumb #details {
   text-align: left;
@@ -140,11 +140,18 @@ h1 { font-size:2em; padding:1.25em 0; } /* h1 == h3 */
 
 .search #article.page {
   height: 26em;
-  width: auto;
+  width: 100%;
 }
 
 
+.product #figure img {
+  width: 100%;
+}
 
+
+#sidebar {
+  width: 100%;
+}
 #aside {
   margin: 1.25em 0;
 }

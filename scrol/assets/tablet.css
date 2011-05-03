@@ -61,18 +61,6 @@
   margin: .612em 0;
 }
 
-/* Typograph: traditional, h1 = 2em */
-#summary h1 { font-size:2em; padding:1.25em 0; }
-#summary h2 { font-size:1.75em; padding:1.51786em 0; }
-#summary h3 { font-size:1.5em; padding:1.45833em 0; }
-#summary h1, #summary h2, #summary h3 { 
-  margin-top: 0; 
-  margin-bottom: 0;
-  padding: .625em 0; 
-}
-
-
-
 
 
 .cart #info {

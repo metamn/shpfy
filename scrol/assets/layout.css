@@ -14,6 +14,25 @@ h2 { font-size:2.61538em; padding:1.28666em 0; }
 h3 { font-size:2em; padding:1.25em 0; }
 
 
+/* on Collections product title is small (h3 = h4 )*/
+.collection #figcaption #title h3 {
+  font-size: 1.25em;
+  padding: 1.25em 0;
+  min-height: 2.5em;
+  font-variant: small-caps; 
+}
+
+/* Typo for product description & blog article */
+/* Typograph: traditional, h1 = 2em */
+#summary h1 { font-size:2em; padding:1.25em 0; }
+#summary h2 { font-size:1.75em; padding:1.51786em 0; }
+#summary h3 { font-size:1.5em; padding:1.45833em 0; }
+#summary h1, #summary h2, #summary h3 { 
+  margin-top: 0; 
+  margin-bottom: 0;
+  padding: .625em 0; 
+}
+
 
 
 /* The basic grid 
@@ -207,13 +226,13 @@ h3 { font-size:2em; padding:1.25em 0; }
 .collection #article.thumb, .search #article.page {
   float: left;
   margin-bottom: 5em;
-  height: 36.5em;
+  height: 30em;
 }
 .collection #article.thumb #title h3 {
   padding-top: 0;
 }
 .collection #article.thumb #summary {  
-  height: 30em;
+  height: auto;
   position: relative;
   cursor: pointer;
 }
@@ -292,10 +311,15 @@ h3 { font-size:2em; padding:1.25em 0; }
 .product #aside ul {
   margin: 1.25em 0 0;
 }
-li.facebook {
-  position: relative;
-  top: .13em;
+
+table.share {
+  margin-bottom: 0;
+  width: auto;
 }
+table.share td {
+  padding: 1.25em 1.25em 0 0;
+}
+
 
 #sidebar #navigation.collections ul.inline-list {
   margin-right: 0;
@@ -430,6 +454,7 @@ ul.comments li {
 .search #article.page #summary {
   padding: 1.25em;
   display: block;
+  min-height: 18.5em;
 }
 
 

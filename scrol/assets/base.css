@@ -191,6 +191,10 @@ input, textarea, select, button, .button {
   cursor: pointer;
   padding: .55em;  
 }
+select {
+  padding-top: .4em;
+  padding-bottom: .4em;
+}
 input, textarea, button {
   -webkit-appearance: none; /* Safari is trying to ignore CSS styling of form elements */
 }
