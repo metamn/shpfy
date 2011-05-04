@@ -1,0 +1,103 @@
+<div id="section" class="products">
+  <div id="details">
+    {% paginate collection.products by 9 %}
+    {% if collection.products.size == 0 %}
+      {% if settings.snippets == "enabled" %}
+        {% include 'collection_empty' %}        
+      {% else %}
+        <h1>No Items Found In This Collection</h1>
+        <p>Please try the <strong>search</strong>, browse the <strong>menu</strong> or the <strong>sidebar</strong> links.</p> 
+      {% endif %} 
+    
+      include _search
+    
+    {% else %}
+  
+      <h1>
+        {{ collection.title }}
+        <span class="tag-title"></span>
+        // {{ collection.products_count }} 
+        {% if settings.locale == "enabled" %}
+          {{ settings.locale_items }}
+        {% else %}
+          items
+        {% endif %}
+      </h1>
+      <!-- Hack: getting the tag title, if any -->
+      <div id="current-tags-hidden" class="hidden">
+        <ul class="inline-list">
+          {% for tag in collection.all_tags %}
+            <li>
+              {{ tag | highlight_active_tag | link_to_tag: tag }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>   
+      <script type="text/javascript">
+        var tag =  jQuery("#current-tags-hidden ul").children().find("span").html();
+        if (tag) {
+          jQuery(".tag-title").append(' // ' + tag);
+        }
+      </script>
+      <!-- end hack -->
+  
+      <div id="articles">
+        {% for product in collection.products %}  
+          include _product.thumb
+        {% endfor %}
+      </div>
+    
+      {% if paginate.pages > 1 %}
+      <div id="paginate" class="right alignright">
+        {{ paginate | default_pagination }}
+      </div>
+      {% endif %}	  
+    
+    {% endif %}
+    {% endpaginate %}
+  </div>
+</div> <!-- section.products -->
+
+
+<div id="section" class="navigation"> 
+  <div id="details">  
+  
+    <h2>
+      {{ collection.title }}
+      <span class="tag-title"></span>
+      // {{ collection.products_count }} 
+      {% if settings.locale == "enabled" %}
+        {{ settings.locale_items }}
+      {% else %}
+        items
+      {% endif %}
+    </h2>      
+    
+       
+    {% if collection.description.size > 0 %}
+      <h3>
+      {% if settings.locale == "enabled" %}
+        {{ settings.locale_coll_description }}
+      {% else %}
+        Description
+      {% endif %}
+      </h3>
+      <ul>
+        <li>{{ collection.description }}</li>
+      </ul>
+    {% endif %}
+                       
+                   
+    include _navigation    
+    include _search
+    include _share
+  
+  </div>  
+</div>	<!-- section.navigation -->
+ 
+
+
+
+
+
+	

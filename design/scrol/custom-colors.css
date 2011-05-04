@@ -1,0 +1,195 @@
+600 x 600
+ 	
+URL
+	
+Status
+	
+Domain
+	
+Size
+	
+Timeline
+Firebug's log limit has been reached. 0 entries not shown.		Preferences	 
+Net panel activated. Any requests while the net panel is inactive are not shown.
+ 	
+-
+			
+0KB
+	
+(0KB from cache)
+0ms
+Page Speed
+What's new in Page Speed 1.10?
+
+    * Improved Firefox 4 support
+    * Firebug 1.6/1.7 support
+    * New rules
+         1. Inline small CSS
+         2. Inline small JavaScript
+    * Improved JavaScript, CSS, and HTML minifiers
+    * Better XHTML support
+    * New client API
+    * And more... See our release notes for a complete list.
+
+See the Page Speed documentation for detailed information on the rules used to evaluate web pages.
+
+Page Speed Copyright © 2010 Google Inc.
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<div id="header" class="block">
+</div>
+<div id="content" class="collection collection block">
+</div>
+<div id="footer" class="block">
+</div>
+</body>
+</html>
+body {
+    background: url("custom_background.jpg") repeat scroll 0 0 #382D38;
+    color: #C4A9A9;
+}
+.container {
+    text-shadow: none;
+}
+a {
+    color: #C4A9A9;
+    text-shadow: none;
+}
+a:hover {
+    color: #C4A9A9;
+    text-shadow: none;
+}
+.notice {
+    background: none repeat scroll 0 0 #D4C97E;
+    text-shadow: none;
+}
+.notice a, .notice a:hover {
+}
+.success {
+    background: none repeat scroll 0 0 #D4C97E;
+    text-shadow: none;
+}
+.error {
+    background: none repeat scroll 0 0 #D4C97E;
+    text-shadow: none;
+}
+input, textarea, a.button {
+    -moz-box-shadow: 0 1px 0 0 #4B3C4B inset;
+    background: -moz-linear-gradient(center top , #382D38 5%, #413541 100%) repeat scroll 0 0 #382D38;
+    border: 1px solid #1C161C;
+    color: #B3A0B3 !important;
+    text-decoration: none !important;
+    text-shadow: 1px 1px 0 #4B3C4B;
+}
+input.button:hover, a.button:hover {
+    background: -moz-linear-gradient(center top , #413541 5%, #382D38 100%) repeat scroll 0 0 #413541;
+}
+input.text, textarea {
+    background: none repeat scroll 0 0 #BDDBEF;
+}
+#sale input, #sale textarea, #sale a.button {
+    -moz-box-shadow: 0 1px 0 0 #4B3C4B inset;
+    background: -moz-linear-gradient(center top , #382D38 5%, #413541 100%) repeat scroll 0 0 #382D38;
+    border: 1px solid #1C161C;
+    color: #B3A0B3 !important;
+    text-decoration: none !important;
+    text-shadow: 1px 1px 0 #4B3C4B;
+}
+#sale input.button:hover, #sale a.button:hover {
+    background: -moz-linear-gradient(center top , #413541 5%, #382D38 100%) repeat scroll 0 0 #413541;
+}
+#header #line {
+    border-bottom: 2px dotted #4F775B;
+}
+#header #shopping {
+    background: none repeat scroll 0 0 #4F775B;
+    color: #DBDAD6;
+    text-shadow: none;
+}
+#header #shopping a, #header #shopping a:visited {
+    color: #DBDAD6;
+    text-shadow: none;
+}
+#vendors.section #article #summary, #article, #aside, #vendors #articles, #info #articles {
+    background: none repeat scroll 0 0 #463D3D;
+    color: #C4A9A9;
+}
+.section #title h4 a {
+    background: none repeat scroll 0 0 #2B2525;
+}
+#vendors.section #article li a, #vendors.section #article li a:visited {
+    background: none repeat scroll 0 0 #774443;
+    color: #DBDAD6;
+}
+.section #navigation li a {
+    color: #4C4B44;
+}
+.section #navigation li.active a {
+    color: #67665C;
+}
+#article #summary {
+    background: none repeat scroll 0 0 #4E5E47;
+    color: #C4A9A9;
+    text-shadow: none;
+}
+#summary a, #summary a.visited {
+    color: #C4A9A9;
+    text-decoration: underline;
+    text-shadow: none;
+}
+#navigation.collections .title, #navigation.collections .description {
+    background: none repeat scroll 0 0 #51847E;
+    color: #2B2525;
+}
+#navigation.collections .title a, #navigation.collections .description a {
+    color: #2B2525;
+}
+#navigation.collections .collections {
+    background: none repeat scroll 0 0 #C3A578;
+    color: #2B2525;
+}
+#navigation.collections .collections a {
+    color: #2B2525;
+}
+#navigation.collections .types {
+    background: none repeat scroll 0 0 #AA60A4;
+    color: #DBDAD6;
+}
+#navigation.collections .types a {
+    color: #DBDAD6;
+}
+#navigation.collections .vendors {
+    background: none repeat scroll 0 0 #775047;
+    color: #DBDAD6;
+}
+#navigation.collections .vendors a {
+    color: #DBDAD6;
+}
+#navigation.collections .tags {
+    background: none repeat scroll 0 0 #843757;
+    color: #DBDAD6;
+}
+#navigation.collections .tags a {
+    color: #DBDAD6;
+    text-shadow: 1px 1px #4C4B44;
+}
+#paginate span {
+    background: none repeat scroll 0 0 #4C4B44;
+    border-bottom: 1px solid #4C4B44;
+}
+.product #article #thumbs {
+    background: none repeat scroll 0 0 #4C4B44;
+}
+.product #article #thumbs img {
+    border: 0.36em solid #4C4B44;
+}
+.blog #article #meta, .article #article #meta {
+    background: none repeat scroll 0 0 #4C4B44;
+}
+ul.comments li {
+    background: none repeat scroll 0 0 #4C4B44;
+}
+Firebug's log limit has been reached. 0 entries not shown.		Preferences	 

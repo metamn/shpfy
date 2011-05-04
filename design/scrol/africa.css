@@ -1,0 +1,37 @@
+body {
+  background: url(africa.jpg) repeat scroll #2B2525;
+  color: #C4A9A9;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+a {
+  color: #C4A9A9;
+}
+
+
+
+#header #line {
+  border-bottom: 2px dotted;
+}
+#header #shopping {
+  background: #4F775B;  
+  color: #dbdad6;
+}
+#header #shopping a, #header #shopping a:visited {
+  color: #dbdad6;
+}
+
+
+
+#article, #aside, #vendors #articles, #info #articles {
+  background: #774443;
+}
+#article #figure {
+  background: #fff;
+  -moz-box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;  
+}
+
